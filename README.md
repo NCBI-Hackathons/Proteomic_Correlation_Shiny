@@ -57,9 +57,16 @@ There are numerous tasks that can be done to tremendously improve the app (it ma
 
 * [How to use/run a Docker image](https://github.com/NCBI-Hackathons/Cancer_Epitopes_CSHL/blob/master/doc/Docker.md)
 
+### Markdown cheat sheets
+
+* [daring fireball](https://daringfireball.net/projects/markdown/basics)
+* [Adam P](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#links)
+* [Squarespace](https://support.squarespace.com/hc/en-us/articles/206543587-Markdown-cheat-sheet)
+
 ### Creating R packages
 
 * [Brief intro](https://github.com/abcdbug/dbug/blob/master/R_Packages/Creating_R_packages.pdf)
+* The very long and detailed [R page](https://cran.r-project.org/doc/manuals/R-exts.html) (I used it mostly as a reference for the formating of the documentation)
 
 ### R packages that we will rely on
 
