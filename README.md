@@ -15,21 +15,21 @@ At the moment, this entails two main tasks (and several things that are difficul
 1. A [Shiny app](#shiny-app) for data wrangling and visual exploration
 2. Developing functions for [statistical analyses](#statistical-analyses)
 
-The DepLab package [friedue: will upload soon!] that has been developed by the Applied Bioinformatics Core at Weill Cornell Medicine will serve as a starting point.
+The `DepLab` package that has been developed by the Applied Bioinformatics Core at Weill Cornell Medicine will serve as a starting point.
 
 ## General data workflow for PCP data
 
-
+![](https://github.com/NCBI-Hackathons/Proteomic_Correlation_Shiny/blob/master/images/PCPdata_workflow.png)
 
 ## Shiny app
 
-The DepLab package contains a shiny app that allows for:
+The `DepLab` package contains a shiny app that allows for:
 
 * upload of PCP data into a data base
 * smoothening of the data
 * visual exploration of individual protein profiles
 
-More details can be found in the manual.
+More details can be found in the [manual](https://github.com/NCBI-Hackathons/Proteomic_Correlation_Shiny/blob/master/DepLab_manual/PCP_manual.pdf).
 
 There are numerous tasks that can be done to tremendously improve the app (it may also be written completely new from scratch) and we may come up with more things during the hackathon!
 
