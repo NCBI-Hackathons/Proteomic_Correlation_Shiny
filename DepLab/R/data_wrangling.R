@@ -3,6 +3,8 @@
 #' @description 
 #' This function expects the MaxQuant output "proteinGroups*.txt"
 #' and returns a data frame.
+#' It's based on a simple \code{read.table} command whose parameters are
+#' optimized for the MaxQuant table.
 #' 
 #' @param filename path to MaxQuant output file
 #' 
