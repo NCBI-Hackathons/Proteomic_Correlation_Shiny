@@ -29,3 +29,4 @@ value of interest per fraction.
 \code{\link{reading_MQ}}, \code{\link{MQaccessor_to_plotname}}, 
 \code{link{extract_proteinID}}, \code{\link{read.mq.data}}
 }
+

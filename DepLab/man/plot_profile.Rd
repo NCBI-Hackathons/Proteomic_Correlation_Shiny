@@ -77,3 +77,4 @@ Expects a data.frame in the long format typical of ggplot2.
 \seealso{
 \code{\link{MQ_to_ggplot2}}
 }
+

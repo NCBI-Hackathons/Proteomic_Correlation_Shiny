@@ -32,26 +32,26 @@ add.expt.to.database(database.name, expt.info, prot.data, frac.data, std.data,
 Adds data from a new MaxQuant output file to the data base.
 }
 \details{
-\dontrun{
-origin_df <- data.frame(expt_id = expt.id, experimenter = "myself",
-                       genotype = "unknown", cell_type = "yeast_cells",
-                      harvest_date = "Nov 2016", buffer_composition = "TrisHCl", 
-                      lysis_method = "standard", digestion_enzyme = "Trypsin", 
-                      notes = NA)
-msmethods_df <- data.frame(expt_id = expt.id, instrument_id = "X0000",
-                       run_date = "Oct 2016", method_length = 1)
-dataproc_df <- data.frame(expt_id = expt.id, processing_platform = "unknown", 
-                      search_algorithm = "unknown", filtering_algorithm = "unknown",
-                      filtering_stringency = "unknown")
-prefractionation_df <- data.frame(expt_id = expt.id, column_id = "x",
-                               amount_protein_loaded = 1, sample_vol_loaded = 1, 
-                               lc_flow_rate = 1, lc_fraction_size = 1, 
-                               time_per_fraction = 1, fractions_collected = 1)
+Usage example:
+#origin_df <- data.frame(expt_id = expt.id, experimenter = "myself",
+ #                       genotype = "unknown", cell_type = "yeast_cells",
+ #                      harvest_date = "Nov 2016", buffer_composition = "TrisHCl", 
+ #                      lysis_method = "standard", digestion_enzyme = "Trypsin", 
+ #                      notes = NA)
+ # msmethods_df <- data.frame(expt_id = expt.id, instrument_id = "X0000",
+   #                       run_date = "Oct 2016", method_length = 1)
+# dataproc_df <- data.frame(expt_id = expt.id, processing_platform = "unknown", 
+   #                      search_algorithm = "unknown", filtering_algorithm = "unknown",
+   #                      filtering_stringency = "unknown")
+# prefractionation_df <- data.frame(expt_id = expt.id, column_id = "x",
+ #                                amount_protein_loaded = 1, sample_vol_loaded = 1, 
+ #                                lc_flow_rate = 1, lc_fraction_size = 1, 
+ #                                time_per_fraction = 1, fractions_collected = 1)
 
 ## add the data to the db
-add.expt.to.database(database.name, data.frame(expt_id = expt.id, organism = "yeast"), 
-                    prot.data = NULL, frac.data = x, std.data = y, origin.data = origin_df, 
-                    prefractionation.data = prefractionation_df, 
-                    msmethod.data = msmethods_df, dataproc.data = dataproc_df)
+# add.expt.to.database(database.name, data.frame(expt_id = expt.id, organism = "yeast"), 
+#                     prot.data = NULL, frac.data = x, std.data = y, origin.data = origin_df, 
+#                     prefractionation.data = prefractionation_df, 
+#                     msmethod.data = msmethods_df, dataproc.data = dataproc_df)
 }
-}
+

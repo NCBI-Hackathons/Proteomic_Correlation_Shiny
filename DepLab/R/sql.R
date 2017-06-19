@@ -34,7 +34,6 @@
 #' 
 #' @seealso @seealso \code{\link{reading_MQ}}, \code{\link{cleaning_MQ}},
 #' \code{\link{extract_proteinID}}
-#' 
 #' @export
 read.MQ.data <- function(filename, expt.id, data.subset = "poi", organism = NULL, 
                          return.dt = FALSE, db.order.poi = c("gene_symbol","fraction", "value","measurement","expt_id","organism"),
@@ -234,30 +233,27 @@ initialize.database <- function(database.name, organism.name, force = FALSE) {
 #' @param msmethod.data optional metatdata about the specific experiment, can be NULL
 #' @param dataproc.data optional metatdata about the specific experiment, can be NULL
 #' 
-#' @details 
-#' \dontrun{
-#' origin_df <- data.frame(expt_id = expt.id, experimenter = "myself",
-#'                        genotype = "unknown", cell_type = "yeast_cells",
-#'                       harvest_date = "Nov 2016", buffer_composition = "TrisHCl", 
-#'                       lysis_method = "standard", digestion_enzyme = "Trypsin", 
-#'                       notes = NA)
-#' msmethods_df <- data.frame(expt_id = expt.id, instrument_id = "X0000",
-#'                        run_date = "Oct 2016", method_length = 1)
-#' dataproc_df <- data.frame(expt_id = expt.id, processing_platform = "unknown", 
-#'                       search_algorithm = "unknown", filtering_algorithm = "unknown",
-#'                       filtering_stringency = "unknown")
-#' prefractionation_df <- data.frame(expt_id = expt.id, column_id = "x",
-#'                                amount_protein_loaded = 1, sample_vol_loaded = 1, 
-#'                                lc_flow_rate = 1, lc_fraction_size = 1, 
-#'                                time_per_fraction = 1, fractions_collected = 1)
+#' @details Usage example:
+#' #origin_df <- data.frame(expt_id = expt.id, experimenter = "myself",
+#'  #                       genotype = "unknown", cell_type = "yeast_cells",
+#'  #                      harvest_date = "Nov 2016", buffer_composition = "TrisHCl", 
+#'  #                      lysis_method = "standard", digestion_enzyme = "Trypsin", 
+#'  #                      notes = NA)
+#'  # msmethods_df <- data.frame(expt_id = expt.id, instrument_id = "X0000",
+#'    #                       run_date = "Oct 2016", method_length = 1)
+#' # dataproc_df <- data.frame(expt_id = expt.id, processing_platform = "unknown", 
+#'    #                      search_algorithm = "unknown", filtering_algorithm = "unknown",
+#'    #                      filtering_stringency = "unknown")
+#' # prefractionation_df <- data.frame(expt_id = expt.id, column_id = "x",
+#'  #                                amount_protein_loaded = 1, sample_vol_loaded = 1, 
+#'  #                                lc_flow_rate = 1, lc_fraction_size = 1, 
+#'  #                                time_per_fraction = 1, fractions_collected = 1)
 #'
 #' ## add the data to the db
-#' add.expt.to.database(database.name, data.frame(expt_id = expt.id, organism = "yeast"), 
-#'                     prot.data = NULL, frac.data = x, std.data = y, origin.data = origin_df, 
-#'                     prefractionation.data = prefractionation_df, 
-#'                     msmethod.data = msmethods_df, dataproc.data = dataproc_df)
-#' }
-#' 
+#' # add.expt.to.database(database.name, data.frame(expt_id = expt.id, organism = "yeast"), 
+#' #                     prot.data = NULL, frac.data = x, std.data = y, origin.data = origin_df, 
+#' #                     prefractionation.data = prefractionation_df, 
+#' #                     msmethod.data = msmethods_df, dataproc.data = dataproc_df)
 #' @export
 add.expt.to.database <- function(database.name, expt.info, prot.data, frac.data, std.data, origin.data, prefractionation.data, msmethod.data, dataproc.data) {
   db <- dbConnect(SQLite(), dbname = database.name, cache_size = 5000)
@@ -292,14 +288,13 @@ add.expt.to.database <- function(database.name, expt.info, prot.data, frac.data,
   dbDisconnect(db)
 }
 
-
 #' Query the frac_data table I
 #' 
 #' Filtering by expt_id, gene_symbol and measurement.
 query.measurements <- function(database.name, expt.ids, gene.symbols, measurement.type) {
-  conn <- dplyr::src_sqlite(path = database.name)
-  dq <-  inner_join(dplyr::tbl(conn, "frac_data"),
-                    dplyr::tbl(conn, "id_info"),
+  conn <- src_sqlite(path = database.name)
+  dq <-  inner_join(tbl(conn, "frac_data"),
+                    tbl(conn, "id_info"),
                     by = "gene_symbol") %>% 
     filter(expt_id %in% c('foo_dummy', expt.ids)) %>% # [bug in dplyr] hack to allow expt.ids vector to only contain one element
     filter(gene_symbol %in% c('foo_dummy', gene.symbols)) %>% 
@@ -319,7 +314,6 @@ query.measurements <- function(database.name, expt.ids, gene.symbols, measuremen
 #' @param gene.symbols The specific, unique gene symbols for which the values should be retrieved.
 #' @param measurement.type One of c("peptides.count","unique.peptides.only","razor.and.unique.peptides", "sequence.coverage","raw.intensity").
 #'
-#' @export
 query.measurements.v2 <- function(database.name, expt.ids, gene.symbols, measurement.type) {
   db <- dbConnect(SQLite(), dbname = database.name, cache_size = 5000)
   gene <- paste(paste("(", paste(paste("frac_data.gene_symbol=", paste(paste("'", gene.symbols, sep=""), "'", sep=""), sep=""), collapse=" OR "), sep=""), ")", sep="")
@@ -334,9 +328,9 @@ query.measurements.v2 <- function(database.name, expt.ids, gene.symbols, measure
 #' 
 #' Filtering by id and organism
 return.gene.symbols.from.id <- function(database.name, id.name, organism.name) {
-  conn <- dplyr::src_sqlite(path = database.name)
+  conn <- src_sqlite(path = database.name)
   dq <- conn %>% 
-    dplyr::tbl("id_info") %>%
+    tbl("id_info") %>%
     filter(organism == organism.name) %>%
     filter(id %in% c('foo_dummy', id.name))
   dq %>% collect()
@@ -363,22 +357,6 @@ delete.expt<- function(database.name, expt.ids) {
   sqlcmd <- paste("DELETE FROM std_data WHERE ", expt_id)
   dbGetQuery(conn = db, sqlcmd)
   
-  expt_id <- paste(paste("(", paste(paste("origin_data.expt_id=", paste(paste("'", expt.ids, sep=""), "'", sep=""), sep=""), collapse=" OR "), sep=""), ")", sep="")
-  sqlcmd <- paste("DELETE FROM origin_data WHERE ", expt_id)
-  dbGetQuery(conn = db, sqlcmd)
-  
-  expt_id <- paste(paste("(", paste(paste("prefractionation_method_data.expt_id=", paste(paste("'", expt.ids, sep=""), "'", sep=""), sep=""), collapse=" OR "), sep=""), ")", sep="")
-  sqlcmd <- paste("DELETE FROM prefractionation_method_data WHERE ", expt_id)
-  dbGetQuery(conn = db, sqlcmd)
-  
-  expt_id <- paste(paste("(", paste(paste("ms_method_data.expt_id=", paste(paste("'", expt.ids, sep=""), "'", sep=""), sep=""), collapse=" OR "), sep=""), ")", sep="")
-  sqlcmd <- paste("DELETE FROM ms_method_data WHERE ", expt_id)
-  dbGetQuery(conn = db, sqlcmd)
-  
-  expt_id <- paste(paste("(", paste(paste("data_processing_data.expt_id=", paste(paste("'", expt.ids, sep=""), "'", sep=""), sep=""), collapse=" OR "), sep=""), ")", sep="")
-  sqlcmd <- paste("DELETE FROM data_processing_data WHERE ", expt_id)
-  dbGetQuery(conn = db, sqlcmd)
-  
   #update gene list
   dbGetQuery(conn = db, paste("DROP TABLE IF EXISTS", organism.name))
   organism <- paste(paste("(", paste(paste("organism=", paste(paste("'", organism.name, sep=""), "'", sep=""), sep=""), collapse=" OR "), sep=""), ")", sep="")
@@ -388,47 +366,16 @@ delete.expt<- function(database.name, expt.ids) {
 
 
 
-#' Edit experiment metadata
+#' Edit experiment meta-data
 #' 
-#' Edit experiment metadata, e.g. organism.
+#' Edit experiment meta-data, e.g. organism.
 #' 
-#' 
-update.expt<- function(database.name, expt.ids, new.expt.id, new.organism.name, origin.data, prefractionation.data, msmethod.data, dataproc.data) {
+update.expt<- function(database.name, expt.ids, new.expt.id, new.organism.name) {
   db <- dbConnect(SQLite(), dbname = database.name, cache_size = 5000)
   
   org <- new.organism.name
   new.expt.id <- paste(paste("'", new.expt.id, sep=""), "'", sep="")
   new.organism.name <- paste(paste("'", new.organism.name, sep=""), "'", sep="")
-  
-  ## replace origin 
-  expt_id <- paste(paste("(", paste(paste("origin_data.expt_id=", paste(paste("'", expt.ids, sep=""), "'", sep=""), sep=""), collapse=" OR "), sep=""), ")", sep="")
-  sqlcmd <- paste("DELETE FROM origin_data WHERE ", expt_id)
-  dbGetQuery(conn = db, sqlcmd)
-  dbWriteTable(conn = db, name = "origin_data", value = origin.data, row.names = FALSE, append = TRUE)
-  
-  ## replace prefractionation data 
-  if(!is.null(prefractionation.data)){
-    expt_id <- paste(paste("(", paste(paste("prefractionation_method_data.expt_id=", paste(paste("'", expt.ids, sep=""), "'", sep=""), sep=""), collapse=" OR "), sep=""), ")", sep="")
-    sqlcmd <- paste("DELETE FROM prefractionation_method_data WHERE ", expt_id)
-    dbGetQuery(conn = db, sqlcmd)
-    dbWriteTable(conn = db, name = "prefractionation_method_data", value = prefractionation.data, row.names = FALSE, append = TRUE)
-  }
-  
-  ## replace ms methods 
-  if(!is.null(msmethod.data)){
-    expt_id <- paste(paste("(", paste(paste("ms_method_data.expt_id=", paste(paste("'", expt.ids, sep=""), "'", sep=""), sep=""), collapse=" OR "), sep=""), ")", sep="")
-    sqlcmd <- paste("DELETE FROM ms_method_data WHERE ", expt_id)
-    dbGetQuery(conn = db, sqlcmd)
-    dbWriteTable(conn = db, name = "ms_method_data", value = msmethod.data, row.names = FALSE, append = TRUE)
-  }
-  
-  ## replace data proc methods 
-  if(!is.null(dataproc.data)){
-    expt_id <- paste(paste("(", paste(paste("data_processing_data.expt_id=", paste(paste("'", expt.ids, sep=""), "'", sep=""), sep=""), collapse=" OR "), sep=""), ")", sep="")
-    sqlcmd <- paste("DELETE FROM data_processing_data WHERE ", expt_id)
-    dbGetQuery(conn = db, sqlcmd)
-    dbWriteTable(conn = db, name = "data_processing_data", value = dataproc.data, row.names = FALSE, append = TRUE)
-  }
   
   expt_id <- paste(paste("(", paste(paste("expt_info.expt_id=", paste(paste("'", expt.ids, sep=""), "'", sep=""), sep=""), collapse=" OR "), sep=""), ")", sep="")
   sqlcmd <- paste(paste(paste( paste(paste("UPDATE expt_info SET expt_id = ", new.expt.id, sep=""), ", organism ="), new.organism.name), " WHERE"), expt_id)      
@@ -458,57 +405,12 @@ update.expt<- function(database.name, expt.ids, new.expt.id, new.organism.name, 
   sqlcmd <- paste(paste(paste("UPDATE prefractionation_method_data SET expt_id = ", new.expt.id, sep=""), "WHERE"), expt_id)  
   dbGetQuery(conn = db, sqlcmd)
   
-
   #update gene list
   dbGetQuery(conn = db, paste("DROP TABLE IF EXISTS", org))
   organism <- paste(paste("(", paste(paste("organism=", paste(paste("'", org, sep=""), "'", sep=""), sep=""), collapse=" OR "), sep=""), ")", sep="")
   sqlcmd <- paste(paste("CREATE TABLE IF NOT EXISTS", org), "AS SELECT DISTINCT frac_data.gene_symbol FROM frac_data WHERE ", organism)
   dbGetQuery(conn = db, sqlcmd)
 }
-
-
-
-# update.expt<- function(database.name, expt.ids, new.expt.id, new.organism.name) {
-#   db <- dbConnect(SQLite(), dbname = database.name, cache_size = 5000)
-#   
-#   org <- new.organism.name
-#   new.expt.id <- paste(paste("'", new.expt.id, sep=""), "'", sep="")
-#   new.organism.name <- paste(paste("'", new.organism.name, sep=""), "'", sep="")
-#   
-#   expt_id <- paste(paste("(", paste(paste("expt_info.expt_id=", paste(paste("'", expt.ids, sep=""), "'", sep=""), sep=""), collapse=" OR "), sep=""), ")", sep="")
-#   sqlcmd <- paste(paste(paste( paste(paste("UPDATE expt_info SET expt_id = ", new.expt.id, sep=""), ", organism ="), new.organism.name), " WHERE"), expt_id)      
-#   dbGetQuery(conn = db, sqlcmd)
-#   
-#   expt_id <- paste(paste("(", paste(paste("frac_data.expt_id=", paste(paste("'", expt.ids, sep=""), "'", sep=""), sep=""), collapse=" OR "), sep=""), ")", sep="")
-#   sqlcmd <- paste(paste(paste( paste(paste("UPDATE frac_data SET expt_id = ", new.expt.id, sep=""), ", organism ="), new.organism.name), " WHERE"), expt_id)      
-#   dbGetQuery(conn = db, sqlcmd)
-#   
-#   expt_id <- paste(paste("(", paste(paste("std_data.expt_id=", paste(paste("'", expt.ids, sep=""), "'", sep=""), sep=""), collapse=" OR "), sep=""), ")", sep="")
-#   sqlcmd <- paste(paste(paste("UPDATE std_data SET expt_id = ", new.expt.id, sep=""), "WHERE"), expt_id)  
-#   dbGetQuery(conn = db, sqlcmd)
-#   
-#   expt_id <- paste(paste("(", paste(paste("origin_data.expt_id=", paste(paste("'", expt.ids, sep=""), "'", sep=""), sep=""), collapse=" OR "), sep=""), ")", sep="")
-#   sqlcmd <- paste(paste(paste("UPDATE origin_data SET expt_id = ", new.expt.id, sep=""), "WHERE"), expt_id)  
-#   dbGetQuery(conn = db, sqlcmd)
-#   
-#   expt_id <- paste(paste("(", paste(paste("data_processing_data.expt_id=", paste(paste("'", expt.ids, sep=""), "'", sep=""), sep=""), collapse=" OR "), sep=""), ")", sep="")
-#   sqlcmd <- paste(paste(paste("UPDATE data_processing_data SET expt_id = ", new.expt.id, sep=""), "WHERE"), expt_id)  
-#   dbGetQuery(conn = db, sqlcmd)
-#   
-#   expt_id <- paste(paste("(", paste(paste("ms_method_data.expt_id=", paste(paste("'", expt.ids, sep=""), "'", sep=""), sep=""), collapse=" OR "), sep=""), ")", sep="")
-#   sqlcmd <- paste(paste(paste("UPDATE ms_method_data SET expt_id = ", new.expt.id, sep=""), "WHERE"), expt_id)  
-#   dbGetQuery(conn = db, sqlcmd)
-#   
-#   expt_id <- paste(paste("(", paste(paste("prefractionation_method_data.expt_id=", paste(paste("'", expt.ids, sep=""), "'", sep=""), sep=""), collapse=" OR "), sep=""), ")", sep="")
-#   sqlcmd <- paste(paste(paste("UPDATE prefractionation_method_data SET expt_id = ", new.expt.id, sep=""), "WHERE"), expt_id)  
-#   dbGetQuery(conn = db, sqlcmd)
-#   
-#   #update gene list
-#   dbGetQuery(conn = db, paste("DROP TABLE IF EXISTS", org))
-#   organism <- paste(paste("(", paste(paste("organism=", paste(paste("'", org, sep=""), "'", sep=""), sep=""), collapse=" OR "), sep=""), ")", sep="")
-#   sqlcmd <- paste(paste("CREATE TABLE IF NOT EXISTS", org), "AS SELECT DISTINCT frac_data.gene_symbol FROM frac_data WHERE ", organism)
-#   dbGetQuery(conn = db, sqlcmd)
-# }
 
 
 #' Query the frac_data table
@@ -556,8 +458,8 @@ query.measurements.by.expt.with.gene.symbol.v2 <- function(database.name, expt.i
 #' Query the data for the spike-in while filtering by expt_id and measurement.
 #' 
 query.std.measurements.by.expt <- function(database.name, expt.ids, measurement.type) {
-  conn <- dplyr::src_sqlite(path = database.name)
-  dq <- dplyr::tbl(conn, "std_data") %>% 
+  conn <- src_sqlite(path = database.name)
+  dq <- tbl(conn, "std_data") %>% 
     filter(expt_id %in% c('foo_dummy', expt.ids)) %>%
     filter(measurement == measurement.type)
   # dq$query shows the SQL query that will be sent to the database
@@ -566,9 +468,9 @@ query.std.measurements.by.expt <- function(database.name, expt.ids, measurement.
 
 
 list.expt.ids <- function(database.name) {
-  conn <- dplyr::src_sqlite(path = database.name)
+  conn <- src_sqlite(path = database.name)
   dq <- conn %>% 
-    dplyr::tbl("expt_info") %>% 
+    tbl("expt_info") %>% 
     select(expt_id)
   dq %>% collect() %>% distinct()
 }
@@ -580,9 +482,9 @@ list.expt.ids.v2 <- function(database.name) {
 
 
 list.expt.ids.w.organism <- function(database.name) {
-  conn <- dplyr::src_sqlite(path = database.name)
+  conn <- src_sqlite(path = database.name)
   dq <- conn %>% 
-    dplyr::tbl("expt_info") %>% 
+    tbl("expt_info") %>% 
     select(expt_id, organism)
   dq %>% collect() %>% distinct()
 }
@@ -596,8 +498,8 @@ list.expt.ids.w.organism.v2 <- function(database.name) {
 
 
 list.organism.by.expt <- function(database.name, expt.ids) {
-  conn <- dplyr::src_sqlite(path = database.name)
-  dq <- dplyr::tbl(conn, "expt_info") %>% 
+  conn <- src_sqlite(path = database.name)
+  dq <- tbl(conn, "expt_info") %>% 
     filter(expt_id %in% c('foo_dummy', expt.ids)) # [bug in dplyr] hack to allow expt.ids vector to only contain one element
   dq %>% collect()
 }
@@ -642,8 +544,8 @@ list.data.processing.data.by.expt.v2 <- function(database.name, expt.ids) {
 
 
 list.expt.by.organism <- function(database.name, organism.name) {
-  conn <- dplyr::src_sqlite(path = database.name)
-  dq <- dplyr::tbl(conn, "expt_info") %>% 
+  conn <- src_sqlite(path = database.name)
+  dq <- tbl(conn, "expt_info") %>% 
     filter(organism %in% c('foo_dummy', organism.name)) # [bug in dplyr] hack to allow expt.ids vector to only contain one element
   dq %>% collect()
 }
@@ -658,18 +560,18 @@ list.expt.by.organism.v2 <- function(database.name, organism.name) {
 
 
 list.measurement.types <- function(database.name) {
-  conn <- dplyr::src_sqlite(path = database.name)
+  conn <- src_sqlite(path = database.name)
   dq <- conn %>% 
-    dplyr::tbl("frac_data") %>%
+    tbl("frac_data") %>%
     select(measurement)
   dq %>% collect() %>% distinct()
 }
 
 
 list.all.gene.symbols <- function(database.name, organism.name) {
-  conn <- dplyr::src_sqlite(path = database.name)
+  conn <- src_sqlite(path = database.name)
   dq <- conn %>% 
-    dplyr::tbl("frac_data") %>%
+    tbl("frac_data") %>%
     filter(organism == organism.name) %>%
     select(gene_symbol)
   dq %>% collect() %>% distinct()
@@ -697,27 +599,27 @@ list.all.gene.symbols.v2 <- function(database.name, organism.name, cur_len) {
 
 
 list.all.gene.symbols.in.id.table <- function(database.name, organism.name) {
-  conn <- dplyr::src_sqlite(path = database.name)
+  conn <- src_sqlite(path = database.name)
   dq <- conn %>% 
-    dplyr::tbl("id_info") %>%
+    tbl("id_info") %>%
     filter(organism == organism.name) %>%
     select(gene_symbol)
   dq %>% collect() %>% distinct()
 }
 
 list.std.gene.symbols <- function(database.name) {
-  conn <- dplyr::src_sqlite(path = database.name)
+  conn <- src_sqlite(path = database.name)
   dq <- conn %>% 
-    dplyr::tbl("std_data") %>%
+    tbl("std_data") %>%
     select(id)
   dq %>% collect() %>% distinct()
 }
 
 
 list.selected.std.gene.symbols <- function(database.name, expt.ids) {
-  conn <- dplyr::src_sqlite(path = database.name)
+  conn <- src_sqlite(path = database.name)
   dq <- conn %>% 
-    dplyr::tbl("std_data") %>%
+    tbl("std_data") %>%
     filter(expt_id %in% c('foo_dummy', expt.ids)) %>%
     select(id)
   dq %>% collect() %>% distinct()
@@ -725,9 +627,9 @@ list.selected.std.gene.symbols <- function(database.name, expt.ids) {
 
 
 list.selected.gene.symbols <- function(database.name, expt.ids) {
-  conn <- dplyr::src_sqlite(path = database.name)
+  conn <- src_sqlite(path = database.name)
   dq <- conn %>% 
-    dplyr::tbl("frac_data") %>% 
+    tbl("frac_data") %>% 
     filter(expt_id %in% c('foo_dummy', expt.ids)) %>%
     select(gene_symbol)
   dq %>% collect() %>% distinct()

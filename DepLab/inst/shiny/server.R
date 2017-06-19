@@ -18,7 +18,6 @@ library(RSQLite)
 library(stringi)
 library(NMF)
 library(shinyjs)
-library(DepLab)
 
 # load code to be run once (at app launch)
 
@@ -238,7 +237,7 @@ shinyServer(function(input, output, session) {
         rep_nm_cond <- paste0("rep_nm_cond", i)
         rep_nm_rep <- paste0("rep_nm_rep", i)
         if( i == 1){
-          rep_list[[rep_nm]] <-  fluidRow(column(6, offset = 0, style='margin-bottom:0px;', textInput(rep_nm_cond, HTML(paste("Condition*",paste("<span style='font-weight:normal'>", input$show_expt_id[i], "</span>", sep=""), sep="<br/>")),  value=NULL)),
+          rep_list[[rep_nm]] <-  fluidRow(column(6, offset = 0, style='margin-bottom:0px;', textInput(rep_nm_cond, HTML(paste("Cond.*",paste("<span style='font-weight:normal'>", input$show_expt_id[i], "</span>", sep=""), sep="<br/>")),  value=NULL)),
                                           column(4,offset = 0, style='margin-bottom:0px;margin-top:0px; ', numericInput(rep_nm_rep, label= HTML(paste("Rep.*","<br/>", "<br /> ")), min = 1, value=NULL)))     
         } else {
           rep_list[[rep_nm]] <-  fluidRow(column(6, offset = 0, style='margin-top:0px;margin-bottom:0px;', textInput(rep_nm_cond, label = HTML(paste("<span style='font-weight:normal'>", input$show_expt_id[i], "</span>", sep="")) , value=NULL)),
@@ -361,7 +360,7 @@ shinyServer(function(input, output, session) {
   # Data input tab:
   
   ### dynamic UI for Data input tab
-  createAlert(session, "inputalert", "inputAlert", title = "Oops", content = "Experimental ID, Maxquant data, and sample origin metadata required before saving.", append = FALSE)
+  createAlert(session, "inputalert", "inputAlert", title = "Oops", content = "Experimental ID, Maxquant data, and sample origin meta-data required before saving.", append = FALSE)
   
   mandatory.data.input <- reactiveValues(fieldsMandatory = c("expt.id", "file1", "experimenter.name", "genotype", "cell.type", "buffer.composition", "lysis.method", "digestion.enzyme"))
   observe({
@@ -416,7 +415,7 @@ shinyServer(function(input, output, session) {
                                                 "column.id","amount.protein.loaded","sample.vol.loaded","lc.flow.rate","lc.fraction.size","time.per.fraction","fractions.collected",
                                                 "instrument.id", "method.length", "processing.platform", "search.algorithm", "filtering.algorithm", "filtering.stringency")	
       closeAlert(session, "inputAlert")
-      createAlert(session, "inputalert", "inputAlert", title = "Oops", content = "Experimental ID, Maxquant data, sample origin metadata, prefractionation methods, mass-spec methods, and data processing methods required before saving.", append = FALSE)
+      createAlert(session, "inputalert", "inputAlert", title = "Oops", content = "Experimental ID, Maxquant data, sample origin meta-data, prefractionation methods, mass-spec methods, and data processing methods required before saving.", append = FALSE)
     } 
     
     
@@ -425,8 +424,9 @@ shinyServer(function(input, output, session) {
                                                 "column.id","amount.protein.loaded","sample.vol.loaded","lc.flow.rate","lc.fraction.size","time.per.fraction","fractions.collected",
                                                 "instrument.id",  "method.length")	
       closeAlert(session, "inputAlert")
-      createAlert(session, "inputalert", "inputAlert", title = "Oops", content = "Experimental ID, Maxquant data, sample origin metadata, prefractionation methods, and mass-spec methods required before saving.", append = FALSE)
+      createAlert(session, "inputalert", "inputAlert", title = "Oops", content = "Experimental ID, Maxquant data, sample origin meta-data, prefractionation methods, and mass-spec methods required before saving.", append = FALSE)
     } 
+    
     
     
     if ((input$include.prefractionation.metadata == TRUE) & (input$include.msmethod.metadata == FALSE) & (input$include.data.metadata == TRUE)){
@@ -434,7 +434,7 @@ shinyServer(function(input, output, session) {
                                                 "column.id","amount.protein.loaded","sample.vol.loaded","lc.flow.rate","lc.fraction.size","time.per.fraction","fractions.collected",
                                                 "processing.platform", "search.algorithm", "filtering.algorithm", "filtering.stringency")	
       closeAlert(session, "inputAlert")
-      createAlert(session, "inputalert", "inputAlert", title = "Oops", content = "Experimental ID, Maxquant data, sample origin metadata, prefractionation methods, and data processing methods required before saving.", append = FALSE)
+      createAlert(session, "inputalert", "inputAlert", title = "Oops", content = "Experimental ID, Maxquant data, sample origin meta-data, prefractionation methods, and data processing methods required before saving.", append = FALSE)
       
     } 
     
@@ -444,7 +444,7 @@ shinyServer(function(input, output, session) {
                                                 "instrument.id",  "method.length",
                                                 "processing.platform", "search.algorithm", "filtering.algorithm", "filtering.stringency")	
       closeAlert(session, "inputAlert")
-      createAlert(session, "inputalert", "inputAlert", title = "Oops", content = "Experimental ID, Maxquant data, sample origin metadata, mass-spec methods, and data processing methods required before saving.", append = FALSE)
+      createAlert(session, "inputalert", "inputAlert", title = "Oops", content = "Experimental ID, Maxquant data, sample origin meta-data, mass-spec methods, and data processing methods required before saving.", append = FALSE)
       
     } 
     
@@ -452,7 +452,7 @@ shinyServer(function(input, output, session) {
       mandatory.data.input$fieldsMandatory <- c("expt.id", "file1", "experimenter.name", "genotype", "cell.type", "buffer.composition", "lysis.method", "digestion.enzyme",
                                                 "column.id","amount.protein.loaded","sample.vol.loaded","lc.flow.rate","lc.fraction.size","time.per.fraction","fractions.collected")	
       closeAlert(session, "inputAlert")
-      createAlert(session, "inputalert", "inputAlert", title = "Oops", content = "Experimental ID, Maxquant data, sample origin metadata, and prefractionation methods required before saving.", append = FALSE)
+      createAlert(session, "inputalert", "inputAlert", title = "Oops", content = "Experimental ID, Maxquant data, sample origin meta-data, and prefractionation methods required before saving.", append = FALSE)
     } 
     
     
@@ -461,7 +461,7 @@ shinyServer(function(input, output, session) {
       mandatory.data.input$fieldsMandatory <- c("expt.id", "file1", "experimenter.name", "genotype", "cell.type", "buffer.composition", "lysis.method", "digestion.enzyme",
                                                 "instrument.id",  "method.length")
       closeAlert(session, "inputAlert")
-      createAlert(session, "inputalert", "inputAlert", title = "Oops", content = "Experimental ID, Maxquant data, sample origin metadata, and mass-spec methods required before saving.", append = FALSE)
+      createAlert(session, "inputalert", "inputAlert", title = "Oops", content = "Experimental ID, Maxquant data, sample origin meta-data, and mass-spec methods required before saving.", append = FALSE)
       
     } 
     
@@ -470,7 +470,7 @@ shinyServer(function(input, output, session) {
       mandatory.data.input$fieldsMandatory <- c("expt.id", "file1", "experimenter.name", "genotype", "cell.type", "buffer.composition", "lysis.method", "digestion.enzyme",
                                                 "processing.platform", "search.algorithm", "filtering.algorithm", "filtering.stringency")	
       closeAlert(session, "inputAlert")
-      createAlert(session, "inputalert", "inputAlert", title = "Oops", content = "Experimental ID, Maxquant data, sample origin metadata, and data processing methods required before saving.", append = FALSE)
+      createAlert(session, "inputalert", "inputAlert", title = "Oops", content = "Experimental ID, Maxquant data, sample origin meta-data, and data processing methods required before saving.", append = FALSE)
       
     }
     
@@ -478,7 +478,7 @@ shinyServer(function(input, output, session) {
     if ((input$include.prefractionation.metadata == FALSE) & (input$include.msmethod.metadata == FALSE) & (input$include.data.metadata == FALSE)){
       mandatory.data.input$fieldsMandatory <- c("expt.id", "file1", "experimenter.name", "genotype", "cell.type", "buffer.composition", "lysis.method", "digestion.enzyme")	
       closeAlert(session, "inputAlert")
-      createAlert(session, "inputalert", "inputAlert", title = "Oops", content = "Experimental ID, Maxquant data, and sample origin metadata required before saving.", append = FALSE)
+      createAlert(session, "inputalert", "inputAlert", title = "Oops", content = "Experimental ID, Maxquant data, and sample origin meta-data required before saving.", append = FALSE)
       
     } 
     
@@ -888,395 +888,27 @@ shinyServer(function(input, output, session) {
   })
   
   
-  #### reset functions
-  observeEvent(input$reset_summary, {
-    updateSelectizeInput(session, 'show_expt_id_sum', choices = DepLab:::list.expt.ids.v2(database.name.reactive$data)$expt_id, selected = NULL, server = TRUE)
-    updateSelectInput(session , "y_axis_choices_sum", selected = "raw.intensity")
-    updateCheckboxGroupInput(session, "y_axis_log_2" , choices = "log2", selected = NULL)
-    updateSelectInput(session , "split_by_summary", selected = "expt_id") 
-    updateSliderInput(session, "summary_x_interval", value = 5)
-    updateTextInput(session, "plot_summary_title",  value = "")
-  })
-  
-  
-  observeEvent(input$reset_individual_proteins, {
-    updateSelectizeInput(session, 'show_expt_id', choices = DepLab:::list.expt.ids.v2(database.name.reactive$data)$expt_id, server = TRUE, selected = NULL)
-    updateSelectizeInput(session, 'show_gene_symbol', selected = NULL)
-    updateRadioButtons(session,  "complex_source", selected = "benschop")
-    updateNumericInput(session, "min_protein_present", value  = 2)
-    updateSelectInput(session , "y_axis_choices", selected = "raw.intensity")
-    updateCheckboxGroupInput(session, "y_axis_log" , choices = c("log2", "normalize across fractions", "normalize by spike-in", "smooth values (SuperSmoother)", "smooth lines (spline)"), selected = NULL)
-    updateSelectInput(session , "split_by", selected = "expt_id") 
-    updateSelectInput(session , "split_by_col", selected = "none") 
-    updateSelectInput(session , "color_by_choices", selected = "gene_symbol") 
-    updateSelectInput(session , "pointShape", selected = 16)
-    updateSliderInput(session, "pointSize", value = 1)
-    updateSelectInput(session , "lineType", selected = 1) 
-    updateSliderInput(session, "lineSize", value = 1)
-    updateTextInput(session, "plot_title",  value = "")
-  })
-  
-  observeEvent(input$reset_spikein, {
-    updateSelectizeInput(session, 'show_expt_id_std', choices = DepLab:::list.expt.ids.v2(database.name.reactive$data)$expt_id, selected = NULL, server = TRUE)
-    updateSelectizeInput(session, 'show_trypsin_symbol', choices = DepLab:::list.std.gene.symbols(database.name.reactive$data)$id, server = TRUE, selected = NULL)
-    updateSelectInput(session , "y_axis_choices_tryp", selected = "raw.intensity")
-    updateCheckboxGroupInput(session, "y_axis_log_tryp" , choices =  c("log2", "normalize across fractions"), selected = NULL)
-    updateSelectInput(session , "split_by_std", selected = "expt_id") 
-    updateSelectInput(session , "split_by_std_col", selected = "none") 
-    updateSelectInput(session , "color_by_choices_std", selected = "id") 
-    updateTextInput(session, "plot_tryp_title",  value = "")
-  })
-  
-  observeEvent(input$reset_corr, {
-    updateTextInput(session, "heatmap.cond0",  value = "")
-    updateNumericInput(session, "heatmap.rep0", value  = "")
-    updateSelectizeInput(session, 'show_expt_id_heatmap0', choices = DepLab:::list.expt.ids.v2(database.name.reactive$data)$expt_id, selected = NULL, server = TRUE)
-    updateSelectInput(session , "heatmap_measurement", selected = "superSmu")
-    updateSelectInput(session , "heatmap_cor_method", selected = "pearson")
-    updateSliderInput(session, "heatmap.pairwise.corr.range", value = c(-1,0.8))
-    updateSliderInput(session, "heatmap.conditionwise.corr.range", value = c(-1,0.8))
-    updateNumericInput(session, "heatmap.n.genes", value  = 10)
-    updateRadioButtons(session,  "heat.n.choice", selected = "top")
-    for (i in 1:length(heatmap_inserted)){
-      removeUI(
-        ## pass in appropriate div id
-        selector = paste0('#', heatmap_inserted[length(heatmap_inserted)])
-      )
-      heatmap_inserted <<- heatmap_inserted[1:length(heatmap_inserted)-1]
-      len <- c(gsub("txt", "", heatmap_inserted), 0)
-      exps <- paste0("show_expt_id_heatmap", len)
-      replicate <- paste0("heatmap.rep",len)
-      condition <- paste0("heatmap.cond", len)
-      heatmap.reactive$fieldsMandatory <- c(exps, replicate, condition)
-      heatmap.reactive$heatmap_selectize_lists <- c(exps)
-    }    
-  })
-  
-  ####
-  
   ## dynamic UI for DB editor
-  
-#  createAlert(session, "editinputalert", "editinputAlert", title = "Oops", content = "Experimental ID, Maxquant data, and sample origin metadata required before saving.", append = FALSE)
-  
-  edit.mandatory.data.input <- reactiveValues(fieldsMandatory = c("edit.expt.id", "edit.experimenter.name", "edit.genotype", "edit.cell.type", "edit.buffer.composition", "edit.lysis.method", "edit.digestion.enzyme"))
-
-
   inserted <- character(0)
-  
-  
-  observeEvent(c(input$edit.include.prefractionation.metadata, input$edit.include.msmethod.metadata, input$edit.include.data.metadata), {
-    input$edit.include.prefractionation.metadata 
-    input$edit.include.msmethod.metadata
-    input$edit.include.data.metadata
-    if (input$edit.include.prefractionation.metadata == TRUE){
-      shinyjs::show("edit.column.id")
-      shinyjs::show("edit.amount.protein.loaded")
-      shinyjs::show("edit.sample.vol.loaded")
-      shinyjs::show("edit.lc.flow.rate")
-      shinyjs::show("edit.lc.fraction.size")
-      shinyjs::show("edit.time.per.fraction")
-      shinyjs::show("edit.fractions.collected")
-    } else {
-      shinyjs::hide("edit.column.id")
-      shinyjs::hide("edit.amount.protein.loaded")
-      shinyjs::hide("edit.sample.vol.loaded")
-      shinyjs::hide("edit.lc.flow.rate")
-      shinyjs::hide("edit.lc.fraction.size")
-      shinyjs::hide("edit.time.per.fraction")
-      shinyjs::hide("edit.fractions.collected")
-    }
-    
-    if (input$edit.include.msmethod.metadata == TRUE){
-      shinyjs::show("edit.instrument.id")
-      shinyjs::show("edit.run.date")
-      shinyjs::show("edit.method.length")
-    } else {
-      shinyjs::hide("edit.instrument.id")
-      shinyjs::hide("edit.run.date")
-      shinyjs::hide("edit.method.length")
-    }
-    
-    if (input$edit.include.data.metadata == TRUE){
-      shinyjs::show("edit.processing.platform")
-      shinyjs::show("edit.search.algorithm")
-      shinyjs::show("edit.filtering.algorithm")
-      shinyjs::show("edit.filtering.stringency")
-    } else {
-      shinyjs::hide("edit.processing.platform")
-      shinyjs::hide("edit.search.algorithm")
-      shinyjs::hide("edit.filtering.algorithm")
-      shinyjs::hide("edit.filtering.stringency")
-    }
-  })  
-
-  
-  observeEvent(  c(input$edit.include.prefractionation.metadata, input$edit.include.msmethod.metadata, input$edit.include.data.metadata, input$edit.expt.id,input$edit.experimenter.name,input$edit.genotype,input$edit.cell.type,input$edit.buffer.composition,input$edit.lysis.method,input$edit.digestion.enzyme,input$edit.column.id,input$edit.amount.protein.loaded,input$edit.sample.vol.loaded,input$edit.lc.flow.rate,input$edit.lc.fraction.size,input$edit.time.per.fraction,input$edit.fractions.collected,input$edit.instrument.id,input$edit.method.length,input$edit.processing.platform,input$edit.search.algorithm,input$edit.filtering.algorithm,input$edit.filtering.stringency),{
-    # check if all mandatory fields have a value
-    # ALL TRUE
-    if ((input$edit.include.prefractionation.metadata == TRUE) &( input$edit.include.msmethod.metadata == TRUE) & (input$edit.include.data.metadata == TRUE)){
-      edit.mandatory.data.input$fieldsMandatory <- c("edit.expt.id", "edit.experimenter.name", "edit.genotype", "edit.cell.type", "edit.buffer.composition", "edit.lysis.method", "edit.digestion.enzyme",
-                                                     "edit.column.id","edit.amount.protein.loaded","edit.sample.vol.loaded","edit.lc.flow.rate","edit.lc.fraction.size","edit.time.per.fraction","edit.fractions.collected",
-                                                     "edit.instrument.id", "edit.method.length", "edit.processing.platform", "edit.search.algorithm", "edit.filtering.algorithm", "edit.filtering.stringency")	
-      closeAlert(session, "editinputAlert")
-      createAlert(session, "editinputalert", "editinputAlert", title = "Oops", content = "Experimental ID, Maxquant data, sample origin metadata, prefractionation methods, mass-spec methods, and data processing methods required before saving.", append = FALSE)
-    } 
-    
-    
-    if ((input$edit.include.prefractionation.metadata == TRUE) & (input$edit.include.msmethod.metadata == TRUE) & (input$edit.include.data.metadata == FALSE)){
-      edit.mandatory.data.input$fieldsMandatory <- c("edit.expt.id",  "edit.experimenter.name", "edit.genotype", "edit.cell.type", "edit.buffer.composition", "edit.lysis.method", "edit.digestion.enzyme",
-                                                     "edit.column.id","edit.amount.protein.loaded","edit.sample.vol.loaded","edit.lc.flow.rate","edit.lc.fraction.size","edit.time.per.fraction","edit.fractions.collected",
-                                                     "edit.instrument.id",  "edit.method.length")	
-      closeAlert(session, "editinputAlert")
-      createAlert(session, "editinputalert", "editinputAlert", title = "Oops", content = "Experimental ID, Maxquant data, sample origin metadata, prefractionation methods, and mass-spec methods required before saving.", append = FALSE)
-    } 
-    
-    
-    if ((input$edit.include.prefractionation.metadata == TRUE) & (input$edit.include.msmethod.metadata == FALSE) & (input$edit.include.data.metadata == TRUE)){
-      edit.mandatory.data.input$fieldsMandatory <- c("edit.expt.id",  "edit.experimenter.name", "edit.genotype", "edit.cell.type", "edit.buffer.composition", "edit.lysis.method", "edit.digestion.enzyme",
-                                                     "edit.column.id","edit.amount.protein.loaded","edit.sample.vol.loaded","edit.lc.flow.rate","edit.lc.fraction.size","edit.time.per.fraction","edit.fractions.collected",
-                                                     "edit.processing.platform", "edit.search.algorithm", "edit.filtering.algorithm", "edit.filtering.stringency")	
-      closeAlert(session, "editinputAlert")
-      createAlert(session, "editinputalert", "editinputAlert", title = "Oops", content = "Experimental ID, Maxquant data, sample origin metadata, prefractionation methods, and data processing methods required before saving.", append = FALSE)
-      
-    } 
-    
-    
-    if ((input$edit.include.prefractionation.metadata == FALSE) & (input$edit.include.msmethod.metadata == TRUE) & (input$edit.include.data.metadata == TRUE)){
-      edit.mandatory.data.input$fieldsMandatory <- c("edit.expt.id",  "edit.experimenter.name", "edit.genotype", "edit.cell.type", "edit.buffer.composition", "edit.lysis.method", "edit.digestion.enzyme",
-                                                     "edit.instrument.id",  "edit.method.length",
-                                                     "edit.processing.platform", "edit.search.algorithm", "edit.filtering.algorithm", "edit.filtering.stringency")	
-      closeAlert(session, "editinputAlert")
-      createAlert(session, "editinputalert", "editinputAlert", title = "Oops", content = "Experimental ID, Maxquant data, sample origin metadata, mass-spec methods, and data processing methods required before saving.", append = FALSE)
-      
-    } 
-    
-    if ((input$edit.include.prefractionation.metadata == TRUE) & (input$edit.include.msmethod.metadata == FALSE) & (input$edit.include.data.metadata == FALSE)){
-      edit.mandatory.data.input$fieldsMandatory <- c("edit.expt.id",  "edit.experimenter.name", "edit.genotype", "edit.cell.type", "edit.buffer.composition", "edit.lysis.method", "edit.digestion.enzyme",
-                                                     "edit.column.id","edit.amount.protein.loaded","edit.sample.vol.loaded","edit.lc.flow.rate","edit.lc.fraction.size","edit.time.per.fraction","edit.fractions.collected")	
-      closeAlert(session, "editinputAlert")
-      createAlert(session, "editinputalert", "editinputAlert", title = "Oops", content = "Experimental ID, Maxquant data, sample origin metadata, and prefractionation methods required before saving.", append = FALSE)
-    } 
-    
-    
-    
-    if ((input$edit.include.prefractionation.metadata == FALSE )& (input$edit.include.msmethod.metadata == TRUE) & (input$edit.include.data.metadata == FALSE)){
-      edit.mandatory.data.input$fieldsMandatory <- c("edit.expt.id",  "edit.experimenter.name", "edit.genotype", "edit.cell.type", "edit.buffer.composition", "edit.lysis.method", "edit.digestion.enzyme",
-                                                     "edit.instrument.id",  "edit.method.length")
-      closeAlert(session, "editinputAlert")
-      createAlert(session, "editinputalert", "editinputAlert", title = "Oops", content = "Experimental ID, Maxquant data, sample origin metadata, and mass-spec methods required before saving.", append = FALSE)
-      
-    } 
-    
-    
-    if (input$edit.include.prefractionation.metadata == FALSE & input$edit.include.msmethod.metadata == FALSE & input$edit.include.data.metadata == TRUE){
-      edit.mandatory.data.input$fieldsMandatory <- c("edit.expt.id",  "edit.experimenter.name", "edit.genotype", "edit.cell.type", "edit.buffer.composition", "edit.lysis.method", "edit.digestion.enzyme",
-                                                     "edit.processing.platform", "edit.search.algorithm", "edit.filtering.algorithm", "edit.filtering.stringency")	
-      closeAlert(session, "editinputAlert")
-      createAlert(session, "editinputalert", "editinputAlert", title = "Oops", content = "Experimental ID, Maxquant data, sample origin metadata, and data processing methods required before saving.", append = FALSE)
-      
-    }
-    
-    #ALL FALSE
-    if ((input$edit.include.prefractionation.metadata == FALSE) & (input$edit.include.msmethod.metadata == FALSE) & (input$edit.include.data.metadata == FALSE)){
-      edit.mandatory.data.input$fieldsMandatory <- c("edit.expt.id",  "edit.experimenter.name", "edit.genotype", "edit.cell.type", "edit.buffer.composition", "edit.lysis.method", "edit.digestion.enzyme")	
-      closeAlert(session, "editinputAlert")
-   #   createAlert(session, "editinputalert", "editinputAlert", title = "Oops", content = "Experimental ID, Maxquant data, and sample origin metadata required before saving.", append = FALSE)
-      
-    } 
-    
-    mandatoryFilledDataInput <-
-      vapply(edit.mandatory.data.input$fieldsMandatory,
-             function(x) {
-               !is.null(input[[x]]) && input[[x]] != ""
-             },
-             logical(1))
-    mandatoryFilledDataInput <- all(mandatoryFilledDataInput)
-    # enable/disable the submit button
-    if(is.na(mandatoryFilledDataInput)){
-      updateButton(session, "saveEditsButton", disabled = TRUE)
-    } else if(mandatoryFilledDataInput == FALSE){
-      updateButton(session, "saveEditsButton", disabled = TRUE)
-    } else {
-      updateButton(session, "saveEditsButton", disabled = FALSE)
-      closeAlert(session, "editinputAlert")
-    }
- #   shinyjs::toggleState(id = "saveEditsButton", condition = mandatoryFilledDataInput)
-  #  if (mandatoryFilledDataInput){ 
-  #    closeAlert(session, "editinputAlert")
-      return()
-  #  }
-  })
-  
   
   observeEvent(input$EditButton, {
     if(input$show_expt_id_db_browser != ""){
-      
-      shinyjs::hide("edit.processing.platform")
-      shinyjs::hide("edit.search.algorithm")
-      shinyjs::hide("edit.filtering.algorithm")
-      shinyjs::hide("edit.filtering.stringency")
-      shinyjs::hide("edit.instrument.id")
-      shinyjs::hide("edit.run.date")
-      shinyjs::hide("edit.method.length")
-      shinyjs::hide("edit.column.id")
-      shinyjs::hide("edit.amount.protein.loaded")
-      shinyjs::hide("edit.sample.vol.loaded")
-      shinyjs::hide("edit.lc.flow.rate")
-      shinyjs::hide("edit.lc.fraction.size")
-      shinyjs::hide("edit.time.per.fraction")
-      shinyjs::hide("edit.fractions.collected")
-      
       btn <- input$EditButton
       id <- paste0('txt', btn)
       updateButton(session, "EditButton", disabled = TRUE)
       updateButton(session, "deleteButton", disabled = TRUE)
-      origin_df <-  DepLab:::list.origin.data.by.expt.v2(database.name.reactive$data,  input$show_expt_id_db_browser)
-      prefractionation_df <-  DepLab:::list.prefractionation.data.by.expt.v2(database.name.reactive$data, input$show_expt_id_db_browser)
-      msmethod_df <-  DepLab:::list.msmethod.data.by.expt.v2(database.name.reactive$data, input$show_expt_id_db_browser)
-      dataproc_df <-  DepLab:::list.data.processing.data.by.expt.v2(database.name.reactive$data, input$show_expt_id_db_browser)
       
-      if(nrow(prefractionation_df) == 0){
-        prefractionation_df[1,] <- NA
-      }
-      
-      if(nrow(msmethod_df) == 0){
-        msmethod_df[1,] <- NA
-      }
-      
-      if(nrow(dataproc_df) == 0){
-        dataproc_df[1,] <- NA
-      }
-      
-      if(is.na(dataproc_df$processing_platform)){
-        dataproc_df$processing_platform <- "NULL"
-      }
       insertUI(
         selector = '#placeholderEditButtons',
         ui = tags$div(
-          h2("Basic sample info"),
-          fluidRow(column(4, textInput("edit.expt.id", label = "Expt ID", value = input$show_expt_id_db_browser)),
-                   column(4,selectInput("edit.organism", label = "Organism", choices = list("human", "yeast") ,selected = DepLab:::list.organism.by.expt.v2(database.name.reactive$data, input$show_expt_id_db_browser)  ))
-          ),
-          h2("Sample origin and preparation"),
-          selectInput("edit.experimenter.name",
-                      choices  = list(Paola="Paola Cavaliere", Noah="Noah Dephoure", Vijay="Vijay Raja", Nadia="Nadia Iqbal"),
-                      label = "Name of experimenter",
-                      selected = origin_df$experimenter),
-          fluidRow(
-            column(4,selectInput("edit.genotype",
-                                 label = "Genotype",
-                                 choices = list(EV="Empty vector", WT="Wild type", D109N="D109N"),
-                                 selected = origin_df$genotype)),
-            column(4,selectInput("edit.cell.type",
-                                 label = "Cell type",
-                                 choices = list(MCF10A="MCF10A", MDA231="MDA231"),
-                                 selected = origin_df$cell_type))
-          ),
-          fluidRow(
-            column(4,dateInput("edit.harvest.date",
-                               label="Harvest date",
-                               value = origin_df$harvest_date)),
-            column(4,selectInput("edit.buffer.composition",
-                                 label = "Buffer composition",
-                                 choices = list(Tris_HCl="TrisHCl 50mM pH 7.5 KCl 150mM",
-                                                Hepes = "Hepes 150mM pH 7.9 MgCl2 1.5mM Ammonium acetate 150mM",
-                                                None = "NA"),
-                                 selected = origin_df$buffer_composition))),
-          
-          fluidRow(
-            column(4,selectInput("edit.lysis.method",
-                                 label = "Lysis method",
-                                 choices = list("Dounce","NP40","Sonication", "None"),
-                                 selected = origin_df$lysis_method)),
-            column(4,selectInput("edit.digestion.enzyme",
-                                 label = "Digestion enzyme",
-                                 choices = list("Trypsin", "Lysine C","Trypsin_LysC"),
-                                 selected =  origin_df$digestion_enzyme))
-          ),
-          
-            fluidRow(
-            column(4,textInput("edit.notes",
-                               label = "Notes",
-                               value = origin_df$notes))
-          ),
-          
-
-          h2("Prefractionation method"), 
-          checkboxInput("edit.include.prefractionation.metadata", "Include?", value = FALSE),
-          textInput("edit.column.id",label = "Column ID",value = prefractionation_df$column_id),
-          fluidRow(
-            column(4,numericInput("edit.amount.protein.loaded",
-                                  label = "Amount of protein loaded (ug)",
-                                  value = prefractionation_df$amount_protein_loaded)),
-            column(4,numericInput("edit.sample.vol.loaded",
-                                  label = "Sample volume loaded (ul)",
-                                  value = prefractionation_df$sample_vol_loaded)),
-            column(4,numericInput("edit.lc.flow.rate",
-                                  label = "LC flow rate",
-                                  value = prefractionation_df$lc_flow_rate)),
-            column(4,numericInput("edit.lc.fraction.size",
-                                  label = "LC fraction size (ml)",
-                                  value = prefractionation_df$lc_fraction_size)),
-            column(4,numericInput("edit.time.per.fraction",
-                                  label = "Time per fraction (s)",
-                                  value = prefractionation_df$time_per_fraction)),
-            column(4,numericInput("edit.fractions.collected",
-                                  label = "Number of fractions collected",
-                                  value = prefractionation_df$fractions_collected))
-          ),
-          h2("Mass spectrometry method"), 
-          checkboxInput("edit.include.msmethod.metadata", "Include?", value = FALSE),
-          textInput("edit.instrument.id",label = "Instrument ID",value = msmethod_df$instrument_id),
-          fluidRow(
-            column(4,dateInput("edit.run.date",
-                               label = "Run date", value= msmethod_df$run_date)),
-            column(4,numericInput("edit.method.length",
-                                  label = "Length of method (m)",
-                                  value = msmethod_df$method_length))
-          ),
-          h2("Data processing"), 
-          checkboxInput("edit.include.data.metadata", "Include?", value = FALSE),
-          fluidRow(
-            column(4,selectInput("edit.processing.platform",
-                                 label = "Processing platform",
-                                 choices = list("", "core", "maxquant", "OPEN-MS"),
-                                 selected = dataproc_df$processing_platform)),
-            column(4,textInput("edit.search.algorithm",
-                               label = "Search algorithm",
-                               value = dataproc_df$search_algorithm)),
-            column(4,textInput("edit.filtering.algorithm",
-                               label = "Filtering algorithm",
-                               value = dataproc_df$filtering_algorithm)),
-            column(4,textInput("edit.filtering.stringency",
-                               label = "Filtering stringency",
-                               value = dataproc_df$filtering_stringency))
-          ),
-          #textInput("edit.expt.id", label = "Expt ID", value = input$show_expt_id_db_browser) ,
-          #selectInput("edit.organism", label = "Organism", choices = list("human", "yeast") ,selected = DepLab:::list.organism.by.expt.v2(database.name.reactive$data, input$show_expt_id_db_browser)  ),
-          actionButton("saveEditsButton", "Save changes", style="color: #fff; background-color: #337ab7; border-color: #2e6da4"),  actionButton("cancelEditsEbutton", "Cancel"),
-          bsAlert("saveEditAlert"), 
+          textInput("edit.expt.id", label = "Expt ID", value = input$show_expt_id_db_browser) ,
+          selectInput("edit.organism", label = "Organism", choices = list("human", "yeast") ,selected = DepLab:::list.organism.by.expt.v2(database.name.reactive$data, input$show_expt_id_db_browser)  ),
+          actionButton("saveEditsButton", "Save changes"),  actionButton("cancelEditsEbutton", "Cancel"),
+          bsAlert("saveEditAlert"),
           id = id
-          
         )
       )
       inserted <<- c(id, inserted)
-      shinyjs::hide("edit.processing.platform")
-      shinyjs::hide("edit.search.algorithm")
-      shinyjs::hide("edit.filtering.algorithm")
-      shinyjs::hide("edit.filtering.stringency")
-      shinyjs::hide("edit.instrument.id")
-      shinyjs::hide("edit.run.date")
-      shinyjs::hide("edit.method.length")
-      shinyjs::hide("edit.column.id")
-      shinyjs::hide("edit.amount.protein.loaded")
-      shinyjs::hide("edit.sample.vol.loaded")
-      shinyjs::hide("edit.lc.flow.rate")
-      shinyjs::hide("edit.lc.fraction.size")
-      shinyjs::hide("edit.time.per.fraction")
-      shinyjs::hide("edit.fractions.collected")
-      
-      
-      
     }
   })
   
@@ -1284,35 +916,11 @@ shinyServer(function(input, output, session) {
     updateTextInput(session, 'edit.expt.id', value = input$show_expt_id_db_browser)
     updateSelectInput(session, 'edit.organism', selected = DepLab:::list.organism.by.expt.v2(database.name.reactive$data, input$show_expt_id_db_browser))
   })
-  ### PAUL SAVE
+  
   observeEvent(input$saveEditsButton, {
     createAlert(session, "saveEditAlert", "savEdAlert", title = "Saving",
                 content = "Saving changes to database.. This might take a while....", append = FALSE)
-    
-    origin_df <- data.frame(expt_id = input$edit.expt.id, experimenter = input$edit.experimenter.name, genotype = input$edit.genotype, cell_type = input$edit.cell.type, harvest_date = as.character(input$edit.harvest.date), buffer_composition = input$edit.buffer.composition, lysis_method = input$edit.lysis.method, digestion_enzyme = input$edit.digestion.enzyme, notes = input$edit.notes)
-    
-    if (input$edit.include.prefractionation.metadata == TRUE){
-      prefractionation_df <- data.frame(expt_id = input$edit.expt.id, column_id = input$edit.column.id, amount_protein_loaded = input$edit.amount.protein.loaded, sample_vol_loaded = input$edit.sample.vol.loaded, lc_flow_rate = input$edit.lc.flow.rate, lc_fraction_size = input$edit.lc.fraction.size, time_per_fraction = input$edit.time.per.fraction, fractions_collected = input$edit.fractions.collected)
-    } else {
-      prefractionation_df = NULL
-    }
-    
-
-    if (input$edit.include.msmethod.metadata == TRUE){
-      msmethods_df <- data.frame(expt_id = input$edit.expt.id, instrument_id = input$edit.instrument.id, run_date = as.character(input$edit.run.date), method_length = input$edit.method.length)
-    } else {
-      msmethods_df = NULL
-    }
-    
-    if (input$edit.include.data.metadata == TRUE){
-      dataproc_df <- data.frame(expt_id = input$edit.expt.id, processing_platform = input$edit.processing.platform, search_algorithm = input$edit.search.algorithm, filtering_algorithm = input$edit.filtering.algorithm, filtering_stringency = input$edit.filtering.stringency)
-    } else {
-      dataproc_df = NULL
-    }
-    
-   # DepLab:::update.expt(database.name.reactive$data, input$show_expt_id_db_browser, input$edit.expt.id, input$edit.organism )
-    DepLab:::update.expt(database.name.reactive$data, input$show_expt_id_db_browser, input$edit.expt.id, input$edit.organism, origin_df,prefractionation_df,msmethods_df, dataproc_df)
-    
+    DepLab:::update.expt(database.name.reactive$data, input$show_expt_id_db_browser, input$edit.expt.id, input$edit.organism )
     updateSelectizeInput(session, 'show_expt_id', choices = DepLab:::list.expt.ids.v2(database.name.reactive$data)$expt_id, server = TRUE)
     updateSelectizeInput(session, 'show_expt_id_std', choices = DepLab:::list.expt.ids.v2(database.name.reactive$data)$expt_id, server = TRUE)
     updateSelectizeInput(session, 'show_trypsin_symbol', choices = DepLab:::list.std.gene.symbols(database.name.reactive$data)$id, server = TRUE)
@@ -1326,14 +934,8 @@ shinyServer(function(input, output, session) {
     output$expt_id_list <- renderText({ 
       expt_id_msg <- paste("The currently selected database contains the following data sets from previous sessions:", paste(as.data.frame(DepLab:::list.expt.ids.w.organism(database.name.reactive$data))$expt_id, collapse="\n"), sep = "\n")
     })
-    closeAlert(session, "editinputAlert")
     updateButton(session, "deleteButton", disabled = FALSE)
     updateButton(session, "EditButton", disabled = FALSE)
-    removeUI(
-      selector = paste0('#', inserted[length(inserted)])
-      # selector = '#placeholderEditButtons'
-    )
-    inserted <<- inserted[-length(inserted)]
   })
   
   
@@ -1346,8 +948,6 @@ shinyServer(function(input, output, session) {
     updateSelectizeInput(session, 'show_expt_id_db_browser', choices = DepLab:::list.expt.ids.v2(database.name.reactive$data)$expt_id, server = TRUE, selected = NULL)
     updateButton(session, "deleteButton", disabled = FALSE)
     updateButton(session, "EditButton", disabled = FALSE)
-    closeAlert(session, "editinputAlert")
-    
   })
   
   ## dynamic UI for DB editor
@@ -1501,24 +1101,21 @@ shinyServer(function(input, output, session) {
     updateTextInput(session, "new.complex.name", value = "")     
     custom_complexes <- reactiveValues(data = read.table(file=custom.complexes.name.reactive$data,sep="\t", stringsAsFactors=FALSE, header=TRUE))
     
-    if (input$complex_source == "custom") {
+    if(input$complex_source == "benschop"){
+      cur_genes <- DepLab:::list.all.gene.symbols.v2(database.name.reactive$data, "yeast", cur_len = cur_frac_table_length)$gene
+      cur_inter <- intersect(cur_genes, benschop_complexes$data$gene_symbol)
+      updateSelectizeInput(session, 'show_complex', choices = c(unique(benschop_complexes$data[match(cur_inter, benschop_complexes$data$gene_symbol),]$complex)))
+    } else if (input$complex_source == "wodak"){
+      cur_genes <- DepLab:::list.all.gene.symbols.v2(database.name.reactive$data, "yeast", cur_len = cur_frac_table_length)$gene
+      cur_inter <- intersect(cur_genes, wodak_complexes$data$gene_symbol)    
+      updateSelectizeInput(session, 'show_complex', choices = c(unique(wodak_complexes$data[match(cur_inter, wodak_complexes$data$gene_symbol),]$complex)))
+    } else if (input$complex_source == "custom") {
       updateSelectizeInput(session, 'show_complex', choices = c(unique(custom_complexes$data$complex)))
+    } else if (input$complex_source == "corum") {
+      cur_genes <- DepLab:::list.all.gene.symbols.v2(database.name.reactive$data, "human", cur_len = cur_frac_table_length)$gene
+      cur_inter <- intersect(cur_genes, corum_complexes$data$gene_symbol)
+      updateSelectizeInput(session, 'show_complex', choices = c(unique(corum_complexes$data[match(cur_inter, corum_complexes$data$gene_symbol),]$complex)))
     }
-#     if(input$complex_source == "benschop"){
-#       cur_genes <- DepLab:::list.all.gene.symbols.v2(database.name.reactive$data, "yeast", cur_len = cur_frac_table_length)$gene
-#       cur_inter <- intersect(cur_genes, benschop_complexes$data$gene_symbol)
-#       updateSelectizeInput(session, 'show_complex', choices = c(unique(benschop_complexes$data[match(cur_inter, benschop_complexes$data$gene_symbol),]$complex)))
-#     } else if (input$complex_source == "wodak"){
-#       cur_genes <- DepLab:::list.all.gene.symbols.v2(database.name.reactive$data, "yeast", cur_len = cur_frac_table_length)$gene
-#       cur_inter <- intersect(cur_genes, wodak_complexes$data$gene_symbol)    
-#       updateSelectizeInput(session, 'show_complex', choices = c(unique(wodak_complexes$data[match(cur_inter, wodak_complexes$data$gene_symbol),]$complex)))
-#     } else if (input$complex_source == "custom") {
-#       updateSelectizeInput(session, 'show_complex', choices = c(unique(custom_complexes$data$complex)))
-#     } else if (input$complex_source == "corum") {
-#       cur_genes <- DepLab:::list.all.gene.symbols.v2(database.name.reactive$data, "human", cur_len = cur_frac_table_length)$gene
-#       cur_inter <- intersect(cur_genes, corum_complexes$data$gene_symbol)
-#       updateSelectizeInput(session, 'show_complex', choices = c(unique(corum_complexes$data[match(cur_inter, corum_complexes$data$gene_symbol),]$complex)))
-#     }
     
   })
   
@@ -1545,34 +1142,20 @@ shinyServer(function(input, output, session) {
   ### selectize complexes
   output$complexChoices <- renderUI({
     custom_complexes <- reactiveValues(data = read.table(file=custom.complexes.name.reactive$data,sep="\t", stringsAsFactors=FALSE, header=TRUE))
-    validate(
-      need( input$min_protein_present >= 0 , "Must specify a valid minimum # of proteins present in complex (>= 0). ")
-    )
     if(input$complex_source == "benschop"){
-      shinyjs::enable("min_protein_present")
       cur_genes <- DepLab:::list.all.gene.symbols.v2(database.name.reactive$data, "yeast", cur_len = cur_frac_table_length)$gene
-      cur_complex <- unique(unlist(lapply(unique(benschop_complexes$complex), function(x) { 
-        cur_inter <- intersect(cur_genes,benschop_complexes[benschop_complexes$complex == x,]$gene_symbol) 
-        if (length(  cur_inter ) >= input$min_protein_present) { x     } }     )))
-      selectizeInput('show_complex', '', choices = c(cur_complex) , multiple=TRUE)
+      cur_inter <- intersect(cur_genes, benschop_complexes$gene_symbol)
+      selectizeInput('show_complex', '', choices = c(unique(benschop_complexes[match(cur_inter, benschop_complexes$gene_symbol),]$complex)) , multiple=TRUE)
     } else if (input$complex_source == "wodak"){
-      shinyjs::enable("min_protein_present")
       cur_genes <- DepLab:::list.all.gene.symbols.v2(database.name.reactive$data, "yeast", cur_len = cur_frac_table_length)$gene
-      cur_complex <- unique(unlist(lapply(unique(wodak_complexes$complex), function(x) { 
-        cur_inter <- intersect(cur_genes,wodak_complexes[wodak_complexes$complex == x,]$gene_symbol) 
-        if (length(  cur_inter ) >= input$min_protein_present) { x     } }     )))
-      selectizeInput('show_complex', '', choices = c(cur_complex) , multiple=TRUE) 
+      cur_inter <- intersect(cur_genes, wodak_complexes$gene_symbol)
+      selectizeInput('show_complex', '', choices = c(unique(wodak_complexes[match(cur_inter, wodak_complexes$gene_symbol),]$complex)) , multiple=TRUE) 
     } else  if (input$complex_source == "custom"){
-      shinyjs::disable("min_protein_present")
-      updateNumericInput(session, "min_protein_present", value = 0)
       selectizeInput('show_complex', '', choices = c(unique(custom_complexes$data$complex)), multiple=TRUE) 
     } else if (input$complex_source == "corum") {
-      shinyjs::enable("min_protein_present")
       cur_genes <- DepLab:::list.all.gene.symbols.v2(database.name.reactive$data, "human", cur_len = cur_frac_table_length)$gene
-      cur_complex <- unique(unlist(lapply(unique(corum_complexes$complex), function(x) { 
-        cur_inter <- intersect(cur_genes,corum_complexes[corum_complexes$complex == x,]$gene_symbol) 
-        if (length(  cur_inter ) >= input$min_protein_present) { x     } }     )))
-      selectizeInput('show_complex', '', choices = c(cur_complex) , multiple=TRUE) 
+      cur_inter <- intersect(cur_genes, corum_complexes$gene_symbol)
+      selectizeInput('show_complex', '', choices = c(unique(corum_complexes[match(cur_inter, corum_complexes$gene_symbol),]$complex)) , multiple=TRUE) 
     }
   })
   
@@ -1796,7 +1379,6 @@ shinyServer(function(input, output, session) {
       if (is.null(reac$show_gene_symbol) & is.null(reac$show_complex)){
         return()
       } else {
-
         custom_complexes <- reactiveValues(data = read.table(file=custom.complexes.name.reactive$data,sep="\t", stringsAsFactors=FALSE, header=TRUE))
         if(input$complex_source == "benschop"){
           complex_select <- grep(  paste(paste(paste("^", make.names(reac$show_complex), sep=""), "$", sep=""), collapse="|") , make.names(benschop_complexes$complex))

@@ -35,3 +35,4 @@ cut -f 1-2 *tab | sed "1d" > human_uniprot.entry.name
 \seealso{
 \code{\link{make_gene_name}}
 }
+

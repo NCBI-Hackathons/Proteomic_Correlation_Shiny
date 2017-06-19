@@ -2,11 +2,11 @@
 % Please edit documentation in R/sql.R
 \name{update.expt}
 \alias{update.expt}
-\title{Edit experiment metadata}
+\title{Edit experiment meta-data}
 \usage{
-\method{update}{expt}(database.name, expt.ids, new.expt.id, new.organism.name,
-  origin.data, prefractionation.data, msmethod.data, dataproc.data)
+\method{update}{expt}(database.name, expt.ids, new.expt.id, new.organism.name)
 }
 \description{
-Edit experiment metadata, e.g. organism.
+Edit experiment meta-data, e.g. organism.
 }
+

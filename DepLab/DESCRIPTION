@@ -1,8 +1,8 @@
 Package: DepLab
 Type: Package
 Title: Package for visualization of PCP data
-Version: 0.0.0.9000
-Date: 2017-04-30
+Version: 0.1.1.9000
+Date: 2016-11-17
 Author: person("Applied Bioinformatics Core", "WCMC", email =
     "abc@med.cornell.edu", role = c("aut", "cre"))
 Maintainer: Friederike Duendar <frd2007@med.cornell.edu>
@@ -11,28 +11,12 @@ Description: This package contains the functions needed to run the PCP app.
     and visualize it in an interactive manner including heatmaps of pairwise 
     correlations.
 License: MIT + file LICENSE
-Depends:
-    data.table,
-    DBI,
-    ggplot2,
-    magrittr,
-    plyr,
-    dplyr,
-    dtplyr,
-    RSQLite
-Imports:
-    colorspace,
-    RCurl,
-    reshape2,
-    scales,
-    shiny (>= 0.13.2.9004),
-    shinyBS,
-    shinyjs,
-    shinyFiles,
-    stringr,
-    shinythemes
-RoxygenNote: 6.0.1
-Suggests: knitr,
-    rmarkdown,
-    testthat
+Depends: data.table, DBI, dplyr, RSQLite
+Imports: colorspace, data.table, ggplot2, magrittr, RCurl, reshape2,
+        scales, shiny (>= 0.13.2.9004), shinyBS, shinyjs, shinyFiles,
+        stringr, shinythemes
+RoxygenNote: 5.0.1
+Suggests: knitr, rmarkdown, testthat
 VignetteBuilder: knitr
+NeedsCompilation: no
+Packaged: 2016-11-18 21:15:02 UTC; frd2007

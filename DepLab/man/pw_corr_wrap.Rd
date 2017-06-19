@@ -46,3 +46,4 @@ one specific protein or gene.
 \bold{example usage:}
 # cors.dt <- lapply(unique(dat$gene_symbol), function(x) pw_corr_wrap(in.dt = dat, gene = x, method = "pearson") ) %>% rbindlist
 }
+
