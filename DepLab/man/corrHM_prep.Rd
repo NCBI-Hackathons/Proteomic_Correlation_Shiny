@@ -17,3 +17,4 @@ gene symbols as row names. If there's only one column, the matrix will be sorted
 \description{
 Preparing tidy correlation data.table for heatmap visualization
 }
+

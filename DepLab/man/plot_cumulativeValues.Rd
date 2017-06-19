@@ -30,3 +30,4 @@ e.g., the sum of all unique peptides identified per fraction.
 \seealso{
 \code{\link{MQ_to_cumulativePlot}}
 }
+

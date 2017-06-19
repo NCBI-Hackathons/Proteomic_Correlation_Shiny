@@ -13,3 +13,4 @@ reading_MQ(filename)
 This function expects the MaxQuant output "proteinGroups*.txt"
 and returns a data frame.
 }
+

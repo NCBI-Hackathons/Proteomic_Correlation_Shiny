@@ -160,40 +160,24 @@ corrHM_prep <- function(in.dt){
 #' 
 #' @return tidy data.table of pairwise correlations; if no correlation can be
 #' determined (e.g. because there are not enough values), nothing will be returned
-#' \tabular{llll}{
-#' \t comparison \t correlation  \t gene_symbol \cr
-#' [,1] \t D109N_01_vs_EV_01   \t 0.7964631    \t A0AVT1 (UBA6) \cr
-#' [,2] \t D109N_01_vs_EV_02   \t 0.7659069    \t A0AVT1 (UBA6) \cr
-#' [,3] \t D109N_01_vs_WT_01   \t 0.8525967    \t A0AVT1 (UBA6) \cr
-#' [,4] \t D109N_01_vs_WT_02   \t 0.7876166    \t A0AVT1 (UBA6) \cr
-#' [,5] \t EV_01_vs_EV_02      \t 0.9859125    \t A0AVT1 (UBA6) \cr
-#' [,6] \t EV_01_vs_WT_01      \t 0.9897667    \t A0AVT1 (UBA6) \cr
-#' [,7] \t EV_01_vs_WT_02   \t 0.9984263    \t A0AVT1 (UBA6) \cr
-#' [,8] \t EV_02_vs_WT_01   \t 0.9587254    \t A0AVT1 (UBA6) \cr
-#' [,9] \t EV_02_vs_WT_02   \t 0.9866967    \t A0AVT1 (UBA6) \cr
-#' [,10] \t WT_01_vs_WT_02   \t 0.9865275    \t A0AVT1 (UBA6) 
-#' }
+#' comparison correlation               gene_symbol
+#' #1: D109N_01_vs_EV_01   0.7964631    A0AVT1 (UBA6)
+#' #2: D109N_01_vs_EV_02   0.7659069    A0AVT1 (UBA6)
+#' #3: D109N_01_vs_WT_01   0.8525967    A0AVT1 (UBA6)
+#' #4: D109N_01_vs_WT_02   0.7876166    A0AVT1 (UBA6)
+#' #5:    EV_01_vs_EV_02   0.9859125    A0AVT1 (UBA6)
+#' #6:    EV_01_vs_WT_01   0.9897667    A0AVT1 (UBA6)
+#' #7:    EV_01_vs_WT_02   0.9984263    A0AVT1 (UBA6)
+#' #8:    EV_02_vs_WT_01   0.9587254    A0AVT1 (UBA6)
+#' #9:    EV_02_vs_WT_02   0.9866967    A0AVT1 (UBA6)
+#' #10:    WT_01_vs_WT_02   0.9865275    A0AVT1 (UBA6)
+#
 #' 
-#' @examples
-#'  \dontrun{
-#'  # retrieve data
-#'  hmdat <- as.data.table(query.measurements.by.expt.with.gene.symbol.v2(DB, exps, "raw.intensity"))
-#'  setorder(hmdat, gene_symbol, expt_id,fraction)
-#'  setnames(hmdat, "value","raw")
-#'  
-#'  # calculate pairwise correlation; this takes a while to compute
-#'  cors.dt <- lapply(unique(hmdat$gene_symbol), 
-#'                    function(x) pw_corr_wrap(hmdat, x, measurement = "superSmu",
-#'                                          uniq.factors = c("fraction", uniquifiers),
-#'                                           cast.form = "fraction ~ condition + replicate",
-#'                                           method="pearson")) %>% rbindlist
+#' @details
+#'  \bold{example usage:}
+#' # cors.dt <- lapply(unique(dat$gene_symbol), function(x) pw_corr_wrap(in.dt = dat, gene = x, method = "pearson") ) %>% rbindlist
 #'
-#' # obtain matrix for heatmap plotting
-#' cors.mat <- corrHM_prep(cors.dt)
-#'  }
-pw_corr_wrap <- function(in.dt, gene, measurement, 
-                         uniq.factors = c("gene_symbol","fraction","condition","replicate"), 
-                         cast.form, ...){
+pw_corr_wrap <- function(in.dt, gene, measurement, uniq.factors = c("gene_symbol","fraction","condition","replicate"), cast.form, ...){
   
     check_columns(c("fraction",uniq.factors, measurement), in.dt, "in.dt", "pw_corr_wrap")
     
@@ -220,25 +204,20 @@ pw_corr_wrap <- function(in.dt, gene, measurement,
 #' @return a data.table with one column for the pairwise correlations,
 #' one column describing the comparison
 #' 
-#' @examples
-#' \dontrun{
+#' @details
+#' \bold{example usage:}
 #' cors.dt <- lapply(unique(dat.test$id),
-#'                   function(x) {
-#'                      w <- dcast(dat.test[id == x,
-#'                                          c("fraction","expt_id","replicate","superSmu"), 
-#'                                          with = FALSE], 
-#'                                 fraction  ~  expt_id + replicate, value.var = "superSmu")
-#'                      w <- w[,which(unlist(lapply(w, function(col) sum(col) > 0 ) ) ), with=F]
-#'                      w <- w[, -"fraction", with =FALSE]
-#'                      
-#'                      if(dim(w)[1] > 1 & dim(w)[2] > 1){
-#'                         cor.out <- cor(w, method  = "pearson")
-#'                         cor.dt <- get_cor_dt(cor.out)
-#'                         cor.dt$id <- x
-#'                         return(cor.dt)
-#'                       }
-#'          }) %>% rbindlist
-#'}
+# function(x) {
+#   w <- dcast(dat.test[id == x, c("fraction","expt_id","replicate","superSmu"), with = FALSE], fraction  ~  expt_id + replicate, value.var = "superSmu")
+#   w <- w[,which(unlist(lapply(w, function(col) sum(col) > 0 ) ) ), with=F]
+#   w <- w[, -"fraction", with =FALSE]
+#   if(dim(w)[1] > 1 & dim(w)[2] > 1){
+#     cor.out <- cor(w, method  = "pearson")
+#     cor.dt <- get_cor_dt(cor.out)
+#     cor.dt$id <- x
+#     return(cor.dt)
+#   }
+# }) %>% rbindlist
 get_cor_dt <- function(cor.mat){
   # get the names of the comparisons
   seen = NULL

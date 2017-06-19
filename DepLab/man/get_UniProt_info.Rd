@@ -25,3 +25,4 @@ about that protein via their API.
 
 get_UniProt_info("P00761")
 }
+

@@ -14,19 +14,12 @@ library(shinyFiles)
 library(shinythemes)
 library(plyr)
 library(shinyjs)
-library(DepLab)
 
 
 shinyUI(  #            navbarPage(theme = shinytheme("Flatly"), "PCP",
   navbarPage( "PCP",
               
               tabPanel("Data Import",
-                        tags$head(
-                        tags$style(HTML(".shiny-output-error-validation {
-                        color: red;
-                        }
-                        "))
-                        ),
                        h1("SELECT EXISTING DATABASE"),
                        verbatimTextOutput('db_dir_path'),
                        verbatimTextOutput('expt_id_list'),
@@ -54,7 +47,7 @@ shinyUI(  #            navbarPage(theme = shinytheme("Flatly"), "PCP",
                                 textInput("id_for_standard", 
                                           label = "Enter comma-separated list of UniProt ID(s) to use as standard (optional).", value = ""),
                                 helpText("E.g., P00761 for trypsin (pig), P02769 for BSA."),
-                                tags$head(tags$style(HTML('#saveButton{color: #fff;background-color: #337ab7}')) ),
+                                tags$head(tags$style(HTML('#saveButton{background-color: #E77471}')) ),
                                 actionButton("saveButton", "Save") ),
                          column(5, bsAlert("inputalert") , bsAlert("alert") )),
                        
@@ -188,8 +181,7 @@ shinyUI(  #            navbarPage(theme = shinytheme("Flatly"), "PCP",
                                               wellPanel(
                                                 tags$style(type="text/css", '#leftPanel { width:250px; float:left;}'),
                                                 id = "leftPanel",
-                                                actionLink("reset_summary", "Reset inputs"),
-                                                #helpText("Select the relevant variable conditions"),
+                                                helpText("Select the relevant variable conditions"),
                                                 selectizeInput('show_expt_id_sum', 'Select expt ID', choices = NULL,  selected =  NULL, multiple=TRUE),  
                                                 
                                                 selectInput("y_axis_choices_sum", label = ("y variable"), 
@@ -237,8 +229,7 @@ shinyUI(  #            navbarPage(theme = shinytheme("Flatly"), "PCP",
                                               wellPanel(
                                                 tags$style(type="text/css", '#leftPanel { width:250px; float:left;}'),
                                                 id = "leftPanel",
-                                                actionLink("reset_individual_proteins", "Reset inputs"),
-                                                #helpText("Select the relevant variable conditions"),
+                                                helpText("Select the relevant variable conditions"),
                                                 selectizeInput('show_expt_id', 'Select expt ID', choices = NULL,  selected =  NULL, multiple=TRUE),
                                                 textOutput("current_organism"),
                                                 checkboxInput("specify_replicates", "Specify replicates", value = FALSE),
@@ -247,7 +238,7 @@ shinyUI(  #            navbarPage(theme = shinytheme("Flatly"), "PCP",
                                                 selectizeInput('show_gene_symbol', 'Select gene symbol', choices = NULL,  selected =  NULL, multiple=TRUE),  
                                                 actionLink("save_as_complex", "save as complex..."),
                                                 
-                                                div(style="margin-top:10px; margin-bottom:-20px; width:100%;", 
+                                                div(style="margin-top:10px; width:100%;", 
                                                     radioButtons(inputId="complex_source", label="Select complex from", choices=list("Benschop (Sc)" = "benschop","Wodak (Sc)" = "wodak", "CORUM core (Hs)" = "corum", "Custom" = "custom"), inline=FALSE)
                                                 ),
                                                 ### bs modal for save group of genes as complex
@@ -257,13 +248,7 @@ shinyUI(  #            navbarPage(theme = shinytheme("Flatly"), "PCP",
                                                                   value = ""),
                                                         bsButton("saveModalButton", label = "Save",  icon = icon("ban"))
                                                 ),
-                                                 # fluidRow(column(6, style='padding:0px; margin-top:0px;margin-bottom:0px;width:100%;', htmlOutput("complexChoices"))),
-                                                #htmlOutput("complexChoices"),
-                                                div(style="margin-top:30px;padding:0px; margin-bottom:-10px; width:100%;", helpText("Available complexes")),
-                                                div(style="margin-top:-20px;padding:0px; margin-bottom:10px; width:100%;", htmlOutput("complexChoices")),
-                                                div(style="margin-top:0px;padding:0px; margin-bottom:-15px; width:100%;", helpText("Define the min. # of recovered proteins per complex")),
-                                                div(style="margin-top:0px; padding:0px; margin-bottom:20px; width:100%;", numericInput("min_protein_present", "", 2, min = 1)),
-                                                ## pz numericInput("obs", "", 10, min = 1, max = 100),
+                                                htmlOutput("complexChoices"),
                                                 selectInput("y_axis_choices", label = ("y variable"), 
                                                             choices = list("Raw intensity" = "raw.intensity",
                                                                            #"LFQ intensity" = "LFQ.intensity", 
@@ -343,8 +328,7 @@ shinyUI(  #            navbarPage(theme = shinytheme("Flatly"), "PCP",
                                               wellPanel(
                                                 tags$style(type="text/css", '#leftPanel { width:250px; float:left;}'),
                                                 id = "leftPanel",
-                                                actionLink("reset_spikein", "Reset inputs"),
-                                                #helpText("Select the relevant variable conditions"),
+                                                helpText("Select the relevant variable conditions"),
                                                 selectizeInput('show_expt_id_std', 'Select expt ID', choices = NULL,  selected =  NULL, multiple=TRUE),  
                                                 selectizeInput('show_trypsin_symbol', 'Select UniProt ID', choices = NULL,  selected =  NULL, multiple=TRUE),  
                                                 selectInput("y_axis_choices_tryp", label = ("y variable"), 
@@ -417,7 +401,6 @@ shinyUI(  #            navbarPage(theme = shinytheme("Flatly"), "PCP",
                          wellPanel(
                            tags$style(type="text/css", '#leftPanelHeatmap { width:400px; float:left;}'),
                            id = "leftPanelHeatmap",
-                           actionLink("reset_corr", "Reset inputs"),
                            helpText("Select/indicate the relevant variable conditions.\nNote that the entries for Condition and Replicate will\ndetermine the labels printed in the heatmap."),
                            tags$style(type='text/css', "#heatmap.add { width:100%; margin-top: 0px;}"),
                            
@@ -436,7 +419,7 @@ shinyUI(  #            navbarPage(theme = shinytheme("Flatly"), "PCP",
                            selectInput("heatmap_cor_method",  width='200px', label = ("Correlation method"), 
                                        choices = list("Pearson" = "pearson", "Kendall" = "kendall", "Spearman"  = "spearman"), 
                                        selected = "pearson"),
-                           tags$head(tags$style(HTML('#plot_heatmap{background-color: #337ab7; color: #fff}')) ),
+                           tags$head(tags$style(HTML('#plot_heatmap{background-color: #B8FFBC}')) ),
                            #actionButton("saveButton", "Save") )
                            actionButton("plot_heatmap", "Calculate correlations and plot heatmap"),
                            br(),br(),
@@ -510,9 +493,9 @@ shinyUI(  #            navbarPage(theme = shinytheme("Flatly"), "PCP",
                          tabPanel("DB Editor", # shows complete metadata and data tables
                                   selectizeInput('show_expt_id_db_browser', 'Select expt ID to edit', choices = NULL,  selected =  NULL, multiple=FALSE),  
                                   tags$head(
-                                    tags$style(HTML('#EditButton{background-color: #337ab7;color: #fff }'))
+                                    tags$style(HTML('#deleteButton{background-color: #E77471}'))
                                   ),
-                                  bsButton("EditButton", "Edit"), bsButton("deleteButton", "Delete - are you sure?"),
+                                  bsButton("EditButton", "Edit"), bsButton("deleteButton", "Delete"),
                                   bsAlert("deleteAlert"),
                                   br(), br(), 
                                   tags$div(id = 'placeholderEditButtons')

@@ -52,3 +52,4 @@ info from our external data base.
 \seealso{
 \code{\link{MQ_to_longFormat}}
 }
+

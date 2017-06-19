@@ -47,3 +47,4 @@ followed by the removal of decoy hits etc.
 \seealso{
 \code{\link{MQ_to_longFormat}}, \code{\link{extract_proteinID}}
 }
+

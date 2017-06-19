@@ -24,3 +24,4 @@ Aggregating replicate values
 \details{
 # summed.dt <- aggregate_dt(hmdat, measurement = "superSmu",agg_by = uniquifiers)
 }
+

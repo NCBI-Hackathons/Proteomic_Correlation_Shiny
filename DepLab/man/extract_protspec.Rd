@@ -27,3 +27,4 @@ mq <- reading_MQ(filename = "../dephourelab/DepLab/inst/extdata/test_data/protei
 
 prot.specific <- extract_protspec(mq)
 }
+

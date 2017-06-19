@@ -21,3 +21,4 @@ corresponds to the gene symbol format used for all the raw data
 This function reads in a table where for each protein a possible
 complex membership is noted.
 }
+

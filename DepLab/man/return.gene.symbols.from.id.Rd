@@ -9,3 +9,4 @@ return.gene.symbols.from.id(database.name, id.name, organism.name)
 \description{
 Filtering by id and organism
 }
+
