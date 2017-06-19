@@ -19,7 +19,7 @@ The DepLab package [friedue: will upload soon!] that has been developed by the A
 
 ## General data workflow for PCP data
 
-
+![https://www.draw.io/?lightbox=1&highlight=0000ff&edit=_blank&layers=1&nav=1&title=PCP%20data%20#R7Vrdc6M2EP9b%2BuDp9SE3fBiDH4NjXx%2BSXu%2FcmfYeBchGDSAqRGznr%2B9KSAYCTshdqDNTezwetFp9sPvb1W%2BVTOxFuv%2FEUB7f0QgnE8uI9hP7ZmJZrjeDXyE4VALHNSrBlpGoEpm1YE0esRJqtZJEuGgpckoTTvK2MKRZhkPekiHG6K6ttqFJe9UcbXFHsA5R0pX%2BSSIeV1LPMWr5r5hsY72yaaieAIX3W0bLTK03seyN%2FFTdKdJzKf0iRhHdNUT2cmIvGKW8ekr3C5wI02qzVeNWJ3qP%2B2Y440MGuK5lB%2FMgDNwAbTaRd2XaamP8oI2BI7CNalLGY7qlGUqWtdSXL4zFlAa0Yp4m8GjCI94T%2FpcQf3RU65vuyTg7NLpE85ua4G%2FM%2BUGBApWcgqhe95bSXM1R7VRs7%2BTbK1FBSxbiU6%2BsAIbYFvMTOu7RNwB5TFMM24UxDCeIk4f2%2BkiBb3vUqx0AD8oHQ%2F1RzfmAkhJrSM0S2KYfwMOWSzPM%2FikFYPyvaCeCDnFUy7Q6rNwY8cTFxY6kCcpw23sbmnHteOGXMCZJdIsOtBRmKjhgXbf8mDLyCPpID4ZuxpUTrZmYjSTJgiaUySV1WDRHrsWMai2GCxj7u3aleRTdooLr%2FdAkQXlBArlDoZKCD0nmU85pqpT0q61OLF9wRu9xo8eQn6OVHjDjeP88wLrA0ANUmB%2FazV2dU0xPyeJ2PhkBSlYHSndrAYMcMihDHUzAW%2FM2Hjqm8qzAnvX4NnKwF01BjhKyzUAWgr0wdPrCmgTy7LXq4CKY%2FSJHIcm2t3gjDDCtJV%2BVTYRoFxOO1yAX%2B9vBsSPSAsy3SWQCjUkU4UwmIw4BEBxRm1OScWlHx4cvWHYhco4DG11A26zb8BXqjC9oBu%2BKiHQyBsDtcMGHIqI%2FhLsQUZiwZsMwofXeFBJ2BxI5RvfFBQvnwYJjnREL0x4s5FzyMMu4uoKzA6XCzuoEMXIwLibZBSxnAovrDQOLPcZZ4pykJYI0tPCgiYjouCokIbgGBXOW75ssBbi8hkEttOfujeG6LTajOU%2BbBN2h%2FZcSiaX76M5RVu3uBAt6CbgZlQypiVklehGuKYBMUuU%2BMEqeVTElc6bajaCYudf%2BfPU2hMQynjASu4eSWD0omo6BInP6vys23AHFxvxcxYb7crGhsv4n8EJefOT7ZwMuYFoiS3LAlZi0cXI8VYMcUKZZrSnTBdTvDIWc0J6zpg2GvuBq1jMnDpvTx9MIJYA7sAZwRykBzI4FfyTg3iCsXsh9y%2BuZ3%2FDED4fffED4mWcr9ucvx19V3IsQCnFRANPpBtGl4n8%2FFb89vOQfg9Pr1RuI%2BrIQ2VWT%2BepXpFiSAHOReHo9nQ88Z%2BoYPR73QhyGFzr%2F7LH%2BHu4BzO7dkHRZiiWZB%2FNkGMszYCUNdoHIOSBy1usBs3sTXaSU8hhnMmsYH8KSiVdLDq2ybsUIjlKU%2FSxY3brMMVtXw9gvFxydB0eDbw68MXDUvTr44zO0%2FSX83Hz%2BbfnTq2ExZl3ex0WbLKmPw74BjXjKI6ZTp%2Bszs89nzhg%2B6xaGiofifQ72QaI466UVCNj%2BoSDdwu3CP%2F8T%2Fjn1BvPPUS54vA5wHkhRQlg%2BKsxcToCR7o5PFLHvgm1269wwKQtdf6wYyu4vlcj5wHFWnml1S1ZI7LzQou%2F6e9MFFm8Ai8G00Xo1LETQH%2F%2FnSfY1%2Fq%2FMXv4L]()
 
 ## Shiny app
 
@@ -60,6 +60,18 @@ There are numerous tasks that can be done to tremendously improve the app (it ma
 - [ ] Implementing proper **tests** for the functions, e.g. using Hadley's `testthat` package
 
 ## Resources and references
+
+### PCP data
+
+* __MaxQuant__ - the software we rely on to produce our primary data
+     - [Brief description @ MPI website](http://www.biochem.mpg.de/5111795/maxquant)
+     - [GUI user guide with some info about the output](http://greproteomics.lifesci.dundee.ac.uk/webpage%20front%20page/dreamweaver%20webpage/maxquant%20how%20to.pdf)
+     - [Andromeda paper](http://pubs.acs.org/doi/pdf/10.1021/pr101065j)
+     - [How to interpret MQ output](http://oisb-1.med.uottawa.ca/prc/interpret.html)
+     - [Nat. Methods MQ Practical Guide](https://www.researchgate.net/publication/24284062_A_practical_guide_to_the_MaxQuant_computational_platform_for_SILAC-based_quantitative_proteomics) --> mostly **Box 2**
+     - [Quantitative Proteome Profiling, Methods in Mol Biol](https://www.researchgate.net/publication/225186303_In_Vivo_Quantitative_Proteome_Profiling_Planning_and_Evaluation_of_SILAC_Experiments) --> **Section 3.4** Data Analysis Using MaxQuant contains many details about the MQ output (ignore the SILAC details)
+ * __Protein correlation profiling__
+     - 
 
 ### Git
 
