@@ -1,0 +1,245 @@
+---
+title: "Running and testing the app"
+author: "ABC @ WCM"
+date: "`r Sys.Date()`"
+output: 
+  rmarkdown::html_document:
+    toc: true
+---
+<!--
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteIndexEntry{Testing correlation heatmaps}
+  %\VignetteEncoding{UTF-8}
+-->
+
+```{r echo = FALSE}
+library(knitr)
+opts_chunk$set(cache = FALSE, echo = TRUE, message = FALSE, warning = FALSE, eval = FALSE)
+library(ggplot2)
+```
+
+DepLab is now available as a package.
+All the `library()` and `source()` calls have been disabled (except for the app's functions).
+
+To **load the package**:
+
+1. Make sure you have `devtools` installed.
+2. Set the working directory to "DepLab".
+3. Type `devtools::load_all()`.
+
+To start the app, type `runPCP()`.
+
+To check a specific function, you can now simply type `?MQ_to_longFormat()`.
+This will show the documentation in the _Help_ panel of RStudio.
+
+Once the package is loaded, you can access the example data within the `inst/` 
+folder via `system.file(<FOLDER TO LOOK INTO>, <SUBFOLDER TO LOOK INTO>, <FILE NAME>, package = "DepLab")`.
+This will return the full, absolute path to the file on your system.
+
+### Testing yeast routine for generating long data.frame
+
+```{r yeastRoutine}
+devtools::load_all()
+
+mq1 <- reading_MQ(system.file("extdata","test_data", "proteinGroups_100mM_new.txt", package = "DepLab"))
+mqclean <- cleaning_MQ(mq1, remove.contaminants = TRUE, remove.decoys = TRUE, poi = "yeast")
+ids.list <- extract_proteinID(mqclean$Protein.IDs, routine = "yeast")
+mq.raw.intensity <- MQ_to_longFormat(mqclean, y = "raw.intensity", return.dt = TRUE, ids.list)
+head(mq.raw.intensity)
+```
+
+### Reading in spike-ins
+
+```{r spikeInRoutine}
+std <- cleaning_MQ(mq.df = mq1, remove.contaminants = FALSE, remove.decoys = TRUE,
+                   poi = NULL, spikeIn = c("P07477", "Q0140","YAL003W"))                                          
+stdid <- extract_proteinID(std$Protein.IDs, regex = c(".*(P07477|Q0140|YAL003W).*", "\\1"), label = "id", routine = NULL)
+std.raw.intensity <- MQ_to_longFormat(std, y = "raw.intensity", return.dt = TRUE, stdid)
+```
+
+### Testing human routine for generating long data.frame
+
+```{r humanRoutine}
+devtools::load_all()
+
+mq.h <- reading_MQ(system.file("extdata","test_data", "proteinGroups_human.txt", package = "DepLab"))
+mq.h.clean <- cleaning_MQ(mq.h, remove.contaminants = TRUE, remove.decoys = TRUE, poi = "human")
+ids.list <- extract_proteinID(mq.h.clean$Protein.IDs, routine = "human")
+mq.h.raw.intensity <- MQ_to_longFormat(mq.h.clean, y = "raw.intensity", return.dt = FALSE,ids.list)
+head(mq.h.raw.intensity)
+```
+
+### Testing human routine for newer version of MaxQuant output
+
+```{r newMQformat}
+mq.h.new <- reading_MQ("~/Documents/Projects/2015-11_NoahDephoure_Proteomics/fromNoah_2016-03/proteinGroups_MCF10A_dounce_TSK_new.txt")
+mq.h.new.clean <- cleaning_MQ(mq.h.new, remove.contaminants = TRUE, remove.decoys = TRUE, poi = "human")
+ids.h.new <- extract_proteinID(mq.h.new.clean$Protein.IDs, routine = "human")
+mq.h.raw.intensity <- MQ_to_longFormat(mq.h.new.clean, y= "raw.intensity", return.dt = TRUE, ids.h.new)
+
+std.h.old <- cleaning_MQ(mq.df = mq.h, remove.contaminants = FALSE, remove.decoys = TRUE,
+                   poi = NULL, spikeIn = c("P00761","P07477"))
+std.h.new <- cleaning_MQ(mq.df = mq.h.new, remove.contaminants = FALSE, remove.decoys = TRUE,
+                   poi = NULL, spikeIn = c("P00761","P07477"))
+std.y <- cleaning_MQ(mq.df = mq1, remove.contaminants = FALSE, remove.decoys = TRUE,
+                   poi = NULL, spikeIn = c("P00761","P07477"))
+
+std.new <- cleaning_MQ(mq.h.new, remove.contaminants = FALSE, remove.decoys = TRUE, poi = NULL, spikeIn = "P07477")
+stdinf.new <- extract_proteinID(std.new$Protein.IDs, regex = c(".*(P07477).*", "\\1"), label = "id", routine = NULL)
+std.raw.intensity <- MQ_to_longFormat(std.new, y = "raw.intensity",return.dt = TRUE,stdinf.new)
+
+
+```
+
+### Testing data.base stuff
+
+```{r checkDB, eval = FALSE}
+database.name <- "~/Desktop/proteomics2.db"
+filename <- system.file("extdata","test_data", "proteinGroups_100mM_new.txt", package = "DepLab")
+expt.id <- "pg_300mM"
+
+## create the database, and completely overwrite if it already exists (useful for debugging!)
+initialize.database(database.name, organism.name = "yeast", force = TRUE)
+
+## read the data in and turn it into a format suitable for the data base
+x <- read.MQ.data(filename, expt.id, organism = "yeast")
+head(x)
+
+## testing the manual input of protein IDs ( aka standards aka spike-ins)
+y <- read.MQ.data(filename, expt.id, organism = NULL, data.subset = c("P07477", "Q0140","YAL003W"))
+head(y)
+
+## come up with some metadata
+origin_df <- data.frame(expt_id = expt.id, experimenter = "myself", genotype = "unknown", cell_type = "yeast_cells", harvest_date = "Nov 2016", buffer_composition = "TrisHCl", lysis_method = "standard", digestion_enzyme = "Trypsin", notes = NA)
+
+## optional meta data
+
+msmethods_df <- data.frame(expt_id = expt.id, instrument_id = "X0000",
+                           run_date = "Oct 2016", method_length = 1)
+dataproc_df <- data.frame(expt_id = expt.id, processing_platform = "unknown", 
+                          search_algorithm = "unknown", filtering_algorithm = "unknown",
+                          filtering_stringency = "unknown")
+prefractionation_df <- data.frame(expt_id = expt.id, column_id = "x",
+                                  amount_protein_loaded = 1, sample_vol_loaded = 1, 
+                                  lc_flow_rate = 1, lc_fraction_size = 1, 
+                                  time_per_fraction = 1, fractions_collected = 1)
+
+## add the data to the db
+add.expt.to.database(database.name, data.frame(expt_id = expt.id, organism = "yeast"), 
+                     prot.data = NULL, frac.data = x, std.data = y, origin.data = origin_df, 
+                     prefractionation.data = NULL, msmethod.data = NULL, dataproc.data = NULL) # NULL could be replaced by the df's generated above
+```
+
+### Extracting data from data.base
+
+```{r}
+testdat <- as.data.frame(DepLab:::query.measurements.v2("~/Documents/Projects/2015-11_NoahDephoure_Proteomics/fromNoah_2016-03/proteomics.db", "MCF10A_dounce_tsk" , c("HS90A", "HS90B"), "raw.intensity"))
+```
+
+### Normalization
+
+```{r checkNorm}
+mq.y.1 <- read.MQ.data(filename = system.file("extdata", "test_data", "proteinGroups_100mM_new.txt", package = "DepLab"), expt.id = "100mM", data.subset = "poi", organism = "yeast")
+mq.y.3 <- read.MQ.data(filename = system.file("extdata", "test_data", "proteinGroups_300mM_new.txt", package = "DepLab"), expt.id = "300mM", data.subset = "poi", organism = "yeast")
+mqcombi <- rbind(mq.y.1, mq.y.3)
+
+smu <- superSmooth_values(long.df = subset(mqcombi, measurement == "raw.intensity"), prot.identifier = "gene_symbol")
+fraction.norm <- normalize_values(long.df = smu,
+                                  norm.type = "fraction", prot.identifier = "gene_symbol")
+
+
+y.std.1 <- read.MQ.data(filename = system.file("extdata", "test_data", "proteinGroups_100mM_new.txt", package = "DepLab"), expt.id = "100mM", data.subset = "trypsin", organism = NULL)
+y.std.3 <- read.MQ.data(filename = system.file("extdata", "test_data", "proteinGroups_300mM_new.txt", package = "DepLab"), expt.id = "300mM", data.subset = "trypsin", organism = NULL)
+std.combi <- rbind(y.std.1, y.std.3)
+
+std.norm <- normalize_values(long.df = subset(mqcombi, measurement == "raw.intensity"), norm.type = "spike-in", prot.identifier = "gene_symbol", std.df = subset(std.combi, measurement == "raw.intensity"))
+
+```
+
+### Plotting
+```{r plotting}
+mqcombi.plot <- subset(mqcombi, measurement == "raw.intensity" & gene_symbol %in% c("YAL003W (EFB1)", "YAL005C (SSA1)"))
+P <- plot_profile(mqcombi.plot, what = c("gene_symbol","expt_id"), color.by = "gene_symbol", split.by = "gene_symbol", line.smooth = TRUE)
+print(P)
+
+# plot normalized values
+mqcombi.plot.norm.frac <- subset(fraction.norm, gene_symbol %in% c("YAL016W (TPD3)", "YAL005C (SSA1)", "YAL003W (EFB1)"))
+plot_profile(mqcombi.plot.norm.frac, what = c("gene_symbol","expt_id"), color.by = "gene_symbol", split.by = "gene_symbol", line.smooth = FALSE)
+
+mqcombi.plot.norm.std <- subset(std.norm, gene_symbol %in% c("YAL016W (TPD3)", "YAL005C (SSA1)", "YAL003W (EFB1)") )
+plot_profile(mqcombi.plot.norm.std, what = c("gene_symbol","expt_id"), color.by = "expt_id", split.by = "gene_symbol", line.smooth = FALSE)
+
+
+# adding marker for molecular weight
+mwmark <- data.frame(expt_id = c("100mM","300mM"), MWmarker = c(15,25))
+P + geom_vline(data = mwmark, aes(xintercept = MWmarker), linetype="dashed")
+
+# smoothing line instead of geom_line
+ggplot(subset(fraction.norm, grepl("YAL005C", gene_symbol)), aes(x=fraction, y=value, colour=expt_id)) + 
+  geom_smooth(span = 0.3, se = TRUE) +
+  geom_point()+ theme_bw() +
+  facet_grid(.~expt_id)
+```
+
+### Testing installation
+
+To allow for the installation of the package via `install_url`, we provide a bundled version of the code.
+This is an intermediate state between the complete source package and a binary bundle that one would typically download from CRAN.
+
+To **build** the non-binary bundle, first set your working directory to the package folder, then use `devtools::build()` with default settings.
+
+Make sure that `inst/extdata/path_to_custom_complexes.txt` and `inst/extdata/path_to_db.txt` are empty!
+
+```{r buildBundle, eval=FALSE}
+# example path
+##setwd("/Users/frd2007/Documents/Projects/2015-11_NoahDephoure_Proteomics/dephourelab/DepLab")
+devtools::load_all()
+# update date and version number in DESCRIPTION, then run document() to update the vignettes and NAMESPACE:
+devtools::document()
+devtools::build(path = "~/Documents/Projects/2015-11_NoahDephoure_Proteomics/")
+```
+
+If `build()` finished successfully, it will tell you where it stored the tarball.
+This should be uploaded to `chagall.med.cornell.edu/deplab-pcp`.
+
+To install the package, one can have the working directory pointing anywhere. 
+I recommend to **restart your R session** though.
+
+```{r installBundledPackage, eval = FALSE}
+setwd("~/Desktop")
+
+# download package bundle and install it
+devtools::install_url(url = "http://chagall.med.cornell.edu/deplab-pcp/DepLab_0.1.1.9000.tar.gz")
+
+# attach the package to your current workspace
+library(DepLab)
+
+# test if app runs
+runPCP()
+```
+
+### Adding new libraries
+
+If you change the code in `DepLab.R` or `sql.R` or `shiny_functions.R` and you
+need a library that's not yet listed in the DESCRIPTION file of the package, 
+do **not** add the usual `library(NewLibrary)` command to the `.R` file.
+Instead, follow one of these strategies:
+
+1. **If you need only few functions from the package, e.g. `melt()` from `reshape2`:**
+  * add the pkg name to the _Imports:_ section within the DESCRIPTION file
+    - this will make sure that the package is installed along with `DepLab`, but
+      the functions will not be accessible without loading them
+  * in your function, call the external function explicitly via `pkg::fun()`, e.g.
+    `reshape2::melt()`
+  
+2. **If you need many functions from the package, but only within that single function:**
+  * add the package name to the _Imports:_ section within the DESCRIPTION file
+  * add `roxygen2` roclets for importing the functions that you need
+    immediately before your function: `#' @importFrom pkg fun`
+      - if you don't want to spell out each function individually, you can also 
+        write `#' @import pkg`
+  * in your function, you can now call the functions of that package without `pkg::`
+  
+3. **If you need many functions from the package in multiple new functions of yours:**
+  * add the package name to the _Depends:_ section within the DESCRIPTION file
+      - this will attach the package and make all functions accessible for the entire `DepLab` package

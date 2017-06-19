@@ -1,0 +1,38 @@
+Package: DepLab
+Type: Package
+Title: Package for visualization of PCP data
+Version: 0.1.1.9100
+Date: 2017-04-30
+Author: person("Applied Bioinformatics Core", "WCMC", email =
+    "abc@med.cornell.edu", role = c("aut", "cre"))
+Maintainer: Friederike Duendar <frd2007@med.cornell.edu>
+Description: This package contains the functions needed to run the PCP app.
+    The app will allow you to upload the proteinGroups*txt output of MaxQuant
+    and visualize it in an interactive manner including heatmaps of pairwise 
+    correlations.
+License: MIT + file LICENSE
+Depends:
+    data.table,
+    DBI,
+    ggplot2,
+    magrittr,
+    plyr,
+    dplyr,
+    dtplyr,
+    RSQLite
+Imports:
+    colorspace,
+    RCurl,
+    reshape2,
+    scales,
+    shiny (>= 0.13.2.9004),
+    shinyBS,
+    shinyjs,
+    shinyFiles,
+    stringr,
+    shinythemes
+RoxygenNote: 6.0.1
+Suggests: knitr,
+    rmarkdown,
+    testthat
+VignetteBuilder: knitr

@@ -1,0 +1,2107 @@
+id	gene_symbol	complex
+YGR032W	GSC2	"1,3-beta-glucan synthase complex (GO)"
+YLR342W	FKS1	"1,3-beta-glucan synthase complex (GO)"
+YPR165W	RHO1	"1,3-beta-glucan synthase complex (GO)"
+YGR240C	PFK1	6-phosphofructokinase complex (GO)
+YMR205C	PFK2	6-phosphofructokinase complex (GO)
+YBL004W	UTP20	90S preribosome
+YBR247C	ENP1	90S preribosome
+YCL059C	KRR1	90S preribosome
+YCR057C	PWP2	90S preribosome
+YDL014W	NOP1	90S preribosome
+YDL148C	NOP14	90S preribosome
+YDR064W	RPS13	90S preribosome
+YDR299W	BFR2	90S preribosome
+YDR324C	UTP4	90S preribosome
+YDR398W	UTP5	90S preribosome
+YDR449C	UTP6	90S preribosome
+YEL055C	POL5	90S preribosome
+YER082C	UTP7	90S preribosome
+YER127W	LCP5	90S preribosome
+YGL171W	ROK1	90S preribosome
+YGR090W	UTP22	90S preribosome
+YGR128C	UTP8	90S preribosome
+YGR145W	ENP2	90S preribosome
+YHR148W	IMP3	90S preribosome
+YHR196W	UTP9	90S preribosome
+YJL069C	UTP18	90S preribosome
+YJL109C	UTP10	90S preribosome
+YJR002W	MPP10	90S preribosome
+YJR145C	RPS4A	90S preribosome
+YKR060W	UTP30	90S preribosome
+YLL011W	SOF1	90S preribosome
+YLR003C	CMS1	90S preribosome
+YLR129W	DIP2	90S preribosome
+YLR186W	EMG1	90S preribosome
+YLR197W	NOP56	90S preribosome
+YLR222C	UTP13	90S preribosome
+YLR409C	UTP21	90S preribosome
+YMR093W	UTP15	90S preribosome
+YMR128W	ECM16	90S preribosome
+YNL075W	IMP4	90S preribosome
+YNL132W	KRE33	90S preribosome
+YOL010W	RCL1	90S preribosome
+YOR078W	BUD21	90S preribosome
+YOR096W	RPS7A	90S preribosome
+YOR145C	PNO1	90S preribosome
+YOR310C	NOP58	90S preribosome
+YPL012W	RRP12	90S preribosome
+YPL126W	NAN1	90S preribosome
+YPL217C	BMS1	90S preribosome
+YPL266W	DIM1	90S preribosome
+YPR112C	MRD1	90S preribosome
+YPR137W	RRP9	90S preribosome
+YPR144C	NOC4	90S preribosome
+YCR057C	PWP2	90S preribosome (GO)
+YGR081C	SLX9	90S preribosome (GO)
+YGR103W	NOP7	90S preribosome (GO)
+YJL010C	NOP9	90S preribosome (GO)
+YCL009C	ILV6	acetolactate synthase complex (GO)
+YMR108W	ILV2	acetolactate synthase complex (GO)
+YJL005W	CYR1	adenylyl cyclase complex
+YNL138W	SRV2	adenylyl cyclase complex
+YBL035C	POL12	alpha DNA polymerase:primase complex
+YIR008C	PRI1	alpha DNA polymerase:primase complex
+YKL045W	PRI2	alpha DNA polymerase:primase complex
+YNL102W	POL1	alpha DNA polymerase:primase complex
+YDR245W	MNN10	"alpha-1,6-mannosyltransferase complex"
+YEL036C	ANP1	"alpha-1,6-mannosyltransferase complex"
+YJL183W	MNN11	"alpha-1,6-mannosyltransferase complex"
+YJR075W	HOC1	"alpha-1,6-mannosyltransferase complex"
+YPL050C	MNN9	"alpha-1,6-mannosyltransferase complex"
+YBR229C	ROT2	alpha-glucosidase II complex
+YDR221W	GTB1	alpha-glucosidase II complex
+YBR126C	TPS1	"alpha,alpha-trehalose-phosphate synthase complex (UDP-forming)"
+YDR074W	TPS2	"alpha,alpha-trehalose-phosphate synthase complex (UDP-forming)"
+YML100W	TSL1	"alpha,alpha-trehalose-phosphate synthase complex (UDP-forming)"
+YMR261C	TPS3	"alpha,alpha-trehalose-phosphate synthase complex (UDP-forming)"
+YBL084C	CDC27	anaphase-promoting complex
+YDR118W	APC4	anaphase-promoting complex
+YDR260C	SWM1	anaphase-promoting complex
+YFR036W	CDC26	anaphase-promoting complex
+YGL240W	DOC1	anaphase-promoting complex
+YHR166C	CDC23	anaphase-promoting complex
+YIR025W	MND2	anaphase-promoting complex
+YKL022C	CDC16	anaphase-promoting complex
+YLR102C	APC9	anaphase-promoting complex
+YLR127C	APC2	anaphase-promoting complex
+YNL172W	APC1	anaphase-promoting complex
+YOR249C	APC5	anaphase-promoting complex
+YER090W	TRP2	anthranilate synthase complex
+YKL211C	TRP3	anthranilate synthase complex
+YFL034W	YFL034W	AP-1 adaptor complex
+YHL019C	APM2	AP-1 adaptor complex
+YKL135C	APL2	AP-1 adaptor complex
+YLR170C	APS1	AP-1 adaptor complex
+YPL259C	APM1	AP-1 adaptor complex
+YPR029C	APL4	AP-1 adaptor complex
+YBL037W	APL3	AP-2 adaptor complex
+YJR005W	APL1	AP-2 adaptor complex
+YJR058C	APS2	AP-2 adaptor complex
+YOL062C	APM4	AP-2 adaptor complex
+YBR288C	APM3	AP-3 adaptor complex
+YGR261C	APL6	AP-3 adaptor complex
+YJL024C	APS3	AP-3 adaptor complex
+YPL195W	APL5	AP-3 adaptor complex
+YBR234C	ARC40	Arp2-3 protein complex
+YDL029W	ARP2	Arp2-3 protein complex
+YIL062C	ARC15	Arp2-3 protein complex
+YJR065C	ARP3	Arp2-3 protein complex
+YKL013C	ARC19	Arp2-3 protein complex
+YLR370C	ARC18	Arp2-3 protein complex
+YNR035C	ARC35	Arp2-3 protein complex
+YJL115W	ASF1	Asf1-Rad53 complex
+YPL153C	RAD53	Asf1-Rad53 complex
+YDR022C	CIS1	Atg11-Atg17-Atg29-Cis1 complex
+YLR423C	ATG17	Atg11-Atg17-Atg29-Cis1 complex
+YPL166W	ATG29	Atg11-Atg17-Atg29-Cis1 complex
+YPR049C	ATG11	Atg11-Atg17-Atg29-Cis1 complex
+YDL014W	NOP1	box C/D snoRNP complex (GO)
+YEL026W	SNU13	box C/D snoRNP complex (GO)
+YLR197W	NOP56	box C/D snoRNP complex (GO)
+YOR310C	NOP58	box C/D snoRNP complex (GO)
+YHR089C	GAR1	box H/ACA snoRNP complex (GO)
+YLR175W	CBF5	box H/ACA snoRNP complex (GO)
+YGR188C	BUB1	Bub1-Bub3 kinase complex
+YOR026W	BUB3	Bub1-Bub3 kinase complex
+YLR226W	BUR2	Bur1-Bur2 CDK-cyclin complex
+YPR161C	SGV1	Bur1-Bur2 CDK-cyclin complex
+YGL155W	CDC43	CAAX-protein geranylgeranyltransferase complex
+YKL019W	RAM2	CAAX-protein geranylgeranyltransferase complex
+YBR195C	MSI1	CAF-1 complex
+YML102W	CAC2	CAF-1 complex
+YPR018W	RLF2	CAF-1 complex
+YKL190W	CNB1	calcineurin complex
+YML057W	CMP2	calcineurin complex
+YKL159C	RCN1	calcineurin complex (GO)
+YKL190W	CNB1	calcineurin complex (GO)
+YLR433C	CNA1	calcineurin complex (GO)
+YML057W	CMP2	calcineurin complex (GO)
+YIL033C	BCY1	cAMP-dependent protein kinase complex
+YJL164C	TPK1	cAMP-dependent protein kinase complex
+YKL166C	TPK3	cAMP-dependent protein kinase complex
+YPL203W	TPK2	cAMP-dependent protein kinase complex
+YJR109C	CPA2	carbamoyl-phosphate synthase complex
+YOR303W	CPA1	carbamoyl-phosphate synthase complex
+YJL006C	CTK2	carboxy-terminal domain protein kinase complex
+YKL139W	CTK1	carboxy-terminal domain protein kinase complex
+YML112W	CTK3	carboxy-terminal domain protein kinase complex
+YDR328C	SKP1	CBF3 complex (GO)
+YGR140W	CBF2	CBF3 complex (GO)
+YMR094W	CTF13	CBF3 complex (GO)
+YMR168C	CEP3	CBF3 complex (GO)
+YBL021C	HAP3	CCAAT-binding factor complex
+YGL237C	HAP2	CCAAT-binding factor complex
+YOR358W	HAP5	CCAAT-binding factor complex
+YAL021C	CCR4	CCR4-NOT complex
+YCR093W	CDC39	CCR4-NOT complex
+YER068W	MOT2	CCR4-NOT complex
+YGR134W	CAF130	CCR4-NOT complex
+YNL288W	CAF40	CCR4-NOT complex
+YNR052C	POP2	CCR4-NOT complex
+YFL028C	CAF16	CCR4-NOT complex (GO)
+YGR134W	CAF130	CCR4-NOT complex (GO)
+YKR036C	CAF4	CCR4-NOT complex (GO)
+YNL278W	CAF120	CCR4-NOT complex (GO)
+YNL288W	CAF40	CCR4-NOT complex (GO)
+YDL165W	CDC36	CCR4-NOT Not2-Not5 subcomplex
+YPR072W	NOT5	CCR4-NOT Not2-Not5 subcomplex
+YBL058W	SHP1	Cdc48-Shp1 complex
+YDL126C	CDC48	Cdc48-Shp1 complex
+YBR170C	NPL4	Cdc48-Ufd1-Npl4 complex
+YDL126C	CDC48	Cdc48-Ufd1-Npl4 complex
+YGR048W	UFD1	Cdc48-Ufd1-Npl4 complex
+YBR279W	PAF1	Cdc73-Paf1 complex
+YGL244W	RTF1	Cdc73-Paf1 complex
+YLR418C	CDC73	Cdc73-Paf1 complex
+YOL145C	CTR9	Cdc73-Paf1 complex
+YOR123C	LEO1	Cdc73-Paf1 complex
+YDL143W	CCT4	chaperonin-containing T-complex
+YDR188W	CCT6	chaperonin-containing T-complex
+YIL142W	CCT2	chaperonin-containing T-complex
+YJL008C	CCT8	chaperonin-containing T-complex
+YJL014W	CCT3	chaperonin-containing T-complex
+YJL111W	CCT7	chaperonin-containing T-complex
+YJR064W	CCT5	chaperonin-containing T-complex
+YNL212W	VID27	chaperonin-containing T-complex
+YOR281C	PLP2	chaperonin-containing T-complex
+YDR121W	DPB4	chromatin accessibility complex (GO)
+YGL133W	ITC1	chromatin accessibility complex (GO)
+YJL065C	DLS1	chromatin accessibility complex (GO)
+YOR304W	ISW2	chromatin accessibility complex (GO)
+YER030W	CHZ1	chromatin assembly complex (GO)
+YJL115W	ASF1	chromatin assembly complex (GO)
+YOL012C	HTZ1	chromatin assembly complex (GO)
+YBR195C	MSI1	chromatin silencing complex (GO)
+YDR227W	SIR4	chromatin silencing complex (GO)
+YKR101W	SIR1	chromatin silencing complex (GO)
+YLR442C	SIR3	chromatin silencing complex (GO)
+YGL206C	CHC1	Clathrin
+YGR167W	CLC1	Clathrin
+YDR228C	PCF11	cleavage factor I complex
+YGL044C	RNA15	cleavage factor I complex
+YMR061W	RNA14	cleavage factor I complex
+YOR250C	CLP1	cleavage factor I complex
+YBR135W	CKS1	Cln-Cdc28 protein kinase complex
+YBR160W	CDC28	Cln-Cdc28 protein kinase complex
+YDL155W	CLB3	Cln-Cdc28 protein kinase complex
+YKR091W	SRL3	Cln-Cdc28 protein kinase complex
+YLR079W	SIC1	Cln-Cdc28 protein kinase complex
+YLR210W	CLB4	Cln-Cdc28 protein kinase complex
+YMR199W	CLN1	Cln-Cdc28 protein kinase complex
+YPL256C	CLN2	Cln-Cdc28 protein kinase complex
+YDR180W	SCC2	cohesin loading complex (GO)
+YER147C	SCC4	cohesin loading complex (GO)
+YBR107C	IML3	COMA complex
+YBR211C	AME1	COMA complex
+YDR254W	CHL4	COMA complex
+YDR318W	MCM21	COMA complex
+YDR383C	NKP1	COMA complex
+YGR179C	OKP1	COMA complex
+YJR135C	MCM22	COMA complex
+YLR315W	NKP2	COMA complex
+YLR381W	CTF3	COMA complex
+YPL018W	CTF19	COMA complex
+YPR046W	MCM16	COMA complex
+YDR240C	SNU56	commitment complex (GO)
+YGR074W	SMD1	commitment complex (GO)
+YHR086W	NAM8	commitment complex (GO)
+YIL061C	SNP1	commitment complex (GO)
+YKL074C	MUD2	commitment complex (GO)
+YLR116W	MSL5	commitment complex (GO)
+YLR147C	SMD3	commitment complex (GO)
+YLR298C	YHC1	commitment complex (GO)
+YML046W	PRP39	commitment complex (GO)
+YMR125W	STO1	commitment complex (GO)
+YPL178W	CBC2	commitment complex (GO)
+YKL074C	MUD2	commitment complex 2
+YLR116W	MSL5	commitment complex 2
+YAR003W	SWD1	COMPASS complex
+YBR175W	SWD3	COMPASS complex
+YBR258C	SHG1	COMPASS complex
+YDR469W	SDC1	COMPASS complex
+YHR119W	SET1	COMPASS complex
+YKL018W	SWD2	COMPASS complex
+YLR015W	BRE2	COMPASS complex
+YPL138C	SPP1	COMPASS complex
+YDL145C	COP1	COPI vesicle coat
+YDR238C	SEC26	COPI vesicle coat
+YER122C	GLO3	COPI vesicle coat
+YFR051C	RET2	COPI vesicle coat
+YGL137W	SEC27	COPI vesicle coat
+YIL076W	SEC28	COPI vesicle coat
+YNL287W	SEC21	COPI vesicle coat
+YPL010W	RET3	COPI vesicle coat
+YDL208W	NHP2	core H-ACA snoRNP
+YHR072W-A	NOP10	core H-ACA snoRNP
+YHR089C	GAR1	core H-ACA snoRNP
+YLR175W	CBF5	core H-ACA snoRNP
+YNL308C	KRI1	core H-ACA snoRNP
+YDR311W	TFB1	core TFIIH complex
+YLR005W	SSL1	core TFIIH complex
+YPR056W	TFB4	core TFIIH complex
+YAL043C	PTA1	CPF complex
+YDR195W	REF2	CPF complex
+YDR301W	CFT1	CPF complex
+YER133W	GLC7	CPF complex
+YGR156W	PTI1	CPF complex
+YJR093C	FIP1	CPF complex
+YKL018W	SWD2	CPF complex
+YKL059C	MPE1	CPF complex
+YKR002W	PAP1	CPF complex
+YLR115W	CFT2	CPF complex
+YLR277C	YSH1	CPF complex
+YMR061W	RNA14	CPF complex
+YNL222W	SSU72	CPF complex
+YNL317W	PFS2	CPF complex
+YOR179C	SYC1	CPF complex
+YPR107C	YTH1	CPF complex
+YLR216C	CPR6	Cpr6-Hsc82-Sti1-Hsp82 complex
+YMR186W	HSC82	Cpr6-Hsc82-Sti1-Hsp82 complex
+YOR027W	STI1	Cpr6-Hsc82-Sti1-Hsp82 complex
+YPL240C	HSP82	Cpr6-Hsc82-Sti1-Hsp82 complex
+YMR048W	CSM3	Csm3-Tof1 complex
+YNL273W	TOF1	Csm3-Tof1 complex
+YCL016C	DCC1	Ctf18 RFC-like complex
+YHR191C	CTF8	Ctf18 RFC-like complex
+YMR078C	CTF18	Ctf18 RFC-like complex
+YBR114W	RAD16	Cul3-RING ubiquitin ligase complex (GO)
+YGR003W	CUL3	Cul3-RING ubiquitin ligase complex (GO)
+YJR052W	RAD7	Cul3-RING ubiquitin ligase complex (GO)
+YNL230C	ELA1	Cul3-RING ubiquitin ligase complex (GO)
+YPL046C	ELC1	Cul3-RING ubiquitin ligase complex (GO)
+YCL031C	RRP7	CURI complex (GO)
+YGR090W	UTP22	CURI complex (GO)
+YLR223C	IFH1	CURI complex (GO)
+YOR039W	CKB2	CURI complex (GO)
+YPR104C	FHL1	CURI complex (GO)
+YBR112C	CYC8	Cyc8-Tup1 corepressor complex
+YCR084C	TUP1	Cyc8-Tup1 corepressor complex
+YBR135W	CKS1	cyclin-dependent protein kinase holoenzyme complex (GO)
+YBR160W	CDC28	cyclin-dependent protein kinase holoenzyme complex (GO)
+YDL127W	PCL2	cyclin-dependent protein kinase holoenzyme complex (GO)
+YDL179W	PCL9	cyclin-dependent protein kinase holoenzyme complex (GO)
+YER059W	PCL6	cyclin-dependent protein kinase holoenzyme complex (GO)
+YGL134W	PCL10	cyclin-dependent protein kinase holoenzyme complex (GO)
+YGL215W	CLG1	cyclin-dependent protein kinase holoenzyme complex (GO)
+YHR071W	PCL5	cyclin-dependent protein kinase holoenzyme complex (GO)
+YIL050W	PCL7	cyclin-dependent protein kinase holoenzyme complex (GO)
+YNL289W	PCL1	cyclin-dependent protein kinase holoenzyme complex (GO)
+YOL001W	PHO80	cyclin-dependent protein kinase holoenzyme complex (GO)
+YPL219W	PCL8	cyclin-dependent protein kinase holoenzyme complex (GO)
+YPL256C	CLN2	cyclin-dependent protein kinase holoenzyme complex (GO)
+YDL067C	COX9	"cytochome c oxidase complex, subunits IV, Va, VI and VIIa"
+YGL187C	COX4	"cytochome c oxidase complex, subunits IV, Va, VI and VIIa"
+YHR051W	COX6	"cytochome c oxidase complex, subunits IV, Va, VI and VIIa"
+YNL052W	COX5A	"cytochome c oxidase complex, subunits IV, Va, VI and VIIa"
+YDR424C	DYN2	cytoplasmic dynein complex (GO)
+YDR488C	PAC11	cytoplasmic dynein complex (GO)
+YKR054C	DYN1	cytoplasmic dynein complex (GO)
+YMR299C	DYN3	cytoplasmic dynein complex (GO)
+YBL027W	RPL19B	cytosolic large ribosomal subunit
+YBL092W	RPL32	cytosolic large ribosomal subunit
+YBR031W	RPL4A	cytosolic large ribosomal subunit
+YBR181C	RPS6B	cytosolic large ribosomal subunit
+YBR191W	RPL21A	cytosolic large ribosomal subunit
+YCR031C	RPS14A	cytosolic large ribosomal subunit
+YDL075W	RPL31A	cytosolic large ribosomal subunit
+YDL082W	RPL13A	cytosolic large ribosomal subunit
+YDL083C	RPS16B	cytosolic large ribosomal subunit
+YDL136W	RPL35B	cytosolic large ribosomal subunit
+YDR012W	RPL4B	cytosolic large ribosomal subunit
+YDR382W	RPP2B	cytosolic large ribosomal subunit
+YDR418W	RPL12B	cytosolic large ribosomal subunit
+YDR447C	RPS17B	cytosolic large ribosomal subunit
+YDR471W	RPL27B	cytosolic large ribosomal subunit
+YER074W	RPS24A	cytosolic large ribosomal subunit
+YFR031C-A	RPL2A	cytosolic large ribosomal subunit
+YFR032C-A	RPL29	cytosolic large ribosomal subunit
+YGL014W	PUF4	cytosolic large ribosomal subunit
+YGL030W	RPL30	cytosolic large ribosomal subunit
+YGL031C	RPL24A	cytosolic large ribosomal subunit
+YGL076C	RPL7A	cytosolic large ribosomal subunit
+YGL103W	RPL28	cytosolic large ribosomal subunit
+YGL123W	RPS2	cytosolic large ribosomal subunit
+YGL135W	RPL1B	cytosolic large ribosomal subunit
+YGL147C	RPL9A	cytosolic large ribosomal subunit
+YGR034W	RPL26B	cytosolic large ribosomal subunit
+YGR085C	RPL11B	cytosolic large ribosomal subunit
+YGR118W	RPS23A	cytosolic large ribosomal subunit
+YHL001W	RPL14B	cytosolic large ribosomal subunit
+YHL033C	RPL8A	cytosolic large ribosomal subunit
+YHR141C	RPL42B	cytosolic large ribosomal subunit
+YIL018W	RPL2B	cytosolic large ribosomal subunit
+YIL133C	RPL16A	cytosolic large ribosomal subunit
+YJL177W	RPL17B	cytosolic large ribosomal subunit
+YJR123W	RPS5	cytosolic large ribosomal subunit
+YKL180W	RPL17A	cytosolic large ribosomal subunit
+YLL045C	RPL8B	cytosolic large ribosomal subunit
+YLR029C	RPL15A	cytosolic large ribosomal subunit
+YLR075W	RPL10	cytosolic large ribosomal subunit
+YLR150W	STM1	cytosolic large ribosomal subunit
+YLR287C-A	RPS30A	cytosolic large ribosomal subunit
+YLR340W	RPP0	cytosolic large ribosomal subunit
+YLR441C	RPS1A	cytosolic large ribosomal subunit
+YLR448W	RPL6B	cytosolic large ribosomal subunit
+YML063W	RPS1B	cytosolic large ribosomal subunit
+YML073C	RPL6A	cytosolic large ribosomal subunit
+YMR142C	RPL13B	cytosolic large ribosomal subunit
+YMR194W	RPL36A	cytosolic large ribosomal subunit
+YMR242C	RPL20A	cytosolic large ribosomal subunit
+YNL069C	RPL16B	cytosolic large ribosomal subunit
+YNL096C	RPS7B	cytosolic large ribosomal subunit
+YNL178W	RPS3	cytosolic large ribosomal subunit
+YNL301C	RPL18B	cytosolic large ribosomal subunit
+YNL302C	RPS19B	cytosolic large ribosomal subunit
+YOL039W	RPP2A	cytosolic large ribosomal subunit
+YOL040C	RPS15	cytosolic large ribosomal subunit
+YOL127W	RPL25	cytosolic large ribosomal subunit
+YOR063W	RPL3	cytosolic large ribosomal subunit
+YOR312C	RPL20B	cytosolic large ribosomal subunit
+YPL090C	RPS6A	cytosolic large ribosomal subunit
+YPL198W	RPL7B	cytosolic large ribosomal subunit
+YPL220W	RPL1A	cytosolic large ribosomal subunit
+YPL249C-A	RPL36B	cytosolic large ribosomal subunit
+YBL072C	RPS8A	cytosolic small ribosomal subunit
+YBR048W	RPS11B	cytosolic small ribosomal subunit
+YBR189W	RPS9B	cytosolic small ribosomal subunit
+YDR025W	RPS11A	cytosolic small ribosomal subunit
+YDR064W	RPS13	cytosolic small ribosomal subunit
+YER102W	RPS8B	cytosolic small ribosomal subunit
+YHR203C	RPS4B	cytosolic small ribosomal subunit
+YIL069C	RPS24B	cytosolic small ribosomal subunit
+YJL190C	RPS22A	cytosolic small ribosomal subunit
+YJR145C	RPS4A	cytosolic small ribosomal subunit
+YLR367W	RPS22B	cytosolic small ribosomal subunit
+YML024W	RPS17A	cytosolic small ribosomal subunit
+YOR096W	RPS7A	cytosolic small ribosomal subunit
+YOR204W	DED1	cytosolic small ribosomal subunit
+YPL081W	RPS9A	cytosolic small ribosomal subunit
+YBR233W-A	DAD3	DASH complex
+YDR016C	DAD1	DASH complex
+YDR201W	SPC19	DASH complex
+YGL061C	DUO1	DASH complex
+YGR113W	DAM1	DASH complex
+YKL052C	ASK1	DASH complex
+YKL138C-A	HSK3	DASH complex
+YKR037C	SPC34	DASH complex
+YKR083C	DAD2	DASH complex
+YDL017W	CDC7	Dbf4-dependent protein kinase complex (GO)
+YDR052C	DBF4	Dbf4-dependent protein kinase complex (GO)
+YBR094W	PBY1	Dcp1-Dcp2 decapping enzyme complex
+YEL015W	EDC3	Dcp1-Dcp2 decapping enzyme complex
+YNL118C	DCP2	Dcp1-Dcp2 decapping enzyme complex
+YOL149W	DCP1	Dcp1-Dcp2 decapping enzyme complex
+YLR270W	DCS1	Dcs1-Dcs2 heterodimer
+YOR173W	DCS2	Dcs1-Dcs2 heterodimer
+YDL102W	POL3	delta DNA polymerase complex
+YJR006W	POL31	delta DNA polymerase complex
+YJR043C	POL32	delta DNA polymerase complex
+YGL090W	LIF1	DNA ligase IV complex (GO)
+YLR265C	NEJ1	DNA ligase IV complex (GO)
+YOR005C	DNL4	DNA ligase IV complex (GO)
+YAR007C	RFA1	DNA replication factor A complex
+YHR164C	DNA2	DNA replication factor A complex
+YJL173C	RFA3	DNA replication factor A complex
+YNL312W	RFA2	DNA replication factor A complex
+YBR236C	ABD1	"DNA-directed RNA polymerase II, holoenzyme (GO)"
+YDL115C	IWR1	"DNA-directed RNA polymerase II, holoenzyme (GO)"
+YGR097W	ASK10	"DNA-directed RNA polymerase II, holoenzyme (GO)"
+YDR141C	DOP1	Dop1-Mon2 complex
+YNL297C	MON2	Dop1-Mon2 complex
+YBL071W-A	KTI11	Dph1-Dph2-Dph3 complex
+YIL103W	DPH1	Dph1-Dph2-Dph3 complex
+YKL191W	DPH2	Dph1-Dph2-Dph3 complex
+YGR063C	SPT4	DSIF complex (GO)
+YML010W	SPT5	DSIF complex (GO)
+YBR281C	DUG2	Dug2-Dug3 complex
+YNL191W	DUG3	Dug2-Dug3 complex
+YDR106W	ARP10	dynactin complex (GO)
+YHR129C	ARP1	dynactin complex (GO)
+YMR294W	JNM1	dynactin complex (GO)
+YPL174C	NIP100	dynactin complex (GO)
+YGR262C	BUD32	EKC-KEOPS protein complex
+YJL184W	GON7	EKC-KEOPS protein complex
+YKR038C	KAE1	EKC-KEOPS protein complex
+YML036W	CGI121	EKC-KEOPS protein complex
+YBR087W	RFC5	Elg1 RFC-like complex
+YJR068W	RFC2	Elg1 RFC-like complex
+YNL290W	RFC3	Elg1 RFC-like complex
+YOL094C	RFC4	Elg1 RFC-like complex
+YOR144C	ELG1	Elg1 RFC-like complex
+YOR217W	RFC1	Elg1 RFC-like complex
+YGR200C	ELP2	Elongator holoenzyme complex
+YHR187W	IKI1	Elongator holoenzyme complex
+YLR384C	IKI3	Elongator holoenzyme complex
+YMR312W	ELP6	Elongator holoenzyme complex
+YPL086C	ELP3	Elongator holoenzyme complex
+YPL101W	ELP4	Elongator holoenzyme complex
+YBR171W	SEC66	endoplasmic reticulum Sec complex
+YLR292C	SEC72	endoplasmic reticulum Sec complex
+YOR254C	SEC63	endoplasmic reticulum Sec complex
+YPL094C	SEC62	endoplasmic reticulum Sec complex
+YBR278W	DPB3	epsilon DNA polymerase complex
+YDR121W	DPB4	epsilon DNA polymerase complex
+YNL262W	POL2	epsilon DNA polymerase complex
+YPR175W	DPB2	epsilon DNA polymerase complex
+YDR498C	SEC20	ER SNARE Use1
+YGL098W	USE1	ER SNARE Use1
+YGL145W	TIP20	ER SNARE Use1
+YKL196C	YKT6	ER SNARE Use1
+YLR268W	SEC22	ER SNARE Use1
+YLR440C	SEC39	ER SNARE Use1
+YNL258C	DSL1	ER SNARE Use1
+YOR075W	UFE1	ER SNARE Use1
+YAL007C	ERP2	Erp1-Erp2-Emp24-Erv25 p24 complex
+YAR002C-A	ERP1	Erp1-Erp2-Emp24-Erv25 p24 complex
+YGL200C	EMP24	Erp1-Erp2-Emp24-Erv25 p24 complex
+YML012W	ERV25	Erp1-Erp2-Emp24-Erv25 p24 complex
+YCL008C	STP22	ESCRT I complex
+YGR206W	MVB12	ESCRT I complex
+YLR119W	SRN2	ESCRT I complex
+YPL065W	VPS28	ESCRT I complex
+YJR102C	VPS25	ESCRT II complex
+YLR417W	VPS36	ESCRT II complex
+YPL002C	SNF8	ESCRT II complex
+YKL002W	DID4	ESCRT III complex (GO)
+YKL041W	VPS24	ESCRT III complex (GO)
+YLR025W	SNF7	ESCRT III complex (GO)
+YMR077C	VPS20	ESCRT III complex (GO)
+YHL002W	HSE1	ESCRT-0 complex
+YNR006W	VPS27	ESCRT-0 complex
+YAL003W	EFB1	eukaryotic translation elongation factor 1 complex
+YKL081W	TEF4	eukaryotic translation elongation factor 1 complex
+YPL048W	CAM1	eukaryotic translation elongation factor 1 complex
+YPR080W	TEF1	eukaryotic translation elongation factor 1 complex
+YDR211W	GCD6	eukaryotic translation initiation factor 2B complex
+YER025W	GCD11	eukaryotic translation initiation factor 2B complex
+YGR083C	GCD2	eukaryotic translation initiation factor 2B complex
+YJR007W	SUI2	eukaryotic translation initiation factor 2B complex
+YKR026C	GCN3	eukaryotic translation initiation factor 2B complex
+YLR215C	CDC123	eukaryotic translation initiation factor 2B complex
+YLR291C	GCD7	eukaryotic translation initiation factor 2B complex
+YOR260W	GCD1	eukaryotic translation initiation factor 2B complex
+YPL237W	SUI3	eukaryotic translation initiation factor 2B complex
+YAL035W	FUN12	eukaryotic translation initiation factor 3 complex
+YBR079C	RPG1	eukaryotic translation initiation factor 3 complex
+YDR091C	RLI1	eukaryotic translation initiation factor 3 complex
+YDR429C	TIF35	eukaryotic translation initiation factor 3 complex
+YLR192C	HCR1	eukaryotic translation initiation factor 3 complex
+YMR146C	TIF34	eukaryotic translation initiation factor 3 complex
+YMR309C	NIP1	eukaryotic translation initiation factor 3 complex
+YNL244C	SUI1	eukaryotic translation initiation factor 3 complex
+YOR361C	PRT1	eukaryotic translation initiation factor 3 complex
+YPR041W	TIF5	eukaryotic translation initiation factor 3 complex
+YER165W	PAB1	eukaryotic translation initiation factor 4F complex
+YGL049C	TIF4632	eukaryotic translation initiation factor 4F complex
+YGR162W	TIF4631	eukaryotic translation initiation factor 4F complex
+YOL139C	CDC33	eukaryotic translation initiation factor 4F complex
+YBR102C	EXO84	exocyst
+YDR166C	SEC5	exocyst
+YER008C	SEC3	exocyst
+YGL233W	SEC15	exocyst
+YIL068C	SEC6	exocyst
+YJL085W	EXO70	exocyst
+YLR166C	SEC10	exocyst
+YPR055W	SEC8	exocyst
+YJL099W	CHS6	exomer complex
+YKR027W	BCH2	exomer complex
+YLR330W	CHS5	exomer complex
+YMR237W	BCH1	exomer complex
+YOR299W	BUD7	exomer complex
+YCR035C	RRP43	exosome (RNase complex)
+YDL111C	RRP42	exosome (RNase complex)
+YDR280W	RRP45	exosome (RNase complex)
+YGR095C	RRP46	exosome (RNase complex)
+YGR158C	MTR3	exosome (RNase complex)
+YGR195W	SKI6	exosome (RNase complex)
+YHR069C	RRP4	exosome (RNase complex)
+YHR081W	LRP1	exosome (RNase complex)
+YNL189W	SRP1	exosome (RNase complex)
+YNL232W	CSL4	exosome (RNase complex)
+YNR024W	MPP6	exosome (RNase complex)
+YOL021C	DIS3	exosome (RNase complex)
+YOL142W	RRP40	exosome (RNase complex)
+YOR001W	RRP6	exosome (RNase complex)
+YOR076C	SKI7	exosome (RNase complex)
+YOR076C	SKI7	exosome (RNase complex) (GO)
+YIL034C	CAP2	F-actin capping protein complex (GO)
+YKL007W	CAP1	F-actin capping protein complex (GO)
+YGL207W	SPT16	FACT complex
+YML069W	POB3	FACT complex
+YKL182W	FAS1	fatty acid synthase complex
+YPL231W	FAS2	fatty acid synthase complex
+YAL047C	SPC72	"gamma-tubulin small complex, spindle pole body"
+YHR172W	SPC97	"gamma-tubulin small complex, spindle pole body"
+YLR212C	TUB4	"gamma-tubulin small complex, spindle pole body"
+YNL126W	SPC98	"gamma-tubulin small complex, spindle pole body"
+YDR027C	VPS54	GARP complex
+YDR484W	VPS52	GARP complex
+YJL029C	VPS53	GARP complex
+YJL034W	KAR2	GARP complex
+YKR020W	VPS51	GARP complex
+YDL100C	GET3	GET complex
+YER083C	GET2	GET complex
+YGL020C	GET1	GET complex
+YBR105C	VID24	GID complex
+YCL039W	GID7	GID complex
+YDL176W	YDL176W	GID complex
+YDR255C	RMD5	GID complex
+YGL227W	VID30	GID complex
+YIL017C	VID28	GID complex
+YIL097W	FYV10	GID complex
+YMR135C	GID8	GID complex
+YDR013W	PSF1	GINS complex
+YDR489W	SLD5	GINS complex
+YJL072C	PSF2	GINS complex
+YOL146W	PSF3	GINS complex
+YDL171C	GLT1	glutamate synthase complex (GO)
+YAL044C	GCV3	glycine cleavage complex (GO)
+YDR019C	GCV1	glycine cleavage complex (GO)
+YFL018C	LPD1	glycine cleavage complex (GO)
+YMR189W	GCV2	glycine cleavage complex (GO)
+YDR437W	GPI19	glycosylphosphatidylinositol-N-acetylglucosaminyltransferase (GPI-GnT) complex (GO)
+YGR216C	GPI1	glycosylphosphatidylinositol-N-acetylglucosaminyltransferase (GPI-GnT) complex (GO)
+YNL038W	GPI15	glycosylphosphatidylinositol-N-acetylglucosaminyltransferase (GPI-GnT) complex (GO)
+YPL076W	GPI2	glycosylphosphatidylinositol-N-acetylglucosaminyltransferase (GPI-GnT) complex (GO)
+YPL096C-A	ERI1	glycosylphosphatidylinositol-N-acetylglucosaminyltransferase (GPI-GnT) complex (GO)
+YPL175W	SPT14	glycosylphosphatidylinositol-N-acetylglucosaminyltransferase (GPI-GnT) complex (GO)
+YER157W	COG3	Golgi transport complex
+YGL005C	COG7	Golgi transport complex
+YGL223C	COG1	Golgi transport complex
+YGR120C	COG2	Golgi transport complex
+YML071C	COG8	Golgi transport complex
+YNL041C	COG6	Golgi transport complex
+YNL051W	COG5	Golgi transport complex
+YPR105C	COG4	Golgi transport complex
+YDR331W	GPI8	GPI-anchor transamidase complex
+YDR434W	GPI17	GPI-anchor transamidase complex
+YHR188C	GPI16	GPI-anchor transamidase complex
+YLR088W	GAA1	GPI-anchor transamidase complex
+YDL099W	BUG1	Grh1-Bug1 complex
+YDR517W	GRH1	Grh1-Bug1 complex
+YGL097W	SRM1	Gsp1-Prp20 complex
+YLR293C	GSP1	Gsp1-Prp20 complex
+YOR185C	GSP2	Gsp1-Prp20 complex
+YMR192W	GYL1	Gyl1-Gyp5 complex
+YPL249C	GYP5	Gyl1-Gyp5 complex
+YBR009C	HHF1	HAT-A4 complex
+YBR010W	HHT1	HAT-A4 complex
+YEL056W	HAT2	HAT-A4 complex
+YLL022C	HIF1	HAT-A4 complex
+YNL030W	HHF2	HAT-A4 complex
+YNL031C	HHT2	HAT-A4 complex
+YOL054W	PSH1	HAT-A4 complex
+YPL001W	HAT1	HAT-A4 complex
+YDR295C	HDA2	HDA complex
+YNL021W	HDA1	HDA complex
+YPR179C	HDA3	HDA complex
+YNL004W	HRB1	heterogeneous nuclear ribonucleoprotein complex (GO)
+YNL016W	PUB1	heterogeneous nuclear ribonucleoprotein complex (GO)
+YHR005C	GPA1	heterotrimeric G-protein complex
+YOR212W	STE4	heterotrimeric G-protein complex
+YHR005C	GPA1	heterotrimeric G-protein complex (GO)
+YJR086W	STE18	heterotrimeric G-protein complex (GO)
+YOR212W	STE4	heterotrimeric G-protein complex (GO)
+YER145C	FTR1	high affinity iron permease complex (GO)
+YMR058W	FET3	high affinity iron permease complex (GO)
+YBL008W	HIR1	HIR complex
+YBR215W	HPC2	HIR complex
+YJR140C	HIR3	HIR complex
+YOR038C	HIR2	HIR complex
+YBR098W	MMS4	Holliday junction resolvase complex (GO)
+YDR386W	MUS81	Holliday junction resolvase complex (GO)
+YAL002W	VPS8	HOPS complex
+YDL077C	VAM6	HOPS complex
+YDR080W	VPS41	HOPS complex
+YLR148W	PEP3	HOPS complex
+YLR396C	VPS33	HOPS complex
+YMR231W	PEP5	HOPS complex
+YPL045W	VPS16	HOPS complex
+YDR057W	YOS9	Hrd1 ubiquitin ligase ERAD-L complex
+YLR207W	HRD3	Hrd1 ubiquitin ligase ERAD-L complex
+YML029W	USA1	Hrd1 ubiquitin ligase ERAD-L complex
+YOL013C	HRD1	Hrd1 ubiquitin ligase ERAD-L complex
+YCL044C	MGR1	i-AAA complex (GO)
+YPR024W	YME1	i-AAA complex (GO)
+YLR178C	TFS1	Ic-CPY complex
+YMR297W	PRC1	Ic-CPY complex
+YDL002C	NHP10	INO80 complex
+YDR190C	RVB1	INO80 complex
+YER092W	IES5	INO80 complex
+YFL013C	IES1	INO80 complex
+YFL039C	ACT1	INO80 complex
+YGL150C	INO80	INO80 complex
+YJL081C	ARP4	INO80 complex
+YLR052W	IES3	INO80 complex
+YNL059C	ARP5	INO80 complex
+YNL215W	IES2	INO80 complex
+YOR141C	ARP8	INO80 complex
+YPL235W	RVB2	INO80 complex
+YBR245C	ISW1	ISW1 complex
+YKR001C	VPS1	ISW1 complex
+YLR095C	IOC2	ISW1 complex
+YMR044W	IOC4	ISW1 complex
+YPL082C	MOT1	ISW1 complex
+YGL133W	ITC1	Isw2-Itc1 complex
+YOR304W	ISW2	Isw2-Itc1 complex
+YBL002W	HTB2	Kap114-Nap1 histone complex
+YBL003C	HTA2	Kap114-Nap1 histone complex
+YGL241W	KAP114	Kap114-Nap1 histone complex
+YKR048C	NAP1	Kap114-Nap1 histone complex
+YOL012C	HTZ1	Kap114-Nap1 histone complex
+YHR102W	KIC1	Kic1-Sog2 complex
+YOR353C	SOG2	Kic1-Sog2 complex
+YBL063W	KIP1	kinesin complex (GO)
+YEL061C	CIN8	kinesin complex (GO)
+YGL216W	KIP3	kinesin complex (GO)
+YMR198W	CIK1	kinesin complex (GO)
+YPL155C	KIP2	kinesin complex (GO)
+YPL253C	VIK1	kinesin complex (GO)
+YMR106C	YKU80	Ku70:Ku80 complex
+YMR284W	YKU70	Ku70:Ku80 complex
+YER017C	AFG3	m-AAA complex
+YMR089C	YTA12	m-AAA complex
+YGL086W	MAD1	Mad1-Mad2 complex
+YJL030W	MAD2	Mad1-Mad2 complex
+YBR004C	GPI18	mannosyltransferase complex (GO)
+YNL158W	PGA1	mannosyltransferase complex (GO)
+YDL056W	MBP1	MBF transcription complex
+YLR182W	SWI6	MBF transcription complex
+YBL023C	MCM2	MCM complex (GO)
+YBR202W	MCM7	MCM complex (GO)
+YEL032W	MCM3	MCM complex (GO)
+YGL201C	MCM6	MCM complex (GO)
+YLR274W	MCM5	MCM complex (GO)
+YPR019W	MCM4	MCM complex (GO)
+YAL010C	MDM10	Mdm10/Mdm12/Mmm1 complex (GO)
+YLL006W	MMM1	Mdm10/Mdm12/Mmm1 complex (GO)
+YOL009C	MDM12	Mdm10/Mdm12/Mmm1 complex (GO)
+YGL105W	ARC1	methionyl glutamyl tRNA synthetase complex
+YGL245W	GUS1	methionyl glutamyl tRNA synthetase complex
+YGR264C	MES1	methionyl glutamyl tRNA synthetase complex
+YAL034W-A	MTW1	MIND complex
+YIR010W	DSN1	MIND complex
+YJR112W	NNF1	MIND complex
+YPL233W	NSL1	MIND complex
+YEL059C-A	SOM1	mitochondrial inner membrane peptidase complex (GO)
+YMR035W	IMP2	mitochondrial inner membrane peptidase complex (GO)
+YMR150C	IMP1	mitochondrial inner membrane peptidase complex (GO)
+YGR033C	TIM21	mitochondrial inner membrane presequence translocase complex (GO)
+YJL104W	PAM16	mitochondrial inner membrane presequence translocase complex (GO)
+YJL143W	TIM17	mitochondrial inner membrane presequence translocase complex (GO)
+YLR008C	PAM18	mitochondrial inner membrane presequence translocase complex (GO)
+YNR017W	TIM23	mitochondrial inner membrane presequence translocase complex (GO)
+YPL063W	TIM50	mitochondrial inner membrane presequence translocase complex (GO)
+YBR091C	TIM12	mitochondrial inner membrane protein insertion complex (GO)
+YDL217C	TIM22	mitochondrial inner membrane protein insertion complex (GO)
+YJL054W	TIM54	mitochondrial inner membrane protein insertion complex (GO)
+YOR297C	TIM18	mitochondrial inner membrane protein insertion complex (GO)
+YEL020W-A	TIM9	mitochondrial intermembrane space protein transporter complex (GO)
+YGR181W	TIM13	mitochondrial intermembrane space protein transporter complex (GO)
+YHR005C-A	TIM10	mitochondrial intermembrane space protein transporter complex (GO)
+YJR135W-A	TIM8	mitochondrial intermembrane space protein transporter complex (GO)
+YNL037C	IDH1	mitochondrial isocitrate dehydrogenase complex (NAD+)
+YOR136W	IDH2	mitochondrial isocitrate dehydrogenase complex (NAD+)
+YGR082W	TOM20	mitochondrial outer membrane translocase complex (GO)
+YKL195W	MIA40	mitochondrial outer membrane translocase complex (GO)
+YMR203W	TOM40	mitochondrial outer membrane translocase complex (GO)
+YNL070W	TOM7	mitochondrial outer membrane translocase complex (GO)
+YNL121C	TOM70	mitochondrial outer membrane translocase complex (GO)
+YNL131W	TOM22	mitochondrial outer membrane translocase complex (GO)
+YOR045W	TOM6	mitochondrial outer membrane translocase complex (GO)
+YPR133W-A	TOM5	mitochondrial outer membrane translocase complex (GO)
+YDR148C	KGD2	mitochondrial oxoglutarate dehydrogenase complex
+YFL018C	LPD1	mitochondrial oxoglutarate dehydrogenase complex
+YFR049W	YMR31	mitochondrial oxoglutarate dehydrogenase complex
+YIL125W	KGD1	mitochondrial oxoglutarate dehydrogenase complex
+YHR024C	MAS2	mitochondrial processing peptidase complex
+YLR163C	MAS1	mitochondrial processing peptidase complex
+YBL099W	ATP1	mitochondrial proton-transporting ATP synthase complex
+YBR039W	ATP3	mitochondrial proton-transporting ATP synthase complex
+YDR298C	ATP5	mitochondrial proton-transporting ATP synthase complex
+YKL016C	ATP7	mitochondrial proton-transporting ATP synthase complex
+YDL130W-A	STF1	mitochondrial proton-transporting ATP synthase complex (GO)
+YDL181W	INH1	mitochondrial proton-transporting ATP synthase complex (GO)
+YGR008C	STF2	mitochondrial proton-transporting ATP synthase complex (GO)
+Q0080	ATP8	"mitochondrial proton-transporting ATP synthase complex, coupling factor F(o) (GO)"
+Q0085	ATP6	"mitochondrial proton-transporting ATP synthase complex, coupling factor F(o) (GO)"
+Q0130	OLI1	"mitochondrial proton-transporting ATP synthase complex, coupling factor F(o) (GO)"
+YDR322C-A	TIM11	"mitochondrial proton-transporting ATP synthase complex, coupling factor F(o) (GO)"
+YDR377W	ATP17	"mitochondrial proton-transporting ATP synthase complex, coupling factor F(o) (GO)"
+YLR295C	ATP14	"mitochondrial proton-transporting ATP synthase complex, coupling factor F(o) (GO)"
+YML081C-A	ATP18	"mitochondrial proton-transporting ATP synthase complex, coupling factor F(o) (GO)"
+YOL077W-A	ATP19	"mitochondrial proton-transporting ATP synthase complex, coupling factor F(o) (GO)"
+YPR020W	ATP20	"mitochondrial proton-transporting ATP synthase complex, coupling factor F(o) (GO)"
+YBR221C	PDB1	mitochondrial pyruvate dehydrogenase complex
+YER178W	PDA1	mitochondrial pyruvate dehydrogenase complex
+YGR193C	PDX1	mitochondrial pyruvate dehydrogenase complex
+YNL071W	LAT1	mitochondrial pyruvate dehydrogenase complex
+YKL148C	SDH1	mitochondrial respiratory chain complex II
+YLL041C	SDH2	mitochondrial respiratory chain complex II
+YDR178W	SDH4	mitochondrial respiratory chain complex II (GO)
+YKL141W	SDH3	mitochondrial respiratory chain complex II (GO)
+YKL148C	SDH1	mitochondrial respiratory chain complex II (GO)
+YLL041C	SDH2	mitochondrial respiratory chain complex II (GO)
+YML091C	RPM2	mitochondrial ribonuclease P complex (GO)
+YDL069C	CBS1	mitochondrial ribosome (GO)
+YGL068W	MNP1	mitochondrial ribosome (GO)
+YKL142W	MRP8	mitochondrial ribosome (GO)
+YPL132W	COX11	mitochondrial ribosome (GO)
+YBL090W	MRP21	mitochondrial small ribosomal subunit
+YBR146W	MRPS9	mitochondrial small ribosomal subunit
+YBR251W	MRPS5	mitochondrial small ribosomal subunit
+YDL045W-A	MRP10	mitochondrial small ribosomal subunit
+YDR036C	EHD3	mitochondrial small ribosomal subunit
+YDR041W	RSM10	mitochondrial small ribosomal subunit
+YDR175C	RSM24	mitochondrial small ribosomal subunit
+YDR337W	MRPS28	mitochondrial small ribosomal subunit
+YDR347W	MRP1	mitochondrial small ribosomal subunit
+YER050C	RSM18	mitochondrial small ribosomal subunit
+YGL129C	RSM23	mitochondrial small ribosomal subunit
+YGR084C	MRP13	mitochondrial small ribosomal subunit
+YGR165W	MRPS35	mitochondrial small ribosomal subunit
+YGR215W	RSM27	mitochondrial small ribosomal subunit
+YHL004W	MRP4	mitochondrial small ribosomal subunit
+YHR059W	FYV4	mitochondrial small ribosomal subunit
+YIL093C	RSM25	mitochondrial small ribosomal subunit
+YJR101W	RSM26	mitochondrial small ribosomal subunit
+YJR113C	RSM7	mitochondrial small ribosomal subunit
+YKL003C	MRP17	mitochondrial small ribosomal subunit
+YKL155C	RSM22	mitochondrial small ribosomal subunit
+YMR158W	MRPS8	mitochondrial small ribosomal subunit
+YMR188C	MRPS17	mitochondrial small ribosomal subunit
+YNL081C	SWS2	mitochondrial small ribosomal subunit
+YNL137C	NAM9	mitochondrial small ribosomal subunit
+YNL306W	MRPS18	mitochondrial small ribosomal subunit
+YNR036C	MRPS12	mitochondrial small ribosomal subunit
+YNR037C	RSM19	mitochondrial small ribosomal subunit
+YOR158W	PET123	mitochondrial small ribosomal subunit
+YPL013C	MRPS16	mitochondrial small ribosomal subunit
+YPL118W	MRP51	mitochondrial small ribosomal subunit
+YAL010C	MDM10	mitochondrial sorting and assembly machinery complex (GO)
+YHR083W	SAM35	mitochondrial sorting and assembly machinery complex (GO)
+YMR060C	SAM37	mitochondrial sorting and assembly machinery complex (GO)
+YNL026W	SAM50	mitochondrial sorting and assembly machinery complex (GO)
+YBL038W	MRPL16	mitochondtrial large ribosomal subunit
+YBR122C	MRPL36	mitochondtrial large ribosomal subunit
+YBR282W	MRPL27	mitochondtrial large ribosomal subunit
+YCR046C	IMG1	mitochondtrial large ribosomal subunit
+YCR071C	IMG2	mitochondtrial large ribosomal subunit
+YDR116C	MRPL1	mitochondtrial large ribosomal subunit
+YDR237W	MRPL7	mitochondtrial large ribosomal subunit
+YDR296W	MHR1	mitochondtrial large ribosomal subunit
+YDR322W	MRPL35	mitochondtrial large ribosomal subunit
+YDR405W	MRP20	mitochondtrial large ribosomal subunit
+YDR462W	MRPL28	mitochondtrial large ribosomal subunit
+YGR076C	MRPL25	mitochondtrial large ribosomal subunit
+YGR220C	MRPL9	mitochondtrial large ribosomal subunit
+YHR147C	MRPL6	mitochondtrial large ribosomal subunit
+YJL063C	MRPL8	mitochondtrial large ribosomal subunit
+YKL167C	MRP49	mitochondtrial large ribosomal subunit
+YKR006C	MRPL13	mitochondtrial large ribosomal subunit
+YKR085C	MRPL20	mitochondtrial large ribosomal subunit
+YLR312W-A	MRPL15	mitochondtrial large ribosomal subunit
+YLR439W	MRPL4	mitochondtrial large ribosomal subunit
+YML009C	MRPL39	mitochondtrial large ribosomal subunit
+YML025C	YML6	mitochondtrial large ribosomal subunit
+YMR024W	MRPL3	mitochondtrial large ribosomal subunit
+YMR098C	ATP25	mitochondtrial large ribosomal subunit
+YMR193W	MRPL24	mitochondtrial large ribosomal subunit
+YMR225C	MRPL44	mitochondtrial large ribosomal subunit
+YNL005C	MRP7	mitochondtrial large ribosomal subunit
+YNL177C	MRPL22	mitochondtrial large ribosomal subunit
+YNL252C	MRPL17	mitochondtrial large ribosomal subunit
+YNL284C	MRPL10	mitochondtrial large ribosomal subunit
+YOR150W	MRPL23	mitochondtrial large ribosomal subunit
+YPL183W-A	RTC6	mitochondtrial large ribosomal subunit
+YPR100W	MRPL51	mitochondtrial large ribosomal subunit
+YGL116W	CDC20	mitotic checkpoint complex (GO)
+YJL013C	MAD3	mitotic checkpoint complex (GO)
+YJL030W	MAD2	mitotic checkpoint complex (GO)
+YOR026W	BUB3	mitotic checkpoint complex (GO)
+YLR035C	MLH2	Mlh2-Mlh1 heterodimer
+YMR167W	MLH1	Mlh2-Mlh1 heterodimer
+YCR086W	CSM1	monopolin complex (GO)
+YDR439W	LRS4	monopolin complex (GO)
+YER106W	MAM1	monopolin complex (GO)
+YPL204W	HRR25	monopolin complex (GO)
+YDR369C	XRS2	Mre11 complex
+YMR224C	MRE11	Mre11 complex
+YDR369C	XRS2	Mre11 complex (GO)
+YMR224C	MRE11	Mre11 complex (GO)
+YNL250W	RAD50	Mre11 complex (GO)
+YJL124C	LSM1	mRNA cap complex (GO)
+YKL204W	EAP1	mRNA cap complex (GO)
+YOR276W	CAF20	mRNA cap complex (GO)
+YGL130W	CEG1	mRNA capping enzyme complex
+YPL228W	CET1	mRNA capping enzyme complex
+YMR167W	MLH1	MutLalpha complex
+YNL082W	PMS1	MutLalpha complex
+YMR167W	MLH1	MutLbeta complex (GO)
+YPL164C	MLH3	MutLbeta complex (GO)
+YDR097C	MSH6	MutSalpha complex
+YOL090W	MSH2	MutSalpha complex
+YCR092C	MSH3	MutSBeta complex
+YOL090W	MSH2	MutSBeta complex
+YHR023W	MYO1	myosin II complex (GO)
+YAL029C	MYO4	myosin V complex (GO)
+YOR326W	MYO2	myosin V complex (GO)
+YDL044C	MTF2	Nam1-Sls1 complex
+YLR139C	SLS1	Nam1-Sls1 complex
+YDR252W	BTT1	nascent polypeptide-associated complex
+YHR193C	EGD2	nascent polypeptide-associated complex
+YPL037C	EGD1	nascent polypeptide-associated complex
+YDL040C	NAT1	NatA complex
+YHR013C	ARD1	NatA complex
+YOR253W	NAT5	NatA complex
+YOL076W	MDM20	NatB complex
+YPR131C	NAT3	NatB complex
+YCR020C-A	MAK31	NatC complex
+YEL053C	MAK10	NatC complex
+YPR051W	MAK3	NatC complex
+YER018C	SPC25	Ndc80 complex
+YIL144W	TID3	Ndc80 complex
+YMR117C	SPC24	Ndc80 complex
+YOL069W	NUF2	Ndc80 complex
+YJR052W	RAD7	NEF4 complex
+YPL046C	ELC1	NEF4 complex
+YDR060W	MAK21	Noc1p-Noc2p complex (GO)
+YOR206W	NOC2	Noc1p-Noc2p complex (GO)
+YLR002C	NOC3	Noc2p-Noc3p complex (GO)
+YOR206W	NOC2	Noc2p-Noc3p complex (GO)
+YDL148C	NOP14	Noc4p-Nop14p complex (GO)
+YPR144C	NOC4	Noc4p-Nop14p complex (GO)
+YLR430W	SEN1	Nrd1-Nab3-Sen1 termination complex
+YMR239C	RNT1	Nrd1-Nab3-Sen1 termination complex
+YNL251C	NRD1	Nrd1-Nab3-Sen1 termination complex
+YPL190C	NAB3	Nrd1-Nab3-Sen1 termination complex
+YBL052C	SAS3	NuA3 histone acetyltransferase complex (GO)
+YJR082C	EAF6	NuA3 histone acetyltransferase complex (GO)
+YOR064C	YNG1	NuA3 histone acetyltransferase complex (GO)
+YPL129W	TAF14	NuA3 histone acetyltransferase complex (GO)
+YPR031W	NTO1	NuA3 histone acetyltransferase complex (GO)
+YDR359C	EAF1	NuA4 histone acetyltransferase complex
+YEL018W	EAF5	NuA4 histone acetyltransferase complex
+YFL024C	EPL1	NuA4 histone acetyltransferase complex
+YFL039C	ACT1	NuA4 histone acetyltransferase complex
+YGR002C	SWC4	NuA4 histone acetyltransferase complex
+YHR090C	YNG2	NuA4 histone acetyltransferase complex
+YJL081C	ARP4	NuA4 histone acetyltransferase complex
+YJR082C	EAF6	NuA4 histone acetyltransferase complex
+YNL107W	YAF9	NuA4 histone acetyltransferase complex
+YNL136W	EAF7	NuA4 histone acetyltransferase complex
+YOR244W	ESA1	NuA4 histone acetyltransferase complex
+YPR023C	EAF3	NuA4 histone acetyltransferase complex
+YMR125W	STO1	nuclear cap binding complex (GO)
+YPL178W	CBC2	nuclear cap binding complex (GO)
+YDL003W	MCD1	nuclear cohesin complex
+YFL008W	SMC1	nuclear cohesin complex
+YIL026C	IRR1	nuclear cohesin complex
+YJL074C	SMC3	nuclear cohesin complex
+YBL097W	BRN1	nuclear condensin complex
+YDR325W	YCG1	nuclear condensin complex
+YFR031C	SMC2	nuclear condensin complex
+YLR086W	SMC4	nuclear condensin complex
+YLR272C	YCS4	nuclear condensin complex
+YKL186C	MTR2	nuclear RNA export factor complex (GO)
+YPL169C	MEX67	nuclear RNA export factor complex (GO)
+YFL009W	CDC4	nuclear SCF ubiquitin ligase complex (GO)
+YIL046W	MET30	nuclear SCF ubiquitin ligase complex (GO)
+YBR275C	RIF1	nuclear telomere cap complex (GO)
+YDL042C	SIR2	nuclear telomere cap complex (GO)
+YDL220C	CDC13	nuclear telomere cap complex (GO)
+YDR082W	STN1	nuclear telomere cap complex (GO)
+YDR227W	SIR4	nuclear telomere cap complex (GO)
+YGR099W	TEL2	nuclear telomere cap complex (GO)
+YLR010C	TEN1	nuclear telomere cap complex (GO)
+YLR150W	STM1	nuclear telomere cap complex (GO)
+YLR442C	SIR3	nuclear telomere cap complex (GO)
+YLR453C	RIF2	nuclear telomere cap complex (GO)
+YNL216W	RAP1	nuclear telomere cap complex (GO)
+YER126C	NSA2	"nucleolar preribosome, large subunit precursor (GO)"
+YGR103W	NOP7	"nucleolar preribosome, large subunit precursor (GO)"
+YLR022C	SDO1	"nucleolar preribosome, large subunit precursor (GO)"
+YLR221C	RSA3	"nucleolar preribosome, large subunit precursor (GO)"
+YNR038W	DBP6	"nucleolar preribosome, large subunit precursor (GO)"
+YPL093W	NOG1	"nucleolar preribosome, large subunit precursor (GO)"
+YBR247C	ENP1	"nucleolar preribosome, small subunit precursor (GO)"
+YGR081C	SLX9	"nucleolar preribosome, small subunit precursor (GO)"
+YJL010C	NOP9	"nucleolar preribosome, small subunit precursor (GO)"
+YKL143W	LTV1	"nucleolar preribosome, small subunit precursor (GO)"
+YNL178W	RPS3	"nucleolar preribosome, small subunit precursor (GO)"
+YFR002W	NIC96	nucleoporin Nsp1 subcomplex
+YGL172W	NUP49	nucleoporin Nsp1 subcomplex
+YGR119C	NUP57	nucleoporin Nsp1 subcomplex
+YJL041W	NSP1	nucleoporin Nsp1 subcomplex
+YER107C	GLE2	nucleoporin Nup82 subcomplex
+YIL115C	NUP159	nucleoporin Nup82 subcomplex
+YJL041W	NSP1	nucleoporin Nup82 subcomplex
+YJL061W	NUP82	nucleoporin Nup82 subcomplex
+YMR047C	NUP116	nucleoporin Nup82 subcomplex
+YDL116W	NUP84	nucleoporin Nup84 subcomplex
+YGL092W	NUP145	nucleoporin Nup84 subcomplex
+YGL100W	SEH1	nucleoporin Nup84 subcomplex
+YJR042W	NUP85	nucleoporin Nup84 subcomplex
+YKL057C	NUP120	nucleoporin Nup84 subcomplex
+YLR208W	SEC13	nucleoporin Nup84 subcomplex
+YAL027W	SAW1	nucleotide-excision repair factor 1 complex
+YML095C	RAD10	nucleotide-excision repair factor 1 complex
+YPL022W	RAD1	nucleotide-excision repair factor 1 complex
+YML095C	RAD10	nucleotide-excision repair factor 1 complex (GO)
+YMR201C	RAD14	nucleotide-excision repair factor 1 complex (GO)
+YPL022W	RAD1	nucleotide-excision repair factor 1 complex (GO)
+YEL037C	RAD23	nucleotide-excision repair factor 2 complex
+YER162C	RAD4	nucleotide-excision repair factor 2 complex
+YDR460W	TFB3	nucleotide-excision repair factor 3 complex (GO)
+YGR258C	RAD2	nucleotide-excision repair factor 3 complex (GO)
+YBR114W	RAD16	nucleotide-excision repair factor 4 complex (GO)
+YJR052W	RAD7	nucleotide-excision repair factor 4 complex (GO)
+YKL112W	ABF1	nucleotide-excision repair factor 4 complex (GO)
+YPL046C	ELC1	nucleotide-excision repair factor 4 complex (GO)
+YAR002W	NUP60	Nup60-Nup2 nuclear pore complex
+YLR335W	NUP2	Nup60-Nup2 nuclear pore complex
+YLR347C	KAP95	Nup60-Nup2 nuclear pore complex
+YDL232W	OST4	oligosaccharyl transferase complex (GO)
+YEL002C	WBP1	oligosaccharyl transferase complex (GO)
+YGL022W	STT3	oligosaccharyl transferase complex (GO)
+YGL226C-A	OST5	oligosaccharyl transferase complex (GO)
+YJL002C	OST1	oligosaccharyl transferase complex (GO)
+YML019W	OST6	oligosaccharyl transferase complex (GO)
+YMR149W	SWP1	oligosaccharyl transferase complex (GO)
+YOR085W	OST3	oligosaccharyl transferase complex (GO)
+YOR103C	OST2	oligosaccharyl transferase complex (GO)
+YBR060C	ORC2	origin recognition complex
+YHR118C	ORC6	origin recognition complex
+YLL004W	ORC3	origin recognition complex
+YML065W	ORC1	origin recognition complex
+YNL261W	ORC5	origin recognition complex
+YPR162C	ORC4	origin recognition complex
+YLR246W	ERF2	palmitoyltransferase complex (GO)
+YOL110W	SHR5	palmitoyltransferase complex (GO)
+YGL094C	PAN2	PAN complex
+YKL025C	PAN3	PAN complex
+YIR006C	PAN1	Pan1-End3 complex
+YNL084C	END3	Pan1-End3 complex
+YBR173C	UMP1	Pba1-Pba2 complex
+YKL206C	ADD66	Pba1-Pba2 complex
+YLR199C	PBA1	Pba1-Pba2 complex
+YIL050W	PCL7	Pcl7-Pho85 CDK-cyclin complex
+YPL031C	PHO85	Pcl7-Pho85 CDK-cyclin complex
+YBR088C	POL30	PCNA complex (GO)
+YFL022C	FRS2	phenylalanine-tRNA ligase complex
+YLR060W	FRS1	phenylalanine-tRNA ligase complex
+YGR233C	PHO81	Pho80-Pho81-Pho85 CDK-cyclin complex
+YOL001W	PHO80	Pho80-Pho81-Pho85 CDK-cyclin complex
+YPL031C	PHO85	Pho80-Pho81-Pho85 CDK-cyclin complex
+YBR097W	VPS15	phosphatidylinositol 3-kinase complex II
+YLR240W	VPS34	phosphatidylinositol 3-kinase complex II
+YLR360W	VPS38	phosphatidylinositol 3-kinase complex II
+YPL120W	VPS30	phosphatidylinositol 3-kinase complex II
+YGR254W	ENO1	phosphopyruvate hydratase complex (GO)
+YHR174W	ENO2	phosphopyruvate hydratase complex (GO)
+YER149C	PEA2	polarisome
+YLL021W	SPA2	polarisome
+YEL003W	GIM4	prefoldin complex
+YGR078C	PAC10	prefoldin complex
+YJL179W	PFD1	prefoldin complex
+YLR200W	YKE2	prefoldin complex
+YML094W	GIM5	prefoldin complex
+YNL153C	GIM3	prefoldin complex
+YDL166C	FAP7	preribosome (GO)
+YOR056C	NOB1	preribosome (GO)
+YBR142W	MAK5	"preribosome, large subunit precursor"
+YCL054W	SPB1	"preribosome, large subunit precursor"
+YDL031W	DBP10	"preribosome, large subunit precursor"
+YDR087C	RRP1	"preribosome, large subunit precursor"
+YDR496C	PUF6	"preribosome, large subunit precursor"
+YER006W	NUG1	"preribosome, large subunit precursor"
+YFL002C	SPB4	"preribosome, large subunit precursor"
+YGL111W	NSA1	"preribosome, large subunit precursor"
+YGR103W	NOP7	"preribosome, large subunit precursor"
+YHR052W	CIC1	"preribosome, large subunit precursor"
+YHR088W	RPF1	"preribosome, large subunit precursor"
+YKL009W	MRT4	"preribosome, large subunit precursor"
+YKL172W	EBP2	"preribosome, large subunit precursor"
+YKR081C	RPF2	"preribosome, large subunit precursor"
+YLL008W	DRS1	"preribosome, large subunit precursor"
+YLL034C	RIX7	"preribosome, large subunit precursor"
+YLR002C	NOC3	"preribosome, large subunit precursor"
+YLR449W	FPR4	"preribosome, large subunit precursor"
+YMR049C	ERB1	"preribosome, large subunit precursor"
+YMR229C	RRP5	"preribosome, large subunit precursor"
+YMR290C	HAS1	"preribosome, large subunit precursor"
+YNL002C	RLP7	"preribosome, large subunit precursor"
+YNL061W	NOP2	"preribosome, large subunit precursor"
+YNL110C	NOP15	"preribosome, large subunit precursor"
+YOL077C	BRX1	"preribosome, large subunit precursor"
+YOR206W	NOC2	"preribosome, large subunit precursor"
+YOR272W	YTM1	"preribosome, large subunit precursor"
+YPL093W	NOG1	"preribosome, large subunit precursor"
+YPL211W	NIP7	"preribosome, large subunit precursor"
+YPR016C	TIF6	"preribosome, large subunit precursor"
+YGR132C	PHB1	prohibitin complex
+YGR231C	PHB2	prohibitin complex
+YBR082C	UBC4	proteasome complex (GO)
+YDR059C	UBC5	proteasome complex (GO)
+YDR069C	DOA4	proteasome complex (GO)
+YDR177W	UBC1	proteasome complex (GO)
+YEL037C	RAD23	proteasome complex (GO)
+YGL058W	RAD6	proteasome complex (GO)
+YGR184C	UBR1	proteasome complex (GO)
+YHL030W	ECM29	proteasome complex (GO)
+YHR052W	CIC1	proteasome complex (GO)
+YBL041W	PRE7	proteasome core complex
+YER012W	PRE1	proteasome core complex
+YER094C	PUP3	proteasome core complex
+YFL007W	BLM10	proteasome core complex
+YFR050C	PRE4	proteasome core complex
+YGL011C	SCL1	proteasome core complex
+YGR135W	PRE9	proteasome core complex
+YGR253C	PUP2	proteasome core complex
+YJL001W	PRE3	proteasome core complex
+YML092C	PRE8	proteasome core complex
+YMR314W	PRE5	proteasome core complex
+YOL038W	PRE6	proteasome core complex
+YOR157C	PUP1	proteasome core complex
+YOR362C	PRE10	proteasome core complex
+YPR103W	PRE2	proteasome core complex
+YFL007W	BLM10	proteasome core complex (GO)
+YDL007W	RPT2	proteasome regulatory particle
+YDL097C	RPN6	proteasome regulatory particle
+YDL147W	RPN5	proteasome regulatory particle
+YDR363W-A	SEM1	proteasome regulatory particle
+YDR394W	RPT3	proteasome regulatory particle
+YDR427W	RPN9	proteasome regulatory particle
+YER021W	RPN3	proteasome regulatory particle
+YFR004W	RPN11	proteasome regulatory particle
+YFR010W	UBP6	proteasome regulatory particle
+YFR052W	RPN12	proteasome regulatory particle
+YGL048C	RPT6	proteasome regulatory particle
+YGR232W	NAS6	proteasome regulatory particle
+YHL030W	ECM29	proteasome regulatory particle
+YHR027C	RPN1	proteasome regulatory particle
+YHR200W	RPN10	proteasome regulatory particle
+YIL075C	RPN2	proteasome regulatory particle
+YKL145W	RPT1	proteasome regulatory particle
+YLR421C	RPN13	proteasome regulatory particle
+YOR117W	RPT5	proteasome regulatory particle
+YOR259C	RPT4	proteasome regulatory particle
+YOR261C	RPN8	proteasome regulatory particle
+YPR108W	RPN7	proteasome regulatory particle
+YDL020C	RPN4	proteasome regulatory particle (GO)
+YFR010W	UBP6	proteasome regulatory particle (GO)
+YGR232W	NAS6	proteasome regulatory particle (GO)
+YDL090C	RAM1	protein farnesyltransferase complex
+YKL019W	RAM2	protein farnesyltransferase complex
+YGL019W	CKB1	protein kinase CK2 complex
+YIL035C	CKA1	protein kinase CK2 complex
+YOR039W	CKB2	protein kinase CK2 complex
+YOR061W	CKA2	protein kinase CK2 complex
+YBR045C	GIP1	protein phosphatase type 1 complex (GO)
+YBR050C	REG2	protein phosphatase type 1 complex (GO)
+YDR028C	REG1	protein phosphatase type 1 complex (GO)
+YER054C	GIP2	protein phosphatase type 1 complex (GO)
+YER133W	GLC7	protein phosphatase type 1 complex (GO)
+YLR273C	PIG1	protein phosphatase type 1 complex (GO)
+YOR178C	GAC1	protein phosphatase type 1 complex (GO)
+YAL016W	TPD3	protein phosphatase type 2A complex
+YDL134C	PPH21	protein phosphatase type 2A complex
+YDL188C	PPH22	protein phosphatase type 2A complex
+YGL190C	CDC55	protein phosphatase type 2A complex
+YML109W	ZDS2	protein phosphatase type 2A complex
+YMR273C	ZDS1	protein phosphatase type 2A complex
+YOR014W	RTS1	protein phosphatase type 2A complex
+YHL011C	PRS3	Prs1-Prs3 heterodimer
+YKL181W	PRS1	Prs1-Prs3 heterodimer
+YLL010C	PSR1	Psr2-Psr1-Whi2 complex
+YLR019W	PSR2	Psr2-Psr1-Whi2 complex
+YOR043W	WHI2	Psr2-Psr1-Whi2 complex
+YBR280C	SAF1	putatie Saf1-Aah1 complex
+YNL141W	AAH1	putatie Saf1-Aah1 complex
+YCR088W	ABP1	putative Abp1-Crn1 complex
+YLR429W	CRN1	putative Abp1-Crn1 complex
+YCR073W-A	SOL2	putative Ade16-Ade17-Sol2 complex
+YLR028C	ADE16	putative Ade16-Ade17-Sol2 complex
+YMR120C	ADE17	putative Ade16-Ade17-Sol2 complex
+YDR264C	AKR1	putative Ark1-Ste4 complex
+YOR212W	STE4	putative Ark1-Ste4 complex
+YDR035W	ARO3	putative Aro3-Bcs1 complex
+YDR375C	BCS1	putative Aro3-Bcs1 complex
+YCR072C	RSA4	putative Arx1-Rsa4-Sda1-Ipi3-Nsa2-Nog2-Bud20-Ipi1-Mdn1 complex
+YDR101C	ARX1	putative Arx1-Rsa4-Sda1-Ipi3-Nsa2-Nog2-Bud20-Ipi1-Mdn1 complex
+YER126C	NSA2	putative Arx1-Rsa4-Sda1-Ipi3-Nsa2-Nog2-Bud20-Ipi1-Mdn1 complex
+YGR245C	SDA1	putative Arx1-Rsa4-Sda1-Ipi3-Nsa2-Nog2-Bud20-Ipi1-Mdn1 complex
+YHR085W	IPI1	putative Arx1-Rsa4-Sda1-Ipi3-Nsa2-Nog2-Bud20-Ipi1-Mdn1 complex
+YLR074C	BUD20	putative Arx1-Rsa4-Sda1-Ipi3-Nsa2-Nog2-Bud20-Ipi1-Mdn1 complex
+YLR106C	MDN1	putative Arx1-Rsa4-Sda1-Ipi3-Nsa2-Nog2-Bud20-Ipi1-Mdn1 complex
+YNL182C	IPI3	putative Arx1-Rsa4-Sda1-Ipi3-Nsa2-Nog2-Bud20-Ipi1-Mdn1 complex
+YNR053C	NOG2	putative Arx1-Rsa4-Sda1-Ipi3-Nsa2-Nog2-Bud20-Ipi1-Mdn1 complex
+YGR124W	ASN2	putative Asn1-Asn2 isozyme complex
+YPR145W	ASN1	putative Asn1-Asn2 isozyme complex
+YFR021W	ATG18	putative Atg18-Atg2 complex
+YNL242W	ATG2	putative Atg18-Atg2 complex
+YAL020C	ATS1	putative Ats1-Kti11 complex
+YBL071W-A	KTI11	putative Ats1-Kti11 complex
+YHR208W	BAT1	putative Bat1-Bat2 complex
+YJR148W	BAT2	putative Bat1-Bat2 complex
+YAL060W	BDH1	putative Bdh1-Bdh2 complex
+YAL061W	BDH2	putative Bdh1-Bdh2 complex
+YAL041W	CDC24	putative Boi2-Cdc24 complex
+YER114C	BOI2	putative Boi2-Cdc24 complex
+YDL074C	BRE1	putative Bre1-Lge1 complex
+YPL055C	LGE1	putative Bre1-Lge1 complex
+YLR319C	BUD6	putative Bud6-Yor304c-a complex
+YOR304C-A	YOR304C-A	putative Bud6-Yor304c-a complex
+YAL038W	CDC19	putative Cdc19-Pyk2 isozyme complex
+YOR347C	PYK2	putative Cdc19-Pyk2 isozyme complex
+YBR202W	MCM7	putative Cdc47-Erg26 complex
+YGL001C	ERG26	putative Cdc47-Erg26 complex
+YDR267C	CIA1	putative Cia1-Yhr122w-Met18-Nar1 complex
+YHR122W	YHR122W	putative Cia1-Yhr122w-Met18-Nar1 complex
+YIL128W	MET18	putative Cia1-Yhr122w-Met18-Nar1 complex
+YNL240C	NAR1	putative Cia1-Yhr122w-Met18-Nar1 complex
+YEL061C	CIN8	putative Cin8-Zwf1 complex
+YNL241C	ZWF1	putative Cin8-Zwf1 complex
+YBR109C	CMD1	putative Cmd1-Mlc1-Myo2-Myo1-Mlc2 complex
+YGL106W	MLC1	putative Cmd1-Mlc1-Myo2-Myo1-Mlc2 complex
+YHR023W	MYO1	putative Cmd1-Mlc1-Myo2-Myo1-Mlc2 complex
+YOR326W	MYO2	putative Cmd1-Mlc1-Myo2-Myo1-Mlc2 complex
+YPR188C	MLC2	putative Cmd1-Mlc1-Myo2-Myo1-Mlc2 complex
+YDR079C-A	TFB5	putative core TFIIH Tfb5-Tfb2 subcomplex
+YPL122C	TFB2	putative core TFIIH Tfb5-Tfb2 subcomplex
+YDR231C	COX20	putative Cox20-Chs1 complex
+YNL192W	CHS1	putative Cox20-Chs1 complex
+YBL040C	ERD2	putative Crm1-Mir1-Erd2-Tub1-Gea2-Mtr10-Kap104 complex
+YBR017C	KAP104	putative Crm1-Mir1-Erd2-Tub1-Gea2-Mtr10-Kap104 complex
+YEL022W	GEA2	putative Crm1-Mir1-Erd2-Tub1-Gea2-Mtr10-Kap104 complex
+YGR218W	CRM1	putative Crm1-Mir1-Erd2-Tub1-Gea2-Mtr10-Kap104 complex
+YJR077C	MIR1	putative Crm1-Mir1-Erd2-Tub1-Gea2-Mtr10-Kap104 complex
+YML085C	TUB1	putative Crm1-Mir1-Erd2-Tub1-Gea2-Mtr10-Kap104 complex
+YOR160W	MTR10	putative Crm1-Mir1-Erd2-Tub1-Gea2-Mtr10-Kap104 complex
+YLR429W	CRN1	putative Crn1-Inp52-Bsp1 complex
+YNL106C	INP52	putative Crn1-Inp52-Bsp1 complex
+YPR171W	BSP1	putative Crn1-Inp52-Bsp1 complex
+YGR003W	CUL3	putative Cul3-Yil001w complex
+YIL001W	YIL001W	putative Cul3-Yil001w complex
+YDL209C	CWC2	putative Cwc2-Spp382-Ntr2 complex
+YKR022C	NTR2	putative Cwc2-Spp382-Ntr2 complex
+YLR424W	SPP382	putative Cwc2-Spp382-Ntr2 complex
+YAL039C	CYC3	putative Cyc3-Yat1 complex
+YAR035W	YAT1	putative Cyc3-Yat1 complex
+YER143W	DDI1	putative Ddi1-Pmt4 complex
+YJR143C	PMT4	putative Ddi1-Pmt4 complex
+YKL078W	DHR2	putative Dhr2-Ubp10 complex
+YNL186W	UBP10	putative Dhr2-Ubp10 complex
+YKR071C	DRE2	putative Dre2-Tah18 complex
+YPR048W	TAH18	putative Dre2-Tah18 complex
+YGR093W	YGR093W	putative Drn1-Dbr1 complex
+YKL149C	DBR1	putative Drn1-Dbr1 complex
+YLR436C	ECM30	putative Ecm30-Ubp15 complex
+YMR304W	UBP15	putative Ecm30-Ubp15 complex
+YBL047C	EDE1	putative Ede1-Syp1 complex
+YCR030C	SYP1	putative Ede1-Syp1 complex
+YGR271C-A	EFG1	putative Efg1-Bud22 complex
+YMR014W	BUD22	putative Efg1-Bud22 complex
+YDR385W	EFT2	putative Eft1-Eft2 complex
+YOR133W	EFT1	putative Eft1-Eft2 complex
+YGR185C	TYS1	putative Ela1-Tys1 complex
+YNL230C	ELA1	putative Ela1-Tys1 complex
+YDL018C	ERP3	putative Emp24-Erv25-Erp3-Erp5 complex
+YGL200C	EMP24	putative Emp24-Erv25-Erp3-Erp5 complex
+YHR110W	ERP5	putative Emp24-Erv25-Erp3-Erp5 complex
+YML012W	ERV25	putative Emp24-Erv25-Erp3-Erp5 complex
+YHR072W	ERG7	putative Erg7-Erg27 complex
+YLR100W	ERG27	putative Erg7-Erg27 complex
+YAL042W	ERV46	putative Erv46-Erv41-Ero1 complex
+YML067C	ERV41	putative Erv46-Erv41-Ero1 complex
+YML130C	ERO1	putative Erv46-Erv41-Ero1 complex
+YGL082W	YGL082W	putative Faa4-Ygl082w complex
+YMR246W	FAA4	putative Faa4-Ygl082w complex
+YIL161W	YIL161W	putative Fap1-Fpr1-Yil161w complex
+YNL023C	FAP1	putative Fap1-Fpr1-Yil161w complex
+YNL135C	FPR1	putative Fap1-Fpr1-Yil161w complex
+YJL155C	FBP26	putative Fbp26-Ylr345w complex
+YLR345W	YLR345W	putative Fbp26-Ylr345w complex
+YAL053W	FLC2	putative Flc2-Pdr5 complex
+YOR153W	PDR5	putative Flc2-Pdr5 complex
+YAL053W	FLC2	putative Flc2-Tcb3 complex
+YML072C	TCB3	putative Flc2-Tcb3 complex
+YIL098C	FMC1	putative Fmc1-Atp12 complex
+YJL180C	ATP12	putative Fmc1-Atp12 complex
+YML074C	FPR3	putative Fpr3-Ssb2 complex
+YNL209W	SSB2	putative Fpr3-Ssb2 complex
+YAL034C	FUN19	putative Fun19-Kap123 complex
+YER110C	KAP123	putative Fun19-Kap123 complex
+YAL062W	GDH3	putative Gdh1-Gdh3 isozyme complex
+YOR375C	GDH1	putative Gdh1-Gdh3 isozyme complex
+YER136W	GDI1	putative Gdi1-Ypt6-Ypt1 complex
+YFL038C	YPT1	putative Gdi1-Ypt6-Ypt1 complex
+YLR262C	YPT6	putative Gdi1-Ypt6-Ypt1 complex
+YDR152W	GIR2	putative Gir2-Rbg2 complex
+YGR173W	RBG2	putative Gir2-Rbg2 complex
+YDL171C	GLT1	putative Glt1-Ylr257w complex
+YLR257W	YLR257W	putative Glt1-Ylr257w complex
+YDR517W	GRH1	putative Grh1-Fmp38 complex
+YOR205C	GEP3	putative Grh1-Fmp38 complex
+YFR015C	GSY1	putative Gsy1-Gsy2 complex
+YLR258W	GSY2	putative Gsy1-Gsy2 complex
+YDR365C	ESF1	putative Hca4-Esf1-Esf2 complex
+YJL033W	HCA4	putative Hca4-Esf1-Esf2 complex
+YNR054C	ESF2	putative Hca4-Esf1-Esf2 complex
+YDR458C	HEH2	putative Heh2-Erg24 complex
+YNL280C	ERG24	putative Heh2-Erg24 complex
+YLR450W	HMG2	putative Hmg1-Hmg2 isozyme complex
+YML075C	HMG1	putative Hmg1-Hmg2 isozyme complex
+YBR034C	HMT1	putative Hmt1-Scd6-Psp2 complex
+YML017W	PSP2	putative Hmt1-Scd6-Psp2 complex
+YPR129W	SCD6	putative Hmt1-Scd6-Psp2 complex
+YLR113W	HOG1	putative Hog1-Rck2 complex
+YLR248W	RCK2	putative Hog1-Rck2 complex
+YDL060W	TSR1	putative Hrr25-Ltv1-Rio2-Tsr1 complex
+YKL143W	LTV1	putative Hrr25-Ltv1-Rio2-Tsr1 complex
+YNL207W	RIO2	putative Hrr25-Ltv1-Rio2-Tsr1 complex
+YPL204W	HRR25	putative Hrr25-Ltv1-Rio2-Tsr1 complex
+YDR171W	HSP42	putative Hsp42-Gln1 complex
+YPR035W	GLN1	putative Hsp42-Gln1 complex
+YDR171W	HSP42	putative Hsp42-Sis1 complex
+YNL007C	SIS1	putative Hsp42-Sis1 complex
+YBR011C	IPP1	putative Ipp1-Ack1-Rom2 complex
+YDL203C	ACK1	putative Ipp1-Ack1-Rom2 complex
+YLR371W	ROM2	putative Ipp1-Ack1-Rom2 complex
+YBR011C	IPP1	putative Ipp1-Tus1-Ypl066w complex
+YLR425W	TUS1	putative Ipp1-Tus1-Ypl066w complex
+YPL066W	YPL066W	putative Ipp1-Tus1-Ypl066w complex
+YER110C	KAP123	putative Kap123-Ypr174c complex
+YPR174C	YPR174C	putative Kap123-Ypr174c complex
+YLR347C	KAP95	putative Kap95-Nup1 nuclear pore subcomplex
+YOR098C	NUP1	putative Kap95-Nup1 nuclear pore subcomplex
+YCL011C	GBP2	putative Kem1-Gbp2-Sro9-Sbp1 complex
+YCL037C	SRO9	putative Kem1-Gbp2-Sro9-Sbp1 complex
+YGL173C	KEM1	putative Kem1-Gbp2-Sro9-Sbp1 complex
+YHL034C	SBP1	putative Kem1-Gbp2-Sro9-Sbp1 complex
+YNL238W	KEX2	putative Kex2-Sil1 complex
+YOL031C	SIL1	putative Kex2-Sil1 complex
+YBL007C	SLA1	putative Las17-Sla1-Vrp1 complex
+YLR337C	VRP1	putative Las17-Sla1-Vrp1 complex
+YOR181W	LAS17	putative Las17-Sla1-Vrp1 complex
+YNL104C	LEU4	putative Leu4-Leu9 isozyme complex
+YOR108W	LEU9	putative Leu4-Leu9 isozyme complex
+YBR267W	REI1	putative Lsg1-Nmd3-Rei1 complex
+YGL099W	LSG1	putative Lsg1-Nmd3-Rei1 complex
+YHR170W	NMD3	putative Lsg1-Nmd3-Rei1 complex
+YDL131W	LYS21	putative Lys20-Lys21 isozyme complex
+YDL182W	LYS20	putative Lys20-Lys21 isozyme complex
+YBR030W	RKM3	putative Map1-Ybr030w complex
+YLR244C	MAP1	putative Map1-Ybr030w complex
+YBR185C	MBA1	putative Mba1-Ste50 complex
+YCL032W	STE50	putative Mba1-Ste50 complex
+YAL010C	MDM10	putative Mdm10-Mpm1-Tom40-Yhm2 complex
+YJL066C	MPM1	putative Mdm10-Mpm1-Tom40-Yhm2 complex
+YMR203W	TOM40	putative Mdm10-Mpm1-Tom40-Yhm2 complex
+YMR241W	YHM2	putative Mdm10-Mpm1-Tom40-Yhm2 complex
+YGL125W	MET13	putative Met13-Met12 isozyme complex
+YPL023C	MET12	putative Met13-Met12 isozyme complex
+YGL125W	MET13	putative Met13-Yml082w complex
+YML082W	YML082W	putative Met13-Yml082w complex
+YCL043C	PDI1	putative Mnl1-Pdi1 complex
+YHR204W	MNL1	putative Mnl1-Pdi1 complex
+YIL106W	MOB1	putative Mob1-Dbf20 complex
+YPR111W	DBF20	putative Mob1-Dbf20 complex
+YCL017C	NFS1	putative Nfs1-Isd11 complex
+YER048W-A	ISD11	putative Nfs1-Isd11 complex
+YGR010W	NMA2	putative Nma2-Nma1 complex
+YLR328W	NMA1	putative Nma2-Nma1 complex
+YEL043W	YEL043W	putative Nnf2-Yel043w complex
+YGR089W	NNF2	putative Nnf2-Yel043w complex
+YGR043C	NQM1	putative Nqm1-Tal1 complex
+YLR354C	TAL1	putative Nqm1-Tal1 complex
+YDR001C	NTH1	putative Nth1-Bmh1-Bmh2 complex
+YDR099W	BMH2	putative Nth1-Bmh1-Bmh2 complex
+YER177W	BMH1	putative Nth1-Bmh1-Bmh2 complex
+YJL208C	NUC1	putative Nuc1-Trz1-Ymr099c complex
+YKR079C	TRZ1	putative Nuc1-Trz1-Ymr099c complex
+YMR099C	YMR099C	putative Nuc1-Trz1-Ymr099c complex
+YBL079W	NUP170	putative Nup170-Nup53-Hms1 complex
+YMR153W	NUP53	putative Nup170-Nup53-Hms1 complex
+YOR032C	HMS1	putative Nup170-Nup53-Hms1 complex
+YHR195W	NVJ1	putative Nvj1-Tos4 complex
+YLR183C	TOS4	putative Nvj1-Tos4 complex
+YCR095C	OCA4	putative Oca6-Oca5-Oca4-Oca3-Oca1-Oca2 complex
+YDR067C	OCA6	putative Oca6-Oca5-Oca4-Oca3-Oca1-Oca2 complex
+YHL029C	OCA5	putative Oca6-Oca5-Oca4-Oca3-Oca1-Oca2 complex
+YNL032W	SIW14	putative Oca6-Oca5-Oca4-Oca3-Oca1-Oca2 complex
+YNL056W	OCA2	putative Oca6-Oca5-Oca4-Oca3-Oca1-Oca2 complex
+YNL099C	OCA1	putative Oca6-Oca5-Oca4-Oca3-Oca1-Oca2 complex
+YAR042W	SWH1	putative Osh2-Swh1 complex
+YDL019C	OSH2	putative Osh2-Swh1 complex
+YGL022W	STT3	putative Ost1-Stt3 complex
+YJL002C	OST1	putative Ost1-Stt3 complex
+YHR179W	OYE2	putative Oye2-Oye3 complex
+YPL171C	OYE3	putative Oye2-Oye3 complex
+YDR071C	PAA1	putative Paa1-Ptc2 complex
+YER089C	PTC2	putative Paa1-Ptc2 complex
+YBL105C	PKC1	putative Pck1-Eno1 complex
+YGR254W	ENO1	putative Pck1-Eno1 complex
+YPL031C	PHO85	putative Pcl8-Pho85 CDK-cyclin complex
+YPL219W	PCL8	putative Pcl8-Pho85 CDK-cyclin complex
+YEL058W	PCM1	putative Pcm1-Mgs1 complex
+YNL218W	MGS1	putative Pcm1-Mgs1 complex
+YBL080C	PET112	putative Pet112-Ymr293c complex
+YMR293C	HER2	putative Pet112-Ymr293c complex
+YGL153W	PEX14	putative Pex14-Pex17 complex
+YNL214W	PEX17	putative Pex14-Pex17 complex
+YDR244W	PEX5	putative Pex5-Mmt1 complex
+YMR177W	MMT1	putative Pex5-Mmt1 complex
+YDR490C	PKH1	putative Pkh1-Mrp8-Pil1-Lsp1 complex
+YGR086C	PIL1	putative Pkh1-Mrp8-Pil1-Lsp1 complex
+YKL142W	MRP8	putative Pkh1-Mrp8-Pil1-Lsp1 complex
+YPL004C	LSP1	putative Pkh1-Mrp8-Pil1-Lsp1 complex
+YGL167C	PMR1	putative Pmr1-Psd1 complex
+YNL169C	PSD1	putative Pmr1-Psd1 complex
+YCR014C	POL4	putative Pol4-Rpn5 complex
+YDL147W	RPN5	putative Pol4-Rpn5 complex
+YIL153W	RRD1	putative Psy2-Rrd1 complex
+YNL201C	PSY2	putative Psy2-Rrd1 complex
+YBL056W	PTC3	putative Ptc3-Paa1 complex
+YDR071C	PAA1	putative Ptc3-Paa1 complex
+YBR125C	PTC4	putative Ptc4-Ydr186c complex
+YDR186C	YDR186C	putative Ptc4-Ydr186c complex
+YCR079W	PTC6	putative Ptc6-Pro2 complex
+YOR323C	PRO2	putative Ptc6-Pro2 complex
+YHR076W	PTC7	putative Ptc7-Sec14 complex
+YMR079W	SEC14	putative Ptc7-Sec14 complex
+YLR142W	PUT1	putative Put1-Ymr315w complex
+YMR315W	YMR315W	putative Put1-Ymr315w complex
+YBR218C	PYC2	putative Pyc1-Pyc2 isozyme complex
+YGL062W	PYC1	putative Pyc1-Pyc2 isozyme complex
+YBR260C	RGD1	putative Rgd1-Fyv8 complex
+YGR196C	FYV8	putative Rgd1-Fyv8 complex
+YCR028C-A	RIM1	putative Rim1-Rad52 complex
+YML032C	RAD52	putative Rim1-Rad52 complex
+YBL087C	RPL23A	putative Rpl23a-Rpl23b-Bcp1-Rkm1 complex
+YDR361C	BCP1	putative Rpl23a-Rpl23b-Bcp1-Rkm1 complex
+YER117W	RPL23B	putative Rpl23a-Rpl23b-Bcp1-Rkm1 complex
+YPL208W	RKM1	putative Rpl23a-Rpl23b-Bcp1-Rkm1 complex
+YGR214W	RPS0A	putative Rps0a-Rps0b complex
+YLR048W	RPS0B	putative Rps0a-Rps0b complex
+YCL031C	RRP7	putative Rrp7-Ifh1 complex
+YLR223C	IFH1	putative Rrp7-Ifh1 complex
+YJR041C	URB2	putative Rsa3-Urb1-Urb2-Nop8 complex
+YKL014C	URB1	putative Rsa3-Urb1-Urb2-Nop8 complex
+YLR221C	RSA3	putative Rsa3-Urb1-Urb2-Nop8 complex
+YOL144W	NOP8	putative Rsa3-Urb1-Urb2-Nop8 complex
+YER043C	SAH1	putative Sah1-Caf16 complex
+YFL028C	CAF16	putative Sah1-Caf16 complex
+YBL052C	SAS3	putative Sas3-Nto1-Ylr455w complex
+YLR455W	YLR455W	putative Sas3-Nto1-Ylr455w complex
+YPR031W	NTO1	putative Sas3-Nto1-Ylr455w complex
+YOR213C	SAS5	putative Sas5-Wtm2 complex
+YOR229W	WTM2	putative Sas5-Wtm2 complex
+YER081W	SER3	putative Ser3-Ser33 isozyme complex
+YIL074C	SER33	putative Ser3-Ser33 isozyme complex
+YLR403W	SFP1	putative Sfp1-Mrs6 complex
+YOR370C	MRS6	putative Sfp1-Mrs6 complex
+YGR250C	YGR250C	putative Sgn1-Ygr250c complex
+YIR001C	SGN1	putative Sgn1-Ygr250c complex
+YDL047W	SIT4	putative Sit4-Sap185-Rts3-Hrk1 complex
+YGR161C	RTS3	putative Sit4-Sap185-Rts3-Hrk1 complex
+YJL098W	SAP185	putative Sit4-Sap185-Rts3-Hrk1 complex
+YOR267C	HRK1	putative Sit4-Sap185-Rts3-Hrk1 complex
+YDR328C	SKP1	putative Skp1-Ypt52-Ymr258c complex
+YKR014C	YPT52	putative Skp1-Ypt52-Ymr258c complex
+YMR258C	YMR258C	putative Skp1-Ypt52-Ymr258c complex
+YFR024C-A	LSB3	putative Sla2-Lsb3 complex
+YNL243W	SLA2	putative Sla2-Lsb3 complex
+YDR088C	SLU7	putative Slu7-Prp18 complex
+YGR006W	PRP18	putative Slu7-Prp18 complex
+YDL013W	SLX5	putative Slx5-Swa2 complex
+YDR320C	SWA2	putative Slx5-Swa2 complex
+YLR025W	SNF7	putative Snf7-Vps4 complex
+YPR173C	VPS4	putative Snf7-Vps4 complex
+YDR006C	SOK1	putative Sok1-Rtn1-Crp1-Ids2-Pep4 complex
+YDR233C	RTN1	putative Sok1-Rtn1-Crp1-Ids2-Pep4 complex
+YHR146W	CRP1	putative Sok1-Rtn1-Crp1-Ids2-Pep4 complex
+YJL146W	IDS2	putative Sok1-Rtn1-Crp1-Ids2-Pep4 complex
+YPL154C	PEP4	putative Sok1-Rtn1-Crp1-Ids2-Pep4 complex
+YLR146C	SPE4	putative Spe3-Spe4 complex
+YPR069C	SPE3	putative Spe3-Spe4 complex
+YBL046W	PSY4	putative Ssd1-Psy4-Pph3-Psy2 complex
+YDR075W	PPH3	putative Ssd1-Psy4-Pph3-Psy2 complex
+YDR293C	SSD1	putative Ssd1-Psy4-Pph3-Psy2 complex
+YNL201C	PSY2	putative Ssd1-Psy4-Pph3-Psy2 complex
+YIL143C	SSL2	putative Ssl2-Yor352w complex
+YOR352W	YOR352W	putative Ssl2-Yor352w complex
+YLR389C	STE23	putative Ste23-Mrn1 complex
+YPL184C	MRN1	putative Ste23-Mrn1 complex
+YDR310C	SUM1	putative Sum1-Rfm1 complex
+YOR279C	RFM1	putative Sum1-Rfm1 complex
+YCR042C	TAF2	putative Taf8-Taf14-Taf2 TFIID subcomplex
+YML114C	TAF8	putative Taf8-Taf14-Taf2 TFIID subcomplex
+YPL129W	TAF14	putative Taf8-Taf14-Taf2 TFIID subcomplex
+YIL129C	TAO3	putative Tao3-Yml081w complex
+YML081W	YML081W	putative Tao3-Yml081w complex
+YJL052W	TDH1	putative Tdh1-Tdh2 isozyme complex
+YJR009C	TDH2	putative Tdh1-Tdh2 isozyme complex
+YCR012W	PGK1	putative Tdh3-Pgk1-Eno2-Fba1-Pgm1 complex
+YGR192C	TDH3	putative Tdh3-Pgk1-Eno2-Fba1-Pgm1 complex
+YHR174W	ENO2	putative Tdh3-Pgk1-Eno2-Fba1-Pgm1 complex
+YKL060C	FBA1	putative Tdh3-Pgk1-Eno2-Fba1-Pgm1 complex
+YKL152C	GPM1	putative Tdh3-Pgk1-Eno2-Fba1-Pgm1 complex
+YJL138C	TIF2	putative Tif1-Tif2 complex
+YKR059W	TIF1	putative Tif1-Tif2 complex
+YBR117C	TKL2	putative Tkl2-Tkl1 isozyme complex
+YPR074C	TKL1	putative Tkl2-Tkl1 isozyme complex
+YER007C-A	TMA20	putative Tma20-Tma22 complex
+YJR014W	TMA22	putative Tma20-Tma22 complex
+YHR117W	TOM71	putative Tom71-Ylr072w complex
+YLR072W	YLR072W	putative Tom71-Ylr072w complex
+YDL112W	TRM3	putative Trm3-Fas1 complex
+YKL182W	FAS1	putative Trm3-Fas1 complex
+YBR061C	TRM7	putative Trm7-Rtt10 complex
+YPL183C	RTT10	putative Trm7-Rtt10 complex
+YBR061C	TRM7	putative Trm7-Ymr259c complex
+YMR259C	YMR259C	putative Trm7-Ymr259c complex
+YDR353W	TRR1	putative Trr1-Trr2 complex
+YHR106W	TRR2	putative Trr1-Trr2 complex
+YFR009W	GCN20	putative Tub3-Gcn1-Gcn20-Gfa1-Mae1-Sam1-Clu1 complex
+YGL195W	GCN1	putative Tub3-Gcn1-Gcn20-Gfa1-Mae1-Sam1-Clu1 complex
+YKL029C	MAE1	putative Tub3-Gcn1-Gcn20-Gfa1-Mae1-Sam1-Clu1 complex
+YKL104C	GFA1	putative Tub3-Gcn1-Gcn20-Gfa1-Mae1-Sam1-Clu1 complex
+YLR180W	SAM1	putative Tub3-Gcn1-Gcn20-Gfa1-Mae1-Sam1-Clu1 complex
+YML124C	TUB3	putative Tub3-Gcn1-Gcn20-Gfa1-Mae1-Sam1-Clu1 complex
+YMR012W	CLU1	putative Tub3-Gcn1-Gcn20-Gfa1-Mae1-Sam1-Clu1 complex
+YDR415C	YDR415C	putative Uba1-Ydr415c complex
+YKL210W	UBA1	putative Uba1-Ydr415c complex
+YBR082C	UBC4	putative Ubc4-Ufd4 complex
+YKL010C	UFD4	putative Ubc4-Ufd4 complex
+YBL067C	UBP13	putative Ubp13-Yol087c complex
+YOL087C	YOL087C	putative Ubp13-Yol087c complex
+YGR019W	UGA1	putative Uga1-Ndt80 complex
+YHR124W	NDT80	putative Uga1-Ndt80 complex
+YML106W	URA5	putative Ura5-Ura10 isozyme complex
+YMR271C	URA10	putative Ura5-Ura10 isozyme complex
+YDR357C	CNL1	putative Vab2-Ydr357c-Ykl061w-YGL079w-Ynl086w complex
+YEL005C	VAB2	putative Vab2-Ydr357c-Ykl061w-YGL079w-Ynl086w complex
+YGL079W	KXD1	putative Vab2-Ydr357c-Ykl061w-YGL079w-Ynl086w complex
+YKL061W	BLI1	putative Vab2-Ydr357c-Ykl061w-YGL079w-Ynl086w complex
+YNL086W	SNN1	putative Vab2-Ydr357c-Ykl061w-YGL079w-Ynl086w complex
+YEL013W	VAC8	putative Vac8-Nce102 complex
+YPR149W	NCE102	putative Vac8-Nce102 complex
+YEL002C	WBP1	putative Wbp1-Swp1 complex
+YMR149W	SWP1	putative Wbp1-Swp1 complex
+YJR067C	YAE1	putative Yae1-Ynl260c complex
+YNL260C	YNL260C	putative Yae1-Ynl260c complex
+YJL141C	YAK1	putative Yak1-Ypl247c complex
+YPL247C	YPL247C	putative Yak1-Ypl247c complex
+YBR137W	YBR137W	putative Ybr137w-Sgt2-Mdy2-Yor164c complex
+YOL111C	MDY2	putative Ybr137w-Sgt2-Mdy2-Yor164c complex
+YOR007C	SGT2	putative Ybr137w-Sgt2-Mdy2-Yor164c complex
+YOR164C	GET4	putative Ybr137w-Sgt2-Mdy2-Yor164c complex
+YBR225W	YBR225W	putative Ybr225w-Mds3-Cdc25 complex
+YGL197W	MDS3	putative Ybr225w-Mds3-Cdc25 complex
+YLR310C	CDC25	putative Ybr225w-Mds3-Cdc25 complex
+YLL048C	YBT1	putative Ybt1-Dak1 complex
+YML070W	DAK1	putative Ybt1-Dak1 complex
+YBR052C	RFS1	putative Ycp4-Rfs1-Pst2 complex
+YCR004C	YCP4	putative Ycp4-Rfs1-Pst2 complex
+YDR032C	PST2	putative Ycp4-Rfs1-Pst2 complex
+YEL041W	YEF1	putative Yef1-Utr1 complex
+YJR049C	UTR1	putative Yef1-Utr1 complex
+YER071C	YER071C	putative Yer071c-Aim21-Cap1-Cap2 complex
+YIL034C	CAP2	putative Yer071c-Aim21-Cap1-Cap2 complex
+YIR003W	AIM21	putative Yer071c-Aim21-Cap1-Cap2 complex
+YKL007W	CAP1	putative Yer071c-Aim21-Cap1-Cap2 complex
+YER140W	YER140W	putative Yer140w-Slp1 complex
+YOR154W	SLP1	putative Yer140w-Slp1 complex
+YGR017W	YGR017W	putative Ygr017w-Vip1 complex
+YLR410W	VIP1	putative Ygr017w-Vip1 complex
+YGR071C	YGR071C	putative Ygr071c-Vid22-Tbf1 complex
+YLR373C	VID22	putative Ygr071c-Vid22-Tbf1 complex
+YPL128C	TBF1	putative Ygr071c-Vid22-Tbf1 complex
+YGR130C	YGR130C	putative Ygr130c-Ymr031c complex
+YMR031C	YMR031C	putative Ygr130c-Ymr031c complex
+YGR283C	YGR283C	putative Ygr283c-Idp3 complex
+YNL009W	IDP3	putative Ygr283c-Idp3 complex
+YGR283C	YGR283C	putative Ygr283c-Ymr310c complex
+YMR310C	YMR310C	putative Ygr283c-Ymr310c complex
+YGR234W	YHB1	putative Yhb1-Aco1 complex
+YLR304C	ACO1	putative Yhb1-Aco1 complex
+YER125W	RSP5	putative Yhr131c-Rsp5 complex
+YHR131C	YHR131C	putative Yhr131c-Rsp5 complex
+YJL070C	YJL070C	putative Yjl070c-Amd1 complex
+YML035C	AMD1	putative Yjl070c-Amd1 complex
+YJR136C	TTI2	putative Yjr136c-Ykl033w complex
+YKL033W	TTI1	putative Yjr136c-Ykl033w complex
+YKL088W	CAB3	putative Ykl088w-Ppz1 complex
+YML016C	PPZ1	putative Ykl088w-Ppz1 complex
+YLL032C	YLL032C	putative Yll032c-Yml119w complex
+YML119W	YML119W	putative Yll032c-Yml119w complex
+YOR251C	TUM1	putative Yor251c-Rev1 complex
+YOR346W	REV1	putative Yor251c-Rev1 complex
+YKL126W	YPK1	putative Ypk1-Ypk2 complex
+YMR104C	YPK2	putative Ypk1-Ypk2 complex
+YFL038C	YPT1	putative Ypt1-Dss4 complex
+YPR017C	DSS4	putative Ypt1-Dss4 complex
+YCR060W	TAH1	R2TP complex
+YDR190C	RVB1	R2TP complex
+YHR034C	PIH1	R2TP complex
+YPL235W	RVB2	R2TP complex
+YJL031C	BET4	Rab-protein geranylgeranyltransferase complex
+YPR176C	BET2	Rab-protein geranylgeranyltransferase complex
+YEL037C	RAD23	Rad23-Png1 complex
+YPL096W	PNG1	Rad23-Png1 complex
+YCR066W	RAD18	Rad6-Rad18 complex
+YGL058W	RAD6	Rad6-Rad18 complex
+YDR202C	RAV2	RAVE complex
+YDR328C	SKP1	RAVE complex
+YJR033C	RAV1	RAVE complex
+YLR234W	TOP3	RecQ helicase-Topo III complex (GO)
+YMR190C	SGS1	RecQ helicase-Topo III complex (GO)
+YPL024W	RMI1	RecQ helicase-Topo III complex (GO)
+YDL042C	SIR2	RENT complex
+YJL076W	NET1	RENT complex
+YDL042C	SIR2	RENT complex (GO)
+YFR028C	CDC14	RENT complex (GO)
+YJL076W	NET1	RENT complex (GO)
+YPL126W	NAN1	RENT complex (GO)
+YBR114W	RAD16	repairosome (GO)
+YEL037C	RAD23	repairosome (GO)
+YER162C	RAD4	repairosome (GO)
+YJR052W	RAD7	repairosome (GO)
+YHR012W	VPS29	retromer complex
+YJL053W	PEP8	retromer complex
+YJL154C	VPS35	retromer complex
+YOR069W	VPS5	retromer complex
+YOR132W	VPS17	retromer complex
+YPL070W	MUK1	retromer complex
+YOR069W	VPS5	"retromer complex, outer shell (GO)"
+YOR132W	VPS17	"retromer complex, outer shell (GO)"
+YDR004W	RAD57	Rhp55-Rhp57 complex (GO)
+YDR076W	RAD55	Rhp55-Rhp57 complex (GO)
+YDR279W	RNH202	ribonuclease H2 complex
+YNL072W	RNH201	ribonuclease H2 complex
+YDR279W	RNH202	ribonuclease H2 complex (GO)
+YLR154C	RNH203	ribonuclease H2 complex (GO)
+YNL072W	RNH201	ribonuclease H2 complex (GO)
+YAL033W	POP5	ribonuclease MRP complex
+YBL018C	POP8	ribonuclease MRP complex
+YBR167C	POP7	ribonuclease MRP complex
+YBR257W	POP4	ribonuclease MRP complex
+YDR478W	SNM1	ribonuclease MRP complex
+YGR030C	POP6	ribonuclease MRP complex
+YHR062C	RPP1	ribonuclease MRP complex
+YNL221C	POP1	ribonuclease MRP complex
+YNL282W	POP3	ribonuclease MRP complex
+YIL149C	MLP2	ribonucleoprotein complex (GO)
+YKR095W	MLP1	ribonucleoprotein complex (GO)
+YOR198C	BFR1	ribonucleoprotein complex (GO)
+YGR180C	RNR4	ribonucleoside-diphosphate reductase complex
+YJL026W	RNR2	ribonucleoside-diphosphate reductase complex
+YOR230W	WTM1	ribonucleoside-diphosphate reductase complex
+YER070W	RNR1	ribonucleoside-diphosphate reductase complex (GO)
+YGR180C	RNR4	ribonucleoside-diphosphate reductase complex (GO)
+YIL066C	RNR3	ribonucleoside-diphosphate reductase complex (GO)
+YJL026W	RNR2	ribonucleoside-diphosphate reductase complex (GO)
+YGR285C	ZUO1	ribosome-associated complex
+YHR064C	SSZ1	ribosome-associated complex
+YJL080C	SCP160	ribosome-associated complex
+YDR137W	RGP1	Ric1-Rgp1 complex
+YLR039C	RIC1	Ric1-Rgp1 complex
+YBR154C	RPB5	RNA polymerase I complex
+YDR156W	RPA14	RNA polymerase I complex
+YHR143W-A	RPC10	RNA polymerase I complex
+YJL148W	RPA34	RNA polymerase I complex
+YJR063W	RPA12	RNA polymerase I complex
+YNL113W	RPC19	RNA polymerase I complex
+YNL248C	RPA49	RNA polymerase I complex
+YOR210W	RPB10	RNA polymerase I complex
+YOR224C	RPB8	RNA polymerase I complex
+YOR340C	RPA43	RNA polymerase I complex
+YOR341W	RPA190	RNA polymerase I complex
+YPR010C	RPA135	RNA polymerase I complex
+YPR110C	RPC40	RNA polymerase I complex
+YPR187W	RPO26	RNA polymerase I complex
+YBL014C	RRN6	RNA polymerase I transcription factor complex (GO)
+YER148W	SPT15	RNA polymerase I transcription factor complex (GO)
+YJL025W	RRN7	RNA polymerase I transcription factor complex (GO)
+YKL125W	RRN3	RNA polymerase I transcription factor complex (GO)
+YML043C	RRN11	RNA polymerase I transcription factor complex (GO)
+YBL025W	RRN10	RNA polymerase I upstream activating factor complex (GO)
+YLR141W	RRN5	RNA polymerase I upstream activating factor complex (GO)
+YMR270C	RRN9	RNA polymerase I upstream activating factor complex (GO)
+YOR295W	UAF30	RNA polymerase I upstream activating factor complex (GO)
+YBR154C	RPB5	RNA polymerase II complex
+YDL115C	IWR1	RNA polymerase II complex
+YDL140C	RPO21	RNA polymerase II complex
+YDR404C	RPB7	RNA polymerase II complex
+YGL043W	DST1	RNA polymerase II complex
+YGL070C	RPB9	RNA polymerase II complex
+YGR005C	TFG2	RNA polymerase II complex
+YGR063C	SPT4	RNA polymerase II complex
+YGR186W	TFG1	RNA polymerase II complex
+YIL021W	RPB3	RNA polymerase II complex
+YJL140W	RPB4	RNA polymerase II complex
+YML010W	SPT5	RNA polymerase II complex
+YOL005C	RPB11	RNA polymerase II complex
+YOR151C	RPB2	RNA polymerase II complex
+YOR210W	RPB10	RNA polymerase II complex
+YOR224C	RPB8	RNA polymerase II complex
+YPL129W	TAF14	RNA polymerase II complex
+YPR187W	RPO26	RNA polymerase II complex
+YBR154C	RPB5	RNA polymerase III complex
+YDL150W	RPC53	RNA polymerase III complex
+YDR045C	RPC11	RNA polymerase III complex
+YJL011C	RPC17	RNA polymerase III complex
+YKL144C	RPC25	RNA polymerase III complex
+YKR025W	RPC37	RNA polymerase III complex
+YNL113W	RPC19	RNA polymerase III complex
+YNL151C	RPC31	RNA polymerase III complex
+YNR003C	RPC34	RNA polymerase III complex
+YOR116C	RPO31	RNA polymerase III complex
+YOR207C	RET1	RNA polymerase III complex
+YOR210W	RPB10	RNA polymerase III complex
+YOR224C	RPB8	RNA polymerase III complex
+YPR110C	RPC40	RNA polymerase III complex
+YPR187W	RPO26	RNA polymerase III complex
+YPR190C	RPC82	RNA polymerase III complex
+YAL013W	DEP1	Rpd3L complex
+YBR095C	RXT2	Rpd3L complex
+YDL076C	RXT3	Rpd3L complex
+YDR207C	UME6	Rpd3L complex
+YIL084C	SDS3	Rpd3L complex
+YMR075W	RCO1	Rpd3L complex
+YMR263W	SAP30	Rpd3L complex
+YNL097C	PHO23	Rpd3L complex
+YNL330C	RPD3	Rpd3L complex
+YOL004W	SIN3	Rpd3L complex
+YPL139C	UME1	Rpd3L complex
+YPL181W	CTI6	Rpd3L complex
+YBR289W	SNF5	RSC complex
+YCR020W-B	HTL1	RSC complex
+YCR052W	RSC6	RSC complex
+YDR073W	SNF11	RSC complex
+YDR225W	HTA1	RSC complex
+YDR303C	RSC3	RSC complex
+YFL049W	SWP82	RSC complex
+YFR037C	RSC8	RSC complex
+YGL013C	PDR1	RSC complex
+YGR056W	RSC1	RSC complex
+YGR275W	RTT102	RSC complex
+YHL025W	SNF6	RSC complex
+YHR056C	RSC30	RSC complex
+YIL126W	STH1	RSC complex
+YJL176C	SWI3	RSC complex
+YKR008W	RSC4	RSC complex
+YLR033W	RSC58	RSC complex
+YLR321C	SFH1	RSC complex
+YLR357W	RSC2	RSC complex
+YML127W	RSC9	RSC complex
+YMR033W	ARP9	RSC complex
+YMR091C	NPL6	RSC complex
+YNR023W	SNF12	RSC complex
+YOR156C	NFI1	RSC complex
+YOR290C	SNF2	RSC complex
+YPL016W	SWI1	RSC complex
+YPR034W	ARP7	RSC complex
+YER125W	RSP5	Rsp5-Ubp2-Rup1 deubiquitinating enzyme complex
+YOR124C	UBP2	Rsp5-Ubp2-Rup1 deubiquitinating enzyme complex
+YOR138C	RUP1	Rsp5-Ubp2-Rup1 deubiquitinating enzyme complex
+YBL103C	RTG3	Rtg1-Rtg3 bHLH-Zip complex
+YOL067C	RTG1	Rtg1-Rtg3 bHLH-Zip complex
+YDR289C	RTT103	Rtt103-Rai1-Rat1 complex
+YGL246C	RAI1	Rtt103-Rai1-Rat1 complex
+YOR048C	RAT1	Rtt103-Rai1-Rat1 complex
+YLL002W	RTT109	Rtt109-Vps75 complex
+YNL246W	VPS75	Rtt109-Vps75 complex
+YCR009C	RVS161	Rvs161-Rvs167 complex
+YDR388W	RVS167	Rvs161-Rvs167 complex
+YDR159W	SAC3	Sac3-Thp1 complex
+YOL072W	THP1	Sac3-Thp1 complex
+YBR081C	SPT7	SAGA complex
+YBR198C	TAF5	SAGA complex
+YCL010C	SGF29	SAGA complex
+YDR145W	TAF12	SAGA complex
+YDR167W	TAF10	SAGA complex
+YDR176W	NGG1	SAGA complex
+YDR392W	SPT3	SAGA complex
+YDR448W	ADA2	SAGA complex
+YGL066W	SGF73	SAGA complex
+YGL112C	TAF6	SAGA complex
+YGR252W	GCN5	SAGA complex
+YHR099W	TRA1	SAGA complex
+YLR055C	SPT8	SAGA complex
+YMR223W	UBP8	SAGA complex
+YMR236W	TAF9	SAGA complex
+YOL148C	SPT20	SAGA complex
+YPL047W	SGF11	SAGA complex
+YPL254W	HFI1	SAGA complex
+YER111C	SWI4	SBF transcription complex
+YLR182W	SWI6	SBF transcription complex
+YDL132W	CDC53	SCF ubiquitin ligase complex
+YDR054C	CDC34	SCF ubiquitin ligase complex
+YGL252C	RTG2	SCF ubiquitin ligase complex
+YJL047C	RTT101	SCF ubiquitin ligase complex
+YOL133W	HRT1	SCF ubiquitin ligase complex
+YER120W	SCS2	Scs2-Opi1 complex
+YHL020C	OPI1	Scs2-Opi1 complex
+YIL109C	SEC24	Sec24-Sfb2-Sec16-Sec23 complex
+YNL049C	SFB2	Sec24-Sfb2-Sec16-Sec23 complex
+YPL085W	SEC16	Sec24-Sfb2-Sec16-Sec23 complex
+YPR181C	SEC23	Sec24-Sfb2-Sec16-Sec23 complex
+YCR002C	CDC10	septin complex
+YDL225W	SHS1	septin complex
+YHR107C	CDC12	septin complex
+YJR076C	CDC11	septin complex
+YJR092W	BUD4	septin complex
+YLR314C	CDC3	septin complex
+YDR062W	LCB2	serine C-palmitoyltransferase complex
+YMR296C	LCB1	serine C-palmitoyltransferase complex
+YBR103W	SIF2	Set3C
+YCR033W	SNT1	Set3C
+YDR155C	CPR1	Set3C
+YGL194C	HOS2	Set3C
+YIL112W	HOS4	Set3C
+YKR029C	SET3	Set3C
+YOL068C	HST1	Set3C
+YAL029C	MYO4	She2-She3-Myo4 complex
+YBR130C	SHE3	She2-She3-Myo4 complex
+YKL130C	SHE2	She2-She3-Myo4 complex
+YIR022W	SEC11	signal peptidase complex (GO)
+YJR010C-A	SPC1	signal peptidase complex (GO)
+YLR066W	SPC3	signal peptidase complex (GO)
+YML055W	SPC2	signal peptidase complex (GO)
+YDL051W	LHP1	signal recognition particle
+YDL092W	SRP14	signal recognition particle
+YKL122C	SRP21	signal recognition particle
+YML105C	SEC65	signal recognition particle
+YPL210C	SRP72	signal recognition particle
+YPL243W	SRP68	signal recognition particle
+YPR088C	SRP54	signal recognition particle
+YDR292C	SRP101	signal recognition particle receptor complex
+YKL154W	SRP102	signal recognition particle receptor complex
+YDL216C	RRI1	signalosome
+YDR179C	CSN9	signalosome
+YIL071C	PCI8	signalosome
+YMR025W	CSI1	signalosome
+YOL117W	RRI2	signalosome
+YMR053C	STB2	Sin3 complex (GO)
+YNL309W	STB1	Sin3 complex (GO)
+YOL004W	SIN3	Sin3 complex (GO)
+YKL088W	CAB3	Sis2-Ykl088w-Vhs3 complex
+YKR072C	SIS2	Sis2-Ykl088w-Vhs3 complex
+YOR054C	VHS3	Sis2-Ykl088w-Vhs3 complex
+YDL047W	SIT4	Sit4-Sap155 complex
+YFR040W	SAP155	Sit4-Sap155 complex
+YDL047W	SIT4	Sit4-Sap190 complex
+YKR028W	SAP190	Sit4-Sap190 complex
+YGL213C	SKI8	Ski complex
+YKL023W	YKL023W	Ski complex
+YLR398C	SKI2	Ski complex
+YPR189W	SKI3	Ski complex
+YBR228W	SLX1	Slx1-Slx4 complex (GO)
+YLR135W	SLX4	Slx1-Slx4 complex (GO)
+YER127W	LCP5	small nuclear ribonucleoprotein complex (GO)
+YPR057W	BRR1	small nuclear ribonucleoprotein complex (GO)
+YPR137W	RRP9	small nuclear ribonucleoprotein complex (GO)
+YDL105W	NSE4	Smc5-Smc6 complex
+YDR288W	NSE3	Smc5-Smc6 complex
+YEL019C	MMS21	Smc5-Smc6 complex
+YOL034W	SMC5	Smc5-Smc6 complex
+YAL030W	SNC1	SNARE complex (GO)
+YGR009C	SEC9	SNARE complex (GO)
+YPL232W	SSO1	SNARE complex (GO)
+YDR028C	REG1	snf1 protein kinase complex
+YDR422C	SIP1	snf1 protein kinase complex
+YDR477W	SNF1	snf1 protein kinase complex
+YER027C	GAL83	snf1 protein kinase complex
+YER129W	SAK1	snf1 protein kinase complex
+YGL115W	SNF4	snf1 protein kinase complex
+YGL208W	SIP2	snf1 protein kinase complex
+YDL030W	PRP9	snRNP U2
+YDL043C	PRP11	snRNP U2
+YJL203W	PRP21	snRNP U2
+YML049C	RSE1	snRNP U2
+YMR240C	CUS1	snRNP U2
+YMR288W	HSH155	snRNP U2
+YPL213W	LEA1	snRNP U2
+YBL026W	LSM2	snRNP U6
+YCR077C	PAT1	snRNP U6
+YDL160C	DHH1	snRNP U6
+YDR378C	LSM6	snRNP U6
+YER112W	LSM4	snRNP U6
+YER146W	LSM5	snRNP U6
+YJL124C	LSM1	snRNP U6
+YJR022W	LSM8	snRNP U6
+YLR438C-A	LSM3	snRNP U6
+YMR268C	PRP24	snRNP U6
+YNL147W	LSM7	snRNP U6
+YDR425W	SNX41	Snx4-Snx41 heterodimer
+YJL036W	SNX4	Snx4-Snx41 heterodimer
+YJR104C	SOD1	Sod1-Css1 heterodimer
+YMR038C	CCS1	Sod1-Css1 heterodimer
+YAL032C	PRP45	spliceosome
+YBR065C	ECM2	spliceosome
+YCR063W	BUD31	spliceosome
+YDL209C	CWC2	spliceosome
+YDR364C	CDC40	spliceosome
+YDR416W	SYF1	spliceosome
+YGL120C	PRP43	spliceosome
+YGL128C	CWC23	spliceosome
+YGR278W	CWC22	spliceosome
+YJR050W	ISY1	spliceosome
+YLL036C	PRP19	spliceosome
+YLR117C	CLF1	spliceosome
+YLR424W	SPP382	spliceosome
+YMR213W	CEF1	spliceosome
+YPL151C	PRP46	spliceosome
+YPR101W	SNT309	spliceosome
+YBR152W	SPP381	Spp381-Prp38 complex
+YGR075C	PRP38	Spp381-Prp38 complex
+YGR116W	SPT6	Spt6-Spn1 elongator factor complex
+YPR133C	SPN1	Spt6-Spn1 elongator factor complex
+YBL093C	ROX3	Srb-mediator complex
+YBR193C	MED8	Srb-mediator complex
+YBR253W	SRB6	Srb-mediator complex
+YCR081W	SRB8	Srb-mediator complex
+YDL005C	MED2	Srb-mediator complex
+YDR308C	SRB7	Srb-mediator complex
+YDR443C	SSN2	Srb-mediator complex
+YER022W	SRB4	Srb-mediator complex
+YGL025C	PGD1	Srb-mediator complex
+YGL127C	SOH1	Srb-mediator complex
+YGL151W	NUT1	Srb-mediator complex
+YGR104C	SRB5	Srb-mediator complex
+YHR041C	SRB2	Srb-mediator complex
+YHR058C	MED6	Srb-mediator complex
+YLR071C	RGR1	Srb-mediator complex
+YMR112C	MED11	Srb-mediator complex
+YNL236W	SIN4	Srb-mediator complex
+YNR010W	CSE2	Srb-mediator complex
+YOL051W	GAL11	Srb-mediator complex
+YOL135C	MED7	Srb-mediator complex
+YOR174W	MED4	Srb-mediator complex
+YPL042C	SSN3	Srb-mediator complex
+YPR070W	MED1	Srb-mediator complex
+YPR168W	NUT2	Srb-mediator complex
+YJR045C	SSC1	Ssc1-Mge1 complex
+YOR232W	MGE1	Ssc1-Mge1 complex
+YLR006C	SSK1	Ssk1-Ssk2 complex
+YNR031C	SSK2	Ssk1-Ssk2 complex
+YCL032W	STE50	Ste11-Ste50 complex
+YLR362W	STE11	Ste11-Ste50 complex
+YDR480W	DIG2	Ste12-Dig1-Dig2 complex
+YHR084W	STE12	Ste12-Dig1-Dig2 complex
+YPL049C	DIG1	Ste12-Dig1-Dig2 complex
+YBL045C	COR1	subunit VII of the cytochrome bc1 complex
+YDL189W	RBS1	subunit VII of the cytochrome bc1 complex
+YDR529C	QCR7	subunit VII of the cytochrome bc1 complex
+YPR191W	QCR2	subunit VII of the cytochrome bc1 complex
+YGR244C	LSC2	succinyl-CoA ligase
+YOR142W	LSC1	succinyl-CoA ligase
+YFR030W	MET10	sulfite reductase complex (NADPH) (GO)
+YJR137C	MET5	sulfite reductase complex (NADPH) (GO)
+YDR390C	UBA2	SUMO activating enzyme complex
+YPR180W	AOS1	SUMO activating enzyme complex
+YAL011W	SWC3	SWR1 complex
+YBR231C	SWC5	SWR1 complex
+YDR190C	RVB1	SWR1 complex
+YDR334W	SWR1	SWR1 complex
+YDR485C	VPS72	SWR1 complex
+YFL039C	ACT1	SWR1 complex
+YGR002C	SWC4	SWR1 complex
+YJL081C	ARP4	SWR1 complex
+YLR085C	ARP6	SWR1 complex
+YLR385C	SWC7	SWR1 complex
+YLR399C	BDF1	SWR1 complex
+YML041C	VPS71	SWR1 complex
+YNL107W	YAF9	SWR1 complex
+YPL235W	RVB2	SWR1 complex
+YGL249W	ZIP2	synaptonemal complex (GO)
+YNL088W	TOP2	synaptonemal complex (GO)
+YDL042C	SIR2	TEL complex
+YDR227W	SIR4	TEL complex
+YLR318W	EST2	telomerase catalytic core complex (GO)
+YIL009C-A	EST3	telomerase holoenzyme complex (GO)
+YLR233C	EST1	telomerase holoenzyme complex (GO)
+YDL108W	KIN28	TFIIK complex
+YDR460W	TFB3	TFIIK complex
+YPR025C	CCL1	TFIIK complex
+YIL022W	TIM44	Tim44-Ssc1 heterodimer
+YJR045C	SSC1	Tim44-Ssc1 heterodimer
+YBL050W	SEC17	Tlg1 SNARE complex
+YDR468C	TLG1	Tlg1 SNARE complex
+YGL095C	VPS45	Tlg1 SNARE complex
+YOL018C	TLG2	Tlg1 SNARE complex
+YHR186C	KOG1	TORC1 complex
+YJR066W	TOR1	TORC1 complex
+YHR186C	KOG1	TORC1 complex (GO)
+YJR066W	TOR1	TORC1 complex (GO)
+YKL203C	TOR2	TORC1 complex (GO)
+YNL006W	LST8	TORC1 complex (GO)
+YPL180W	TCO89	TORC1 complex (GO)
+YER093C	TSC11	TORC2 complex (GO)
+YIL105C	SLM1	TORC2 complex (GO)
+YJL058C	BIT61	TORC2 complex (GO)
+YKL203C	TOR2	TORC2 complex (GO)
+YMR068W	AVO2	TORC2 complex (GO)
+YNL006W	LST8	TORC2 complex (GO)
+YNL047C	SLM2	TORC2 complex (GO)
+YOL078W	AVO1	TORC2 complex (GO)
+YDL175C	AIR2	TRAMP complex
+YJL050W	MTR4	TRAMP complex
+YOL115W	PAP2	TRAMP complex
+YER164W	CHD1	transcription elongation factor complex (GO)
+YGR116W	SPT6	transcription elongation factor complex (GO)
+YNL230C	ELA1	transcription elongation factor complex (GO)
+YPL046C	ELC1	transcription elongation factor complex (GO)
+YPR133C	SPN1	transcription elongation factor complex (GO)
+YCR081W	SRB8	transcription factor complex (GO)
+YDR443C	SSN2	transcription factor complex (GO)
+YNL025C	SSN8	transcription factor complex (GO)
+YPL042C	SSN3	transcription factor complex (GO)
+YPR186C	PZF1	transcription factor complex (GO)
+YKL058W	TOA2	transcription factor TFIIA complex
+YOR194C	TOA1	transcription factor TFIIA complex
+YBR198C	TAF5	transcription factor TFIID complex
+YDR145W	TAF12	transcription factor TFIID complex
+YDR167W	TAF10	transcription factor TFIID complex
+YGL112C	TAF6	transcription factor TFIID complex
+YGR274C	TAF1	transcription factor TFIID complex
+YML015C	TAF11	transcription factor TFIID complex
+YML098W	TAF13	transcription factor TFIID complex
+YMR005W	TAF4	transcription factor TFIID complex
+YMR227C	TAF7	transcription factor TFIID complex
+YMR236W	TAF9	transcription factor TFIID complex
+YPL011C	TAF3	transcription factor TFIID complex
+YKL028W	TFA1	transcription factor TFIIE complex
+YKR062W	TFA2	transcription factor TFIIE complex
+YER148W	SPT15	transcription factor TFIIIB complex (GO)
+YGR246C	BRF1	transcription factor TFIIIB complex (GO)
+YNL039W	BDP1	transcription factor TFIIIB complex (GO)
+YAL001C	TFC3	transcription factor TFIIIC complex
+YBR123C	TFC1	transcription factor TFIIIC complex
+YDR362C	TFC6	transcription factor TFIIIC complex
+YGR047C	TFC4	transcription factor TFIIIC complex
+YOR110W	TFC7	transcription factor TFIIIC complex
+YPL007C	TFC8	transcription factor TFIIIC complex
+YBR143C	SUP45	translation release factor complex
+YDR172W	SUP35	translation release factor complex
+YBR283C	SSH1	translocon complex (GO)
+YDR086C	SSS1	translocon complex (GO)
+YER019C-A	SBH2	translocon complex (GO)
+YER087C-B	SBH1	translocon complex (GO)
+YLR378C	SEC61	translocon complex (GO)
+YBR254C	TRS20	TRAPP complex
+YDR108W	GSG1	TRAPP complex
+YDR246W	TRS23	TRAPP complex
+YDR407C	TRS120	TRAPP complex
+YDR472W	TRS31	TRAPP complex
+YGR166W	KRE11	TRAPP complex
+YKR068C	BET3	TRAPP complex
+YML077W	BET5	TRAPP complex
+YMR218C	TRS130	TRAPP complex
+YOR115C	TRS33	TRAPP complex
+YDL084W	SUB2	TREX complex
+YDR138W	HPR1	TREX complex
+YDR381W	YRA1	TREX complex
+YHR167W	THP2	TREX complex
+YML062C	MFT1	TREX complex
+YNL004W	HRB1	TREX complex
+YNL139C	THO2	TREX complex
+YNL253W	TEX1	TREX complex
+YNR046W	TRM112	Trm112-Trm11 complex
+YOL124C	TRM11	Trm112-Trm11 complex
+YML014W	TRM9	Trm9-Trm112 complex
+YNR046W	TRM112	Trm9-Trm112 complex
+YJL125C	GCD14	tRNA (m1A) methyltransferase complex
+YNL062C	GCD10	tRNA (m1A) methyltransferase complex
+YDL201W	TRM8	tRNA methyltransferase complex
+YDR165W	TRM82	tRNA methyltransferase complex
+YLR105C	SEN2	tRNA-intron endonuclease complex
+YPL083C	SEN54	tRNA-intron endonuclease complex
+YAR008W	SEN34	tRNA-intron endonuclease complex (GO)
+YLR105C	SEN2	tRNA-intron endonuclease complex (GO)
+YMR059W	SEN15	tRNA-intron endonuclease complex (GO)
+YPL083C	SEN54	tRNA-intron endonuclease complex (GO)
+YBR055C	PRP6	U4-U6 x U5 tri-snRNP complex
+YDL098C	SNU23	U4-U6 x U5 tri-snRNP complex
+YDR473C	PRP3	U4-U6 x U5 tri-snRNP complex
+YER029C	SMB1	U4-U6 x U5 tri-snRNP complex
+YER172C	BRR2	U4-U6 x U5 tri-snRNP complex
+YGR074W	SMD1	U4-U6 x U5 tri-snRNP complex
+YGR091W	PRP31	U4-U6 x U5 tri-snRNP complex
+YHR165C	PRP8	U4-U6 x U5 tri-snRNP complex
+YKL173W	SNU114	U4-U6 x U5 tri-snRNP complex
+YLR147C	SMD3	U4-U6 x U5 tri-snRNP complex
+YLR275W	SMD2	U4-U6 x U5 tri-snRNP complex
+YOR308C	SNU66	U4-U6 x U5 tri-snRNP complex
+YPR082C	DIB1	U4-U6 x U5 tri-snRNP complex
+YPR178W	PRP4	U4-U6 x U5 tri-snRNP complex
+YDR092W	UBC13	ubiquitin conjugating enzyme complex
+YGL087C	MMS2	ubiquitin conjugating enzyme complex
+YMR140W	SIP5	ubiquitin conjugating enzyme complex
+YDR092W	UBC13	ubiquitin conjugating enzyme complex (GO)
+YGL087C	MMS2	ubiquitin conjugating enzyme complex (GO)
+YDL013W	SLX5	ubiquitin ligase complex (GO)
+YDR219C	MFB1	ubiquitin ligase complex (GO)
+YDR306C	YDR306C	ubiquitin ligase complex (GO)
+YER116C	SLX8	ubiquitin ligase complex (GO)
+YER125W	RSP5	ubiquitin ligase complex (GO)
+YLR224W	YLR224W	ubiquitin ligase complex (GO)
+YML111W	BUL2	ubiquitin ligase complex (GO)
+YMR275C	BUL1	ubiquitin ligase complex (GO)
+YNL311C	SKP2	ubiquitin ligase complex (GO)
+YOR057W	SGT1	ubiquitin ligase complex (GO)
+YER151C	UBP3	Ubp3-Bre5 complex
+YNR051C	BRE5	Ubp3-Bre5 complex
+YBR070C	ALG14	UDP-N-acetylglucosamine transferase complex (GO)
+YGL047W	ALG13	UDP-N-acetylglucosamine transferase complex (GO)
+YPL003W	ULA1	Ula1-Uba3 enzyme complex
+YPR066W	UBA3	Ula1-Uba3 enzyme complex
+YLR347C	KAP95	Ulp1 nuclear pore complex
+YMR308C	PSE1	Ulp1 nuclear pore complex
+YPL020C	ULP1	Ulp1 nuclear pore complex
+YLR386W	VAC14	Vac14-Fig4 complex
+YNL325C	FIG4	Vac14-Fig4 complex
+YKL119C	VPH2	"vacuolar proton-transporting V-type ATPase, V0 domain"
+YLR447C	VMA6	"vacuolar proton-transporting V-type ATPase, V0 domain"
+YOR270C	VPH1	"vacuolar proton-transporting V-type ATPase, V0 domain"
+YPR149W	NCE102	"vacuolar proton-transporting V-type ATPase, V0 domain"
+YBR127C	VMA2	"vacuolar proton-transporting V-type ATPase, V1 domain"
+YDL185W	VMA1	"vacuolar proton-transporting V-type ATPase, V1 domain"
+YEL051W	VMA8	"vacuolar proton-transporting V-type ATPase, V1 domain"
+YGR020C	VMA7	"vacuolar proton-transporting V-type ATPase, V1 domain"
+YHR039C-A	VMA10	"vacuolar proton-transporting V-type ATPase, V1 domain"
+YJR033C	RAV1	"vacuolar proton-transporting V-type ATPase, V1 domain"
+YKL080W	VMA5	"vacuolar proton-transporting V-type ATPase, V1 domain"
+YOR332W	VMA4	"vacuolar proton-transporting V-type ATPase, V1 domain"
+YPR036W	VMA13	"vacuolar proton-transporting V-type ATPase, V1 domain"
+YER072W	VTC1	vacuolar transporter chaperone complex (GO)
+YFL004W	VTC2	vacuolar transporter chaperone complex (GO)
+YJL012C	VTC4	vacuolar transporter chaperone complex (GO)
+YPL019C	VTC3	vacuolar transporter chaperone complex (GO)
+YMR197C	VTI1	Vti1-Pep12 complex
+YOR036W	PEP12	Vti1-Pep12 complex
+YIL139C	REV7	zeta DNA polymerase complex (GO)
+YPL167C	REV3	zeta DNA polymerase complex (GO)

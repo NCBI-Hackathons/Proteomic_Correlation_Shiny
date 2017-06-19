@@ -1,0 +1,131 @@
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, cache = TRUE, warning = FALSE)
+devtools::load_all(pkg = "~/Documents/Projects/2015-11_NoahDephoure_Proteomics/dephourelab/DepLab/")
+devtools::load_all(pkg = "~/Documents/Projects/2015-11_NoahDephoure_Proteomics/pcproc/")
+library(data.table)
+library(ggplot2)
+theme_set(theme_bw(base_size = 16))
+#library(gplots)
+#library(MALDIquant)
+#library(minpack.lm)
+library(magrittr)
+library(RColorBrewer)
+library(NMF)
+source("~/Documents/Projects/2015-11_NoahDephoure_Proteomics/2016-06-27_GaussFitting/TestingGauss.R")
+source("~/Dropbox/github/randomScripts/multiplot.R")
+```
+
+```{r data_outside_DB, eval = FALSE}
+# run "raw" function on every specified file
+# user must specify expt_id, replicate --> retrieve data from DepLab data base!
+files <- list.files(pattern = "mcf10a",path = "~/Documents/Projects/2015-11_NoahDephoure_Proteomics/fromPaola/samples/", full.names = TRUE)
+files
+expt.groups = c("id","expt_id","replicate")
+
+raw <- lapply( files , function(x){
+  out <-  reading_humanMQ( filename = x )
+  out$expt_id <- gsub(".*mcf10a_([a-zA-Z0-9]+)_([0-9]*).*", "\\1", x)
+  out$replicate <- as.numeric(gsub(".*mcf10a_([a-zA-Z0-9]+)_([0-9]*).*", "\\2", x))
+  out$measurement <- NULL # removing column full of "raw.intensity"
+  setorder(out, expt_id, id, fraction)
+  return(out)
+}) %>% rbindlist
+
+#raw <- rbindlist(raw)
+names(raw)[which(names(raw) == "value")] <- "raw"
+
+dat <- raw # change this if more data is joined in previous paragraph
+dat[, superSmu := supsmu(x = seq(1, length(raw)), y = raw )$y , by = expt.groups ]
+
+```
+
+```{r data_from_DB}
+# define data base
+DB <- "/Users/frd2007/Documents/Projects/2015-11_NoahDephoure_Proteomics/replicates.db"
+
+# define experiments to be retrieved from the DB
+exps <- c("MCF10a_D109N_01","MCF10a_EV_01","MCF10a_EV_02","MCF10a_WT_02","MCF10a_WT_01")
+
+uniquifiers <- c("gene_symbol","condition","replicate")
+
+# retrieve data from data.base
+hmdat <- as.data.table(query.measurements.by.expt.with.gene.symbol.v2(DB, exps, "raw.intensity"))
+setorder(hmdat, gene_symbol, expt_id,fraction)
+setnames(hmdat, "value","raw")
+
+# add information --> ideally, these should be supplied by the user during the upload/data selection!
+# --> corresponds to the new menu
+hmdat$replicate <- as.character(gsub(".*_.*_","", hmdat$expt_id))
+hmdat$condition <- as.character(gsub(".*_(.*)_.*","\\1", hmdat$expt_id))
+
+# add normalized values
+hmdat[, superSmu := supsmu(x = seq(1, length(raw)), y = raw )$y , by = uniquifiers]
+hmdat[, norm.value:= superSmu * length(unique(fraction)) / sum(superSmu), by = uniquifiers]
+```
+
+### Pairwise correlations
+
+```{r hm_pw_corr}
+# this takes a while to compute
+cors.dt <- lapply(unique(hmdat$gene_symbol), 
+                  function(x) pw_corr_wrap(hmdat, x,
+                                           measurement = "superSmu",
+                                           uniq.factors = c("fraction", uniquifiers),
+                                           cast.form = "fraction ~ condition + replicate",
+                                           method="pearson")) %>% rbindlist
+
+# obtain matrix for heatmap plotting
+cors.mat <- corrHM_prep(cors.dt)
+```
+
+### Condition-wise comparisons
+
+```{r hm_perCond_corr}
+# calculate median values for each fraction per gene and condition
+summed.dt <- aggregate_dt(hmdat, measurement = "superSmu",
+                          agg_by = c("fraction",uniquifiers[!grepl("replicate",uniquifiers)]) )
+
+# again, this will take a while to compute
+cors.dt02 <- lapply(unique(summed.dt$gene_symbol),
+                    function(x) pw_corr_wrap(summed.dt, x,
+                                             measurement = "median.norm.intensity",
+                                             uniq.factors = c("fraction","gene_symbol", "condition"),
+                                             cast.form = "fraction  ~  condition" )) %>% rbindlist
+
+# obtain matrix for heatmap plotting
+cors.mat02 <- corrHM_prep(cors.dt02)
+```
+
+##### One-liner
+
+```{r wrapper, eval=FALSE}
+hm_matrices <- corrHM_wrap(hmdat,measurement = "norm.value",corr.method = "pearson",calc.mode = "both",uniquifiers = uniquifiers)
+```
+
+### Heatmap with possibility to filter for x number of top/bottom genes
+
+```{r semiInteractive_hm}
+
+hmcols <-  rev(colorRampPalette(brewer.pal(9,"RdYlBu"))(100))
+
+# exampe heatmap for pw correlation
+hmres <- aheatmap(cors.mat,Colv = NA, Rowv = FALSE, breaks = 0)
+
+# 10 genes shown at the bottom of the heatmap:
+head(cors.mat[hmres$rowInd,], n = 10) %>% rownames
+aheatmap(head(cors.mat[hmres$rowInd,], n = 10), breaks = 0, Rowv = FALSE, Colv = NA)
+
+# 10 genes shown at the top of the heatmap:
+tail(cors.mat[hmres$rowInd,], n = 10) %>% rownames
+aheatmap(tail(cors.mat[hmres$rowInd,], n = 10), breaks = 0, Rowv = FALSE, Colv = NA)
+```
+
+
+### Truly interactive heatmap - not implemented in shiny yet
+
+```{r interactiveHM, eval = FALSE}
+if (!require("devtools")) install.packages("devtools")
+if (!require("d3heatmap")) devtools::install_github("rstudio/d3heatmap")
+library(d3heatmap)
+d3heatmap(head(cors.mat02,n=100), colors = hmcols)
+```

@@ -1,0 +1,5 @@
+<!--
+%\VignetteEngine{knitr}
+%\VignetteIndexEntry{DepLab Setting Up}
+%\VignetteDepends{ggplot2, DepLab}
+-->

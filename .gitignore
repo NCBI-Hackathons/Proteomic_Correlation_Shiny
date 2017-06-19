@@ -1,0 +1,8 @@
+.Rproj.user
+.Rhistory
+.RData
+inst/doc
+Running_and_testing_cache/
+inst/extdata/proteomics.db
+inst/extdata/path_to_custom_complexes.txt
+inst/extdata/path_to_db.txt
