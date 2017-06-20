@@ -94,6 +94,7 @@ points(tsne_points[names(complexes),], col=pal[complexes], pch=19)
 ```
 
 ```{r}
+set.seed(123)
 idx <- which(rownames(wt1_mat) %in% names(complexes))
 wt1_sub <- wt1_mat[c(idx, setdiff(1:500, idx)), ]
 
