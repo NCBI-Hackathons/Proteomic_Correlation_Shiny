@@ -10,4 +10,3 @@
 \description{
 Query the data for the spike-in while filtering by expt_id and measurement.
 }
-

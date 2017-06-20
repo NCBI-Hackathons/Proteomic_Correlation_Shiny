@@ -26,4 +26,3 @@ collected from the MaxQuant output using Friedman's superSmoother.
 \seealso{
 \code{\link{supsmu}}
 }
-

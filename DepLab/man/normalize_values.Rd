@@ -64,4 +64,3 @@ std.norm <- normalize_values(long.df = subset(mqcombi, measurement == "raw.inten
 \code{\link{norm_by_fraction}},
 \code{\link{norm_by_spikeIn}}
 }
-

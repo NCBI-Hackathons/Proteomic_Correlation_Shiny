@@ -16,4 +16,3 @@ criteria of either the UniProt or the yeast gene nomenclature.
 \description{
 Check whether a supplied ID conforms with the nomenclatures we're using
 }
-

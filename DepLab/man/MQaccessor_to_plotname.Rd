@@ -27,4 +27,3 @@ This function helps to a) retrieve all the columns from the MaxQuant output
 related to a column and b) to keep a meaningful name for the value that can
 be used for the axis labeling in the plot later on.
 }
-

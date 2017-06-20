@@ -24,4 +24,3 @@ in one fraction across all available peptides/proteins.
 \code{\link{plot_cumulativeValuesAcrossFractions}},
 \code{\link{MQ_to_ggplot2}}
 }
-

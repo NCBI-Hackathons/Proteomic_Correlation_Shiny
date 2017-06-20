@@ -24,4 +24,3 @@ fraction should get a value of 1 in each fraction.
 \seealso{
 \code{\link{normalize_values}}
 }
-
