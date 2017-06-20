@@ -180,13 +180,17 @@ MQaccessor_to_plotname <- function(plotname){
   # values are strings instead of numbers)
   matching <- data.frame(mq_filter = c("Peptides\\.[0-9]+",
                                       "Unique\\.peptides\\.[0-9]+",
-                                      "Razor.*\\.[0-9]+", # "Sequence\\.coverage\\.[0-9]+",
-                                      "Intensity.*\\.[0-9]+",#  "LFQ\\.intensity.*\\.[0-9]+",
+                                      "Razor.*\\.[0-9]+", 
+                                      "Sequence\\.coverage\\.[0-9]+",
+                                      "Intensity.*\\.[0-9]+",
+                                      "LFQ\\.intensity.*\\.[0-9]+",
                                       "MS\\.MS.*\\.[0-9]+"),
                         ylabel = c("peptides.count",
                                "unique.peptides.only",
-                               "razor.and.unique.peptides", # "sequence.coverage",
-                               "raw.intensity",# "LFQ.intensity",
+                               "razor.and.unique.peptides", 
+                               "sequence.coverage",
+                               "raw.intensity",
+                               "LFQ.intensity",
                                "MS.MS.count"),
                         stringsAsFactors = FALSE)
   
