@@ -101,15 +101,12 @@ cleaning_MQ <- function(mq.df, remove.contaminants = TRUE,
       
       mq.out <- subset(mq.out, grepl("^[YQ]+", Protein.IDs))
       
-    }else if(poi == "human"){
+    }else{
       
       # the massive regex in the middle is from TrEMBL (http://www.uniprot.org/help/accession_numbers)
       mq.out <- subset(mq.out, grepl("([OPQ][0-9][A-Z0-9]{3}[0-9]|[A-NR-Z][0-9]([A-Z][A-Z0-9]{2}[0-9]){1,2})", Protein.IDs))
       
-      }else{stop("If you would like to retrieve the proteins of interest for the
-                 organism for which the experiment was done, specify one of the
-                 available options: 'yeast' or 'human'.")
-        }
+    }
   }
   
   # extracting spiked-in proteins
@@ -413,6 +410,20 @@ extract_proteinID <- function(prot.id, routine = NULL, regex = NULL, label = NUL
 #' 
 #' @seealso \code{\link{reading_MQ}}, \code{\link{MQaccessor_to_plotname}}, 
 #' \code{link{extract_proteinID}}, \code{\link{read.mq.data}}
+#' 
+#' @examples
+#' \dontrun{
+#' # load example data in cleaned MaxQuant format
+#' library(DepLabData)
+#' data("WT_trial1")
+#' 
+#' # generate a long data.frame that can be used with most other functions
+#' # of DepLab
+#' MQ_to_longFormat(WT_trial1, 
+#'                  y = "raw.intensity", 
+#'                  return.dt = FALSE, 
+#'                  list(id = ids$id, expt_id = WT_trial1$expt_id))
+#' }
 #' 
 #' @export
 MQ_to_longFormat <- function(mq.df, y, return.dt = FALSE, ...){

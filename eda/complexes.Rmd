@@ -61,12 +61,14 @@ aheatmap(log1p(wt1_mat[1:500,]), Colv = NA, distfun = "pearson",
          scale = "none")
 ```
 
-# Check behavior of known complexes
+# Check behavior of known complexes. You may have to change the path variable to correctly locate the complexes files.
 
 ```{r}
-interacting <- read.table("interacting_complexes.txt", sep='\t',
+path="/Users/nickgiangreco/GitHub/Proteomic_Correlation_Shiny/eda/"
+
+interacting <- read.table(paste0(path,"interacting_complexes.txt"), sep='\t',
                           stringsAsFactors = FALSE, row.names = 1)
-nonint <- read.table("non-interacting_proteins.txt", sep='\t',
+nonint <- read.table(paste0(path,"non-interacting_proteins.txt"), sep='\t',
                      stringsAsFactors = FALSE, row.names = 1)
 
 complexes <- as.factor(interacting[,1])
@@ -94,6 +96,7 @@ points(tsne_points[names(complexes),], col=pal[complexes], pch=19)
 ```
 
 ```{r}
+set.seed(123)
 idx <- which(rownames(wt1_mat) %in% names(complexes))
 wt1_sub <- wt1_mat[c(idx, setdiff(1:500, idx)), ]
 
@@ -112,23 +115,6 @@ aheatmap(log1p(wt1_sub), Colv = NA, distfun = "pearson",
 * Add a more supervised approach, where we start from a known complex and we add new proteins that have a similar profile.
 * In the supervised analysis we could have a voting system to decide whether to include a protein in the complex.
 
-
-
-```{r normalization, eval=FALSE}
-
-mq.y.1 <- read.MQ.data(filename = system.file("extdata", "test_data", "proteinGroups_100mM_new.txt", package = "DepLab"), expt.id = "100mM", data.subset = "poi", organism = "yeast")
-mq.y.3 <- read.MQ.data(filename = system.file("extdata", "test_data", "proteinGroups_300mM_new.txt", package = "DepLab"), expt.id = "300mM", data.subset = "poi", organism = "yeast")
-# make one long data.frame/data.table 
-mqcombi <- rbind(mq.y.1, mq.y.3)
-
-# superSmoother
-smu <- superSmooth_values(long.df = subset(mqcombi, measurement == "raw.intensity"), prot.identifier = "gene_symbol")
-
-# fraction normalization or spike-in (see help of normalize_values)
-fraction.norm <- normalize_values(long.df = smu,
-                                  norm.type = "fraction", prot.identifier = "gene_symbol")
-
-```
 # Session Info
 
 ```{r}
