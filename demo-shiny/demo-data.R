@@ -5,57 +5,8 @@ library("heatmaply")
 library("shinyHeatmaply")
 # install.packages(c("heatmaply", "shinyHeatmaply"))
 
-# ~~~~~ PROFILE PLOT ~~~~~ #
-# Source data to use for the demo Shiny
-# This data is copy/pasted from the 'Running and testing.Rmd"
-
-mq.y.1 <- read.MQ.data(filename = system.file("extdata", "test_data", "proteinGroups_100mM_new.txt", package = "DepLab"), expt.id = "100mM", data.subset = "poi", organism = "yeast")
-mq.y.3 <- read.MQ.data(filename = system.file("extdata", "test_data", "proteinGroups_300mM_new.txt", package = "DepLab"), expt.id = "300mM", data.subset = "poi", organism = "yeast")
-mqcombi <- rbind(mq.y.1, mq.y.3)
-
-smu <- superSmooth_values(long.df = subset(mqcombi, measurement == "raw.intensity"), prot.identifier = "gene_symbol")
-fraction.norm <- normalize_values(long.df = smu,
-                                  norm.type = "fraction", prot.identifier = "gene_symbol")
-
-
-y.std.1 <- read.MQ.data(filename = system.file("extdata", "test_data", "proteinGroups_100mM_new.txt", package = "DepLab"), expt.id = "100mM", data.subset = "trypsin", organism = NULL)
-y.std.3 <- read.MQ.data(filename = system.file("extdata", "test_data", "proteinGroups_300mM_new.txt", package = "DepLab"), expt.id = "300mM", data.subset = "trypsin", organism = NULL)
-std.combi <- rbind(y.std.1, y.std.3)
-
-std.norm <- normalize_values(long.df = subset(mqcombi, measurement == "raw.intensity"), norm.type = "spike-in", prot.identifier = "gene_symbol", std.df = subset(std.combi, measurement == "raw.intensity"))
-
-
-mqcombi.plot <- subset(mqcombi, measurement == "raw.intensity" & gene_symbol %in% c("YAL003W (EFB1)", "YAL005C (SSA1)"))
-P <- plot_profile(mqcombi.plot, what = c("gene_symbol","expt_id"), color.by = "gene_symbol", split.by = "gene_symbol", line.smooth = TRUE)
-# print(P)
-
-# plot normalized values
-# mqcombi.plot.norm.frac <- subset(fraction.norm, gene_symbol %in% c("YAL016W (TPD3)", "YAL005C (SSA1)", "YAL003W (EFB1)"))
-# plot_profile(mqcombi.plot.norm.frac, what = c("gene_symbol","expt_id"), color.by = "gene_symbol", split.by = "gene_symbol", line.smooth = FALSE)
-
-mqcombi.plot.norm.std <- subset(std.norm, gene_symbol %in% c("YAL016W (TPD3)", "YAL005C (SSA1)", "YAL003W (EFB1)") )
-
-my_profile_plot <- plot_profile(mqcombi.plot.norm.std, what = c("gene_symbol","expt_id"), color.by = "expt_id", split.by = "gene_symbol", line.smooth = FALSE)
-
-# print the profile plot as a plotly
-# ggplotly(my_profile_plot)
-
-
-# ~~~ other old stuff from the docs ~~~ # 
-# adding marker for molecular weight
-# mwmark <- data.frame(expt_id = c("100mM","300mM"), MWmarker = c(15,25))
-# P + geom_vline(data = mwmark, aes(xintercept = MWmarker), linetype="dashed")
-
-# smoothing line instead of geom_line
-# ggplot(subset(fraction.norm, grepl("YAL005C", gene_symbol)), aes(x=fraction, y=value, colour=expt_id)) + 
-#     geom_smooth(span = 0.3, se = TRUE) +
-#     geom_point()+ theme_bw() +
-#     facet_grid(.~expt_id)
-
-
 
 # ~~~~~ HEATMAP ~~~~~ #
-# make a heatmap the old way
 # data from the data package
 # code from daviderisso
 library("tidyr")
@@ -77,14 +28,15 @@ wt1_mat <- wt1_mat[rowSums(wt1_mat)>0,]
 # aheatmap(log1p(wt1_mat[1:500,]), Colv = NA, distfun = "pearson",
 #          scale = "none")
 # dev.off()
+
+# new interactive heatmap
 wt1_mat_subset <- log1p(wt1_mat[1:500,])
 wt1_mat_subset <- as.data.frame(wt1_mat_subset)
-my_heatmap <- heatmaply(x = wt1_mat_subset, distfun = function(x) dist((1-cor(t(x), method = "pearson"))), scale = "none", Colv = FALSE, plot_method = "ggplot") # ggplot
-# my_heatmap$source <- "my_heatmap"
+my_heatmap <- heatmaply(x = wt1_mat_subset, distfun = function(x) dist((1-cor(t(x), method = "pearson"))), scale = "none", Colv = FALSE, plot_method = "ggplot") 
 
-iris_heatmap <- heatmapr(iris[,-5], scale = "column", colors = "Blues")
-iris_heatmap <- heatmaply(iris_heatmap)
 
+# ~~~~~ PROFILE PLOT ~~~~~ #
 # need the Experiment ID column for the dataset
 wt1$expt_id <- "WT1"
-my_profile_plot <- plot_profile(wt1[which(wt1[["id"]] == "A0FGR8") ,], what = c("id", "expt_id"), color.by = "id", line.smooth = FALSE)
+selected_IDs <- c("A0FGR8")
+my_profile_plot <- plot_profile(wt1[which(as.character(wt1[["id"]]) %in% selected_IDs) ,], what = c("id", "expt_id"), color.by = "id", line.smooth = FALSE)
