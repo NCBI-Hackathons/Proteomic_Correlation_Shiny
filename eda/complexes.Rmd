@@ -61,12 +61,14 @@ aheatmap(log1p(wt1_mat[1:500,]), Colv = NA, distfun = "pearson",
          scale = "none")
 ```
 
-# Check behavior of known complexes
+# Check behavior of known complexes. You may have to change the path variable to correctly locate the complexes files.
 
 ```{r}
-interacting <- read.table("interacting_complexes.txt", sep='\t',
+path="/Users/nickgiangreco/GitHub/Proteomic_Correlation_Shiny/eda/"
+
+interacting <- read.table(paste0(path,"interacting_complexes.txt"), sep='\t',
                           stringsAsFactors = FALSE, row.names = 1)
-nonint <- read.table("non-interacting_proteins.txt", sep='\t',
+nonint <- read.table(paste0(path,"non-interacting_proteins.txt"), sep='\t',
                      stringsAsFactors = FALSE, row.names = 1)
 
 complexes <- as.factor(interacting[,1])
