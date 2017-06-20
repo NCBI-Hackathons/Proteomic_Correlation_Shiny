@@ -414,6 +414,20 @@ extract_proteinID <- function(prot.id, routine = NULL, regex = NULL, label = NUL
 #' @seealso \code{\link{reading_MQ}}, \code{\link{MQaccessor_to_plotname}}, 
 #' \code{link{extract_proteinID}}, \code{\link{read.mq.data}}
 #' 
+#' @examples
+#' \dontrun{
+#' # load example data in cleaned MaxQuant format
+#' library(DepLabData)
+#' data("WT_trial1")
+#' 
+#' # generate a long data.frame that can be used with most other functions
+#' # of DepLab
+#' MQ_to_longFormat(WT_trial1, 
+#'                  y = "raw.intensity", 
+#'                  return.dt = FALSE, 
+#'                  list(id = ids$id, expt_id = WT_trial1$expt_id))
+#' }
+#' 
 #' @export
 MQ_to_longFormat <- function(mq.df, y, return.dt = FALSE, ...){
   
