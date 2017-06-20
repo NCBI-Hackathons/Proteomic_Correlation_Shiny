@@ -171,7 +171,7 @@ read.MQ.data <- function(filename, expt.id, data.subset = "poi", organism = NULL
 #' In addition to tables for the actual values, there are also tables for
 #' the different types of possible meta-data that can be input via the shiny
 #' app start page:
-#' itemize{
+#' \itemize{
 #' \item origin_data: info about the experiment, e.g. experimenter, genotype,
 #' cell_type etc.
 #' \item prefractionation_method_data
@@ -229,8 +229,8 @@ initialize.database <- function(database.name, organism.name, force = FALSE) {
   measurement TEXT NOT NULL,
   expt_id TEXT NOT NULL,
   PRIMARY KEY (expt_id, id, measurement, fraction))"
-  
   dbGetQuery(conn = db, gsub("  ", "", std.data.sql))
+  
   origin.data.sql <- "create table IF NOT EXISTS origin_data (expt_id TEXT NOT NULL,
   experimenter TEXT NOT NULL,
   genotype TEXT NOT NULL,               
@@ -241,7 +241,6 @@ initialize.database <- function(database.name, organism.name, force = FALSE) {
   digestion_enzyme TEXT NOT NULL,
   notes TEXT,
   PRIMARY KEY (expt_id))"
-  
   dbGetQuery(conn = db, gsub("  ", "", origin.data.sql))
   
   prefractionation.data.sql <- "create table IF NOT EXISTS prefractionation_method_data (expt_id TEXT NOT NULL,
@@ -279,7 +278,7 @@ initialize.database <- function(database.name, organism.name, force = FALSE) {
 #' 
 #' @param database.name path to the existing data base, e.g., proteomics.db
 #' @param expt.info metadata associated with the experiment
-#' (one row per expt) (still to come), e.g. data.frame(expt_id = input$expt.id, organism = input$organism)
+#' (one row per expt), e.g. \code{data.frame(expt_id = input$expt.id, organism = input$organism)}
 #' @param prot.data data per protein per expt 
 #' (incl all columns that are not frac.data)
 #' @param frac.data data per protein per fraction per expt (here, mq.data)
@@ -289,27 +288,42 @@ initialize.database <- function(database.name, organism.name, force = FALSE) {
 #' @param msmethod.data optional metatdata about the specific experiment, can be NULL
 #' @param dataproc.data optional metatdata about the specific experiment, can be NULL
 #' 
-#' @details Usage example:
-#' #origin_df <- data.frame(expt_id = expt.id, experimenter = "myself",
-#'  #                       genotype = "unknown", cell_type = "yeast_cells",
-#'  #                      harvest_date = "Nov 2016", buffer_composition = "TrisHCl", 
-#'  #                      lysis_method = "standard", digestion_enzyme = "Trypsin", 
-#'  #                      notes = NA)
-#'  # msmethods_df <- data.frame(expt_id = expt.id, instrument_id = "X0000",
-#'    #                       run_date = "Oct 2016", method_length = 1)
-#' # dataproc_df <- data.frame(expt_id = expt.id, processing_platform = "unknown", 
-#'    #                      search_algorithm = "unknown", filtering_algorithm = "unknown",
-#'    #                      filtering_stringency = "unknown")
-#' # prefractionation_df <- data.frame(expt_id = expt.id, column_id = "x",
-#'  #                                amount_protein_loaded = 1, sample_vol_loaded = 1, 
-#'  #                                lc_flow_rate = 1, lc_fraction_size = 1, 
-#'  #                                time_per_fraction = 1, fractions_collected = 1)
+#' @examples
+#' \dontrun{
+#' ## create the database, and completely overwrite if it already exists (useful for debugging!)
+#' initialize.database(database.name, organism.name = orga, force = TRUE)
+#' 
+#' ## read the data in and turn it into a format suitable for the data base
+#' x <- read.MQ.data(filename, expt.id, data.subset = "poi", organism = orga)
+#' head(x)
+#' ## testing the manual input of protein IDs ( aka standards aka spike-ins)
+#' y <- read.MQ.data(filename, expt.id, organism = NULL, data.subset = c("P07477", "Q0140","YAL003W"))
+#' head(y)
+#' 
+#' # create some meta-data
+#' origin_df <- data.frame(expt_id = expt.id, experimenter = "myself",
+#'                      genotype = "unknown", cell_type = "yeast_cells",
+#'                      harvest_date = "Nov 2016", buffer_composition = "TrisHCl", 
+#'                      lysis_method = "standard", digestion_enzyme = "Trypsin", 
+#'                      notes = NA)
+#'  msmethods_df <- data.frame(expt_id = expt.id, instrument_id = "X0000",
+#'                         run_date = "Oct 2016", method_length = 1)
+#'  dataproc_df <- data.frame(expt_id = expt.id, processing_platform = "unknown", 
+#'                       search_algorithm = "unknown", filtering_algorithm = "unknown",
+#'                       filtering_stringency = "unknown")
+#'  prefractionation_df <- data.frame(expt_id = expt.id, column_id = "x",
+#'                                  amount_protein_loaded = 1, sample_vol_loaded = 1, 
+#'                                  lc_flow_rate = 1, lc_fraction_size = 1, 
+#'                                  time_per_fraction = 1, fractions_collected = 1)
 #'
-#' ## add the data to the db
-#' # add.expt.to.database(database.name, data.frame(expt_id = expt.id, organism = "yeast"), 
-#' #                     prot.data = NULL, frac.data = x, std.data = y, origin.data = origin_df, 
-#' #                     prefractionation.data = prefractionation_df, 
-#' #                     msmethod.data = msmethods_df, dataproc.data = dataproc_df)
+#' # add the data to the db
+#' add.expt.to.database(database.name,
+#'                      expt.info = data.frame(expt_id = expt.id, organism = "yeast"), 
+#'                      prot.data = NULL, frac.data = x, std.data = y,
+#'                       origin.data = origin_df, 
+#'                      prefractionation.data = prefractionation_df, 
+#'                      msmethod.data = msmethods_df, dataproc.data = dataproc_df)
+#' }
 #' @export
 add.expt.to.database <- function(database.name, expt.info, prot.data, frac.data, std.data, origin.data, prefractionation.data, msmethod.data, dataproc.data) {
   db <- dbConnect(SQLite(), dbname = database.name, cache_size = 5000)

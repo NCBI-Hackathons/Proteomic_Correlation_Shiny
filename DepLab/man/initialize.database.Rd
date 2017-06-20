@@ -34,7 +34,7 @@ following tables:
 In addition to tables for the actual values, there are also tables for
 the different types of possible meta-data that can be input via the shiny
 app start page:
-itemize{
+\itemize{
 \item origin_data: info about the experiment, e.g. experimenter, genotype,
 cell_type etc.
 \item prefractionation_method_data

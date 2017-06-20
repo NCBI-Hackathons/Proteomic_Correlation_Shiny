@@ -11,7 +11,7 @@ add.expt.to.database(database.name, expt.info, prot.data, frac.data, std.data,
 \item{database.name}{path to the existing data base, e.g., proteomics.db}
 
 \item{expt.info}{metadata associated with the experiment
-(one row per expt) (still to come), e.g. data.frame(expt_id = input$expt.id, organism = input$organism)}
+(one row per expt), e.g. \code{data.frame(expt_id = input$expt.id, organism = input$organism)}}
 
 \item{prot.data}{data per protein per expt 
 (incl all columns that are not frac.data)}
@@ -31,26 +31,40 @@ add.expt.to.database(database.name, expt.info, prot.data, frac.data, std.data,
 \description{
 Adds data from a new MaxQuant output file to the data base.
 }
-\details{
-Usage example:
-#origin_df <- data.frame(expt_id = expt.id, experimenter = "myself",
- #                       genotype = "unknown", cell_type = "yeast_cells",
- #                      harvest_date = "Nov 2016", buffer_composition = "TrisHCl", 
- #                      lysis_method = "standard", digestion_enzyme = "Trypsin", 
- #                      notes = NA)
- # msmethods_df <- data.frame(expt_id = expt.id, instrument_id = "X0000",
-   #                       run_date = "Oct 2016", method_length = 1)
-# dataproc_df <- data.frame(expt_id = expt.id, processing_platform = "unknown", 
-   #                      search_algorithm = "unknown", filtering_algorithm = "unknown",
-   #                      filtering_stringency = "unknown")
-# prefractionation_df <- data.frame(expt_id = expt.id, column_id = "x",
- #                                amount_protein_loaded = 1, sample_vol_loaded = 1, 
- #                                lc_flow_rate = 1, lc_fraction_size = 1, 
- #                                time_per_fraction = 1, fractions_collected = 1)
+\examples{
+\dontrun{
+## create the database, and completely overwrite if it already exists (useful for debugging!)
+initialize.database(database.name, organism.name = orga, force = TRUE)
 
-## add the data to the db
-# add.expt.to.database(database.name, data.frame(expt_id = expt.id, organism = "yeast"), 
-#                     prot.data = NULL, frac.data = x, std.data = y, origin.data = origin_df, 
-#                     prefractionation.data = prefractionation_df, 
-#                     msmethod.data = msmethods_df, dataproc.data = dataproc_df)
+## read the data in and turn it into a format suitable for the data base
+x <- read.MQ.data(filename, expt.id, data.subset = "poi", organism = orga)
+head(x)
+## testing the manual input of protein IDs ( aka standards aka spike-ins)
+y <- read.MQ.data(filename, expt.id, organism = NULL, data.subset = c("P07477", "Q0140","YAL003W"))
+head(y)
+
+# create some meta-data
+origin_df <- data.frame(expt_id = expt.id, experimenter = "myself",
+                     genotype = "unknown", cell_type = "yeast_cells",
+                     harvest_date = "Nov 2016", buffer_composition = "TrisHCl", 
+                     lysis_method = "standard", digestion_enzyme = "Trypsin", 
+                     notes = NA)
+ msmethods_df <- data.frame(expt_id = expt.id, instrument_id = "X0000",
+                        run_date = "Oct 2016", method_length = 1)
+ dataproc_df <- data.frame(expt_id = expt.id, processing_platform = "unknown", 
+                      search_algorithm = "unknown", filtering_algorithm = "unknown",
+                      filtering_stringency = "unknown")
+ prefractionation_df <- data.frame(expt_id = expt.id, column_id = "x",
+                                 amount_protein_loaded = 1, sample_vol_loaded = 1, 
+                                 lc_flow_rate = 1, lc_fraction_size = 1, 
+                                 time_per_fraction = 1, fractions_collected = 1)
+
+# add the data to the db
+add.expt.to.database(database.name,
+                     expt.info = data.frame(expt_id = expt.id, organism = "yeast"), 
+                     prot.data = NULL, frac.data = x, std.data = y,
+                      origin.data = origin_df, 
+                     prefractionation.data = prefractionation_df, 
+                     msmethod.data = msmethods_df, dataproc.data = dataproc_df)
+}
 }
