@@ -167,7 +167,9 @@ cleaning_MQ <- function(mq.df, remove.contaminants = TRUE,
 #' be used for the axis labeling in the plot later on.
 #'  
 #' @param plotname type of value to be used for y-axis values in the fraction
-#' profile plot
+#' profile plot; one of: c("peptides.count","unique.peptides.only", 
+#' "razor.and.unique.peptides", "sequence.coverage","raw.intensity",
+#' "LFQ.intensity", "MS.MS.count")
 #' 
 #' @return Regular expression for extracting all columns associated with the 
 #' desired value of interest from the MaxQuant output.
