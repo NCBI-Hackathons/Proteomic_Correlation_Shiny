@@ -24,4 +24,3 @@ Check for presence of named columns
 \details{
 example usage: check_columns(c(what, color.by, split.by, y.lab, x, y), long.df, "long.df", "plot_profile")
 }
-

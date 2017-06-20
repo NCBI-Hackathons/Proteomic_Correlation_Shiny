@@ -9,4 +9,3 @@ delete.expt(database.name, expt.ids)
 \description{
 Delete by expt_id
 }
-

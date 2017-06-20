@@ -9,4 +9,3 @@
 \description{
 Edit experiment meta-data, e.g. organism.
 }
-

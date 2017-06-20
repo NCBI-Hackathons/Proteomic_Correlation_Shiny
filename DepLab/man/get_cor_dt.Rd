@@ -17,4 +17,3 @@ one column describing the comparison
 \bold{example usage:}
 cors.dt <- lapply(unique(dat.test$id),
 }
-

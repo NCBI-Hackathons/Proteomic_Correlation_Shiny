@@ -110,7 +110,11 @@ y <- read.MQ.data(filename, expt.id, organism = NULL, data.subset = c("P07477", 
 head(y)
 
 ## come up with some metadata
-origin_df <- data.frame(expt_id = expt.id, experimenter = "myself", genotype = "unknown", cell_type = "yeast_cells", harvest_date = "Nov 2016", buffer_composition = "TrisHCl", lysis_method = "standard", digestion_enzyme = "Trypsin", notes = NA)
+origin_df <- data.frame(expt_id = expt.id,
+                        experimenter = "myself", 
+                        genotype = "unknown", cell_type = "yeast_cells", 
+                        harvest_date = "Nov 2016", buffer_composition = "TrisHCl",
+                        lysis_method = "standard", digestion_enzyme = "Trypsin", notes = NA)
 
 ## optional meta data
 

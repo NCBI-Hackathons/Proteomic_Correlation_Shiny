@@ -42,20 +42,25 @@ There are numerous tasks that can be done to tremendously improve the app (it ma
 ## Statistical analyses
 
 - [ ] Identify proteins whose **profiles change** between two (or more) conditions (taking the variability based on replicates into account)
+
       * some sort of ranking
       * statistical significance?
+
 - [ ] Identify proteins that **co-elute**/change the same/different way(s), i.e.,
+
       * that may be in the same complex
       * that may change the complex membership depending on the condition
       * ...
 
 ## Misc tasks
 
-- [ ] An R package containing the **example data** that we are going to work with
+- [x] An R package containing the **example data** that we are going to work with
 - [ ] **Quality control**, both visually and perhaps even cooking up some sort of score?
+
       - per protein
       - reproducibility between replicates
       - how well are certain "gold-standard" complexes revocered?
+
 - [ ] Updating the manual, making a **proper vignette/tutorial** (there should be one for every package at least)
 - [ ] Implementing proper **tests** for the functions, e.g. using Hadley's `testthat` package
 
@@ -70,6 +75,7 @@ There are numerous tasks that can be done to tremendously improve the app (it ma
      - [How to interpret MQ output](http://oisb-1.med.uottawa.ca/prc/interpret.html)
      - [Nat. Methods MQ Practical Guide](https://www.researchgate.net/publication/24284062_A_practical_guide_to_the_MaxQuant_computational_platform_for_SILAC-based_quantitative_proteomics) --> mostly **Box 2**
      - [Quantitative Proteome Profiling, Methods in Mol Biol](https://www.researchgate.net/publication/225186303_In_Vivo_Quantitative_Proteome_Profiling_Planning_and_Evaluation_of_SILAC_Experiments) --> **Section 3.4** Data Analysis Using MaxQuant contains many details about the MQ output (ignore the SILAC details)
+     - [Presentation with lots of MQ details](http://www.bspr.org/sites/default/files/bspr11pdf/BSPR2011_Cox.pdf)
  * __Protein correlation profiling__
      - Foster Lab pubs: 
           - [Kristensen et al, 2012, initial description of the method and analysis](https://www.embl.de/predoccourse/2015/modules/proteomics/journal_club/MS_B.pdf)

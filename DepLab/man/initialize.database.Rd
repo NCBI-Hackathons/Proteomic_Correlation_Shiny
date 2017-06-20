@@ -6,7 +6,39 @@
 \usage{
 initialize.database(database.name, organism.name, force = FALSE)
 }
+\arguments{
+\item{database.name}{path to data.base}
+
+\item{organism.name}{name of the organism, e.g. "yeast" or "human"}
+
+\item{force}{Boolean indicating whether a \emph{new} data base is going to
+be made even if a file with the name \code{database.name} already exists.
+Default: FALSE (= no overwriting)}
+}
 \description{
 Create the data base
 }
+\details{
+This function initializes an \emph{empty} data base with the 
+following tables:
+\itemize{
+\item id_info
+\item expt_id: \code{ PRIMARY KEY (expt_id, organism)}
+\item prot_data
+\item frac_data: values for each fraction, 
+\code{PRIMARY KEY (organism, expt_id, gene_symbol, measurement, fraction)}
+\item std_data: values for the spike-in proteins, 
+\code{PRIMARY KEY (expt_id, id, measurement, fraction)}
+}
 
+In addition to tables for the actual values, there are also tables for
+the different types of possible meta-data that can be input via the shiny
+app start page:
+\itemize{
+\item origin_data: info about the experiment, e.g. experimenter, genotype,
+cell_type etc.
+\item prefractionation_method_data
+\item ms_method_data
+\item data_processing_data
+}
+}

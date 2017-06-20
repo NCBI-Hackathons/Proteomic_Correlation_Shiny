@@ -32,4 +32,3 @@ The smoothened values will be calculated using ddplyr(in.df, factor2 ~ factor1).
 \seealso{
 \code{\link{xspline}}, \code{\link{plot_profile}}
 }
-

@@ -1,0 +1,136 @@
+---
+title: "Identify complexes"
+author: "Davide Risso"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+output: 
+  html_document: 
+    fig_height: 7
+    fig_width: 7
+    toc: yes
+    code_folding: hide
+    toc_float: yes
+---
+
+```{r options, include=FALSE}
+knitr::opts_chunk$set(cache=TRUE, error=FALSE, message=FALSE, warning=FALSE)
+```
+
+# TL;DR
+
+Here, I'm trying out some ideas on what to do to identify new members of known complexes and to find new complexes.
+
+# Exploration of the first few proteins
+
+Read in the data, for now just one WT sample.
+
+```{r}
+library(magrittr)
+library(ggplot2)
+library(DepLabData)
+library(DepLab)
+library(tidyverse)
+
+### read in data (for now )
+data("WT_trial1")
+colnames(WT_trial1)
+
+wt1 <- MQ_to_longFormat(WT_trial1, y = "raw.intensity",
+                        return.dt = TRUE,
+                        extract_proteinID(WT_trial1$Protein.IDs,
+                                          routine = "human"))
+wt1 <- wt1[, -4]
+wt1_wide <- spread(wt1, fraction, value)
+wt1_mat <- as.matrix(wt1_wide[,-1])
+rownames(wt1_mat) <- wt1_wide$id
+```
+
+Remove samples with 0 across all fractions.
+
+```{r}
+table(rowSums(wt1_mat)>0)
+wt1_mat <- wt1_mat[rowSums(wt1_mat)>0,]
+```
+
+For now I'm using the raw, unfiltered data, but eventually it would be nice to use the normalized, smoothed data.
+
+We work on the log-scale (at least for visualization).
+
+```{r}
+library(NMF)
+aheatmap(log1p(wt1_mat[1:500,]), Colv = NA, distfun = "pearson",
+         scale = "none")
+```
+
+# Check behavior of known complexes
+
+```{r}
+interacting <- read.table("interacting_complexes.txt", sep='\t',
+                          stringsAsFactors = FALSE, row.names = 1)
+nonint <- read.table("non-interacting_proteins.txt", sep='\t',
+                     stringsAsFactors = FALSE, row.names = 1)
+
+complexes <- as.factor(interacting[,1])
+names(complexes) <- rownames(interacting)
+
+aheatmap(log1p(wt1_mat[rownames(interacting),]), Colv = NA, distfun = "pearson", scale = "none", annRow = data.frame(complexes))
+```
+
+```{r, eval=FALSE}
+pca <- prcomp(log1p(wt1_mat))
+d <- as.dist(cor(t(pca$x)))
+
+library(Rtsne)
+tsne_data <- Rtsne(d, pca = FALSE, is_distance = TRUE)
+```
+
+## Looking at all proteins
+
+```{r, eval=FALSE}
+pal <- clusterExperiment::bigPalette
+tsne_points <- tsne_data$Y
+rownames(tsne_points) <- rownames(wt1_mat)
+plot(tsne_points)
+points(tsne_points[names(complexes),], col=pal[complexes], pch=19)
+```
+
+```{r}
+idx <- which(rownames(wt1_mat) %in% names(complexes))
+wt1_sub <- wt1_mat[c(idx, setdiff(1:500, idx)), ]
+
+complexes_all <- rep(NA, NROW(wt1_sub))
+names(complexes_all) <- rownames(wt1_sub)
+complexes_all[names(complexes)] <- as.character(complexes)
+
+aheatmap(log1p(wt1_sub), Colv = NA, distfun = "pearson",
+         scale = "none", annRow = data.frame(complexes_all))
+```
+
+# Random ideas to improve the analysis
+
+* We should integrate across replicates: e.g., mean profile with some sort of weight for uncertainty.
+* Another way would be to cluster based on a tridimensional array proteins times fractions times samples. And use average just for visualization.
+* Add a more supervised approach, where we start from a known complex and we add new proteins that have a similar profile.
+* In the supervised analysis we could have a voting system to decide whether to include a protein in the complex.
+
+
+
+```{r normalization, eval=FALSE}
+
+mq.y.1 <- read.MQ.data(filename = system.file("extdata", "test_data", "proteinGroups_100mM_new.txt", package = "DepLab"), expt.id = "100mM", data.subset = "poi", organism = "yeast")
+mq.y.3 <- read.MQ.data(filename = system.file("extdata", "test_data", "proteinGroups_300mM_new.txt", package = "DepLab"), expt.id = "300mM", data.subset = "poi", organism = "yeast")
+# make one long data.frame/data.table 
+mqcombi <- rbind(mq.y.1, mq.y.3)
+
+# superSmoother
+smu <- superSmooth_values(long.df = subset(mqcombi, measurement == "raw.intensity"), prot.identifier = "gene_symbol")
+
+# fraction normalization or spike-in (see help of normalize_values)
+fraction.norm <- normalize_values(long.df = smu,
+                                  norm.type = "fraction", prot.identifier = "gene_symbol")
+
+```
+# Session Info
+
+```{r}
+sessionInfo()
+```

@@ -32,4 +32,3 @@ Wrapper for generating matrices of correlation coefficients
 \seealso{
 \code{\link{cor}}
 }
-

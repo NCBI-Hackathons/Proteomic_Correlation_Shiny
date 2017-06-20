@@ -23,4 +23,3 @@ If the gene_symbol string is empty, it will be replaced with the UniProt ID.
 \seealso{
 \code{\link{read_IDinfo}}
 }
-

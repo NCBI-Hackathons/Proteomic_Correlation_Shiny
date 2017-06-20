@@ -15,7 +15,7 @@ Depends: data.table, DBI, dplyr, RSQLite
 Imports: colorspace, data.table, ggplot2, magrittr, RCurl, reshape2,
         scales, shiny (>= 0.13.2.9004), shinyBS, shinyjs, shinyFiles,
         stringr, shinythemes
-RoxygenNote: 5.0.1
+RoxygenNote: 6.0.1
 Suggests: knitr, rmarkdown, testthat
 VignetteBuilder: knitr
 NeedsCompilation: no
