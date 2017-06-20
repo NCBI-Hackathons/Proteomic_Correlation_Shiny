@@ -192,42 +192,6 @@ heatmap(cors_mode)
 modmat <- as.matrix(Modes[,-1])
 rownames(modmat) <- Modes$id
 
-wide_smu %>%
-  group_by(id)
-
-### plan:
-# 1. filter out proteins not correlated between replicates
-# 2. identify proteins that are not correlated between conditions (already in shiny app)
-# 3. identify peaks (pdfCluster or mclust)
-# 4. compare peak locations (what if there are multiple peaks?)
-
-# the below function was inspired by the quantmod package (findPeak)
-find_peaks <- function(x, thresh = 1e3) {
-  pks <- which(diff(sign(diff(x)))==-2) + 1
-  which_pks <- (x[pks] - x[pks - 3] > thresh) &
-    (x[pks] - x[pks + 3] > thresh)
-  return(pks[which_pks])
-}
-
-smu %>%
-  filter(id == "Q7Z417") %>%
-  ggplot(aes(x = fraction, y = value, group = expt_id,
-             color = exp_cond)) +
-  geom_line()
-
-
-smu %>%
-  filter(id == "P85037") %>%
-  ggplot(aes(x = fraction, y = value, group = expt_id,
-             color = exp_cond)) +
-  geom_line()
-
-  smu %>%
-  filter(id %in% c("Q7Z417", "P85037")) %>%
-  group_by(id, expt_id) %>%
-  do(as.data.frame(find_peaks(.$value)))
-
-
 library(limma)
 x <- gl(3, 2)
 x
@@ -244,3 +208,81 @@ smu %>%
 
 smu %>%
   filter(id == "Q7Z417" & expt_id == "wt1") -> test_data
+
+### plan:
+# 1. filter out proteins not correlated between replicates
+# 2. identify proteins that are not correlated between conditions (already in shiny app)
+# 3. identify peaks (pdfCluster or mclust)
+# 4. compare peak locations (what if there are multiple peaks?)
+
+# the below function was inspired by the quantmod package (findPeak)
+find_peaks <- function(x, thresh = 1e3) {
+  pks <- which(diff(sign(diff(x)))==-2) + 1
+  which_pks <- (x[pks] - x[max(0, pks - 3)] > thresh) &
+    (x[pks] - x[min(length(x), pks + 3)] > thresh)
+  return(pks[which_pks])
+}
+
+smu %>%
+  filter(id == "Q7Z417") %>%
+  ggplot(aes(x = fraction, y = value, group = expt_id,
+             color = exp_cond)) +
+  geom_line()
+
+
+smu %>%
+  filter(id == "P85037") %>%
+  ggplot(aes(x = fraction, y = value, group = expt_id,
+             color = exp_cond)) +
+  geom_line()
+
+smu %>%
+  group_by(id, expt_id) %>%
+  do(data.frame(peak = find_peaks(.$value))) -> peaks
+
+num_peaks <- na.omit(dcast(peaks, formula = "id ~ expt_id",
+                            fun.aggregate = length,
+                            value.var = "peak"))
+
+npeaks <- as.matrix(num_peaks[,-1])
+rownames(npeaks) <- num_peaks[,1]
+npeaks <- npeaks[rowVars(npeaks)>0,]
+
+pdf("npeaks_heatmap.pdf")
+NMF::aheatmap(npeaks, scale = "none", distfun = "manhattan")
+dev.off()
+
+x <- gl(3, 2)
+mean_npeaks <- t(apply(npeaks, 1, tapply, x, mean))
+colnames(mean_npeaks) <- c("dn", "ev", "wt")
+head(mean_npeaks)
+
+pdf("mean_npeaks_heatmap.pdf")
+NMF::aheatmap(mean_npeaks, scale = "none", distfun = "manhattan")
+dev.off()
+
+smu %>%
+  group_by(id, expt_id) %>%
+  summarize(peak = which.max(value)) -> peaks
+
+best_peaks <- na.omit(dcast(peaks, formula = "id ~ expt_id",
+                           value.var = "peak"))
+
+bestpeaks <- as.matrix(best_peaks[,-1])
+rownames(bestpeaks) <- best_peaks[,1]
+bestpeaks <- bestpeaks[rowVars(bestpeaks)>0,]
+
+pdf("best_peaks_heatmap.pdf")
+NMF::aheatmap(bestpeaks, scale = "none")
+dev.off()
+
+x <- gl(3, 2)
+mean_bestpeaks <- t(apply(bestpeaks, 1, tapply, x, mean))
+colnames(mean_bestpeaks) <- c("dn", "ev", "wt")
+head(mean_bestpeaks)
+
+pdf("mean_bestpeaks_heatmap.pdf")
+NMF::aheatmap(mean_bestpeaks, scale = "none", distfun = "manhattan")
+dev.off()
+
+save(mean_npeaks, mean_bestpeaks, file="matrices_for_pca.rda")

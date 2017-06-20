@@ -113,23 +113,6 @@ aheatmap(log1p(wt1_sub), Colv = NA, distfun = "pearson",
 * Add a more supervised approach, where we start from a known complex and we add new proteins that have a similar profile.
 * In the supervised analysis we could have a voting system to decide whether to include a protein in the complex.
 
-
-
-```{r normalization, eval=FALSE}
-
-mq.y.1 <- read.MQ.data(filename = system.file("extdata", "test_data", "proteinGroups_100mM_new.txt", package = "DepLab"), expt.id = "100mM", data.subset = "poi", organism = "yeast")
-mq.y.3 <- read.MQ.data(filename = system.file("extdata", "test_data", "proteinGroups_300mM_new.txt", package = "DepLab"), expt.id = "300mM", data.subset = "poi", organism = "yeast")
-# make one long data.frame/data.table 
-mqcombi <- rbind(mq.y.1, mq.y.3)
-
-# superSmoother
-smu <- superSmooth_values(long.df = subset(mqcombi, measurement == "raw.intensity"), prot.identifier = "gene_symbol")
-
-# fraction normalization or spike-in (see help of normalize_values)
-fraction.norm <- normalize_values(long.df = smu,
-                                  norm.type = "fraction", prot.identifier = "gene_symbol")
-
-```
 # Session Info
 
 ```{r}
