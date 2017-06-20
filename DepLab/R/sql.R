@@ -1,17 +1,28 @@
 #' Reading MaxQuant data
 #' 
 #' @description 
-#' This reads in the MaxQuant output, retrieves the proteins of interest and
-#' generates a long data.frame for _all types of measurement_ that are available
-#' across all fractions.
+#' This wrapper functions reads in the MaxQuant output,
+#'  \emph{retrieves the proteins of interest}, and generates a long 
+#'  \code{data.frame} for \emph{all types of measurement} that are 
+#' available across all fractions (e.g., raw intensity, MS count).
 #' 
-#' @param filename path to MaxQuant output (proteinGroups.txt)
+#' @details This function is a wrapper for \code{\link{reading_MQ}},
+#' \code{\link{cleaning_MQ}}, and  \code{\link{MQ_to_longFormat}}.
+#' The function automatically focusses on a \emph{subset} of proteins,
+#' e.g. 
+#' 
+#' The \emph{types of measurement} that are kept depend on the setting of 
+#' \code{MQaccessor_to_plotname}.
+#' 
+#' @param filename path to MaxQuant output (\code{proteinGroups.txt})
 #' @param expt.id unique identifier for the experiment to be read in
 #' @param data.subset a string specifying what kind of data should be retrieved,
 #' one of:
 #' \itemize{
-#' \item "poi": extract information for proteins of interest -- if you choose
-#' this option, make sure to indicate the organism!
+#' \item "poi": extract information for one or more proteins of interest -- 
+#' if you choose this option, make sure to indicate the organism! If you want
+#' to retrieve the bulk information from MaxQuant output, this is the right
+#' parameter.
 #' \item "trypsin": extract information for trypsin
 #' \item a specific UniProt ID or yeast ORF, e.g. "P00761"
 #' }
@@ -20,23 +31,35 @@
 #' is not 'poi'.
 #' @param return.dt Boolean indicating whether a data.table shold be returned
 #' instead of a data.frame. Default: FALSE
-#' @param db.order.poi Vector indicating the _order_ of the columns for the
-#' data.frame holding the values for the proteins of interest. This should 
-#' match the expectations of \code{\link{initialize.datbase}} and
-#' \code{\link{add.expt.to.database}}.
+#' @param data.types List of value types that should be part of the final
+#' data set that will be stored in the data base. Check \code{\link{MQaccessor_to_plotname}}
+#' for possible options.
+#' Default: list("peptides.count", "unique.peptides.only", 
+#' "razor.and.unique.peptides","raw.intensity","MS.MS.count")
+#' @param db.order.poi Vector indicating the \emph{order} of the columns for the
+#' \code{data.frame} holding the values for the proteins of interest. This should 
+#' match the expectations of \code{\link{initialize.database}} and
+#' \code{\link{add.expt.to.database}}. Default:
+#' c("gene_symbol", "fraction", "value", "measurement", "expt_id", "organism")
 #' @param db.order.std Vector indicating the _order_ of the columns for the
 #' data.frame holding the values for the spiked-in proteins. This should 
 #' match the expectations of \code{\link{initialize.datbase}} and
-#' \code{\link{add.expt.to.database}}.
+#' \code{\link{add.expt.to.database}}. Default: c("id", "fraction",
+#' "value", "measurement", "expt_id")
 #'  
 #' @return A long data.frame where each row corresponds to a single protein,
-#' and one type of measured value per fraction.
+#' and \emph{one} value and type of measurement per fraction.
 #' 
 #' @seealso @seealso \code{\link{reading_MQ}}, \code{\link{cleaning_MQ}},
 #' \code{\link{extract_proteinID}}
 #' @export
 read.MQ.data <- function(filename, expt.id, data.subset = "poi", organism = NULL, 
-                         return.dt = FALSE, db.order.poi = c("gene_symbol","fraction", "value","measurement","expt_id","organism"),
+                         return.dt = FALSE, 
+                         data.types = list("peptides.count", "unique.peptides.only", 
+                                           "razor.and.unique.peptides", #"sequence.coverage",
+                                           "raw.intensity", #"LFQ.intensity",
+                                           "MS.MS.count"),
+                         db.order.poi = c("gene_symbol","fraction", "value","measurement","expt_id","organism"),
                          db.order.std = c("id", "fraction", "value", "measurement", "expt_id")
 ) {
   
@@ -86,9 +109,7 @@ read.MQ.data <- function(filename, expt.id, data.subset = "poi", organism = NULL
   
   #### 3. generate skinny data.frames by iterating through the available
   ####    types of data
-  types <- list("peptides.count", "unique.peptides.only", "razor.and.unique.peptides", #"sequence.coverage",
-                "raw.intensity", #"LFQ.intensity",
-                "MS.MS.count")
+  types <- data_types
   
   mq.data <- lapply(types, function(x) MQ_to_longFormat(mq.clean, y = x, return.dt = TRUE, mq.ids))
   mq.data <- rbindlist(mq.data)
