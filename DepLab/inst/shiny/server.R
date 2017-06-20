@@ -1010,18 +1010,27 @@ shinyServer(function(input, output, session) {
     } 
     
     # read in proteins of interest for the corresponding organism
-    x <- read.MQ.data(normalizePath(paste(input$file1$datapath),winslash=.Platform$file.sep), input$expt.id, data.subset = "poi", input$organism)
+    x <- read.MQ.data(filename = normalizePath(paste(input$file1$datapath),winslash=.Platform$file.sep), 
+                      expt.id = input$expt.id,
+                      data.subset = "poi", organism = input$organism,
+                      data.types = list("peptides.count", "unique.peptides.only", "razor.and.unique.peptides", "raw.intensity", "MS.MS.count"))
     
     # read in the proteins used for standardization
     if(input$id_for_standard == "") {
       # if nothing else is given by the user, extract values for trypsin from pig,
       # which is generally used to digest the proteins before MS
-      x.std <- read.MQ.data(normalizePath(paste(input$file1$datapath),winslash=.Platform$file.sep), input$expt.id, data.subset = "trypsin", organism = NULL)
+      x.std <- read.MQ.data(filename = normalizePath(paste(input$file1$datapath),winslash=.Platform$file.sep),
+                            expt.id = input$expt.id, data.subset = "trypsin",
+                            organism = NULL,
+                            data.types = list("peptides.count", "unique.peptides.only", "razor.and.unique.peptides", "raw.intensity", "MS.MS.count"))
     } else {
       std_list <- input$id_for_standard
       std_list <- unlist(strsplit(std_list,","))
       std_list <- gsub(" ", "", std_list, fixed = TRUE)
-      x.std <- read.MQ.data(normalizePath(paste(input$file1$datapath),winslash=.Platform$file.sep), input$expt.id, data.subset = c(std_list), organism = NULL) 
+      x.std <- read.MQ.data(filename = normalizePath(paste(input$file1$datapath),winslash=.Platform$file.sep),
+                            expt.id = input$expt.id, data.subset = c(std_list), 
+                            organism = NULL,
+                            data.types = list("peptides.count", "unique.peptides.only", "razor.and.unique.peptides", "raw.intensity", "MS.MS.count")) 
     }
     
     

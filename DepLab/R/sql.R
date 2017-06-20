@@ -109,7 +109,7 @@ read.MQ.data <- function(filename, expt.id, data.subset = "poi", organism = NULL
   
   #### 3. generate skinny data.frames by iterating through the available
   ####    types of data
-  types <- data_types
+  types <- data.types
   
   mq.data <- lapply(types, function(x) MQ_to_longFormat(mq.clean, y = x, return.dt = TRUE, mq.ids))
   mq.data <- rbindlist(mq.data)
