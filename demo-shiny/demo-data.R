@@ -1,3 +1,14 @@
+library("DepLab")
+library("DepLabData")
+library("NMF")
+library("heatmaply")
+library("shinyHeatmaply")
+# install.packages(c("heatmaply", "shinyHeatmaply"))
+
+# ~~~~~ PROFILE PLOT ~~~~~ #
+# Source data to use for the demo Shiny
+# This data is copy/pasted from the 'Running and testing.Rmd"
+
 mq.y.1 <- read.MQ.data(filename = system.file("extdata", "test_data", "proteinGroups_100mM_new.txt", package = "DepLab"), expt.id = "100mM", data.subset = "poi", organism = "yeast")
 mq.y.3 <- read.MQ.data(filename = system.file("extdata", "test_data", "proteinGroups_300mM_new.txt", package = "DepLab"), expt.id = "300mM", data.subset = "poi", organism = "yeast")
 mqcombi <- rbind(mq.y.1, mq.y.3)
@@ -26,9 +37,11 @@ mqcombi.plot.norm.std <- subset(std.norm, gene_symbol %in% c("YAL016W (TPD3)", "
 
 my_profile_plot <- plot_profile(mqcombi.plot.norm.std, what = c("gene_symbol","expt_id"), color.by = "expt_id", split.by = "gene_symbol", line.smooth = FALSE)
 
+# print the profile plot as a plotly
+# ggplotly(my_profile_plot)
 
-ggplotly(my_profile_plot)
 
+# ~~~ other old stuff from the docs ~~~ # 
 # adding marker for molecular weight
 # mwmark <- data.frame(expt_id = c("100mM","300mM"), MWmarker = c(15,25))
 # P + geom_vline(data = mwmark, aes(xintercept = MWmarker), linetype="dashed")
@@ -41,9 +54,10 @@ ggplotly(my_profile_plot)
 
 
 
-
+# ~~~~~ HEATMAP ~~~~~ #
 # make a heatmap the old way
 # data from the data package
+# code from daviderisso
 library("tidyr")
 data("WT_trial1")
 colnames(WT_trial1)
@@ -58,15 +72,19 @@ wt1_mat <- as.matrix(wt1_wide[,-1])
 rownames(wt1_mat) <- wt1_wide$id
 wt1_mat <- wt1_mat[rowSums(wt1_mat)>0,]
 
-
 # old method ofr heatmap
-library("NMF")
 # pdf(file = "./heatmpa.pdf")
 # aheatmap(log1p(wt1_mat[1:500,]), Colv = NA, distfun = "pearson",
 #          scale = "none")
 # dev.off()
+wt1_mat_subset <- log1p(wt1_mat[1:500,])
+wt1_mat_subset <- as.data.frame(wt1_mat_subset)
+my_heatmap <- heatmaply(x = wt1_mat_subset, distfun = function(x) dist((1-cor(t(x), method = "pearson"))), scale = "none", Colv = FALSE, plot_method = "ggplot") # ggplot
+# my_heatmap$source <- "my_heatmap"
 
-# install.packages(c("heatmaply", "shinyHeatmaply"))
-library("heatmaply")
-library("shinyHeatmaply")
-my_heatmap <- heatmaply(x = log1p(wt1_mat[1:500,]), distfun = function(x) dist((1-cor(t(x), method = "pearson"))), scale = "none", Colv = FALSE)
+iris_heatmap <- heatmapr(iris[,-5], scale = "column", colors = "Blues")
+iris_heatmap <- heatmaply(iris_heatmap)
+
+# need the Experiment ID column for the dataset
+wt1$expt_id <- "WT1"
+my_profile_plot <- plot_profile(wt1[which(wt1[["id"]] == "A0FGR8") ,], what = c("id", "expt_id"), color.by = "id", line.smooth = FALSE)
