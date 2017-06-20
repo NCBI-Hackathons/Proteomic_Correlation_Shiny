@@ -153,7 +153,38 @@ read.MQ.data <- function(filename, expt.id, data.subset = "poi", organism = NULL
   return(mq.data)
     }
 
+
 #' Create the data base
+#' 
+#' @details This function initializes an \emph{empty} data base with the 
+#' following tables:
+#' \itemize{
+#' \item id_info
+#' \item expt_id: \code{ PRIMARY KEY (expt_id, organism)}
+#' \item prot_data
+#' \item frac_data: values for each fraction, 
+#' \code{PRIMARY KEY (organism, expt_id, gene_symbol, measurement, fraction)}
+#' \item std_data: values for the spike-in proteins, 
+#' \code{PRIMARY KEY (expt_id, id, measurement, fraction)}
+#' }
+#' 
+#' In addition to tables for the actual values, there are also tables for
+#' the different types of possible meta-data that can be input via the shiny
+#' app start page:
+#' itemize{
+#' \item origin_data: info about the experiment, e.g. experimenter, genotype,
+#' cell_type etc.
+#' \item prefractionation_method_data
+#' \item ms_method_data
+#' \item data_processing_data
+#' }
+#' 
+#' @param database.name path to data.base
+#' @param organism.name name of the organism, e.g. "yeast" or "human"
+#' @param force Boolean indicating whether a \emph{new} data base is going to
+#' be made even if a file with the name \code{database.name} already exists.
+#' Default: FALSE (= no overwriting)
+#' 
 #' @export
 initialize.database <- function(database.name, organism.name, force = FALSE) {
   db <- dbConnect(SQLite(), dbname=database.name, cache_size = 5000)
@@ -182,6 +213,7 @@ initialize.database <- function(database.name, organism.name, force = FALSE) {
   organism TEXT NOT NULL,
   PRIMARY KEY (expt_id, organism))"
   dbGetQuery(conn = db, expt.info.sql)
+  
   frac.data.sql <- "create table IF NOT EXISTS frac_data (gene_symbol TEXT NOT NULL,
   fraction INTEGER NOT NULL,
   value REAL NOT NULL,
@@ -190,12 +222,14 @@ initialize.database <- function(database.name, organism.name, force = FALSE) {
   organism TEXT NOT NULL,
   PRIMARY KEY (organism, expt_id, gene_symbol, measurement, fraction))"
   dbGetQuery(conn = db, gsub("  ", "", frac.data.sql))
+  
   std.data.sql <- "create table IF NOT EXISTS std_data (id TEXT NOT NULL, 
   fraction INTEGER NOT NULL,
   value REAL NOT NULL,
   measurement TEXT NOT NULL,
   expt_id TEXT NOT NULL,
   PRIMARY KEY (expt_id, id, measurement, fraction))"
+  
   dbGetQuery(conn = db, gsub("  ", "", std.data.sql))
   origin.data.sql <- "create table IF NOT EXISTS origin_data (expt_id TEXT NOT NULL,
   experimenter TEXT NOT NULL,
@@ -207,6 +241,7 @@ initialize.database <- function(database.name, organism.name, force = FALSE) {
   digestion_enzyme TEXT NOT NULL,
   notes TEXT,
   PRIMARY KEY (expt_id))"
+  
   dbGetQuery(conn = db, gsub("  ", "", origin.data.sql))
   
   prefractionation.data.sql <- "create table IF NOT EXISTS prefractionation_method_data (expt_id TEXT NOT NULL,
