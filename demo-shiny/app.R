@@ -36,11 +36,12 @@ ui <- shinyUI(fluidPage(
   
   #####Nick's additions#####
   fixedRow(
-    column(6, plotlyOutput("my_3dpca", height = "600px")),
-    column(6, plotlyOutput("my_pca", height = "600px"))),
-  fixedRow(
-    column(6, plotlyOutput("my_3dmds", height = "600px")),
-    column(6, plotlyOutput("my_mds", height = "600px"))),
+    column(6, plotlyOutput("my_pca", height = "600px")),
+    column(6, plotlyOutput("my_3dpca", height = "600px"))),
+  verbatimTextOutput("id_box"),
+  # fixedRow(
+  #   column(6, plotlyOutput("my_3dmds", height = "600px")),
+  #   column(6, plotlyOutput("my_mds", height = "600px"))),
   # fixedRow(
   #   column(6, plotlyOutput("my_3dtsne", height = "600px")),
   #   column(6, plotlyOutput("my_tsne", height = "600px"))),
@@ -100,20 +101,48 @@ server <-  shinyServer(function(input, output,session) {
     #####Nick's additions#####
     # PCA
     output$my_pca <- renderPlotly({
-      my_pca
+      my_pca %>% layout(dragmode = "select")
     })
     # 3D PCA
     output$my_3dpca <- renderPlotly({
-      my_3dpca %>% layout(dragmode = "select")
+
+        my_3dpca %>% layout(dragmode = "select")
+        
+        
     })
-    # MDS
-    output$my_mds <- renderPlotly({
-      my_mds
+    
+    # Coupled event-outputting subset ids
+    output$id_box <- renderPrint({
+      
+      cat("Subset Protein IDs\n\nCopy and Paste proteins into the search box\n")
+      cat("at https://string-db.org to retrieve network/functional information\n\n")
+      
+      # Get subset based on selection
+      d <- event_data("plotly_selected",source="my_pca")
+      
+      # If NULL dont do anything
+      if(is.null(d) == T) return(NULL)
+      
+      #Get protein identifiers from subset
+      for(i in c(d$pointNumber)){
+        name<-rownames(pr_mat$rotation)[i]
+        if(grepl(";",name)){
+          names<-unlist(strsplit(name,";"))
+          for(i in names){
+            cat(i,"\n")
+          }
+        }else{cat(name,"\n")}
+      }
+      
     })
-    # 3D MDS
-    output$my_3dmds <- renderPlotly({
-      my_3dmds %>% layout(dragmode = "select")
-    })
+    # # MDS
+    # output$my_mds <- renderPlotly({
+    #   my_mds
+    # })
+    # # 3D MDS
+    # output$my_3dmds <- renderPlotly({
+    #   my_3dmds %>% layout(dragmode = "select")
+    # })
     # # tSNE
     # output$my_tsne <- renderPlotly({
     #   my_tsne
@@ -140,7 +169,7 @@ server <-  shinyServer(function(input, output,session) {
         }
     })
     output$heatmap_hover <- renderPrint({
-        d <- event_data("plotly_hover")
+        d <- event_data("plotly_hover","my_heatmap")
         if (is.null(d)) "Hover on a point!" else d
     })
     output$brush_info <- renderPrint({
@@ -151,7 +180,7 @@ server <-  shinyServer(function(input, output,session) {
         cat("event_data('plotly_selected'):\n")
         # d <- event_data("plotly_selected")
         # if (is.null(d)) "Select some points!" else d
-        event_data("plotly_selected")
+        event_data("plotly_selected","my_heatmap")
     })
     output$eventdata <- renderPrint({
         cat("str(event_data()):\n")

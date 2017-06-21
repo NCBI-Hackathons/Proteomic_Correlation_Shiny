@@ -197,10 +197,10 @@ library(ggfortify)
 id<-rownames(mat)
 library(plotly)
 m<-data.frame(pr_mat$rotation)
-p<-plot_ly(m,x= ~PC1,y= ~PC2,z= ~PC3,hovertext=id) %>% 
+my_3dpca<-plot_ly(m,x= ~PC1,y= ~PC2,z= ~PC3,hovertext=id) %>% 
   add_markers() %>%
   layout(title = "PCA; DN_Trial2 proteins")
-p
+my_3dpca
 #####Tsne#####
 library(Rtsne)
 data("DN_trial2")
