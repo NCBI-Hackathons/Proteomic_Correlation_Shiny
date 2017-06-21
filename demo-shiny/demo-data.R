@@ -1,4 +1,4 @@
-library("tidyr")
+#library("tidyr")
 library("DepLab")
 library("DepLabData")
 library("NMF")
@@ -17,21 +17,25 @@ library("shinyHeatmaply")
 make_heatmap_data <- function(){
     # data from the data package
     data("WT_trial1")
-    colnames(WT_trial1)
     
     wt1 <- MQ_to_longFormat(WT_trial1, y = "raw.intensity",
                             return.dt = TRUE,
                             extract_proteinID(WT_trial1$Protein.IDs,
                                               routine = "human"))
-    wt1 <- wt1[, -4]
-    wt1_wide <- spread(wt1, fraction, value)
-    wt1_mat <- as.matrix(wt1_wide[,-1])
+    
+    # remove entries with all zero values
+    wt1_sum <- wt1[, sum(value), id]
+    keep <- wt1_sum[V1 > 0]$id
+    wt1 <- wt1[id %in% keep]
+    
+    # make matrix
+    wt1_wide <-  dcast(wt1, id ~fraction)
+    wt1_mat <- as.matrix(wt1_wide[,-"id", with=FALSE])
     rownames(wt1_mat) <- wt1_wide$id
-    wt1_mat <- wt1_mat[rowSums(wt1_mat)>0,]
     
     wt1_mat_subset <- log1p(wt1_mat[1:500,])
-    wt1_mat_subset <- as.data.frame(wt1_mat_subset)
-    return(wt1_mat_subset) # is a matrix
+
+    return(wt1_mat_subset) 
 }
 
 make_heatmap <- function(){
@@ -73,25 +77,25 @@ make_profile_plot_data <- function(){
 
     wt1 <- MQ_to_longFormat(WT_trial1, y = "raw.intensity",
                             return.dt = TRUE,
-                            extract_proteinID(WT_trial1$Protein.IDs,
-                                              routine = "human"))
-    wt1 <- wt1[, -4]
-    wt1_wide <- spread(wt1, fraction, value)
-    wt1_mat <- as.matrix(wt1_wide[,-1])
-    rownames(wt1_mat) <- wt1_wide$id
-    wt1_mat <- wt1_mat[rowSums(wt1_mat)>0,]
+                            list(id = extract_proteinID(WT_trial1$Protein.IDs, routine = "human")$id,
+                                 expt_id = WT_trial1$expt_id)  
+                            )
     
-    wt1_mat_subset <- log1p(wt1_mat[1:500,])
-    wt1_mat_subset <- as.data.frame(wt1_mat_subset)
+    # remove entries with all zero values
+    wt1_sum <- wt1[, sum(value), id]
+    keep <- wt1_sum[V1 > 0]$id
+    wt1 <- wt1[id %in% keep]
     
-    # need the Experiment ID column for the dataset
-    wt1$expt_id <- "WT1"
     return(wt1)
 }
 
 make_profile_plot <- function(df, selected_IDs = c("A0FGR8")){
-    my_profile_plot <- plot_profile(df[which(as.character(df[["id"]]) %in% selected_IDs) ,], what = c("id", "expt_id"), color.by = "id", line.smooth = FALSE)
-    return(my_profile_plot) # is a matrix
+   dt <- data.table(df)
+   df.sub <- as.data.frame(dt[id %in% selected_IDs])
+    my_profile_plot <- plot_profile(df.sub,
+                                    what = c("id", "expt_id"),
+                                    color.by = "id", line.smooth = FALSE)
+    return(my_profile_plot) 
 }
 
 

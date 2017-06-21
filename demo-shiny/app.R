@@ -109,7 +109,7 @@ server <-  shinyServer(function(input, output,session) {
         if( ! is.null(input$select_gene_ids) & length(input$select_gene_ids) > 0 & length(input$select_gene_ids) < 50){
             # plot based on input$select_gene_ids
             plot_profile(
-                profile_plot_data[which(as.character(profile_plot_data[["id"]]) %in% input$select_gene_ids) ,], 
+                data.frame(profile_plot_data[id %in% input$select_gene_ids]), 
                 what = c("id", "expt_id"), 
                 color.by = "id", 
                 line.smooth = FALSE)
