@@ -29,23 +29,24 @@ make_heatmap_data <- function(){
     keep <- wt1_sum[V1 > 0]$id
     wt1 <- wt1[id %in% keep]
     
-    # make matrix
-    wt1_wide <-  dcast(wt1, id ~fraction)
-    wt1_mat <- as.matrix(wt1_wide[,-"id", with=FALSE])
-    rownames(wt1_mat) <- wt1_wide$id
+    wt1_heatmap = wt1
+    wt1_heatmap$value = log1p(wt1_heatmap$value)
     
-    wt1_mat_subset <- log1p(wt1_mat[1:500,])
+    ids100 = wt1_heatmap$id[1:100]
+    
+    wt1_heatmap = filter(wt1_heatmap, id %in% ids100)
+    
 
-    return(wt1_mat_subset) 
+    return(wt1_heatmap) 
 }
 
-make_heatmap <- function(){
+#make_heatmap <- function(){
     # interactive heatmaply Plotly heatmap
-    heatmaply_data <- make_heatmap_data()
+#    heatmaply_data <- make_heatmap_data()
     
-    my_heatmap <- heatmaply(x = heatmaply_data, distfun = function(x) dist((1-cor(t(x), method = "pearson"))), scale = "none", Colv = FALSE, plot_method = "ggplot") 
-    return(my_heatmap)
-}
+#    my_heatmap <- heatmaply(x = heatmaply_data, distfun = function(x) dist((1-cor(t(x), method = "pearson"))), scale = "none", Colv = FALSE, plot_method = "ggplot") 
+#    return(my_heatmap)
+#}
 
 make_ranked_clustered_data <- function(mat = make_heatmap_data()){
     # calculate the dendrogram clustering distances and add it to the object
@@ -65,6 +66,74 @@ make_ranked_clustered_data <- function(mat = make_heatmap_data()){
     rank_labels[["label"]]
     mat_merged <- merge(x = mat_df, y = rank_labels, by = "label")
     return(mat_merged)
+}
+
+# ~~~~~ QC PLOTS ~~~~~ #
+data("WT_trial1")
+data("WT_trial2")
+data("EV_trial1")
+data("EV_trial2")
+
+ids <- extract_proteinID(WT_trial1$Protein.IDs, routine = "human")
+WT1 <- lapply(c("raw.intensity", "peptides.count", "sequence.coverage"), function(val_of_interest){
+  MQ_to_longFormat(WT_trial1, y= val_of_interest, return.dt = TRUE, 
+                   list(id = ids$id, expt_id = WT_trial1$expt_id) 
+  )}) %>% rbindlist
+
+ids <- extract_proteinID(WT_trial2$Protein.IDs, routine = "human")
+WT2 <- lapply(c("raw.intensity", "peptides.count"), function(val_of_interest){
+  MQ_to_longFormat(WT_trial2, y= val_of_interest, return.dt = TRUE, 
+                   list(id = ids$id, expt_id = WT_trial2$expt_id) 
+  )}) %>% rbindlist
+
+ids <- extract_proteinID(EV_trial1$Protein.IDs, routine = "human")
+EV1 <- lapply(c("raw.intensity", "peptides.count"), function(val_of_interest){
+  MQ_to_longFormat(EV_trial1, y= val_of_interest, return.dt = TRUE, 
+                   list(id = ids$id, expt_id = EV_trial1$expt_id) 
+  )}) %>% rbindlist
+
+ids <- extract_proteinID(EV_trial2$Protein.IDs, routine = "human")
+EV2 <- lapply(c("raw.intensity", "peptides.count"), function(val_of_interest){
+  MQ_to_longFormat(EV_trial2, y= val_of_interest, return.dt = TRUE, 
+                   list(id = ids$id, expt_id = EV_trial2$expt_id) 
+  )}) %>% rbindlist
+test_data <- rbindlist(list(WT1, WT2, EV1, EV2))
+rm(WT1)
+rm(WT2)
+rm(EV1)
+rm(EV2)
+
+#' Plot sum of MQ variables per protein
+#'
+#' @description This function calculates the sum of values across all fractions, whose
+#' distributions are then shown via violin plots.
+#'
+#' @return ggplot object with a violin and boxplot for every \code{expt_id}
+#' @param in.dt data.table in long format with one type of measurement
+#' in a column named "value"
+#' @param uniq.factors vector of column accessors that define unique protein entries
+#' (Default: c("gene_symbol","expt_id"))
+#' @param value.name name that will be used for display, should be descriptive of the
+#' type of measurement that is being summed up 
+plot_sums_per_protein <- function(in.dt, uniq.factors = c("gene_symbol", "expt_id"), value.name = NULL){
+  
+  # summing up whatever is stored in value for
+  # a group defined by uniq.factors
+  summing <- in.dt[ , sum(value), uniq.factors]
+  
+  setnames(summing, "V1", "sum")
+  
+  # make plot
+  P <- ggplot(summing, aes(x = expt_id, y = log2(sum))) + geom_violin() + geom_boxplot(notch = TRUE)
+  
+  # add descriptive name to the column that contains the sum
+  if(!is.null(value.name)){
+    P <- P + ylab(paste0("log2(",value.name,")"))
+  }else{
+    P <- P + ylab("log(sum)")
+  }
+  
+  return(P)
 }
 
 
@@ -177,6 +246,10 @@ make_profile_plot_data <- function(){
     keep <- wt1_sum[V1 > 0]$id
     wt1 <- wt1[id %in% keep]
     
+    ids100 = wt1$id[1:100]
+    
+    wt1 = filter(wt1, id %in% ids100)
+    
     return(wt1)
 }
 
@@ -190,10 +263,26 @@ make_profile_plot <- function(df, selected_IDs = c("A0FGR8")){
 }
 
 
-# ~~~~~ OBJECTS TO USE IN THE SHINY ~~~~~ #
-my_heatmap <- make_heatmap()
-ranked_clustered_data <- make_ranked_clustered_data()
 
+
+# ~~~~~ OBJECTS TO USE IN THE SHINY ~~~~~ #
+
+# qc plots
+p_rawInt <- plot_sums_per_protein(test_data[measurement == "raw.intensity"], 
+                      uniq.factors = c("id","expt_id"), 
+                      value.name = "raw intensity") +
+  theme_bw() + geom_hline(yintercept = 20, linetype = "dashed", color = "gray")
+
+p_nPep <- plot_sums_per_protein(test_data[measurement == "peptides.count"], 
+                               uniq.factors = c("id","expt_id"), 
+                               value.name = "raw intensity") +
+  theme_bw() + geom_hline(yintercept = 1, linetype = "dashed", color = "gray")
+
+# heatmap
+data_heatmap <- make_heatmap_data()
+#ranked_clustered_data <- make_ranked_clustered_data()
+
+# xy plots
 profile_plot_data <- make_profile_plot_data()
 my_profile_plot <- make_profile_plot(df = profile_plot_data)
 
