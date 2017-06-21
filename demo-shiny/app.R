@@ -1,5 +1,5 @@
-library(shiny)
-library(plotly)
+library("shiny")
+library("plotly")
 library("heatmaply")
 library("shinyHeatmaply")
 
@@ -72,7 +72,7 @@ server <-  shinyServer(function(input, output,session) {
     select_gene_ids <- character()
     
     # fill the drop down box
-    updateSelectizeInput(session = session, inputId = 'select_gene_ids', label = NULL, choices = unique(as.character(wt1[["id"]])), server = TRUE)
+    updateSelectizeInput(session = session, inputId = 'select_gene_ids', label = NULL, choices = unique(as.character(profile_plot_data[["id"]])), server = TRUE)
     
     # get the user entries
     observeEvent( input$select_gene_ids, {
@@ -94,7 +94,11 @@ server <-  shinyServer(function(input, output,session) {
     output$my_profile_plot <- renderPlotly({
         if( ! is.null(input$select_gene_ids) & length(input$select_gene_ids) > 0 & length(input$select_gene_ids) < 50){
             # plot based on input$select_gene_ids
-            plot_profile(wt1[which(as.character(wt1[["id"]]) %in% input$select_gene_ids) ,], what = c("id", "expt_id"), color.by = "id", line.smooth = FALSE)
+            plot_profile(
+                profile_plot_data[which(as.character(profile_plot_data[["id"]]) %in% input$select_gene_ids) ,], 
+                what = c("id", "expt_id"), 
+                color.by = "id", 
+                line.smooth = FALSE)
         } else{
             # default plot
             my_profile_plot
