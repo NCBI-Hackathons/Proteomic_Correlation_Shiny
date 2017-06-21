@@ -86,23 +86,30 @@ server <-  shinyServer(function(input, output,session) {
     
     
     # Heatmap
-    output$my_heatmap <- renderPlotly({
-        my_heatmap # %>% layout(dragmode = "select")
+    heatmapInput <- reactive({
+      key <- data_heatmap$id  ## key identifies brushed subjects
+      
+      gg1 <- ggplot(data_heatmap, aes(x= fraction, y = id, color = value, key = key)) + 
+        geom_point(shape = 15, size = 8) + theme_bw() + 
+        theme(legend.position = "none", panel.grid.major = element_blank(), 
+              panel.grid.minor = element_blank(),
+              panel.background=element_blank()) +
+        scale_colour_gradientn(colours = heat.colors(10))
+      
+      ggplotly(gg1, source = "heatmap") %>% layout(dragmode = "select")
     })
+    
+    output$my_heatmap <- renderPlotly({
+      print(heatmapInput())
+    })
+    
+    
+
+    
     
     # Profile Plot
     output$my_profile_plot <- renderPlotly({
-        if( ! is.null(input$select_gene_ids) & length(input$select_gene_ids) > 0 & length(input$select_gene_ids) < 50){
-            # plot based on input$select_gene_ids
-            plot_profile(
-                data.frame(profile_plot_data[id %in% input$select_gene_ids]), 
-                what = c("id", "expt_id"), 
-                color.by = "id", 
-                line.smooth = FALSE)
-        } else{
-            # default plot
-            my_profile_plot
-        }
+      my_profile_plot
     })
     
     
@@ -116,10 +123,8 @@ server <-  shinyServer(function(input, output,session) {
         str(input$plot_brush)
     })
     output$heatmap_selected <- renderPrint({
-        cat("event_data('plotly_selected'):\n")
-        # d <- event_data("plotly_selected")
-        # if (is.null(d)) "Select some points!" else d
-        event_data("plotly_selected")
+      event_data("plotly_selected", source = "heatmap")
+      
     })
     output$eventdata <- renderPrint({
         cat("str(event_data()):\n")
