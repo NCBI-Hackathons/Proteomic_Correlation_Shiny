@@ -32,7 +32,7 @@ make_heatmap_data <- function(){
     wt1_heatmap = wt1
     wt1_heatmap$value = log1p(wt1_heatmap$value)
     
-    ids100 = wt1_heatmap$id[1:100]
+    ids100 = wt1_heatmap$id[1:1000]
     
     wt1_heatmap = filter(wt1_heatmap, id %in% ids100)
     

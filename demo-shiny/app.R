@@ -35,17 +35,21 @@ load("protein_list.rda")
 # ~~~~~ UI ~~~~~ #
 ui <- shinyUI(fluidPage(
 # Shiny
-  h1("QC & FILTERING"),
-  br(), br(),
-  h2("% Contamination"),
-  br(),
-  h2("Peptide counts"),
+  h1("PROTEIN SHAKE: smooth MS data analysis"),
+  h2("QC & Filtering"),
+#  br(), br(),
+#  h3("% Contamination"),
+#  fixedRow(column(6,  plotOutput("qc_cont"), height = "600px")),
+#  br(),
+  h3("Peptide counts"),
   br(),
   fixedRow(
   column(6, plotOutput("qc_nPeptides", height = "600px")),
   column(6, plotOutput("qc_rawIntensity", height = "600px"))),
   br(),
-  #####Nick's additions#####
+  
+  ##### PCA & co#####
+  h2("Global data structures"),
   fixedRow(
     column(6, plotlyOutput("my_pca", height = "600px")),
     column(6, plotlyOutput("my_3dpca", height = "600px"))),
@@ -59,7 +63,7 @@ ui <- shinyUI(fluidPage(
   ##########
 
   ## HEATMAPS
-  h1("FIND CO-ELUTING PROTEINS"),
+  h2("Find co-eluting proteins"),
   br(), br(),
   fixedRow(
         column(6, plotlyOutput("my_heatmap", height = "600px")),
@@ -67,15 +71,15 @@ ui <- shinyUI(fluidPage(
   
   
     # plotlyOutput("my_heatmap"),
-    verbatimTextOutput("heatmap_hover"),
-    verbatimTextOutput("heatmap_selected"),
-    verbatimTextOutput("selected_genes"),
-    verbatimTextOutput("brush_info"),
-    verbatimTextOutput("eventdata"),
+  #  verbatimTextOutput("heatmap_hover"),
+  #  verbatimTextOutput("heatmap_selected"),
+  #  verbatimTextOutput("selected_genes"),
+  #  verbatimTextOutput("brush_info"),
+  #  verbatimTextOutput("eventdata"),
     # plotlyOutput("my_profile_plot"),
     
   ## DIFFERENCES ACROSS CONDITIONS
-  h1("FIND DIFFERENCES ACROSS CONDITIONS"),
+  h2("Find differences across conditions"),
   
   verbatimTextOutput("protein_list"),
   
@@ -185,6 +189,7 @@ server <-  shinyServer(function(input, output,session) {
     ##########
     
     # QC plots
+    output$qc_cont <- renderPlot(img(src = "DN1_contam.png"))
     output$qc_nPeptides <- renderPlot({p_nPep})
     output$qc_rawIntensity <- renderPlot({p_rawInt})
     
