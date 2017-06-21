@@ -6,7 +6,7 @@ library("shinyHeatmaply")
 # demo data to use for plots
 source("demo-data.R")
 source("user_settings_io.R")
-# install.packages(c("heatmaply", "shinyHeatmaply"))
+# install.packages(c("heatmaply", "shinyHeatmaply", "ggfortify"))
 
 # get user inputs from file
 # https://stackoverflow.com/a/39058108/5359531
