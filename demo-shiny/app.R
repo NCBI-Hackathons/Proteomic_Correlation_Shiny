@@ -120,12 +120,15 @@ server <-  shinyServer(function(input, output,session) {
     heatmapInput <- reactive({
       key <- data_heatmap$id  ## key identifies brushed subjects
       
-      gg1 <- ggplot(data_heatmap, aes(x= fraction, y = id, color = value, key = key)) + 
+      gg1 <- ggplot(data_heatmap, aes(x= fraction, y = order, color = value, key = key)) + 
         geom_point(shape = 15, size = 8) + theme_bw() + 
         theme(legend.position = "none", panel.grid.major = element_blank(), 
               panel.grid.minor = element_blank(),
-              panel.background=element_blank()) +
-        scale_colour_gradientn(colours = heat.colors(10))
+              panel.background=element_blank(),
+              axis.text.y=element_blank(),
+              axis.ticks=element_blank(),
+              axis.text.x=element_blank()) +
+        scale_colour_gradientn(colours = heat.colors(10)) + ylab("proteins") 
       
       ggplotly(gg1, source = "heatmap") %>% layout(dragmode = "select")
     })
