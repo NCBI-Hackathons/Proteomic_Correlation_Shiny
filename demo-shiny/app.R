@@ -89,7 +89,7 @@ ui <- shinyUI(fluidPage(
     column(6, plotOutput("bestpeaks_hm", height = "600px"))),
   
     # User UI settings
-    selectizeInput(inputId = 'select_gene_ids', label = NULL, choices = NULL, multiple=TRUE),
+    selectizeInput(inputId = 'select_gene_ids', label = "Select genes from the dataset", choices = NULL, multiple=TRUE),
     rdsFileInput("user_settings_file"), # from the external user_settings_io.R script
     verbatimTextOutput("user_settings"),
     
