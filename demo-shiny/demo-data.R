@@ -156,6 +156,96 @@ plot_sums_per_protein <- function(in.dt, uniq.factors = c("gene_symbol", "expt_i
 
 
 # ~~~~~ PROFILE PLOT ~~~~~ #
+
+
+#####Nick's additions#####
+
+# ~~~~~ PCA ~~~~~ #
+#####PCA; DN_Trial2 proteins#####
+data("DN_trial2")
+df<-DN_trial2
+protids<-df$Protein.IDs
+rownames(df)<-protids
+pattern<-"intensity"
+colinds<-grep(pattern,colnames(df))
+mat<-df[,colinds]
+rownames(mat)<-protids
+pr_mat<-prcomp(t(mat),
+               center = T,
+               scale. = F)
+#plot(pr_mat, type = "l")
+#summary(pr_mat)
+library(ggfortify)
+id<-rownames(mat)
+my_pca<-ggplot(pr_mat$rotation,aes(label=id),hjust=0, vjust=0)+
+  geom_point(aes(x=PC1,y=PC2))+
+  ggtitle("PCA; DN_Trial2 intensities")
+library(plotly)
+my_pca<-ggplotly(my_pca,source="my_pca")
+#####3D PCA#####
+m<-data.frame(pr_mat$rotation)
+my_3dpca<-plot_ly(m,x= ~PC1,y= ~PC2,z= ~PC3,hovertext=id) %>% 
+  add_markers() %>%
+  layout(title = "PCA; DN_Trial2 proteins")
+my_3dpca
+# #####MDS; DN_Trial2 proteins#####
+# data("DN_trial2")
+# df<-DN_trial2
+# protids<-df$Protein.IDs
+# rownames(df)<-protids
+# pattern<-"intensity"
+# colinds<-grep(pattern,colnames(df))
+# mat<-df[,colinds]
+# rownames(mat)<-protids
+# id<-rownames(mat)
+# d<-dist(mat,method="euclidean")
+# mds<-cmdscale(d, eig = TRUE)
+# m<-mds$points
+# colnames(m)<-c("X1","X2")
+# my_mds<-ggplot(m,aes(label=id),hjust=0, vjust=0)+
+#   geom_point(aes(x=X1,y=X2),color="orangered")+
+#   ggtitle("MDS; DN_Trial2 proteins")
+# library(plotly)
+# ggplotly(my_mds)
+# #####3D MDS#####
+# mds<-cmdscale(d, k=3,eig = TRUE)
+# m<-data.frame(mds$points)
+# colnames(m)<-c("X1","X2","X3")
+# library(plotly)
+# my_3dmds<-plot_ly(m,x= ~X1,y= ~X2,z= ~X3,hovertext=id,color="YlOrRd") %>% 
+#   add_markers() %>%
+#   layout(title = "MDS; DN_Trial2 proteins")
+# my_3dmds
+# #####Tsne#####
+# library(Rtsne)
+# data("DN_trial2")
+# df<-DN_trial2
+# protids<-df$Protein.IDs
+# rownames(df)<-protids
+# pattern<-"intensity"
+# colinds<-grep(pattern,colnames(df))
+# mat<-df[,colinds]
+# rownames(mat)<-protids
+# id<-rownames(mat)
+# library(plotly)
+# tsne_out<-Rtsne(mat,dim=2,check_duplicates=F)
+# m<-data.frame(tsne_out$Y)
+# colnames(m)<-c("tsne_1","tsne_2")
+# my_tsne<-ggplot(data=m,aes(label=id))+
+#   geom_point(aes(x=tsne_1,y=tsne_2),color="orangered")+
+#   ggtitle("tSNE; DN_Trial2 proteins")
+# my_tsne
+# #####3D Tsne#####
+# tsne_out<-Rtsne(mat,dim=3,check_duplicates=F)
+# m<-data.frame(tsne_out$Y)
+# colnames(m)<-c("tsne_1","tsne_2","tsne_3")
+# my_3dtsne<-plot_ly(m,x= ~tsne_1,y= ~tsne_2,z= ~tsne_3,
+#                    marker = list(size = 5),hovertext=id,color="YlOrRd") %>% 
+#   add_markers() %>%
+#   layout(title = "tSNE; DN_Trial2 proteins")
+# my_3dtsne
+##########
+
 make_profile_plot_data <- function(){
     # copy/paste from other function in case other function changes
     # data from the data package
