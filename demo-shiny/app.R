@@ -6,7 +6,7 @@ library("shinyHeatmaply")
 # demo data to use for plots
 source("demo-data.R")
 source("user_settings_io.R")
-# install.packages(c("heatmaply", "shinyHeatmaply"))
+# install.packages(c("heatmaply", "shinyHeatmaply", "ggfortify"))
 
 # get user inputs from file
 # https://stackoverflow.com/a/39058108/5359531
@@ -33,8 +33,7 @@ source("user_settings_io.R")
 # https://shiny.rstudio.com/gallery/file-upload.html
 # ~~~~~ UI ~~~~~ #
 ui <- shinyUI(fluidPage(
-  
-  # Shiny
+# Shiny
   h1("QC & FILTERING"),
   br(), br(),
   h2("% Contamination"),
@@ -45,7 +44,19 @@ ui <- shinyUI(fluidPage(
   column(6, plotOutput("qc_nPeptides", height = "600px")),
   column(6, plotOutput("qc_rawIntensity", height = "600px"))),
   br(),
-  
+  #####Nick's additions#####
+  fixedRow(
+    column(6, plotlyOutput("my_pca", height = "600px")),
+    column(6, plotlyOutput("my_3dpca", height = "600px"))),
+  verbatimTextOutput("id_box"),
+  # fixedRow(
+  #   column(6, plotlyOutput("my_3dmds", height = "600px")),
+  #   column(6, plotlyOutput("my_mds", height = "600px"))),
+  # fixedRow(
+  #   column(6, plotlyOutput("my_3dtsne", height = "600px")),
+  #   column(6, plotlyOutput("my_tsne", height = "600px"))),
+  ##########
+
   ## HEATMAPS
   h1("FIND CO-ELUTING PROTEINS"),
   br(), br(),
@@ -111,6 +122,60 @@ server <-  shinyServer(function(input, output,session) {
         }, ignoreNULL=FALSE)
     
     
+    #####Nick's additions#####
+    # PCA
+    output$my_pca <- renderPlotly({
+      my_pca %>% layout(dragmode = "select")
+    })
+    # 3D PCA
+    output$my_3dpca <- renderPlotly({
+
+        my_3dpca %>% layout(dragmode = "select")
+        
+        
+    })
+    
+    # Coupled event-outputting subset ids
+    output$id_box <- renderPrint({
+      
+      cat("Subset Protein IDs\n\nCopy and Paste proteins into the search box\n")
+      cat("at https://string-db.org to retrieve network/functional information\n\n")
+      
+      # Get subset based on selection
+      d <- event_data("plotly_selected",source="my_pca")
+      
+      # If NULL dont do anything
+      if(is.null(d) == T) return(NULL)
+      
+      #Get protein identifiers from subset
+      for(i in c(d$pointNumber)){
+        name<-rownames(pr_mat$rotation)[i]
+        if(grepl(";",name)){
+          names<-unlist(strsplit(name,";"))
+          for(i in names){
+            cat(i,"\n")
+          }
+        }else{cat(name,"\n")}
+      }
+      
+    })
+    # # MDS
+    # output$my_mds <- renderPlotly({
+    #   my_mds
+    # })
+    # # 3D MDS
+    # output$my_3dmds <- renderPlotly({
+    #   my_3dmds %>% layout(dragmode = "select")
+    # })
+    # # tSNE
+    # output$my_tsne <- renderPlotly({
+    #   my_tsne
+    # })
+    # # 3D tSNE
+    # output$my_3dtsne <- renderPlotly({
+    #   my_3dtsne %>% layout(dragmode = "select")
+    # })
+    ##########
     
     # QC plots
     output$qc_nPeptides <- renderPlot({p_nPep})
@@ -131,7 +196,8 @@ server <-  shinyServer(function(input, output,session) {
     })
     
     output$my_heatmap <- renderPlotly({
-      print(heatmapInput())
+
+      heatmapInput()
     })
 
     
@@ -146,10 +212,8 @@ server <-  shinyServer(function(input, output,session) {
         my_profile_plot
       }
     })
-    
-    
     output$heatmap_hover <- renderPrint({
-        d <- event_data("plotly_hover")
+        d <- event_data("plotly_hover","my_heatmap")
         if (is.null(d)) "Hover on a point!" else d
     })
     output$brush_info <- renderPrint({
@@ -157,6 +221,7 @@ server <-  shinyServer(function(input, output,session) {
         str(input$plot_brush)
     })
     output$heatmap_selected <- renderPrint({
+
       event_data("plotly_selected", source = "heatmap")
       
     })
