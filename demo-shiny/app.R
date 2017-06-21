@@ -4,7 +4,7 @@ library("heatmaply")
 library("shinyHeatmaply")
 
 # demo data to use for plots
-source("demo-data.R")
+source("demo-data2.R")
 # install.packages(c("heatmaply", "shinyHeatmaply"))
 
 # get user inputs from file
@@ -72,7 +72,8 @@ server <-  shinyServer(function(input, output,session) {
     select_gene_ids <- character()
     
     # fill the drop down box
-    updateSelectizeInput(session = session, inputId = 'select_gene_ids', label = NULL, choices = unique(as.character(wt1[["id"]])), server = TRUE)
+    #updateSelectizeInput(session = session, inputId = 'select_gene_ids', label = NULL, choices = unique(as.character(wt1[["id"]])), server = TRUE)
+    updateSelectizeInput(session = session, inputId = 'select_gene_ids', label = NULL, choices = unique(as.character(outcome.df[["subj"]])), server = TRUE)
     
     # get the user entries
     observeEvent( input$select_gene_ids, {
@@ -84,38 +85,75 @@ server <-  shinyServer(function(input, output,session) {
         }, ignoreNULL=FALSE)
     
     
+    stuff <- reactive({
+      key <- outcome.df$subj  ## key identifies brushed subjects
+      
+      gg1 <- ggplot(outcome.df, aes(x= grid, y = subj, color = value, key = key)) + 
+        geom_point(shape = 15, size = 8) + theme_bw() + 
+        theme(legend.position = "none", panel.grid.major = element_blank(), 
+              panel.grid.minor = element_blank(),
+              panel.background=element_blank()) +
+        scale_colour_gradientn(colours = heat.colors(10))
+      
+      
+        
+      gg1_ok <- ggplot(outcome.df, aes(x = grid, y = value, key = key)) + geom_point()
+      
+      ggplotly(gg1, source = "heatM") %>% layout(dragmode = "select")
+    })
+    
     
     # Heatmap
     output$my_heatmap <- renderPlotly({
-        my_heatmap # %>% layout(dragmode = "select")
+        print(stuff())
+        #my_heatmap  %>% layout(dragmode = "select")
     })
+    
+
+    
+    stuff2 <- reactive({
+      
+      brush <- event_data("plotly_selected", source = "heatM")
+      baseplot = ggplot(outcome.df, aes(grid, value, group = subj)) + theme_bw() + 
+        geom_point() + geom_line()
+      
+      if (is.null(brush)) {
+        brushed_subjs = NULL
+        baseplot.gg =  baseplot
+      }else{
+        brushed_subjs = brush$key
+        baseplot.gg = outcome.df %>% filter(subj %in% brushed_subjs) %>%
+          ggplot(., aes(grid, value, group = subj)) + geom_line(color = "green")
+      }
+      ggplotly(baseplot.gg)
+    })
+    
     
     # Profile Plot
     output$my_profile_plot <- renderPlotly({
-        if( ! is.null(input$select_gene_ids) & length(input$select_gene_ids) > 0 & length(input$select_gene_ids) < 50){
-            # plot based on input$select_gene_ids
-            plot_profile(wt1[which(as.character(wt1[["id"]]) %in% input$select_gene_ids) ,], what = c("id", "expt_id"), color.by = "id", line.smooth = FALSE)
-        } else{
-            # default plot
-            my_profile_plot
-        }
+      #if( ! is.null(input$select_gene_ids) & length(input$select_gene_ids) > 0 & length(input$select_gene_ids) < 50){
+      # plot based on input$select_gene_ids
+      #   plot_profile(wt1[which(as.character(wt1[["id"]]) %in% input$select_gene_ids) ,], what = c("id", "expt_id"), color.by = "id", line.smooth = FALSE)
+      #} else{
+      # default plot
+      #   my_profile_plot 
+      #}
+      #ggplot(outcome.df, aes(grid, value, group = subj)) + theme_bw() + 
+      #geom_point() + geom_line()
+      print(stuff2())
     })
     
     
-    
-    output$heatmap_hover <- renderPrint({
-        d <- event_data("plotly_hover")
-        if (is.null(d)) "Hover on a point!" else d
-    })
-    output$brush_info <- renderPrint({
-        cat("input$plot_brush:\n")
-        str(input$plot_brush)
-    })
+
+
     output$heatmap_selected <- renderPrint({
-        cat("event_data('plotly_selected'):\n")
+        #cat("event_data('plotly_selected'):\n")
         # d <- event_data("plotly_selected")
         # if (is.null(d)) "Select some points!" else d
-        event_data("plotly_selected")
+        #event_data("plotly_selected")
+        #brush <- event_data("plotly_selected", source = "heatM")
+        #brush$key
+       event_data("plotly_selected", source = "heatM")
     })
     output$eventdata <- renderPrint({
         cat("str(event_data()):\n")
@@ -128,21 +166,7 @@ server <-  shinyServer(function(input, output,session) {
     })
     
     
-    
-    # Retrieve saved User UI settings
-    observeEvent(input$load_inputs,{
-        
-        if(!file.exists('inputs.RDS')) {return(NULL)}
-        
-        savedInputs <- readRDS('inputs.RDS')
-        
-        inputIDs      <- names(savedInputs)
-        inputvalues   <- unlist(savedInputs)
-        for (i in 1:length(savedInputs)) {
-            session$sendInputMessage(inputIDs[i],  list(value=inputvalues[[i]]) )
-        }
-    })
-    
+
     observeEvent(input$save_inputs,{
         saveRDS( reactiveValuesToList(input) , file = 'inputs.RDS')
     })

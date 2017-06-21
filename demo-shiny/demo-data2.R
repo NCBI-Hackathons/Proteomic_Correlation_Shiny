@@ -1,3 +1,4 @@
+library(shiny)
 library("DepLab")
 library("DepLabData")
 library("NMF")
@@ -34,9 +35,19 @@ wt1_mat_subset <- log1p(wt1_mat[1:500,])
 wt1_mat_subset <- as.data.frame(wt1_mat_subset)
 #my_heatmap <- heatmaply(x = wt1_mat_subset, distfun = function(x) dist((1-cor(t(x), method = "pearson"))), scale = "none", Colv = FALSE, plot_method = "ggplot") 
 
+order.outcome = as.matrix(wt1_mat_subset) 
+J = dim(order.outcome)[2] ## J is number of observations per subject
+N = dim(order.outcome)[1] ## N is number of subjects
 
-# ~~~~~ PROFILE PLOT ~~~~~ #
-# need the Experiment ID column for the dataset
-wt1$expt_id <- "WT1"
-selected_IDs <- c("A0FGR8")
-my_profile_plot <- plot_profile(wt1[which(as.character(wt1[["id"]]) %in% selected_IDs) ,], what = c("id", "expt_id"), color.by = "id", line.smooth = FALSE)
+rownames(order.outcome) = seq(1:N)
+colnames(order.outcome) = seq(1:J)
+names(dimnames(order.outcome))= c("subj", "grid")
+
+
+outcome.df = melt(order.outcome) 
+
+#outcome.df %>% filter(subj == 1) %>%
+#ggplot(., aes(grid, value, group = subj)) + geom_point() + geom_path()
+
+
+
