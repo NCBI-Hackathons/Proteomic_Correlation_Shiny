@@ -1,8 +1,11 @@
 The ID lists are based on text files downloaded from UniProt (http://www.uniprot.org/)
 using the following search term:
 organism:human AND organism:"Homo sapiens (Human) [9606]" AND proteome:up000005640
+organism:"Mus musculus (Mouse) [10090]" AND proteome:up000000589
 
-From this file, the following columns were used:
+For worm, rat, and mouse proteomes, see org_id_identification in the vignettes directory.
+
+From these file, the following columns were used:
 
 * Entry
 * Gene names

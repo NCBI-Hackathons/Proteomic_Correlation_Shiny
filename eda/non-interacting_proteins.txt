@@ -1,0 +1,19 @@
+P09972	Fructose-bisphosphate aldolase C
+O75146	Huntingtin-interacting protein 1-related protein
+Q9UPN3	Microtubule-actin cross-linking factor 1, isoforms 1/2/3/5
+Q9NQS3	Nectin-3
+Q14697	Neutral alpha-glucosidase AB
+P51825	AF4/FMR2 family member 1
+Q16656	Nuclear respiratory factor 1
+P14859	POU domain, class 2, transcription factor 1
+P35222	Catenin beta-1
+P17655	Calpain-2 catalytic subunit
+P04632	Calpain small subunit 1
+O75390	Citrate synthase, mitochondrial
+P09497	Clathrin light chain B
+O14579	Coatomer subunit epsilon
+Q9BT78	COP9 signalosome complex subunit 4
+Q49B96	Cytochrome c oxidase assembly protein COX19
+Q9UHL4	Dipeptidyl peptidase 2
+Q07864	DNA polymerase epsilon catalytic subunit A
+

@@ -1,1 +1,2 @@
-"/Users/frd2007/Documents/Hackathon_NYGC2017/chromatin_extraction.db"
+"~/Desktop/proteomics.db"
+
