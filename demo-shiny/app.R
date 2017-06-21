@@ -33,7 +33,20 @@ ui <- shinyUI(fluidPage(
     
     # Shiny
     # plotlyOutput("plot"), # demo plotly mtcars
-    fixedRow(
+  
+  #####Nick's additions#####
+  fixedRow(
+    column(6, plotlyOutput("my_3dpca", height = "600px")),
+    column(6, plotlyOutput("my_pca", height = "600px"))),
+  fixedRow(
+    column(6, plotlyOutput("my_3dmds", height = "600px")),
+    column(6, plotlyOutput("my_mds", height = "600px"))),
+  # fixedRow(
+  #   column(6, plotlyOutput("my_3dtsne", height = "600px")),
+  #   column(6, plotlyOutput("my_tsne", height = "600px"))),
+  ##########
+  
+  fixedRow(
         column(6, plotlyOutput("my_heatmap", height = "600px")),
         column(6, plotlyOutput("my_profile_plot", height = "600px"))),
     # plotlyOutput("my_heatmap"),
@@ -84,10 +97,36 @@ server <-  shinyServer(function(input, output,session) {
         }, ignoreNULL=FALSE)
     
     
+    #####Nick's additions#####
+    # PCA
+    output$my_pca <- renderPlotly({
+      my_pca
+    })
+    # 3D PCA
+    output$my_3dpca <- renderPlotly({
+      my_3dpca %>% layout(dragmode = "select")
+    })
+    # MDS
+    output$my_mds <- renderPlotly({
+      my_mds
+    })
+    # 3D MDS
+    output$my_3dmds <- renderPlotly({
+      my_3dmds %>% layout(dragmode = "select")
+    })
+    # # tSNE
+    # output$my_tsne <- renderPlotly({
+    #   my_tsne
+    # })
+    # # 3D tSNE
+    # output$my_3dtsne <- renderPlotly({
+    #   my_3dtsne %>% layout(dragmode = "select")
+    # })
+    ##########
     
     # Heatmap
     output$my_heatmap <- renderPlotly({
-        my_heatmap # %>% layout(dragmode = "select")
+        my_heatmap %>% layout(dragmode = "select")
     })
     
     # Profile Plot
@@ -100,9 +139,6 @@ server <-  shinyServer(function(input, output,session) {
             my_profile_plot
         }
     })
-    
-    
-    
     output$heatmap_hover <- renderPrint({
         d <- event_data("plotly_hover")
         if (is.null(d)) "Hover on a point!" else d
