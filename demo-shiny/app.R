@@ -5,6 +5,7 @@ library("shinyHeatmaply")
 
 # demo data to use for plots
 source("demo-data.R")
+source("user_settings_io.R")
 # install.packages(c("heatmaply", "shinyHeatmaply"))
 
 # get user inputs from file
@@ -28,6 +29,8 @@ source("demo-data.R")
 # https://shiny.rstudio.com/articles/modules.html
 
 # https://github.com/talgalili/heatmaply/issues/80
+
+# https://shiny.rstudio.com/gallery/file-upload.html
 # ~~~~~ UI ~~~~~ #
 ui <- shinyUI(fluidPage(
     
@@ -47,7 +50,12 @@ ui <- shinyUI(fluidPage(
     
     # User UI settings
     selectizeInput(inputId = 'select_gene_ids', label = NULL, choices = NULL, multiple=TRUE),
+    rdsFileInput("user_settings_file"), # from the external user_settings_io.R script
+    verbatimTextOutput("user_settings"),
     
+    
+    actionButton("load_inputs", "Load Inputs From Selected File"),
+
     textInput("control_label",
               "This controls some of the labels:",
               "LABEL TEXT"),
@@ -58,7 +66,7 @@ ui <- shinyUI(fluidPage(
                    "label 2" = "option2",
                    "label 3" = "option3")),
     
-    actionButton("load_inputs", "Load inputs"),
+    
     actionButton('save_inputs', 'Save inputs')
     
 ))
@@ -74,7 +82,13 @@ server <-  shinyServer(function(input, output,session) {
     # fill the drop down box
     updateSelectizeInput(session = session, inputId = 'select_gene_ids', label = NULL, choices = unique(as.character(profile_plot_data[["id"]])), server = TRUE)
     
-    # get the user entries
+    # print the user's setting entries
+    user_settings_file_print <- callModule(rdsFile_print, "user_settings_file")
+    
+    output$user_settings <- renderPrint({
+        user_settings_file_print()
+    })
+        
     observeEvent( input$select_gene_ids, {
         if(is.null(input$select_gene_ids)){
             select_gene_ids <- NULL
@@ -126,20 +140,15 @@ server <-  shinyServer(function(input, output,session) {
         str(event_data())
     })
     output$selected_genes <- renderPrint({
-        # input$select_gene_ids
         cat("input$select_gene_ids:\n")
         input$select_gene_ids
     })
     
     
-    
-    # Retrieve saved User UI settings
+    # Load the user's UI settings from a Load'ed RDS file
+    user_settings_file_load <- callModule(rdsFile_load, "user_settings_file")
     observeEvent(input$load_inputs,{
-        
-        if(!file.exists('inputs.RDS')) {return(NULL)}
-        
-        savedInputs <- readRDS('inputs.RDS')
-        
+        savedInputs <- user_settings_file_load()
         inputIDs      <- names(savedInputs)
         inputvalues   <- unlist(savedInputs)
         for (i in 1:length(savedInputs)) {
@@ -147,6 +156,7 @@ server <-  shinyServer(function(input, output,session) {
         }
     })
     
+    # Save the user's current UI settings to a RDS file; path currently hard-coded
     observeEvent(input$save_inputs,{
         saveRDS( reactiveValuesToList(input) , file = 'inputs.RDS')
     })

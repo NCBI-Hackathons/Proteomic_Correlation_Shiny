@@ -70,8 +70,7 @@ make_profile_plot_data <- function(){
     # copy/paste from other function in case other function changes
     # data from the data package
     data("WT_trial1")
-    colnames(WT_trial1)
-    
+
     wt1 <- MQ_to_longFormat(WT_trial1, y = "raw.intensity",
                             return.dt = TRUE,
                             extract_proteinID(WT_trial1$Protein.IDs,
