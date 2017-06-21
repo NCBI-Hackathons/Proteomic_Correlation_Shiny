@@ -1,5 +1,7 @@
 # functions to set up the user settings file input and output
 # https://shiny.rstudio.com/articles/modules.html
+# https://stackoverflow.com/a/40099556/5359531
+# https://stackoverflow.com/a/39058108/5359531
 
 # Module UI function
 rdsFileInput <- function(id, label = "Choose Settings RDS File (Press 'Load Inputs...' after upload completes") {
