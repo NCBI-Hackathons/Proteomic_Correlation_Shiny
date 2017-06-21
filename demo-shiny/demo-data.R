@@ -5,7 +5,8 @@ library("NMF")
 library("heatmaply")
 library("shinyHeatmaply")
 # install.packages(c("heatmaply", "shinyHeatmaply"))
-
+# devtools::install_github("NCBI-Hackathons/Proteomic_Correlation_Shiny/DepLab")
+# devtools::install_github("julia-wrobel/DepLabData")
 
 # bundle the logic for setting up the data and the plots in functions
 # export global objects for the data and plots at the end of this script
@@ -142,8 +143,7 @@ make_profile_plot_data <- function(){
     # copy/paste from other function in case other function changes
     # data from the data package
     data("WT_trial1")
-    colnames(WT_trial1)
-    
+
     wt1 <- MQ_to_longFormat(WT_trial1, y = "raw.intensity",
                             return.dt = TRUE,
                             list(id = extract_proteinID(WT_trial1$Protein.IDs, routine = "human")$id,
