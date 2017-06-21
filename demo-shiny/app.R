@@ -131,7 +131,7 @@ server <-  shinyServer(function(input, output,session) {
     })
     
     output$my_heatmap <- renderPlotly({
-      print(heatmapInput())
+      heatmapInput()
     })
 
     
