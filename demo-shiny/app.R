@@ -104,14 +104,16 @@ server <-  shinyServer(function(input, output,session) {
     })
     
     
-
-    
-    
     # Profile Plot
     output$my_profile_plot <- renderPlotly({
-      my_profile_plot
+      brush <- event_data("plotly_selected", source = "heatmap")
+      if( ! is.null(brush)){
+        make_profile_plot(df = profile_plot_data, selected_ID = brush$key)
+      } else{
+        # default plot
+        my_profile_plot
+      }
     })
-    
     
     
     output$heatmap_hover <- renderPrint({
