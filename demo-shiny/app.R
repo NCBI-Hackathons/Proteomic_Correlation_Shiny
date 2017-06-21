@@ -7,6 +7,7 @@ library("shinyHeatmaply")
 source("demo-data.R")
 source("user_settings_io.R")
 load("protein_list.rda")
+load("peaks.rda")
 # install.packages(c("heatmaply", "shinyHeatmaply", "ggfortify"))
 
 # get user inputs from file
@@ -82,6 +83,10 @@ ui <- shinyUI(fluidPage(
   h2("Find differences across conditions"),
   
   verbatimTextOutput("protein_list"),
+  
+  fixedRow(
+    column(6, plotOutput("npeaks_hm", height = "600px")),
+    column(6, plotOutput("bestpeaks_hm", height = "600px"))),
   
     # User UI settings
     selectizeInput(inputId = 'select_gene_ids', label = NULL, choices = NULL, multiple=TRUE),
@@ -250,6 +255,14 @@ server <-  shinyServer(function(input, output,session) {
     # Return interesting proteins
     output$protein_list <- renderPrint({
       print(bw_group_cors)
+    })
+    
+    output$npeaks_hm <- renderPlot({
+      NMF::aheatmap(mean_npeaks, scale = "none", distfun = "manhattan", main="Number of peaks")
+    })
+
+    output$bestpeaks_hm <- renderPlot({
+      NMF::aheatmap(mean_bestpeaks, scale = "none", distfun = "manhattan", main="Location of highest peak")
     })
     
     # Load the user's UI settings from a Load'ed RDS file

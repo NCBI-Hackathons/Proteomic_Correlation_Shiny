@@ -119,3 +119,48 @@ bw_group_cors <- lapply(comparisons, function(comp) {
 })
 
 save(bw_group_cors, file="protein_list.rda")
+
+find_peaks <- function(x, thresh = 1e3) {
+  pks <- which(diff(sign(diff(x)))==-2) + 1
+  which_pks <- (x[pks] - x[max(0, pks - 3)] > thresh) &
+    (x[pks] - x[min(length(x), pks + 3)] > thresh)
+  return(pks[which_pks])
+}
+
+smu_good %>%
+  group_by(id, expt_id) %>%
+  do(data.frame(peak = find_peaks(.$value))) -> peaks
+
+num_peaks <- na.omit(dcast(peaks, formula = "id ~ expt_id",
+                           fun.aggregate = length,
+                           value.var = "peak"))
+
+npeaks <- as.matrix(num_peaks[,-1])
+rownames(npeaks) <- num_peaks[,1]
+npeaks <- npeaks[rowVars(npeaks)>0,]
+
+x <- gl(3, 2)
+mean_npeaks <- t(apply(npeaks, 1, tapply, x, mean))
+colnames(mean_npeaks) <- c("dn", "ev", "wt")
+head(mean_npeaks)
+
+smu_good %>%
+  group_by(id, expt_id) %>%
+  summarize(peak = which.max(value)) -> peaks
+
+best_peaks <- na.omit(dcast(peaks, formula = "id ~ expt_id",
+                            value.var = "peak"))
+
+bestpeaks <- as.matrix(best_peaks[,-1])
+rownames(bestpeaks) <- best_peaks[,1]
+bestpeaks <- bestpeaks[rowVars(bestpeaks)>0,]
+
+x <- gl(3, 2)
+mean_bestpeaks <- t(apply(bestpeaks, 1, tapply, x, mean))
+colnames(mean_bestpeaks) <- c("dn", "ev", "wt")
+head(mean_bestpeaks)
+
+## NMF::aheatmap(mean_npeaks, scale = "none", distfun = "manhattan")
+## NMF::aheatmap(mean_bestpeaks, scale = "none", distfun = "manhattan")
+
+save(mean_npeaks, mean_bestpeaks, file="peaks.rda")
