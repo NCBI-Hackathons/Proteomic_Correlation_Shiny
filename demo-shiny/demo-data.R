@@ -5,7 +5,8 @@ library("NMF")
 library("heatmaply")
 library("shinyHeatmaply")
 # install.packages(c("heatmaply", "shinyHeatmaply"))
-
+# devtools::install_github("NCBI-Hackathons/Proteomic_Correlation_Shiny/DepLab")
+# devtools::install_github("julia-wrobel/DepLabData")
 
 # bundle the logic for setting up the data and the plots in functions
 # export global objects for the data and plots at the end of this script
