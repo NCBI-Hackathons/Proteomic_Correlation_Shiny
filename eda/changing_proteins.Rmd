@@ -149,7 +149,7 @@ smu_filtered %>%
 smu_filtered %>%
   filter(exp_cond == "ev" & id == "A1L390") %>%
   ggplot(aes(x = fraction, y = value, color = expt_id)) + 
-  geom_line() + ggtitle("example of large variance")
+  geom_line() + ggtitle("example of small variance")
 ```
 
 So variance / coefficient of variation is a bad idea. To generalize the correlation, we can either do all pairwise correlations or correlations to the mean profile. And than get the minimum correlation (too strict?).
