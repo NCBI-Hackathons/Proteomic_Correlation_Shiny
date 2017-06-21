@@ -31,6 +31,8 @@ The `DepLab` package contains a shiny app that allows for:
 
 More details can be found in the [manual](https://github.com/NCBI-Hackathons/Proteomic_Correlation_Shiny/blob/master/DepLab_manual/PCP_manual.pdf).
 
+__The Hackathon Shiny App can be found [here](https://github.com/NCBI-Hackathons/Proteomic_Correlation_Shiny/tree/master/demo-shiny).__
+
 There are numerous tasks that can be done to tremendously improve the app (it may also be written completely new from scratch) and we may come up with more things during the hackathon!
 
 - [ ] interactive graphics (perhaps via `plotly`?)

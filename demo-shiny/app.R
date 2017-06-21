@@ -33,11 +33,24 @@ source("user_settings_io.R")
 # https://shiny.rstudio.com/gallery/file-upload.html
 # ~~~~~ UI ~~~~~ #
 ui <- shinyUI(fluidPage(
-    
-    # Shiny
-    # plotlyOutput("plot"), # demo plotly mtcars
-    fixedRow(
-        column(6, plotlyOutput("my_heatmap", height = "600px")),
+  
+  # Shiny
+  h1("QC & FILTERING"),
+  br(), br(),
+  h2("% Contamination"),
+  br(),
+  h2("Peptide counts"),
+  br(),
+  fixedRow(
+  column(6, plotOutput("qc_nPeptides", height = "600px")),
+  column(6, plotOutput("qc_rawIntensity", height = "600px"))),
+  br(),
+  
+  ## HEATMAPS
+  h1("FIND CO-ELUTING PROTEINS"),
+  br(), br(),
+  fixedRow(
+        column(6, plotOutput("my_heatmap", height = "600px")),
         column(6, plotlyOutput("my_profile_plot", height = "600px"))),
     # plotlyOutput("my_heatmap"),
     verbatimTextOutput("heatmap_hover"),
@@ -99,10 +112,14 @@ server <-  shinyServer(function(input, output,session) {
     
     
     
+    # QC plots
+    output$qc_nPeptides <- renderPlot({p_nPep})
+    output$qc_rawIntensity <- renderPlot({p_rawInt})
+    
     # Heatmap
-    output$my_heatmap <- renderPlotly({
-        my_heatmap # %>% layout(dragmode = "select")
-    })
+    output$my_heatmap <-renderPlot({plot(1,2)})
+    #my_heatmap # %>% layout(dragmode = "select")
+    #})
     
     # Profile Plot
     output$my_profile_plot <- renderPlotly({
@@ -160,6 +177,7 @@ server <-  shinyServer(function(input, output,session) {
     observeEvent(input$save_inputs,{
         saveRDS( reactiveValuesToList(input) , file = 'inputs.RDS')
     })
+
 })
 
 shinyApp(ui = ui, server = server)

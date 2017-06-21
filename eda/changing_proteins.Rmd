@@ -324,6 +324,36 @@ smu_good %>%
 correlations %>% filter(id == "Q8N257")
 ```
 
+# Visualize results
+
+```{r visualize}
+bw_group_cors[[1]] %>%
+  pull(id) %>% as.character %>% head(100) -> ids
+
+mean_profiles %>%
+  filter(id %in% ids & exp_cond == "dn") %>%
+  dcast("id ~ fraction") -> dn_mat
+
+mean_profiles %>%
+  filter(id %in% ids & exp_cond == "wt") %>%
+  dcast("id ~ fraction") -> wt_mat
+
+mean_profiles %>%
+  filter(id %in% ids & exp_cond == "ev") %>%
+  dcast("id ~ fraction") -> ev_mat
+
+stopifnot(all(ev_mat[,1] == wt_mat[,1]))
+stopifnot(all(ev_mat[,1] == dn_mat[,1]))
+
+mat <- as.matrix(cbind(ev_mat[,-1], wt_mat[,-1], dn_mat[,-1]))
+colnames(mat) <- c(paste0("ev", 1:30), paste0("wt", 1:30),
+                   paste0("dn", 1:30))
+rownames(mat) <- ev_mat[,1]
+
+NMF::aheatmap(log1p(mat), Colv = NA, distfun = "pearson",
+         scale = "none")
+```
+
 # Session Info
 
 ```{r}
