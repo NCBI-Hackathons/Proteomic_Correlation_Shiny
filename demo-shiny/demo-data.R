@@ -29,14 +29,15 @@ make_heatmap_data <- function(){
     keep <- wt1_sum[V1 > 0]$id
     wt1 <- wt1[id %in% keep]
     
-    # make matrix
-    wt1_wide <-  dcast(wt1, id ~fraction)
-    wt1_mat <- as.matrix(wt1_wide[,-"id", with=FALSE])
-    rownames(wt1_mat) <- wt1_wide$id
+    wt1_heatmap = wt1
+    wt1_heatmap$value = log1p(wt1_heatmap$value)
     
-    wt1_mat_subset <- log1p(wt1_mat[1:500,])
+    ids100 = wt1_heatmap$id[1:100]
+    
+    wt1_heatmap = filter(wt1_heatmap, id %in% ids100)
+    
 
-    return(wt1_mat_subset) 
+    return(wt1_heatmap) 
 }
 
 #make_heatmap <- function(){
@@ -155,6 +156,10 @@ make_profile_plot_data <- function(){
     keep <- wt1_sum[V1 > 0]$id
     wt1 <- wt1[id %in% keep]
     
+    ids100 = wt1$id[1:100]
+    
+    wt1 = filter(wt1, id %in% ids100)
+    
     return(wt1)
 }
 
@@ -171,6 +176,7 @@ make_profile_plot <- function(df, selected_IDs = c("A0FGR8")){
 
 
 # ~~~~~ OBJECTS TO USE IN THE SHINY ~~~~~ #
+
 # qc plots
 p_rawInt <- plot_sums_per_protein(test_data[measurement == "raw.intensity"], 
                       uniq.factors = c("id","expt_id"), 
@@ -183,8 +189,8 @@ p_nPep <- plot_sums_per_protein(test_data[measurement == "peptides.count"],
   theme_bw() + geom_hline(yintercept = 1, linetype = "dashed", color = "gray")
 
 # heatmap
-#my_heatmap <- make_heatmap()
-ranked_clustered_data <- make_ranked_clustered_data()
+data_heatmap <- make_heatmap_data()
+#ranked_clustered_data <- make_ranked_clustered_data()
 
 # xy plots
 profile_plot_data <- make_profile_plot_data()
