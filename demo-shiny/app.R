@@ -50,6 +50,10 @@ ui <- shinyUI(fluidPage(
   fixedRow(
     column(6, plotlyOutput("my_pca", height = "600px")),
     column(6, plotlyOutput("my_3dpca", height = "600px"))),
+  h2("Selected Protein ID's"),
+  p("Click & drag on the 2D PCA to select desired proteins. Copy and Paste protein ID's displayed into the search box at the following link to retrieve network and functional information"),
+  a("https://string-db.org"),
+  br(),
   verbatimTextOutput("id_box"),
   # fixedRow(
   #   column(6, plotlyOutput("my_3dmds", height = "600px")),
@@ -141,20 +145,13 @@ server <-  shinyServer(function(input, output,session) {
     })
     # 3D PCA
     output$my_3dpca <- renderPlotly({
-
         my_3dpca %>% layout(dragmode = "select")
-        
-        
     })
     
     # Coupled event-outputting subset ids
     output$id_box <- renderPrint({
-      
-      cat("Subset Protein IDs\n\nCopy and Paste proteins into the search box\n")
-      cat("at https://string-db.org to retrieve network/functional information\n\n")
-      
       # Get subset based on selection
-      d <- event_data("plotly_selected",source="my_pca")
+      d <- event_data("plotly_selected", source="my_pca")
       
       # If NULL dont do anything
       if(is.null(d) == T) return(NULL)
@@ -167,7 +164,7 @@ server <-  shinyServer(function(input, output,session) {
           for(i in names){
             cat(i,"\n")
           }
-        }else{cat(name,"\n")}
+        } else {cat(name,"\n")}
       }
       
     })
