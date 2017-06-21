@@ -6,6 +6,8 @@ library("shinyHeatmaply")
 # demo data to use for plots
 source("demo-data.R")
 source("user_settings_io.R")
+load("protein_list.rda")
+load("peaks.rda")
 # install.packages(c("heatmaply", "shinyHeatmaply", "ggfortify"))
 
 # get user inputs from file
@@ -63,6 +65,8 @@ ui <- shinyUI(fluidPage(
   fixedRow(
         column(6, plotlyOutput("my_heatmap", height = "600px")),
         column(6, plotlyOutput("my_profile_plot", height = "600px"))),
+  
+  
     # plotlyOutput("my_heatmap"),
     verbatimTextOutput("heatmap_hover"),
     verbatimTextOutput("heatmap_selected"),
@@ -71,7 +75,15 @@ ui <- shinyUI(fluidPage(
     verbatimTextOutput("eventdata"),
     # plotlyOutput("my_profile_plot"),
     
-    
+  ## DIFFERENCES ACROSS CONDITIONS
+  h1("FIND DIFFERENCES ACROSS CONDITIONS"),
+  
+  verbatimTextOutput("protein_list"),
+  
+  fixedRow(
+    column(6, plotOutput("npeaks_hm", height = "600px")),
+    column(6, plotOutput("bestpeaks_hm", height = "600px"))),
+  
     # User UI settings
     selectizeInput(inputId = 'select_gene_ids', label = NULL, choices = NULL, multiple=TRUE),
     rdsFileInput("user_settings_file"), # from the external user_settings_io.R script
@@ -185,12 +197,15 @@ server <-  shinyServer(function(input, output,session) {
     heatmapInput <- reactive({
       key <- data_heatmap$id  ## key identifies brushed subjects
       
-      gg1 <- ggplot(data_heatmap, aes(x= fraction, y = id, color = value, key = key)) + 
+      gg1 <- ggplot(data_heatmap, aes(x= fraction, y = order, color = value, key = key)) + 
         geom_point(shape = 15, size = 8) + theme_bw() + 
         theme(legend.position = "none", panel.grid.major = element_blank(), 
               panel.grid.minor = element_blank(),
-              panel.background=element_blank()) +
-        scale_colour_gradientn(colours = heat.colors(10))
+              panel.background=element_blank(),
+              axis.text.y=element_blank(),
+              axis.ticks=element_blank(),
+              axis.text.x=element_blank()) +
+        scale_colour_gradientn(colours = heat.colors(10)) + ylab("proteins") 
       
       ggplotly(gg1, source = "heatmap") %>% layout(dragmode = "select")
     })
@@ -200,8 +215,6 @@ server <-  shinyServer(function(input, output,session) {
       heatmapInput()
     })
 
-    
-    
     # Profile Plot
     output$my_profile_plot <- renderPlotly({
       brush <- event_data("plotly_selected", source = "heatmap")
@@ -234,6 +247,18 @@ server <-  shinyServer(function(input, output,session) {
         input$select_gene_ids
     })
     
+    # Return interesting proteins
+    output$protein_list <- renderPrint({
+      print(bw_group_cors)
+    })
+    
+    output$npeaks_hm <- renderPlot({
+      NMF::aheatmap(mean_npeaks, scale = "none", distfun = "manhattan", main="Number of peaks")
+    })
+
+    output$bestpeaks_hm <- renderPlot({
+      NMF::aheatmap(mean_bestpeaks, scale = "none", distfun = "manhattan", main="Location of highest peak")
+    })
     
     # Load the user's UI settings from a Load'ed RDS file
     user_settings_file_load <- callModule(rdsFile_load, "user_settings_file")

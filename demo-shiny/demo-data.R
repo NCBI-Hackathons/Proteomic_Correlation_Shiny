@@ -36,8 +36,24 @@ make_heatmap_data <- function(){
     
     wt1_heatmap = filter(wt1_heatmap, id %in% ids100)
     
+    # let's get it clustered and sorted
+    df_wide <- dcast(wt1_heatmap, id~fraction, value.vars = "value")
+    # drop the ID column for the matrix
+    mat <- as.matrix(df_wide[, -1])
+    rownames(mat) <- df_wide$id
+    # distances
+    mat_dist <- dist((1-cor(t(mat), method = "pearson")))
+    # get the clustering
+    mat_clust <- hclust(mat_dist)
+    
+    # make df with the labels and the rank order
+    rank_labels <- data.frame(label = as.character(mat_clust[["labels"]]),
+                              order = mat_clust[["order"]], stringsAsFactors = FALSE)
+    
+    # get the sorted df
+    wt1_heatmap_sort <- merge(wt1_heatmap, rank_labels, by.x = "id", by.y = "label")
 
-    return(wt1_heatmap) 
+    return(wt1_heatmap_sort) 
 }
 
 #make_heatmap <- function(){
