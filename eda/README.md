@@ -1,4 +1,4 @@
-Exploratory Data Analysis
+# Exploratory Data Analysis
 
 This folder contains some unorganized scripts to explore the data in the `DepLabData` and find proteins that change across conditions.
 
