@@ -33,12 +33,12 @@ More details can be found in the [manual](https://github.com/NCBI-Hackathons/Pro
 
 __The Hackathon Shiny App can be found [here](https://github.com/NCBI-Hackathons/Proteomic_Correlation_Shiny/tree/master/demo-shiny).__
 
-There are numerous tasks that can be done to tremendously improve the app (it may also be written completely new from scratch) and we may come up with more things during the hackathon!
+It includes functions and examples for the following cool tasks:
 
-- [ ] interactive graphics (perhaps via `plotly`?)
-- [ ] additional plots, e.g. histograms of QC values to allow for user-defined filtering [QC should definitely be part of the development]
-- [ ] once a user saves a plot, can there be a log file that contains the details (e.g., what data set with which filtering settings etc.?)
-- [ ] connection to String, Pfam and other protein interaction portals
+- [x] interactive graphics
+- [x] additional plots, e.g. histograms of QC values to allow for user-defined filtering [QC should definitely be part of the development]
+- [x] log files once a user saves a plot to reload the exact same settings in the future
+- [x] connection to String, the database of protein interactions
 
 
 ## Statistical analyses
