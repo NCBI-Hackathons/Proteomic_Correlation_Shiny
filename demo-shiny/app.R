@@ -53,9 +53,12 @@ ui <- shinyUI(fluidPage(
   ##### PCA & co#####
   h2("Global data structures"),
   fixedRow(
-    column(6, plotlyOutput("my_pca", height = "600px")),
-    column(6, plotlyOutput("my_3dpca", height = "600px"))),
-  verbatimTextOutput("id_box"),
+    column(6, plotlyOutput("my_pca", height = "60px")),
+  #  column(6, plotlyOutput("my_3dpca", height = "60px"))
+    column(6, verbatimTextOutput("id_box") )
+  ),
+  br(), br(),
+  #verbatimTextOutput("id_box"),
   # fixedRow(
   #   column(6, plotlyOutput("my_3dmds", height = "600px")),
   #   column(6, plotlyOutput("my_mds", height = "600px"))),
@@ -161,21 +164,15 @@ server <-  shinyServer(function(input, output,session) {
       # Get subset based on selection
       d <- event_data("plotly_selected",source="my_pca")
       
-      # If NULL dont do anything
-      if(is.null(d) == T) return(NULL)
-      
       #Get protein identifiers from subset
-      for(i in c(d$pointNumber)){
-        name<-rownames(pr_mat$rotation)[i]
-        if(grepl(";",name)){
-          names<-unlist(strsplit(name,";"))
-          for(i in names){
-            cat(i,"\n")
+      if(is.null(d)){cat("No protein(s) selected.")}else{
+        for(i in c(d$pointNumber) ){
+          name<-rownames(pr_mat$rotation)[i]
+          name <- gsub(";", "\n", name)
+          cat(name,"\n")
           }
-        }else{cat(name,"\n")}
-      }
-      
-    })
+        }
+      })
     # # MDS
     # output$my_mds <- renderPlotly({
     #   my_mds
