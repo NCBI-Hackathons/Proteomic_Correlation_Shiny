@@ -16,72 +16,52 @@ library("shinyHeatmaply")
 
 # ~~~~~ HEATMAP ~~~~~ #
 make_heatmap_data <- function(){
-    # data from the data package
-    data("WT_trial1")
-    
-    wt1 <- MQ_to_longFormat(WT_trial1, y = "raw.intensity",
-                            return.dt = TRUE,
-                            extract_proteinID(WT_trial1$Protein.IDs,
-                                              routine = "human"))
-    
-    # remove entries with all zero values
-    wt1_sum <- wt1[, sum(value), id]
-    keep <- wt1_sum[V1 > 0]$id
-    wt1 <- wt1[id %in% keep]
-    
-    wt1_heatmap = wt1
-    wt1_heatmap$value = log1p(wt1_heatmap$value)
-    
-    ids100 = wt1_heatmap$id[1:1000]
-    
-    wt1_heatmap = filter(wt1_heatmap, id %in% ids100)
-    
-    # let's get it clustered and sorted
-    df_wide <- dcast(wt1_heatmap, id~fraction, value.vars = "value")
-    # drop the ID column for the matrix
-    mat <- as.matrix(df_wide[, -1])
-    rownames(mat) <- df_wide$id
-    # distances
-    mat_dist <- dist((1-cor(t(mat), method = "pearson")))
-    # get the clustering
-    mat_clust <- hclust(mat_dist)
-    
-    # make df with the labels and the rank order
-    rank_labels <- data.frame(label = as.character(mat_clust[["labels"]]),
-                              order = mat_clust[["order"]], stringsAsFactors = FALSE)
-    
-    # get the sorted df
-    wt1_heatmap_sort <- merge(wt1_heatmap, rank_labels, by.x = "id", by.y = "label")
-
-    return(wt1_heatmap_sort) 
-}
-
-#make_heatmap <- function(){
-    # interactive heatmaply Plotly heatmap
-#    heatmaply_data <- make_heatmap_data()
-    
-#    my_heatmap <- heatmaply(x = heatmaply_data, distfun = function(x) dist((1-cor(t(x), method = "pearson"))), scale = "none", Colv = FALSE, plot_method = "ggplot") 
-#    return(my_heatmap)
-#}
-
-make_ranked_clustered_data <- function(mat = make_heatmap_data()){
-    # calculate the dendrogram clustering distances and add it to the object
-    # note: mat = matrix returned by `make_heatmap_data`
-    
-    # get the distances between entries
-    mat_dist <- dist((1-cor(t(mat), method = "pearson")))
-    # get the clustering
-    mat_clust <- hclust(mat_dist)
-    
-    # make df with the labels and the rank order
-    rank_labels <- data.frame(label = as.character(mat_clust[["labels"]]), order = mat_clust[["order"]], stringsAsFactors = FALSE)
-    
-    # clean up the original matrix, convert to df, add rownames as column
-    mat_df <- as.data.frame(mat)
-    mat_df[["label"]] <- rownames(mat_df)
-    rank_labels[["label"]]
-    mat_merged <- merge(x = mat_df, y = rank_labels, by = "label")
-    return(mat_merged)
+  # data from the data package
+  data("WT_trial1")
+  
+  ids <- extract_proteinID(WT_trial1$Protein.IDs, routine = "human")
+  wt1 <- MQ_to_longFormat(WT_trial1, y = "raw.intensity",
+                          return.dt = TRUE,
+                          list(id = ids$id, expt_id = WT_trial1$expt_id) 
+  )
+  
+  # remove entries with all zero values
+  wt1_sum <- wt1[, sum(value), id]
+  keep <- wt1_sum[V1 > 0]$id
+  wt1 <- wt1[id %in% keep]
+  
+  smu <- superSmooth_values(long.df = wt1, prot.identifier = "id")
+  
+  wt1_heatmap <- smu
+  #wt1_heatmap$value = log1p(wt1_heatmap$value)
+  
+  # just to limit the number of entries for playing around
+  ids_subset = unique(wt1_heatmap$id)[1:1000]
+  wt1_heatmap = filter(wt1_heatmap, id %in% ids_subset)
+  
+  # let's get it clustered and sorted
+  df_wide <- dcast(wt1_heatmap, id~fraction, value.vars = "value")
+  # drop the ID column for the matrix
+  mat <- as.matrix(df_wide[, -1])
+  rownames(mat) <- df_wide$id
+  # distances
+  mat_dist <- dist((1-cor(t(mat), method = "pearson")))
+  # get the clustering
+  mat_clust <- hclust(mat_dist)
+  
+  # make df with the labels and the rank order
+  rank_labels <- data.frame(label = as.character(mat_clust[["labels"]]),
+                            order = mat_clust[["order"]], stringsAsFactors = FALSE)
+  
+  # get the sorted df
+  wt1_heatmap_sort <- merge(wt1_heatmap, rank_labels, by.x = "id", by.y = "label")
+  
+  # bring all values into a more similar dynamic range
+  wt1_heatmap_sort <- normalize_values(long.df = wt1_heatmap_sort,  
+                                       norm.type = "fraction", 
+                                       prot.identifier = "id")
+  
+  return(wt1_heatmap_sort) 
 }
 
 # ~~~~~ QC PLOTS ~~~~~ #
@@ -296,7 +276,6 @@ p_nPep <- plot_sums_per_protein(test_data[measurement == "peptides.count"],
 
 # heatmap
 data_heatmap <- make_heatmap_data()
-#ranked_clustered_data <- make_ranked_clustered_data()
 
 # xy plots
 profile_plot_data <- make_profile_plot_data()

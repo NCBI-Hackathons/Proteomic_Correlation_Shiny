@@ -204,14 +204,20 @@ server <-  shinyServer(function(input, output,session) {
       key <- data_heatmap$id  ## key identifies brushed subjects
       
       gg1 <- ggplot(data_heatmap, aes(x= fraction, y = order, color = value, key = key)) + 
-        geom_point(shape = 15, size = 8) + theme_bw() + 
-        theme(legend.position = "none", panel.grid.major = element_blank(), 
+        geom_point(shape = 15, size = 2) + theme_bw() + 
+        theme(legend.position = "bottom", 
+              panel.grid.major = element_blank(), 
               panel.grid.minor = element_blank(),
               panel.background=element_blank(),
+              panel.border = element_blank(),
               axis.text.y=element_blank(),
               axis.ticks=element_blank(),
-              axis.text.x=element_blank()) +
-        scale_colour_gradientn(colours = heat.colors(10)) + ylab("proteins") 
+              axis.text.x=element_blank()
+        ) +
+        # scale_color_gradientn(colours = rev(heat.colors(100))) + 
+        scale_colour_gradient(low = "gray95", high = "navyblue") +
+        scale_x_discrete(expand=c(1, 0)) +
+        ylab("") + xlab("") 
       
       ggplotly(gg1, source = "heatmap") %>% layout(dragmode = "select")
     })
