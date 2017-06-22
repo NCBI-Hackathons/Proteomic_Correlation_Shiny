@@ -37,6 +37,7 @@ load("peaks.rda")
 ui <- shinyUI(fluidPage(
 # Shiny
   h1("PROTEIN SHAKE: smooth MS data analysis"),
+  h5("Davide, Friederike, Jeff, Julia, Jordan, Nick, Stephen"),
   h2("QC & Filtering"),
 #  br(), br(),
 #  h3("% Contamination"),
