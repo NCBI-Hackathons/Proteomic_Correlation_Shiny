@@ -53,19 +53,14 @@ ui <- shinyUI(fluidPage(
   ##### PCA & co#####
   h2("Global data structures"),
   fixedRow(
-    column(6, plotlyOutput("my_pca", height = "60px")),
-  #  column(6, plotlyOutput("my_3dpca", height = "60px"))
-    column(6, verbatimTextOutput("id_box") )
-  ),
-  br(), br(),
-  #verbatimTextOutput("id_box"),
-  # fixedRow(
-  #   column(6, plotlyOutput("my_3dmds", height = "600px")),
-  #   column(6, plotlyOutput("my_mds", height = "600px"))),
-  # fixedRow(
-  #   column(6, plotlyOutput("my_3dtsne", height = "600px")),
-  #   column(6, plotlyOutput("my_tsne", height = "600px"))),
-  ##########
+    column(6, plotlyOutput("my_pca", height = "600px")),
+    column(6, plotlyOutput("my_3dpca", height = "600px"))),
+  br(),br(),
+  h3("Selected Protein ID's"),
+  p("Click & drag on the 2D PCA to select desired proteins. Copy and Paste protein ID's displayed into the search box at the following link to retrieve network and functional information"),
+  a("https://string-db.org"),
+  br(),
+  verbatimTextOutput("id_box"),
 
   ## HEATMAPS
   h2("Find co-eluting proteins"),
@@ -93,7 +88,7 @@ ui <- shinyUI(fluidPage(
     column(6, plotOutput("bestpeaks_hm", height = "600px"))),
   
     # User UI settings
-    selectizeInput(inputId = 'select_gene_ids', label = NULL, choices = NULL, multiple=TRUE),
+    selectizeInput(inputId = 'select_gene_ids', label = "Select genes from the dataset", choices = NULL, multiple=TRUE),
     rdsFileInput("user_settings_file"), # from the external user_settings_io.R script
     verbatimTextOutput("user_settings"),
     
@@ -149,20 +144,13 @@ server <-  shinyServer(function(input, output,session) {
     })
     # 3D PCA
     output$my_3dpca <- renderPlotly({
-
         my_3dpca %>% layout(dragmode = "select")
-        
-        
     })
     
     # Coupled event-outputting subset ids
     output$id_box <- renderPrint({
-      
-      cat("Subset Protein IDs\n\nCopy and Paste proteins into the search box\n")
-      cat("at https://string-db.org to retrieve network/functional information\n\n")
-      
       # Get subset based on selection
-      d <- event_data("plotly_selected",source="my_pca")
+      d <- event_data("plotly_selected", source="my_pca")
       
       #Get protein identifiers from subset
       if(is.null(d)){cat("No protein(s) selected.")}else{
