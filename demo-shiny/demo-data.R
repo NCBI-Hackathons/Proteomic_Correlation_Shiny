@@ -13,17 +13,63 @@ library("shinyHeatmaply")
 # source this script from the Shiny app.R
 # that way, we can tweak the data and plot setup functions and logic while maintaining the same exported objects for the Shiny app. 
 
+# -----------------------------------
+# Get data
+
+data("WT_trial1")
+data("WT_trial2")
+data("EV_trial1")
+data("EV_trial2")
+
+IDs <- read_IDinfo("human")
+IDs$organism <- NULL
+
+ids <- extract_proteinID(WT_trial1$Protein.IDs, routine = "human")
+WT1 <- lapply(c("raw.intensity", "peptides.count", "sequence.coverage"), function(val_of_interest){
+  MQ_to_longFormat(WT_trial1, y= val_of_interest, return.dt = TRUE, 
+                   list(id = ids$id, expt_id = WT_trial1$expt_id) 
+  )}) %>% rbindlist
+WT1 <- IDs[WT1]
+WT1$id <- WT1$gene_symbol
+WT1$gene_symbol <- NULL
+
+ids <- extract_proteinID(WT_trial2$Protein.IDs, routine = "human")
+WT2 <- lapply(c("raw.intensity", "peptides.count"), function(val_of_interest){
+  MQ_to_longFormat(WT_trial2, y= val_of_interest, return.dt = TRUE, 
+                   list(id = ids$id, expt_id = WT_trial2$expt_id) 
+  )}) %>% rbindlist
+WT2 <- IDs[WT2]
+WT2$id <- WT2$gene_symbol
+WT2$gene_symbol <- NULL
+
+ids <- extract_proteinID(EV_trial1$Protein.IDs, routine = "human")
+EV1 <- lapply(c("raw.intensity", "peptides.count"), function(val_of_interest){
+  MQ_to_longFormat(EV_trial1, y= val_of_interest, return.dt = TRUE, 
+                   list(id = ids$id, expt_id = EV_trial1$expt_id) 
+  )}) %>% rbindlist
+EV1 <- IDs[EV1]
+EV1$id <- EV1$gene_symbol
+EV1$gene_symbol <- NULL
+
+ids <- extract_proteinID(EV_trial2$Protein.IDs, routine = "human")
+EV2 <- lapply(c("raw.intensity", "peptides.count"), function(val_of_interest){
+  MQ_to_longFormat(EV_trial2, y= val_of_interest, return.dt = TRUE, 
+                   list(id = ids$id, expt_id = EV_trial2$expt_id) 
+  )}) %>% rbindlist
+EV2 <- IDs[EV2]
+EV2$id <- EV2$gene_symbol
+EV2$gene_symbol <- NULL
+
+test_data <- rbindlist(list(WT1, WT2, EV1, EV2))
+rm(WT1)
+rm(WT2)
+rm(EV1)
+rm(EV2)
+
 
 # ~~~~~ HEATMAP ~~~~~ #
-make_heatmap_data <- function(){
+make_heatmap_data <- function(wt1 = test_data[expt_id == "WT_1"]){
   # data from the data package
-  data("WT_trial1")
-  
-  ids <- extract_proteinID(WT_trial1$Protein.IDs, routine = "human")
-  wt1 <- MQ_to_longFormat(WT_trial1, y = "raw.intensity",
-                          return.dt = TRUE,
-                          list(id = ids$id, expt_id = WT_trial1$expt_id) 
-  )
   
   # remove entries with all zero values
   wt1_sum <- wt1[, sum(value), id]
@@ -65,40 +111,6 @@ make_heatmap_data <- function(){
 }
 
 # ~~~~~ QC PLOTS ~~~~~ #
-data("WT_trial1")
-data("WT_trial2")
-data("EV_trial1")
-data("EV_trial2")
-
-ids <- extract_proteinID(WT_trial1$Protein.IDs, routine = "human")
-WT1 <- lapply(c("raw.intensity", "peptides.count", "sequence.coverage"), function(val_of_interest){
-  MQ_to_longFormat(WT_trial1, y= val_of_interest, return.dt = TRUE, 
-                   list(id = ids$id, expt_id = WT_trial1$expt_id) 
-  )}) %>% rbindlist
-
-ids <- extract_proteinID(WT_trial2$Protein.IDs, routine = "human")
-WT2 <- lapply(c("raw.intensity", "peptides.count"), function(val_of_interest){
-  MQ_to_longFormat(WT_trial2, y= val_of_interest, return.dt = TRUE, 
-                   list(id = ids$id, expt_id = WT_trial2$expt_id) 
-  )}) %>% rbindlist
-
-ids <- extract_proteinID(EV_trial1$Protein.IDs, routine = "human")
-EV1 <- lapply(c("raw.intensity", "peptides.count"), function(val_of_interest){
-  MQ_to_longFormat(EV_trial1, y= val_of_interest, return.dt = TRUE, 
-                   list(id = ids$id, expt_id = EV_trial1$expt_id) 
-  )}) %>% rbindlist
-
-ids <- extract_proteinID(EV_trial2$Protein.IDs, routine = "human")
-EV2 <- lapply(c("raw.intensity", "peptides.count"), function(val_of_interest){
-  MQ_to_longFormat(EV_trial2, y= val_of_interest, return.dt = TRUE, 
-                   list(id = ids$id, expt_id = EV_trial2$expt_id) 
-  )}) %>% rbindlist
-test_data <- rbindlist(list(WT1, WT2, EV1, EV2))
-rm(WT1)
-rm(WT2)
-rm(EV1)
-rm(EV2)
-
 #' Plot sum of MQ variables per protein
 #'
 #' @description This function calculates the sum of values across all fractions, whose
@@ -275,7 +287,7 @@ p_nPep <- plot_sums_per_protein(test_data[measurement == "peptides.count"],
   theme_bw() + geom_hline(yintercept = 1, linetype = "dashed", color = "gray")
 
 # heatmap
-data_heatmap <- make_heatmap_data()
+data_heatmap <- make_heatmap_data(wt1 = test_data[expt_id == "WT_1" & measurement == "raw.intensity"])
 
 # xy plots
 profile_plot_data <- make_profile_plot_data()
