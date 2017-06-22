@@ -288,6 +288,20 @@ shinyServer(function(input, output, session) {
     }
   })
   
+  #----------------------------------------
+  # function that enables pasting from the clipboard
+  # entries should be separated by newline 
+  observeEvent(input$paste, {
+    from_clip <- suppressWarnings(read.clipboard(header=FALSE, sep="\n"))
+    input_genes = c(trimws(as.character(from_clip$V1)))
+    cur_org <- unique(DepLab:::list.organism.by.expt.v2(database.name.reactive$data, input$show_expt_id)$organism)
+    isolate(updateSelectizeInput(session, 'show_gene_symbol',
+                                 choices = DepLab:::list.all.gene.symbols.v2(database.name.reactive$data,
+                                                                             cur_org, cur_len = cur_frac_table_length)$gene, 
+                                 selected=input_genes, server = FALSE))
+  },ignoreNULL=TRUE) 
+  
+  #----------------------------------------
   ## timer
   reac <- reactiveValues(redraw = TRUE, show_gene_symbol = isolate(input$show_gene_symbol), show_expt_id =  isolate(input$show_expt_id), show_complex =  isolate(input$show_complex))
   

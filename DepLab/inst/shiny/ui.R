@@ -237,6 +237,8 @@ shinyUI(  #            navbarPage(theme = shinytheme("Flatly"), "PCP",
                                                 # gene symbol to view
                                                 selectizeInput('show_gene_symbol', 'Select gene symbol', choices = NULL,  selected =  NULL, multiple=TRUE),  
                                                 actionLink("save_as_complex", "save as complex..."),
+                                                br(),
+                                                actionLink("paste", "                paste from clipboard..."),
                                                 
                                                 div(style="margin-top:10px; width:100%;", 
                                                     radioButtons(inputId="complex_source", label="Select complex from", choices=list("Benschop (Sc)" = "benschop","Wodak (Sc)" = "wodak", "CORUM core (Hs)" = "corum", "Custom" = "custom"), inline=FALSE)
