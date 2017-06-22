@@ -155,13 +155,14 @@ plot_sums_per_protein <- function(in.dt, uniq.factors = c("gene_symbol", "expt_i
 # ~~~~~ PCA ~~~~~ #
 #####PCA; DN_Trial2 proteins#####
 data("DN_trial2")
-df<-DN_trial2
-protids<-df$Protein.IDs
-rownames(df)<-protids
-pattern<-"intensity"
-colinds<-grep(pattern,colnames(df))
-mat<-df[,colinds]
-rownames(mat)<-protids
+dt <- test_data[expt_id == "WT_1" & measurement == "raw.intensity"]
+dt <-  dcast(dt, id ~ fraction, value.vars = "value")
+#protids<-df$Protein.IDs
+#rownames(df)<-protids
+#pattern<-"intensity"
+#colinds<-grep(pattern,colnames(df))
+mat <- as.matrix(dt[,-"id", with = FALSE])
+rownames(mat) <- dt$id
 pr_mat<-prcomp(t(mat),
                center = T,
                scale. = F)
@@ -169,7 +170,8 @@ pr_mat<-prcomp(t(mat),
 #summary(pr_mat)
 library(ggfortify)
 id<-rownames(mat)
-my_pca<-ggplot(pr_mat$rotation,aes(label=id),hjust=0, vjust=0)+
+my_pca <- ggplot(pr_mat$rotation,aes(label= dt$id),
+               hjust=0, vjust=0)+
   geom_point(aes(x=PC1,y=PC2))+
   ggtitle("PCA; DN_Trial2 intensities")
 library(plotly)
