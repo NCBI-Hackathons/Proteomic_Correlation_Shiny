@@ -3,6 +3,6 @@
 .RData
 inst/doc
 Running_and_testing_cache/
-inst/extdata/proteomics.db
-inst/extdata/path_to_custom_complexes.txt
-inst/extdata/path_to_db.txt
+DepLab/inst/extdata/proteomics.db
+DepLab/inst/extdata/path_to_custom_complexes.txt
+DepLab/inst/extdata/path_to_db.txt
