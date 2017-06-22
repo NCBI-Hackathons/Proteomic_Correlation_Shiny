@@ -217,10 +217,10 @@ MQaccessor_to_plotname <- function(plotname){
 #' and generated using an awk routine.
 #' 
 #' \bold{Human} info downloaded from uniprot.org with the following search:
-#' organism:human AND organism:"Homo sapiens (Human) [9606]" 
-#' AND proteome:up000005640
+#' \code{organism:human AND organism:"Homo sapiens (Human) [9606]" 
+#' AND proteome:up000005640}
 #' 
-#' cut -f 1-2 *tab | sed "1d" > human_uniprot.entry.name
+#' \code{cut -f 1-2 *tab | sed "1d" > human_uniprot.entry.name}
 #' 
 #' @seealso \code{\link{make_gene_name}}
 #' @export
