@@ -68,6 +68,44 @@ rm(EV2)
 
 
 # ~~~~~ HEATMAP ~~~~~ #
+#' Clustering the rows of a matrix
+#' 
+#' @description Wrapper function for distance calculation and hierarchical 
+#' clustering of a simple numeric matrix. Taken from the \code{pheatmap} package.
+#' 
+#' @param mat matrix -- the rows will be clustered
+#' @param distance either a pre-computed \code{dist} object or the name of the
+#'  distance measure that should be used, i.e. one of: c("pearson", "kendall", 
+#'  "spearman", "euclidean", "maximum", "manhattan", "canberra", "binary", "minkowski").
+#' @param meth_clustering which clustering measure should be used; one of the 
+#' \code{hclust} parameters, i.e.: "ward.D", "ward.D2", "single", "complete", 
+#' "average" (= UPGMA), "mcquitty" (= WPGMA), "median" (= WPGMC),"centroid"
+#'  (= UPGMC). 
+#' @return \code{hclust} object
+cluster_rows <- function(mat, distance, meth_clustering){
+  if (!(meth_clustering %in% c("ward.D", "ward.D2", "ward", "single", 
+                      "complete", "average", "mcquitty", "median", "centroid"))) {
+    stop("clustering method has to one form the list: 'ward', 'ward.D', 'ward.D2', 'single', 'complete', 'average', 'mcquitty', 'median' or 'centroid'.")
+  }
+  if (!(distance[1] %in% c("pearson", "kendall", "spearman", "euclidean", "maximum", 
+                           "manhattan", "canberra", "binary", "minkowski")) & class(distance) != 
+      "dist") {
+    stop("distance has to be a dissimilarity structure as produced by dist or one measure  form the list: 'correlation', 'euclidean', 'maximum', 'manhattan', 'canberra', 'binary', 'minkowski'")
+  }
+  if (distance[1] %in% c("pearson", "kendall", "spearman")) {
+    d = as.dist(1 - cor(t(mat), method = distance))
+  }
+  else {
+    if (class(distance) == "dist") {
+      d = distance
+    }
+    else {
+      d = dist(mat, method = distance)
+    }
+  }
+  return(hclust(d, method = meth_clustering))
+}
+
 make_heatmap_data <- function(wt1 = test_data[expt_id == "WT_1"]){
   # data from the data package
   
@@ -90,10 +128,8 @@ make_heatmap_data <- function(wt1 = test_data[expt_id == "WT_1"]){
   # drop the ID column for the matrix
   mat <- as.matrix(df_wide[, -1])
   rownames(mat) <- df_wide$id
-  # distances
-  mat_dist <- dist((1-cor(t(mat), method = "pearson")))
-  # get the clustering
-  mat_clust <- hclust(mat_dist)
+  # do the clustering
+  mat_clust <- cluster_rows(mat, distance = "pearson", meth_clustering = "complete")
   
   # make df with the labels and the rank order
   rank_labels <- data.frame(label = as.character(mat_clust[["labels"]]),
