@@ -108,16 +108,16 @@ cluster_rows <- function(mat, distance, meth_clustering){
 
 make_heatmap_data <- function(wt1 = test_data[expt_id == "WT_1"]){
   # data from the data package
-  
   # remove entries with all zero values
   wt1_sum <- wt1[, sum(value), id]
   keep <- wt1_sum[V1 > 0]$id
   wt1 <- wt1[id %in% keep]
-  
-  smu <- superSmooth_values(long.df = wt1, prot.identifier = "id")
-  
-  wt1_heatmap <- smu
-  #wt1_heatmap$value = log1p(wt1_heatmap$value)
+ 
+  # bring all values into a more similar dynamic range
+  wt1_heatmap <- normalize_values(long.df = wt1,
+                          norm.type = "fraction", prot.identifier = "id")
+ 
+  wt1_heatmap <- superSmooth_values(long.df = wt1_heatmap, prot.identifier = "id")
   
   # just to limit the number of entries for playing around
   ids_subset = unique(wt1_heatmap$id)[1:1000]
