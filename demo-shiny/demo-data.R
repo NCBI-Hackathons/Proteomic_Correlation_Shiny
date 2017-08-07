@@ -132,16 +132,12 @@ make_heatmap_data <- function(wt1 = test_data[expt_id == "WT_1"]){
   mat_clust <- cluster_rows(mat, distance = "pearson", meth_clustering = "complete")
   
   # make df with the labels and the rank order
-  rank_labels <- data.frame(label = as.character(mat_clust[["labels"]]),
-                            order = mat_clust[["order"]], stringsAsFactors = FALSE)
+  rank_labels <- data.frame(id = mat_clust$labels[rev(mat_clust$order)],
+                            order = c(1:length(mat_clust$labels)), 
+                            stringsAsFactors = FALSE)
   
   # get the sorted df
-  wt1_heatmap_sort <- merge(wt1_heatmap, rank_labels, by.x = "id", by.y = "label")
-  
-  # bring all values into a more similar dynamic range
-  wt1_heatmap_sort <- normalize_values(long.df = wt1_heatmap_sort,  
-                                       norm.type = "fraction", 
-                                       prot.identifier = "id")
+  wt1_heatmap_sort <- merge(wt1_heatmap, rank_labels, by.x = "id", by.y = "id")
   
   return(wt1_heatmap_sort) 
 }
